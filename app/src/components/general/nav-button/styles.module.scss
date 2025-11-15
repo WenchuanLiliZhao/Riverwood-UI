@@ -9,7 +9,7 @@
   .indicator {
     width: 4px;
     height: 4px;
-    background-color: var(--color-text-primary);
+    background-color: currentColor;
     border-radius: 1000px;
     position: absolute;
     left: 50%;

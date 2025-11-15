@@ -1,2 +1,2 @@
-export { NavIconButton } from "./nav-button";
-export { Tooltip } from "./tooltip";
+export * from "./nav-button";
+export * from "./tooltip";

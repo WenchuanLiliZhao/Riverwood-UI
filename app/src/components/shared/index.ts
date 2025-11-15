@@ -1,2 +1,2 @@
-export { RiverwoodLink } from "./link";
-export { MaterialIcon } from "./material-icon";
+export * from "./link";
+export * from "./material-icon";

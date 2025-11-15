@@ -1,5 +1,5 @@
 import { NavIconButton, RiverwoodLink, Tooltip } from "../components";
-import { BasicLayout } from "../layouts";
+import { BasicLayout } from "../components/layouts";
 import { Pages } from "../pages";
 import styles from "./site-layout.module.scss";
 
