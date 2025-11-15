@@ -11,7 +11,7 @@ export interface NavIconButtonProps {
 export const NavIconButton: React.FC<NavIconButtonProps> = ({ icon, href }) => {
   return (
     <RiverwoodLink href={href} className={styles["nav-button"]}>
-      <MaterialIcon icon={icon} size={20} />
+      <MaterialIcon icon={icon} size={20} className={styles["icon"]} />
       <div className={styles["indicator"]}></div>
     </RiverwoodLink>
   );

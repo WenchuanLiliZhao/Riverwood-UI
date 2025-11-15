@@ -17,13 +17,10 @@ $arrow-shift: 12px;
   width: fit-content;
   height: fit-content;
 
-  
-
   .tooltip {
+    z-index: var(--z-index-tooltip);
     $tooltip-distance: 16px;
-
     box-shadow: 4px 4px 16px 0 rgba(0, 0, 0, 0.16);
-  
     position: absolute;
     width: max-content;
     // min-width: 50px;

@@ -1,5 +1,5 @@
 .nav-button {
-  height: 56px;
+  height: var(--spacing-basic-nav-height);
   display: flex;
   align-items: center;
   justify-content: center;
