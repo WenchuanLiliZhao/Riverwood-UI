@@ -8,33 +8,33 @@ export const Page_Debug_Tooltip_Component = () => {
         <Tooltip content={"Top Left"} testing={true}>
           <div className={styles["tooltip-test-dot"]}></div>
         </Tooltip>
-        <Tooltip content={"Top Center"}>
+        <Tooltip content={"Top Center"} testing={true}>
           <div className={styles["tooltip-test-dot"]}></div>
         </Tooltip>
-        <Tooltip content={"Top Right"}>
+        <Tooltip content={"Top Right"} testing={true}>
           <div className={styles["tooltip-test-dot"]}></div>
         </Tooltip>
       </div>
       <div className={styles["row"]}>
         {/* for testing position, the content does not matter */}
-        <Tooltip content={"Left"}>
+        <Tooltip content={"Left"} testing={true}>
           <div className={styles["tooltip-test-dot"]}></div>
         </Tooltip>
-        <Tooltip content={"Center"}>
+        <Tooltip content={"Center"} testing={true}>
           <div className={styles["tooltip-test-dot"]}></div>
         </Tooltip>
-        <Tooltip content={"Right"}>
+        <Tooltip content={"Right"} testing={true}>
           <div className={styles["tooltip-test-dot"]}></div>
         </Tooltip>
       </div>
       <div className={styles["row"]}>
-        <Tooltip content={"Bottom Left"}>
+        <Tooltip content={"Bottom Left"} testing={true}>
           <div className={styles["tooltip-test-dot"]}></div>
         </Tooltip>
-        <Tooltip content={"Bottom Center"}>
+        <Tooltip content={"Bottom Center"} testing={true}>
           <div className={styles["tooltip-test-dot"]}></div>
         </Tooltip>
-        <Tooltip content={"Bottom Right"}>
+        <Tooltip content={"Bottom Right"} testing={true}>
           <div className={styles["tooltip-test-dot"]}></div>
         </Tooltip>
       </div>

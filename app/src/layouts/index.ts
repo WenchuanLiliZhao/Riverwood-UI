@@ -1,0 +1,1 @@
+export { BasicLayout } from "./riverwood-blog-channel-layout";

@@ -1,22 +1,22 @@
 
 import { BlogNav, type BlogNavProps } from "../../components";
 import type { SharedLayoutProps } from "../sharedProps";
-
-interface RiverwoodBlogChannelLayoutProps extends SharedLayoutProps {
+import styles from "./styles.module.scss";
+interface BasicLayoutProps extends SharedLayoutProps {
   blogNav: BlogNavProps;
 }
 
-export const RiverwoodBlogChannelLayout: React.FC<RiverwoodBlogChannelLayoutProps> = ({
+export const BasicLayout: React.FC<BasicLayoutProps> = ({
   blogNav,
   children,
 }) => {
   return (
-    <div>
-      <BlogNav {...blogNav} />
+    <div className={styles["layout"]}>
+      <BlogNav {...blogNav} className={styles["nav"]} />
 
-      <section>
+      <main className={styles["main"]}>
         {children}
-      </section>
+      </main>
     </div>
   );
 };

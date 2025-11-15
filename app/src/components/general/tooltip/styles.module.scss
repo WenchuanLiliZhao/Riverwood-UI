@@ -3,6 +3,8 @@ $arrow-radius: 8px;
 $arrow-radius-half: 4px;
 $arrow-place-adjust: 2px;
 
+$arrow-shift: 12px;
+
 
 .tooltip-arrow-svg {
   color: var(--color-bg-primary-inverse);
@@ -15,13 +17,17 @@ $arrow-place-adjust: 2px;
   width: fit-content;
   height: fit-content;
 
+  
+
   .tooltip {
     $tooltip-distance: 16px;
+
+    box-shadow: 4px 4px 16px 0 rgba(0, 0, 0, 0.16);
   
     position: absolute;
     width: max-content;
     // min-width: 50px;
-    max-width: 200px;
+    max-width: 180px;
     padding: 8px 10px;
     background-color: var(--color-bg-primary-inverse);
     color: var(--color-text-primary-inverse);
@@ -50,27 +56,30 @@ $arrow-place-adjust: 2px;
       
       .arrow-container {
         top: -$arrow-radius;
-        left: calc(50% - $arrow-radius);
+        transform: translateX(-50%);
+        left: 50%;
       }
     }
   
     &.position-top-left {
+      transform: translateX(-$arrow-shift - $arrow-radius);
       top: calc(100% + $tooltip-distance);
-      left: -$arrow-diameter;
+      left: 50%;
       
       .arrow-container {
         top: -$arrow-radius;
-        left: $arrow-diameter;
+        left: $arrow-shift;
       }
     }
   
     &.position-top-right {
+      transform: translateX($arrow-shift + $arrow-radius);
       top: calc(100% + $tooltip-distance);
-      right: -$arrow-diameter;
+      right: 50%;
       
       .arrow-container {
         top: -$arrow-radius;
-        right: $arrow-diameter;
+        right: $arrow-shift;
       }
     }
 
@@ -81,27 +90,30 @@ $arrow-place-adjust: 2px;
       
       .arrow-container {
         bottom: -$arrow-radius - $arrow-place-adjust;
-        left: calc(50% - $arrow-radius);
+        transform: translateX(-50%);
+        left: 50%;
       }
     }
 
     &.position-bottom-left {
+      transform: translateX(-$arrow-shift - $arrow-radius);
       bottom: calc(100% + $tooltip-distance);
-      left: -$arrow-diameter;
+      left: 50%;
       
       .arrow-container {
         bottom: -$arrow-radius - $arrow-place-adjust;
-        left: $arrow-diameter;
+        left: $arrow-shift;
       }
     }
 
     &.position-bottom-right {
+      transform: translateX($arrow-shift + $arrow-radius);
       bottom: calc(100% + $tooltip-distance);
-      right: -$arrow-diameter;
+      right: 50%;
       
       .arrow-container {
         bottom: -$arrow-radius - $arrow-place-adjust;
-        right: $arrow-diameter;
+        right: $arrow-shift;
       }
     }
   }

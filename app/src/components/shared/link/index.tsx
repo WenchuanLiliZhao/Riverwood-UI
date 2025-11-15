@@ -1,17 +1,35 @@
-import { Link } from "react-router";
+
+import { useLocation } from "react-router";
 
 export interface RiverwoodLinkProps {
-  to: string;
+  href: string;
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
 }
 
-export const RiverwoodLink: React.FC<RiverwoodLinkProps> = ({ to, children, className, style }) => {
+export const RiverwoodLink: React.FC<RiverwoodLinkProps> = ({ href, children, className, style }) => {
+  const location = useLocation();
+  
+  // 规范化路径：移除末尾斜杠（除了根路径）
+  const normalizePath = (path: string) => {
+    if (path === "/") return "/";
+    return path.endsWith("/") ? path.slice(0, -1) : path;
+  };
+  
+  const currentPath = normalizePath(location.pathname);
+  const targetPath = normalizePath(href);
+  const isCurrentPage = currentPath === targetPath;
+  
   return (
-    <Link to={to} className={className} style={style}>
+    <a 
+      href={href} 
+      className={className} 
+      style={style}
+      aria-current={isCurrentPage ? "page" : undefined}
+    >
       {children}
-    </Link>
+    </a>
   )
 }
 

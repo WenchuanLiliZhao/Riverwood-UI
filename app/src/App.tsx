@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { Pages } from "./pages";
-import { SiteLayout } from "./siteConfig";
+import { SiteLayout } from "./siteConfig/site-layout";
 
 function App() {
 

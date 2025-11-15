@@ -1,0 +1,14 @@
+.layout {
+  .nav {
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .main {
+    margin-top: 56px;
+  }
+}
