@@ -1,0 +1,27 @@
+---
+description: When generating chart data
+alwaysApply: false
+---
+
+## Data Generation Guide
+
+When generating data for charts, components, or demos:
+
+1. **Use scripts to generate hardcoded data** - Create separate script files (e.g., `generate-data.js` or `generate-data.ts`) that output static, hardcoded data arrays or objects.
+
+2. **Avoid random algorithms in component files** - Do NOT use `Math.random()`, random number generators, or any dynamic data generation logic directly inside `.tsx` or `.ts` component files.
+
+3. **Output format** - Scripts should generate data in a format that can be directly imported and used (e.g., JSON files, TypeScript constant exports).
+
+4. **Example workflow**:
+   - Create a script that generates the data
+   - Run the script to produce a data file
+   - Import the generated data file into your component
+   - The component uses the static, hardcoded data
+
+This approach ensures:
+- Consistent data across renders
+- Better performance (no runtime generation overhead)
+- Easier debugging and testing
+- Reproducible results
+
