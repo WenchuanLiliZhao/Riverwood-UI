@@ -7,7 +7,7 @@ const Page_About: Page = {
     slug: "about",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
     type: "channel",
-    icon: "about",
+    icon: "face",
     cover: "https://via.placeholder.com/150",
     updateDate: new Date("2025-11-15"),
     tags: ["about", "channel"]

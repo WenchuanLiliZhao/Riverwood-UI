@@ -8,10 +8,10 @@ export interface PageInfoProps {
   slug: string;
   description: string;
   type: PageType;
-  icon?: string;
-  cover?: string;
-  updateDate?: Date;
-  tags?: string[];
+  icon: string;
+  cover: string;
+  updateDate: Date;
+  tags: string[];
 }
 
 export interface Page {

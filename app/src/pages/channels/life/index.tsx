@@ -7,7 +7,7 @@ const Page_Life: Page = {
     slug: "life",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
     type: "channel",
-    icon: "life",
+    icon: "downhill_skiing",
     cover: "https://via.placeholder.com/150",
     updateDate: new Date("2025-11-15"),
     tags: ["life", "channel"]

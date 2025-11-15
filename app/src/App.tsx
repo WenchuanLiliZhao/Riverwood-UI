@@ -1,18 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { Pages } from "./pages";
-import RiverwoodBlogChannelLayout from "./layouts/riverwood-blog-channel-layout";
-import { NavButton } from "./components/general";
+import { SiteLayout } from "./siteConfig";
 
 function App() {
-  const Layout = RiverwoodBlogChannelLayout;
-
-  const NavRight = [<div>Right</div>];
-  const NavCenter = [
-    <NavButton icon="home" href="/" />,
-    <NavButton icon="search" href="/search" />,
-    <NavButton icon="heart_smile" href="/favorites" />,
-  ];
-  const NavLeft = [<div>Left</div>];
 
   return (
     <BrowserRouter>
@@ -20,14 +10,12 @@ function App() {
         <Route
           index
           element={
-            <Layout
-              blogNav={{ left: NavLeft, center: NavCenter, right: NavRight }}
+            <SiteLayout
             >
               {Pages.Page_Home.content}
-            </Layout>
-          }
+            </SiteLayout>}
         />
-        <Route path="*" element={<Layout blogNav={{ left: NavLeft, center: NavCenter, right: NavRight }}>{Pages.Page_Not_Found.content}</Layout>} />
+        <Route path="*" element={<SiteLayout>{Pages.Page_Not_Found.content}</SiteLayout>} />
         {Object.values(Pages)
           .filter((page) => page.header.slug !== "")
           .map((page) => (
@@ -35,15 +23,10 @@ function App() {
               key={page.header.slug}
               path={`/${page.header.slug}`}
               element={
-                <Layout
-                  blogNav={{
-                    left: NavLeft,
-                    center: NavCenter,
-                    right: NavRight,
-                  }}
+                <SiteLayout
                 >
                   {page.content}
-                </Layout>
+                </SiteLayout>
               }
             />
           ))}

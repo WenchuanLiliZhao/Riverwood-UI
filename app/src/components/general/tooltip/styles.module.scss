@@ -20,8 +20,8 @@ $arrow-place-adjust: 2px;
   
     position: absolute;
     width: max-content;
-    min-width: 50px;
-    max-width: 240px;
+    // min-width: 50px;
+    max-width: 200px;
     padding: 8px 10px;
     background-color: var(--color-bg-primary-inverse);
     color: var(--color-text-primary-inverse);
@@ -30,6 +30,19 @@ $arrow-place-adjust: 2px;
       position: absolute;
     }
   
+    .tooltip-content {
+      .tooltip-header {
+        font-size: 13px;
+        line-height: 22px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .tooltip-content-text {
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+
     &.position-top-center {
       transform: translateX(-50%);
       top: calc(100% + $tooltip-distance);

@@ -6,7 +6,7 @@ interface RiverwoodBlogChannelLayoutProps extends SharedLayoutProps {
   blogNav: BlogNavProps;
 }
 
-const RiverwoodBlogChannelLayout: React.FC<RiverwoodBlogChannelLayoutProps> = ({
+export const RiverwoodBlogChannelLayout: React.FC<RiverwoodBlogChannelLayoutProps> = ({
   blogNav,
   children,
 }) => {
@@ -20,5 +20,3 @@ const RiverwoodBlogChannelLayout: React.FC<RiverwoodBlogChannelLayoutProps> = ({
     </div>
   );
 };
-
-export default RiverwoodBlogChannelLayout;

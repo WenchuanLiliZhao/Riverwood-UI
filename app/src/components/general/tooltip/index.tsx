@@ -1,6 +1,6 @@
 /*
  * Tooltip Component
- * 
+ *
  * Features:
  * - Displays tooltip information when user hovers over child elements
  * - Provides 6 position options: top/bottom × left/center/right
@@ -11,7 +11,7 @@
 
 /*
  * Tooltip 组件 - 提示框组件
- * 
+ *
  * 基本特征：
  * - 支持在用户悬停子元素时显示提示信息
  * - 提供 6 种位置选项：顶部/底部 × 左/中/右
@@ -20,12 +20,12 @@
  * - 内容支持字符串或 React 节点，灵活定制显示内容
  */
 
-
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import styles from "./styles.module.scss";
 
 export interface TooltipProps {
+  header?: string | React.ReactNode;
   content: string | React.ReactNode;
   children: React.ReactNode;
   testing?: boolean;
@@ -65,7 +65,13 @@ const TooltipArrow: React.FC = () => {
  */
 const calculateAutoPosition = (
   element: HTMLElement
-): "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" => {
+):
+  | "top-left"
+  | "top-center"
+  | "top-right"
+  | "bottom-left"
+  | "bottom-center"
+  | "bottom-right" => {
   const rect = element.getBoundingClientRect();
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
@@ -105,11 +111,17 @@ export const Tooltip: React.FC<TooltipProps> = ({
   content,
   testing = false,
   position,
+  header,
   children,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [autoPosition, setAutoPosition] = useState<
-    "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"
+    | "top-left"
+    | "top-center"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-center"
+    | "bottom-right"
   >("top-center");
   const triggerRef = useRef<HTMLDivElement>(null);
 
@@ -150,11 +162,18 @@ export const Tooltip: React.FC<TooltipProps> = ({
         {children}
       </div>
       {shouldShowTooltip && (
-        <div className={`${styles["tooltip"]} ${styles[`position-${finalPosition}`]}`}>
+        <div
+          className={`${styles["tooltip"]} ${
+            styles[`position-${finalPosition}`]
+          }`}
+        >
           <div className={styles["arrow-container"]}>
             <TooltipArrow />
           </div>
-          <div className={styles["tooltip-content"]}>{content}</div>
+          <div className={styles["tooltip-content"]}>
+            {header && <div className={styles["tooltip-header"]}>{header}</div>}
+            {typeof content === "string" ? <p className={styles["tooltip-content-text"]}>{content}</p> : content}
+          </div>
         </div>
       )}
     </div>

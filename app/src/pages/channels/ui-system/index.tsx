@@ -7,7 +7,7 @@ const Page_UI_System: Page = {
     slug: "ui-system",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
     type: "channel",
-    icon: "ui-system",
+    icon: "design_services",
     cover: "https://via.placeholder.com/150",
     updateDate: new Date("2025-11-15"),
     tags: ["ui-system", "channel"]
