@@ -1,4 +1,4 @@
-import { NavButton, RiverwoodLink, Tooltip } from "../components";
+import { NavIconButton, RiverwoodLink, Tooltip } from "../components";
 import { BasicLayout } from "../layouts";
 import { Pages } from "../pages";
 import styles from "./site-layout.module.scss";
@@ -13,7 +13,7 @@ export const SiteLayout = ({ children }: { children: React.ReactNode }) => {
             header={Pages.Page_Home.header.title}
             content={Pages.Page_Home.header.description}
           >
-            <NavButton
+            <NavIconButton
               icon={Pages.Page_Home.header.icon}
               href={`/${Pages.Page_Home.header.slug}`}
             />
@@ -22,7 +22,7 @@ export const SiteLayout = ({ children }: { children: React.ReactNode }) => {
             header={Pages.Page_UI_System.header.title}
             content={Pages.Page_UI_System.header.description}
           >
-            <NavButton
+            <NavIconButton
               icon={Pages.Page_UI_System.header.icon}
               href={`/${Pages.Page_UI_System.header.slug}`}
             />
@@ -31,7 +31,7 @@ export const SiteLayout = ({ children }: { children: React.ReactNode }) => {
             header={Pages.Page_Widgets.header.title}
             content={Pages.Page_Widgets.header.description}
           >
-            <NavButton
+            <NavIconButton
               icon={Pages.Page_Widgets.header.icon}
               href={`/${Pages.Page_Widgets.header.slug}`}
             />
@@ -40,7 +40,7 @@ export const SiteLayout = ({ children }: { children: React.ReactNode }) => {
             header={Pages.Page_Life.header.title}
             content={Pages.Page_Life.header.description}
           >
-            <NavButton
+            <NavIconButton
               icon={Pages.Page_Life.header.icon}
               href={`/${Pages.Page_Life.header.slug}`}
             />
@@ -49,7 +49,7 @@ export const SiteLayout = ({ children }: { children: React.ReactNode }) => {
             header={Pages.Page_About.header.title}
             content={Pages.Page_About.header.description}
           >
-            <NavButton
+            <NavIconButton
               icon={Pages.Page_About.header.icon}
               href={`/${Pages.Page_About.header.slug}`}
             />
@@ -60,7 +60,7 @@ export const SiteLayout = ({ children }: { children: React.ReactNode }) => {
             header={Pages.Page_Contact.header.title}
             content={Pages.Page_Contact.header.description}
           >
-            <NavButton
+            <NavIconButton
               icon={Pages.Page_Contact.header.icon}
               href={`/${Pages.Page_Contact.header.slug}`}
             />
