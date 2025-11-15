@@ -23,10 +23,11 @@ function App() {
             <Layout
               blogNav={{ left: NavLeft, center: NavCenter, right: NavRight }}
             >
-              {Pages.home.content}
+              {Pages.Page_Home.content}
             </Layout>
           }
         />
+        <Route path="*" element={<Layout blogNav={{ left: NavLeft, center: NavCenter, right: NavRight }}>{Pages.Page_Not_Found.content}</Layout>} />
         {Object.values(Pages)
           .filter((page) => page.header.slug !== "")
           .map((page) => (

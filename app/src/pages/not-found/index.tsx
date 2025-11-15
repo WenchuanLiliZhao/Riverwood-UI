@@ -1,5 +1,5 @@
-import type { Page } from "../../types";
-import Page_Not_Found_Component from "./_component";
+import type { Page } from "../types";
+import { PageContent } from "./_component";
 
 const Page_Not_Found: Page = {
   header: {
@@ -12,7 +12,7 @@ const Page_Not_Found: Page = {
     updateDate: new Date(),
     tags: ["not-found", "channel"]
   },
-  content: <Page_Not_Found_Component />
+  content: <PageContent />
 }
 
 export default Page_Not_Found;
