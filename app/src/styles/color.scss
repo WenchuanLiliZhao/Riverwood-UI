@@ -1,0 +1,18 @@
+// Don't use specific colors in the code, use the variables defined here.
+
+
+:root {
+  --color-bg-primary: rgb(255, 255, 255, 1); // the primary background color
+  --color-bg-primary-inverse: rgba(0, 0, 0, 1); // the inverse of the primary background color
+
+  --color-text-primary: rgba(0, 0, 0, 0.88); // the primary text color
+  --color-text-primary-inverse: rgba(255, 255, 255, 1); // the inverse of the primary text color
+
+  --color-border-primary: rgba(0, 0, 0, 0.88); // the primary border color
+  --color-border-primary-inverse: rgba(255, 255, 255, 1); // the inverse of the primary border color
+}
+
+html, body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}

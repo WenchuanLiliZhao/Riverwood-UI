@@ -1,0 +1,95 @@
+$arrow-diameter: 16px;
+$arrow-radius: 8px;
+$arrow-radius-half: 4px;
+$arrow-place-adjust: 2px;
+
+
+.tooltip-arrow-svg {
+  color: var(--color-bg-primary-inverse);
+}
+
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+
+  .tooltip {
+    $tooltip-distance: 16px;
+  
+    position: absolute;
+    width: max-content;
+    min-width: 50px;
+    max-width: 240px;
+    padding: 8px 10px;
+    background-color: var(--color-bg-primary-inverse);
+    color: var(--color-text-primary-inverse);
+  
+    .arrow-container {
+      position: absolute;
+    }
+  
+    &.position-top-center {
+      transform: translateX(-50%);
+      top: calc(100% + $tooltip-distance);
+      left: 50%;
+      
+      .arrow-container {
+        top: -$arrow-radius;
+        left: calc(50% - $arrow-radius);
+      }
+    }
+  
+    &.position-top-left {
+      top: calc(100% + $tooltip-distance);
+      left: -$arrow-diameter;
+      
+      .arrow-container {
+        top: -$arrow-radius;
+        left: $arrow-diameter;
+      }
+    }
+  
+    &.position-top-right {
+      top: calc(100% + $tooltip-distance);
+      right: -$arrow-diameter;
+      
+      .arrow-container {
+        top: -$arrow-radius;
+        right: $arrow-diameter;
+      }
+    }
+
+    &.position-bottom-center {
+      transform: translateX(-50%);
+      bottom: calc(100% + $tooltip-distance);
+      left: 50%;
+      
+      .arrow-container {
+        bottom: -$arrow-radius - $arrow-place-adjust;
+        left: calc(50% - $arrow-radius);
+      }
+    }
+
+    &.position-bottom-left {
+      bottom: calc(100% + $tooltip-distance);
+      left: -$arrow-diameter;
+      
+      .arrow-container {
+        bottom: -$arrow-radius - $arrow-place-adjust;
+        left: $arrow-diameter;
+      }
+    }
+
+    &.position-bottom-right {
+      bottom: calc(100% + $tooltip-distance);
+      right: -$arrow-diameter;
+      
+      .arrow-container {
+        bottom: -$arrow-radius - $arrow-place-adjust;
+        right: $arrow-diameter;
+      }
+    }
+  }
+}

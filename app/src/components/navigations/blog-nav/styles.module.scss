@@ -1,0 +1,33 @@
+.blog-nav {
+  --item-gap: 16px;
+  
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+
+  .left {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--item-gap);
+  }
+
+  .center {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--item-gap);
+  }
+
+  .right {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--item-gap);
+  }
+}

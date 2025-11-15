@@ -1,0 +1,13 @@
+.icon {
+  pointer-events: none;
+  vertical-align: middle;
+  font-size: inherit;
+  &::selection {
+    background: none;
+  }
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+

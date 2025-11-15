@@ -1,0 +1,21 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  justify-content: space-between;
+  padding: 64px;
+
+  .row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+}
+
+.tooltip-test-dot {
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-text-primary);
+  border-radius: 50%;
+}
