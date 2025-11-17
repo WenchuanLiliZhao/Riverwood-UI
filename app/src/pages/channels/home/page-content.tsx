@@ -1,4 +1,3 @@
-
 import { DebugPages } from "../../debug";
 
 export const PageContent = () => {
