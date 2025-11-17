@@ -1,5 +1,0 @@
----
-alwaysApply: true
----
-
-All components from this package must be wrapped in `<LuluLayout />` for the global styles to work properly.
