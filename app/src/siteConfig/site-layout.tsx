@@ -1,11 +1,11 @@
 import { NavIconButton, RiverwoodLink, Tooltip } from "../components";
-import { BasicLayout } from "../components/layouts";
+import { RiverwoodBasicLayout } from "../components/layouts";
 import { Pages } from "../pages";
 import styles from "./site-layout.module.scss";
 
 export const SiteLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <BasicLayout
+    <RiverwoodBasicLayout
       blogNav={{
         left: [<RiverwoodLink href="/" className={styles["riverwood-logo"]}>Riverwood</RiverwoodLink>],
         center: [
@@ -69,6 +69,6 @@ export const SiteLayout = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-    </BasicLayout>
+    </RiverwoodBasicLayout>
   );
 };

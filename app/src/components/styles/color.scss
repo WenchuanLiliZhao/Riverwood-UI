@@ -1,19 +1,43 @@
 // Don't use specific colors in the code, use the variables defined here.
 
-
 :root {
-  --color-bg-primary: rgb(255, 255, 255, 1); // the primary background color
-  --color-bg-primary-inverse: rgba(0, 0, 0, 1); // the inverse of the primary background color
+  // background colors
+  & {
+    --color-bg-primary: #ffffff;
+    --color-bg-primary-hover: #F5F5F5;
+    --color-bg-primary-hover-trans: rgba(0, 0, 0, 0.04);
+    
+    --color-bg-primary-inverse: #000000;
+    --color-bg-primary-inverse-hover: #333333;
+    --color-bg-primary-inverse-hover-trans: rgba(0, 0, 0, 0.8);
+  }
 
-  --color-text-primary: rgba(0, 0, 0, 0.88); // the primary text color
-  --color-text-primary-inverse: rgba(255, 255, 255, 1); // the inverse of the primary text color
+  // text colors
+  & {
+    --color-text-primary: #1f1f1f;
+    --color-text-primary-trans: rgba(0, 0, 0, 0.88);
 
-  --color-border-primary: rgba(0, 0, 0, 0.88); // the primary border color
-  --color-border-primary-inverse: rgba(255, 255, 255, 1); // the inverse of the primary border color
+    --color-text-secondary: #707070;
+    --color-text-secondary-trans: rgba(0, 0, 0, 0.56);
+
+    --color-text-negative: #adadad;
+    --color-text-negative-trans: rgba(0, 0, 0, 0.32);
+
+    --color-text-disabled: #d6d6d6;
+    --color-text-disabled-trans: rgba(0, 0, 0, 0.16);
+
+    --color-text-primary-inverse: #ffffff;
+  }
+
+  // border colors
+  & {
+    --color-border-primary: #ebebeb;
+    --color-border-primary-trans: rgba(0, 0, 0, 0.08);
+  }
 }
 
-html, body {
+html,
+body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
 }
-

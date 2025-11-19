@@ -7,3 +7,8 @@ export const Pages = {
   ...Channels,
   ...DebugPages,
 }
+
+export const PageSets = {
+  Channels,
+  DebugPages,
+}

@@ -2,12 +2,12 @@
 import { BlogNav, type BlogNavProps } from "../..";
 import styles from "./styles.module.scss";
 
-interface BasicLayoutProps {
+interface RiverwoodBasicLayoutProps {
   blogNav: Omit<BlogNavProps, "mode">;
   children: React.ReactNode;
 }
 
-export const BasicLayout: React.FC<BasicLayoutProps> = ({
+export const RiverwoodBasicLayout: React.FC<RiverwoodBasicLayoutProps> = ({
   blogNav,
   children,
 }) => {
