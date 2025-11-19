@@ -5,24 +5,28 @@ const PageContent = () => {
     <BasicLayout
       elements={{
         appBar: {
-          top: [<div>1</div>, <div>2</div>],
-          center: [
-            <div>4</div>, <div>5</div>, <div>6</div>],
-          bottom: [<div>7</div>, <div>8</div>, <div>9</div>],
+          first: [<div>1</div>, <div>2</div>],
+          center: [<div>4</div>, <div>5</div>, <div>6</div>],
+          last: [<div>7</div>, <div>8</div>, <div>9</div>],
         },
-        navBar: (
+        footer: (
           <div>
-            <h1>top nav bar</h1>
+            <div>Footer Content</div>
           </div>
         ),
+        navBar: {
+          first: [<div>1</div>, <div>2</div>],
+          center: [<div>4</div>, <div>5</div>, <div>6</div>],
+          last: [<div>7</div>, <div>8</div>, <div>9</div>],
+        },
         leftSidebar: (
           <div>
-            <h1>left sidebar</h1>
+            <div>Left Sidebar Content</div>
           </div>
         ),
         rightSidebar: (
           <div>
-            <h1>right sidebar</h1>
+            <div>Right Sidebar Content</div>
           </div>
         ),
         content: (

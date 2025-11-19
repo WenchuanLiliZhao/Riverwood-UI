@@ -43,14 +43,19 @@
 
         .content-container-main {
           flex: 1 1 auto;
+          overflow-y: auto;
         }
 
         .right-sidebar {
           flex: 0 0 $spacing-right-sidebar-width;
           border-left: 1px solid var(--color-border-primary);
-          border-left: 1px solid var(--color-border-primary);
         }
       }
+    }
+
+    .footer {
+      flex: 0 0 auto;
+      border-top: 1px solid var(--color-border-primary);
     }
   }
 }

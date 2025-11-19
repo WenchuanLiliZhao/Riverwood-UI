@@ -1,28 +1,28 @@
 import type { BasicLayoutProps } from "..";
-import styles from "./appBar.module.scss";
+import styles from "./navBar.module.scss";
 
-export const AppBar = ({
+export const NavBar = ({
   elements,
   className,
 }: {
   elements: BasicLayoutProps["elements"];
   className?: string;
 }) => {
-  if (elements.appBar !== undefined) {
+  if (elements.navBar !== undefined) {
     return (
-      <nav className={`${styles["app-bar"]} ${className}`}>
+      <nav className={`${styles["nav-bar"]} ${className}`}>
         <div className={styles["first"]}>
-          {elements.appBar.first.map((element, index) => (
+          {elements.navBar.first.map((element, index) => (
             <div key={index}>{element}</div>
           ))}
         </div>
         <div className={styles["center"]}>
-          {elements.appBar.center.map((element, index) => (
+          {elements.navBar.center.map((element, index) => (
             <div key={index}>{element}</div>
           ))}
         </div>
         <div className={styles["last"]}>
-          {elements.appBar.last.map((element, index) => (
+          {elements.navBar.last.map((element, index) => (
             <div key={index}>{element}</div>
           ))}
         </div>
@@ -32,3 +32,4 @@ export const AppBar = ({
     return <></>;
   }
 };
+
