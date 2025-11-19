@@ -96,5 +96,16 @@ hr {
 
 * {
 	background-size: cover;
+	/* Hide scrollbars for all browsers while maintaining scroll functionality */
+	/* Firefox */
+	scrollbar-width: none;
+	/* IE and Edge */
+	-ms-overflow-style: none;
 }
 
+*::-webkit-scrollbar {
+	/* Chrome, Safari, Opera, and Edge Chromium */
+	display: none;
+	width: 0;
+	height: 0;
+}
