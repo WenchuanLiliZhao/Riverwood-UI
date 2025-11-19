@@ -9,6 +9,7 @@
   sans-serif, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
   --font-family-serif: 'Roboto Serif', "Times New Roman", Times, serif;
   --font-family-mono: 'Roboto Mono', monospace;
+  --font-family-roman: "Times New Roman", Times, serif;
 }
 
 html, body {
@@ -21,3 +22,6 @@ html, body {
   font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 24;
 }
 
+// Typography classes are now managed via CVA in font.style.ts
+// Use fontVariants({ typography: 'title' }) for type-safe usage
+// See font.module.scss for the actual class definitions

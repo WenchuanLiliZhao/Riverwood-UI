@@ -1,0 +1,59 @@
+// Typography classes for SCSS Module usage with CVA
+// These classes are managed via font.style.ts using class-variance-authority
+.title {
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.heading {
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.subheading {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.body {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.caption {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.small {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.sans {
+  font-family: var(--font-family-sans);
+}
+
+.serif {
+  font-family: var(--font-family-serif);
+}
+
+.mono {
+  font-family: var(--font-family-mono);
+}
+
+.roman {
+  font-family: var(--font-family-roman);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

@@ -1,3 +1,4 @@
+import { fontVariants } from "../../../components";
 import { BasicLayout } from "../../../components/layouts";
 
 const PageContent = () => {
@@ -31,7 +32,28 @@ const PageContent = () => {
         ),
         content: (
           <div>
-            <h1>Debug Layout</h1>
+            <h1
+              className={fontVariants({
+                typography: "title",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                fontFamily: "serif"
+              })}
+            >
+              Debug Layout
+            </h1>
+            <p
+              className={fontVariants({
+                typography: "body",
+                fontWeight: "light",
+                fontFamily: "serif",
+              })}
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+              omnis provident porro alias mollitia consectetur incidunt odit
+              tempora illum expedita, veritatis blanditiis animi, dolorum enim.
+              Quos corporis esse libero hic?
+            </p>
           </div>
         ),
       }}
