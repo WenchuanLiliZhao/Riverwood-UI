@@ -13,13 +13,5 @@
   &.last {
     justify-content: flex-end;
   }
-
-  // Direction variants
-  &.row {
-    flex-direction: row;
-  }
-  &.column {
-    flex-direction: column;
-  }
 }
 

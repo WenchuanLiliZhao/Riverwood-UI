@@ -1,13 +1,12 @@
 import React, { type ElementType } from "react";
-import { barItemGroupVariants, type BarItemGroupVariantProps } from "./_barItemGroup.style";
 import type { BarElements } from "../../shared";
 import sharedStyles from "./_barItemGroup.module.scss";
-import { clsx } from "clsx";
 
-export interface BaseBarProps extends BarItemGroupVariantProps {
+export interface BaseBarProps {
   elements: BarElements;
   className?: string;
   itemGroupClassName?: string;
+  direction?: "row" | "column";
   as?: ElementType;
 }
 
@@ -27,39 +26,31 @@ export const BaseBar = React.forwardRef<HTMLElement, BaseBarProps>(
     },
     ref
   ) => {
-    // Use CVA to generate class names for item groups
-    const itemGroupBaseClass = barItemGroupVariants({ direction });
+    const itemGroupStyle = {
+      flexDirection: direction,
+    } as React.CSSProperties;
 
     return (
       <Component ref={ref as React.RefObject<HTMLElement>} className={className} {...props}>
         <div
-          className={clsx(
-            itemGroupBaseClass,
-            sharedStyles["first"],
-            itemGroupClassName
-          )}
+          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["first"]} ${itemGroupClassName || ""}`}
+          style={itemGroupStyle}
         >
           {elements.first.map((element, index) => (
             <div key={index}>{element}</div>
           ))}
         </div>
         <div
-          className={clsx(
-            itemGroupBaseClass,
-            sharedStyles["center"],
-            itemGroupClassName
-          )}
+          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["center"]} ${itemGroupClassName || ""}`}
+          style={itemGroupStyle}
         >
           {elements.center.map((element, index) => (
             <div key={index}>{element}</div>
           ))}
         </div>
         <div
-          className={clsx(
-            itemGroupBaseClass,
-            sharedStyles["last"],
-            itemGroupClassName
-          )}
+          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["last"]} ${itemGroupClassName || ""}`}
+          style={itemGroupStyle}
         >
           {elements.last.map((element, index) => (
             <div key={index}>{element}</div>
