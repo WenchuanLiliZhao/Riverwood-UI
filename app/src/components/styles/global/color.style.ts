@@ -10,15 +10,18 @@ export const colorVariants = cva('', {
     bg: {
       primary: styles.bgPrimary,
       primaryHover: styles.bgPrimaryHover,
+      secondary: styles.bgSecondary,
       hover: styles.bgHover,
       hoverInverse: styles.bgHoverInverse,
     },
     text: {
       primary: styles.textPrimary,
+      primaryEm: styles.textPrimaryEm,
       secondary: styles.textSecondary,
       negative: styles.textNegative,
       disabled: styles.textDisabled,
       inverse: styles.textInverse,
+      inverseEm: styles.textInverseEm,
     },
     border: {
       primary: styles.borderPrimary,

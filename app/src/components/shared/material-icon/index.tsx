@@ -1,4 +1,5 @@
 import { type CSSProperties } from "react";
+import { clsx } from "clsx";
 import styles from "./_styles.module.scss";
 
 export interface IconProps {
@@ -12,16 +13,18 @@ export const MaterialIcon = ({
   icon,
   className,
   style,
-  size = 24,
+  size,
 }: IconProps) => {
   return (
     <span
-      className={`${styles["icon"]} material-symbols-outlined ${className}`}
+      className={clsx(
+        styles["icon"],
+        "material-symbols-outlined",
+        className
+      )}
       style={{
+        ...(size && { fontSize: size }),
         ...style,
-        fontSize: `${size}px`,
-        // width: `${size}px`,
-        // height: `${size}px`,
       }}
     >
       {icon}

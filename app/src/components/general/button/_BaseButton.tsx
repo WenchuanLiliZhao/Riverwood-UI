@@ -1,9 +1,16 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import { buttonVariants } from "./style";
 import styles from "./Button.module.scss";
 import { MaterialIcon } from "../../shared/material-icon";
 import { HoverBox } from "../../shared/hover-box";
+import {
+  type ComponentSize,
+  type ComponentSemantic,
+  type ComponentVariant,
+  COMPONENT_VARIANTS,
+  COMPONENT_SIZES,
+  COMPONENT_SEMANTICS,
+} from "../../shared/tokens";
 
 export interface BaseButtonProps {
   content: {
@@ -12,8 +19,9 @@ export interface BaseButtonProps {
     decoIcon?: string;
   };
   design?: {
-    variant: "fill-inverse" | "ghost" | "fill" | "outlined" | "printish";
-    size: "small" | "medium";
+    variant?: ComponentVariant;
+    semantic?: ComponentSemantic;
+    size?: ComponentSize;
   };
   asChild?: boolean;
   className?: string;
@@ -27,7 +35,11 @@ export const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>(
       asChild,
       className,
       content,
-      design,
+      design = {
+        variant: COMPONENT_VARIANTS.fill,
+        size: COMPONENT_SIZES.medium,
+        semantic: COMPONENT_SEMANTICS.primary,
+      },
       disabled,
       children,
       ...props
@@ -36,34 +48,44 @@ export const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>(
   ) => {
     const Component = asChild ? Slot : "button";
 
-    const variantClass = buttonVariants({
-      variant: design?.variant,
-      size: design?.size,
+    // Manual class composition instead of CVA
+    const variant = design.variant || COMPONENT_VARIANTS.fill;
+    const size = design.size || COMPONENT_SIZES.medium;
+    const semantic = design.semantic || COMPONENT_SEMANTICS.primary;
+
+    const designClasses = [
+      styles.base,
+      styles[variant],
+      styles[size],
+      styles[semantic],
       className,
-    });
+    ]
+      .filter(Boolean)
+      .join(" ");
 
     return (
       <Component
-        className={variantClass}
+        className={designClasses}
         ref={ref}
         disabled={disabled}
         {...props}
       >
-        <div className={styles.content}>
+        <div className={styles["content"]}>
           {content.icon && (
-            <span className={styles.icon}>
-              <MaterialIcon icon={content.icon} />
-            </span>
+            <MaterialIcon className={styles["icon"]} icon={content.icon} />
           )}
-          {content.text && <span className={styles.text}>{content.text}</span>}
+          {content.text && (
+            <span className={styles["text"]}>{content.text}</span>
+          )}
           {content.decoIcon && (
-            <span className={styles.decoIcon}>
-              <MaterialIcon icon={content.decoIcon} />
-            </span>
+            <MaterialIcon
+              className={styles["deco-icon"]}
+              icon={content.decoIcon}
+            />
           )}
         </div>
         {children}
-        <HoverBox isInverse={design?.variant === "fill-inverse"} />
+        <HoverBox isInverse={variant === "fill-inverse"} />
       </Component>
     );
   }

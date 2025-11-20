@@ -7,60 +7,108 @@
   border: none;
   outline: none;
   transition: all 0.2s ease-in-out;
+  overflow: hidden;
+
+  --main-color: var(--color-text-primary);
+  --main-color-inverse: var(--color-text-primary-inverse);
+  --em-color: var(--color-text-primary-em);
+  --sec-color: var(--color-bg-secondary);
+  --border-color: var(--color-border-primary);
+
+  color: red;
+  background-color: red;
+  border-color: red;
 
   &:disabled {
-    opacity: 0.5;
     cursor: not-allowed;
   }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Semantics */
+.primary {
+  --main-color: var(--color-text-primary);
+  --main-color-inverse: var(--color-text-primary-inverse);
+  --em-color: var(--color-text-primary-em);
+  --sec-color: var(--color-bg-secondary);
+  --border-color: var(--color-border-primary);
+}
+
+.secondary {
+}
+
+.negative {
+}
+
+.disabled {
 }
 
 /* Variants */
 .fill-inverse {
-  
-}
-
-.ghost {
-  // Add your styles here
+  color: var(--main-color-inverse);
+  background-color: var(--em-color);
+  border-radius: 4px;
 }
 
 .fill {
-  // Add your styles here
+  color: var(--main-color);
+  background-color: var(--sec-color);
+  border-radius: 4px;
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--main-color);
+  border-radius: 4px;
 }
 
 .outlined {
-  // Add your styles here
-}
-
-.printish {
-  // Add your styles here
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--main-color);
+  border-radius: 4px;
 }
 
 /* Sizes */
 .small {
-  // Add your styles here
+  height: 24px;
+
+  .icon {
+    font-size: 14px;
+  }
+  .text {
+    font-size: 12px;
+    line-height: 20px;
+    padding-top: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  .deco-icon {
+    font-size: 14px;
+  }
 }
 
 .medium {
-  // Add your styles here
-}
+  height: 32px;
 
-/* Content layout */
-.content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+  .icon {
+    font-size: 18px;
+  }
 
-.icon {
-  display: flex;
-  align-items: center;
-}
+  .text {
+    font-size: 14px;
+    line-height: 22px;
+    padding-top: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
 
-.text {
-  // Add your styles here
-}
-
-.decoIcon {
-  display: flex;
-  align-items: center;
+  .deco-icon {
+    font-size: 18px;
+  }
 }

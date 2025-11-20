@@ -2,6 +2,8 @@
   pointer-events: none;
   vertical-align: middle;
   font-size: inherit;
+  line-height: 1;
+  user-select: none;
   &::selection {
     background: none;
   }
@@ -10,4 +12,3 @@
   align-items: center;
   justify-content: center;
 }
-

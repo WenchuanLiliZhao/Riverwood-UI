@@ -13,7 +13,6 @@ export const Page_Debug_Button_Component = () => {
               text: "Fill",
               decoIcon: "arrow_drop_down",
             }}
-            // design={{}}
           />
           <Button
             content={{
@@ -45,17 +44,6 @@ export const Page_Debug_Button_Component = () => {
             }}
             design={{
               variant: "outlined",
-              size: "medium",
-            }}
-          />
-          <Button
-            content={{
-              icon: "home",
-              text: "Printish",
-              decoIcon: "arrow_forward",
-            }}
-            design={{
-              variant: "printish",
               size: "medium",
             }}
           />

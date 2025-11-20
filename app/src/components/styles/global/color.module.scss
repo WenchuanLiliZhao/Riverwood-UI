@@ -23,6 +23,10 @@
   background-color: var(--color-bg-hover-inverse);
 }
 
+.bgSecondary {
+  background-color: var(--color-bg-secondary);
+}
+
 // Text colors
 .textPrimary {
   color: var(--color-text-primary);
@@ -42,6 +46,14 @@
 
 .textInverse {
   color: var(--color-text-primary-inverse);
+}
+
+.textPrimaryEm {
+  color: var(--color-text-primary-em);
+}
+
+.textInverseEm {
+  color: var(--color-text-primary-inverse-em);
 }
 
 // Border colors
