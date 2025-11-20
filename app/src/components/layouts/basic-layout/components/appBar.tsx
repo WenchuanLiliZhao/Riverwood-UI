@@ -1,13 +1,13 @@
 import type { BasicLayoutProps } from "..";
 import styles from "./appBar.module.scss";
 
-export const AppBar = ({
-  elements,
-  className,
-}: {
+export interface AppBarProps {
   elements: BasicLayoutProps["elements"];
   className?: string;
-}) => {
+}
+
+
+export const AppBar = ({ elements, className }: AppBarProps) => {
   if (elements.appBar !== undefined) {
     return (
       <nav className={`${styles["app-bar"]} ${className}`}>

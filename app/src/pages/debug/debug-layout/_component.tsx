@@ -4,6 +4,7 @@ import { BasicLayout } from "../../../components/layouts";
 const PageContent = () => {
   return (
     <BasicLayout
+      contentDesign={{ widthMode: "medium" }}
       elements={{
         appBar: {
           first: [<div>1</div>, <div>2</div>],
@@ -37,7 +38,7 @@ const PageContent = () => {
                 typography: "title",
                 fontWeight: "bold",
                 textTransform: "uppercase",
-                fontFamily: "serif"
+                fontFamily: "serif",
               })}
             >
               Debug Layout
@@ -49,7 +50,7 @@ const PageContent = () => {
                 fontFamily: "serif",
               })}
               style={{
-                paddingBottom: "1800px"
+                paddingBottom: "1800px",
               }}
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt

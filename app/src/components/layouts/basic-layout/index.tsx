@@ -12,7 +12,7 @@ import { Footer } from "./components/footer";
 import { LeftSidebar } from "./components/leftSidebar";
 import { RightSidebar } from "./components/rightSidebar";
 import { Content } from "./components/content";
-import type { BarElements } from "./shared";
+import type { BarElements, ContentDesignProps } from "./shared";
 
 export interface BasicLayoutProps {
   elements: {
@@ -23,11 +23,13 @@ export interface BasicLayoutProps {
     leftSidebar?: React.ReactNode;
     rightSidebar?: React.ReactNode;
   };
+  contentDesign: ContentDesignProps;
 }
 
-
-
-export const BasicLayout: React.FC<BasicLayoutProps> = ({ elements }) => {
+export const BasicLayout: React.FC<BasicLayoutProps> = ({
+  elements,
+  contentDesign,
+}) => {
   useEffect(() => closeBodyScroll(), []); // Disable body scroll when layout mounts
 
   // Layout spacing configuration
@@ -45,29 +47,31 @@ export const BasicLayout: React.FC<BasicLayoutProps> = ({ elements }) => {
     rightSidebar: {
       width: 320,
     },
-  }
+  };
 
   // Check if navBar is present
   // This determines whether to subtract navBar height from content-container-main height calculation.
-  const hasNavBar = elements.navBar !== undefined
-  
+  const hasNavBar = elements.navBar !== undefined;
+
   return (
-    <div 
+    <div
       className={styles["basic-layout"]}
-      style={{
-        // Pass spacing values to CSS via CSS custom properties
-        // This allows SCSS to use these values while keeping the source of truth in TypeScript.
-        '--spacing-app-bar-width': `${spacing.appBar.width}px`,
-        '--spacing-nav-height': `${spacing.navBar.height}px`,
-        '--spacing-left-sidebar-width': `${spacing.leftSidebar.width}px`,
-        '--spacing-right-sidebar-width': `${spacing.rightSidebar.width}px`,
-        // Dynamic navBar height for content height calculation
-        // If navBar exists, use its height (56px); otherwise, use 0px.
-        // This enables calc(100vh - var(--nav-bar-height)) to work correctly:
-        // - With navBar: calc(100vh - 56px)
-        // - Without navBar: calc(100vh - 0px) = 100vh
-        '--nav-bar-height': hasNavBar ? `${spacing.navBar.height}px` : '0px',
-      } as React.CSSProperties}
+      style={
+        {
+          // Pass spacing values to CSS via CSS custom properties
+          // This allows SCSS to use these values while keeping the source of truth in TypeScript.
+          "--spacing-app-bar-width": `${spacing.appBar.width}px`,
+          "--spacing-nav-height": `${spacing.navBar.height}px`,
+          "--spacing-left-sidebar-width": `${spacing.leftSidebar.width}px`,
+          "--spacing-right-sidebar-width": `${spacing.rightSidebar.width}px`,
+          // Dynamic navBar height for content height calculation
+          // If navBar exists, use its height (56px); otherwise, use 0px.
+          // This enables calc(100vh - var(--nav-bar-height)) to work correctly:
+          // - With navBar: calc(100vh - 56px)
+          // - Without navBar: calc(100vh - 0px) = 100vh
+          "--nav-bar-height": hasNavBar ? `${spacing.navBar.height}px` : "0px",
+        } as React.CSSProperties
+      }
     >
       <AppBar elements={elements} className={styles["app-bar"]} />
       <div className={styles["page-body"]}>
@@ -76,10 +80,21 @@ export const BasicLayout: React.FC<BasicLayoutProps> = ({ elements }) => {
           <LeftSidebar elements={elements} className={styles["left-sidebar"]} />
           <div className={styles["content-container"]}>
             <div className={styles["content-container-main"]}>
-              <Content elements={elements} className={styles["content"]} />
-              <Footer elements={elements} className={styles["footer"]} />
+              <Content
+                elements={elements}
+                className={styles["content"]}
+                contentDesign={contentDesign}
+              />
+              <Footer
+                elements={elements}
+                className={styles["footer"]}
+                contentDesign={contentDesign}
+              />
             </div>
-            <RightSidebar elements={elements} className={styles["right-sidebar"]} />
+            <RightSidebar
+              elements={elements}
+              className={styles["right-sidebar"]}
+            />
           </div>
         </main>
       </div>
