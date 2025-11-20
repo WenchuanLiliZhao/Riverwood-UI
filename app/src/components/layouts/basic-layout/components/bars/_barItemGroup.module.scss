@@ -1,0 +1,25 @@
+// Shared styles for bar item groups (used by AppBar and NavBar)
+.bar-item-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &.first {
+    justify-content: flex-start;
+  }
+  &.center {
+    justify-content: center;
+  }
+  &.last {
+    justify-content: flex-end;
+  }
+
+  // Direction variants
+  &.row {
+    flex-direction: row;
+  }
+  &.column {
+    flex-direction: column;
+  }
+}
+

@@ -1,4 +1,5 @@
 import type { BasicLayoutProps } from "../..";
+import { BaseBar } from "./_BaseBar";
 import styles from "./navBar.module.scss";
 
 export const NavBar = ({
@@ -10,23 +11,12 @@ export const NavBar = ({
 }) => {
   if (elements.navBar !== undefined) {
     return (
-      <nav className={`${styles["nav-bar"]} ${className}`}>
-        <div className={styles["first"]}>
-          {elements.navBar.first.map((element, index) => (
-            <div key={index}>{element}</div>
-          ))}
-        </div>
-        <div className={styles["center"]}>
-          {elements.navBar.center.map((element, index) => (
-            <div key={index}>{element}</div>
-          ))}
-        </div>
-        <div className={styles["last"]}>
-          {elements.navBar.last.map((element, index) => (
-            <div key={index}>{element}</div>
-          ))}
-        </div>
-      </nav>
+      <BaseBar
+        elements={elements.navBar}
+        className={`${styles["nav-bar"]} ${className || ""}`}
+        direction="row"
+        as="nav"
+      />
     );
   } else {
     return <></>;
