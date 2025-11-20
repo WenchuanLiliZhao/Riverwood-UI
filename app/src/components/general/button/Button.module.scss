@@ -6,15 +6,19 @@
   cursor: pointer;
   border: none;
   outline: none;
-  transition: all 0.2s ease-in-out;
   overflow: hidden;
 
+  // fixed color
+  --border-color: var(--color-border-primary);
+
+  // changable color
   --main-color: var(--color-text-primary);
   --main-color-inverse: var(--color-text-primary-inverse);
   --em-color: var(--color-text-primary-em);
   --sec-color: var(--color-bg-secondary);
-  --border-color: var(--color-border-primary);
+  
 
+  // in the following, I set the colors to red to see if the styles are applied correctly
   color: red;
   background-color: red;
   border-color: red;
@@ -32,20 +36,31 @@
 
 /* Semantics */
 .primary {
-  --main-color: var(--color-text-primary);
+  --main-color: var(--color-text-primary-trans);
   --main-color-inverse: var(--color-text-primary-inverse);
   --em-color: var(--color-text-primary-em);
-  --sec-color: var(--color-bg-secondary);
-  --border-color: var(--color-border-primary);
+  --sec-color: var(--color-bg-secondary-trans);
 }
 
 .secondary {
+  --main-color: var(--color-text-secondary-trans);
+  --main-color-inverse: var(--color-text-primary-inverse);
+  --em-color: var(--color-text-secondary-trans);
+  --sec-color: var(--color-bg-secondary-trans);
 }
 
 .negative {
+  --main-color: var(--color-text-negative-trans);
+  --main-color-inverse: var(--color-text-primary-inverse);
+  --em-color: var(--color-text-negative-trans);
+  --sec-color: var(--color-bg-secondary-trans);
 }
 
 .disabled {
+  --main-color: var(--color-text-disabled-trans);
+  --main-color-inverse: var(--color-text-primary-inverse);
+  --em-color: var(--color-text-disabled-trans);
+  --sec-color: var(--color-bg-secondary-trans);
 }
 
 /* Variants */
@@ -77,27 +92,26 @@
 /* Sizes */
 .small {
   height: 24px;
+  padding: 0 5px;
 
-  .icon {
+  .icon, .deco-icon {
     font-size: 14px;
   }
   .text {
     font-size: 12px;
     line-height: 20px;
-    padding-top: 1px;
+    padding-top: 1.25px;
     padding-left: 2px;
     padding-right: 2px;
-  }
-  .deco-icon {
-    font-size: 14px;
   }
 }
 
 .medium {
   height: 32px;
+  padding: 0 8px;
 
-  .icon {
-    font-size: 18px;
+  .icon, .deco-icon {
+    font-size: 17px;
   }
 
   .text {
@@ -107,8 +121,36 @@
     padding-left: 3px;
     padding-right: 3px;
   }
+}
 
-  .deco-icon {
+.large {
+  height: 40px;
+  padding: 0 10px;
+
+  .icon, .deco-icon {
+    font-size: 20px;
+  }
+  .text {
     font-size: 18px;
+    line-height: 24px;
+    padding-top: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+.xlarge {
+  height: 48px;
+  padding: 0 12px;
+
+  .icon, .deco-icon {
+    font-size: 24px;
+  }
+  .text {
+    font-size: 20px;
+    line-height: 28px;
+    padding-top: 2.5px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }

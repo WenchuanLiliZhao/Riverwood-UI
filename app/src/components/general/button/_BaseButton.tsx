@@ -85,7 +85,7 @@ export const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>(
           )}
         </div>
         {children}
-        <HoverBox isInverse={variant === "fill-inverse"} />
+        {disabled ? null : <HoverBox isInverse={variant === "fill-inverse"} />}
       </Component>
     );
   }
