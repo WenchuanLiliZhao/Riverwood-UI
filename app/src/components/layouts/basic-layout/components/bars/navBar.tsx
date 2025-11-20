@@ -1,4 +1,4 @@
-import type { BasicLayoutProps } from "..";
+import type { BasicLayoutProps } from "../..";
 import styles from "./navBar.module.scss";
 
 export const NavBar = ({

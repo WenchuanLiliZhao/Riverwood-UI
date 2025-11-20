@@ -1,0 +1,12 @@
+// Shared styles for content containers (Content, Footer, etc.)
+.base-outer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.base-inner {
+  width: 100%;
+}
+
