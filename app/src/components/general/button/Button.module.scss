@@ -1,5 +1,4 @@
 .base {
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -16,7 +15,6 @@
   --main-color-inverse: var(--color-text-primary-inverse);
   --em-color: var(--color-text-primary-em);
   --sec-color: var(--color-bg-secondary);
-  
 
   // in the following, I set the colors to red to see if the styles are applied correctly
   color: red;
@@ -94,8 +92,13 @@
   height: 24px;
   padding: 0 5px;
 
-  .icon, .deco-icon {
-    font-size: 14px;
+  .content {
+    gap: 1px;
+
+    .icon,
+    .deco-icon {
+      font-size: 14px;
+    }
   }
   .text {
     font-size: 12px;
@@ -109,33 +112,43 @@
 .medium {
   height: 32px;
   padding: 0 8px;
+  gap: 2px;
 
-  .icon, .deco-icon {
-    font-size: 17px;
-  }
+  .content {
+    gap: 2px;
 
-  .text {
-    font-size: 14px;
-    line-height: 22px;
-    padding-top: 2px;
-    padding-left: 3px;
-    padding-right: 3px;
+    .icon,
+    .deco-icon {
+      font-size: 17px;
+    }
+
+    .text {
+      font-size: 14px;
+      line-height: 22px;
+      padding-top: 2px;
+      padding-left: 3px;
+      padding-right: 3px;
+    }
   }
 }
 
 .large {
   height: 40px;
   padding: 0 10px;
+  .content {
+    gap: 2px;
 
-  .icon, .deco-icon {
-    font-size: 20px;
-  }
-  .text {
-    font-size: 18px;
-    line-height: 24px;
-    padding-top: 2px;
-    padding-left: 4px;
-    padding-right: 4px;
+    .icon,
+    .deco-icon {
+      font-size: 20px;
+    }
+    .text {
+      font-size: 18px;
+      line-height: 24px;
+      padding-top: 2px;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
   }
 }
 
@@ -143,14 +156,19 @@
   height: 48px;
   padding: 0 12px;
 
-  .icon, .deco-icon {
-    font-size: 24px;
-  }
-  .text {
-    font-size: 20px;
-    line-height: 28px;
-    padding-top: 2.5px;
-    padding-left: 5px;
-    padding-right: 5px;
+  .content {
+    gap: 3px;
+
+    .icon,
+    .deco-icon {
+      font-size: 24px;
+    }
+    .text {
+      font-size: 20px;
+      line-height: 28px;
+      padding-top: 2.5px;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
   }
 }

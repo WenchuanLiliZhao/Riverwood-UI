@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { Pages, PageSets } from "./pages";
 import { SiteLayout } from "./siteConfig/site-layout";
+import { PlaygroundPages } from "./pages/playground";
 
 function App() {
   return (
@@ -28,6 +29,16 @@ function App() {
           ))}
         {/* Debug Pages */}
         {Object.values(PageSets.DebugPages)
+          .map((page) => (
+            <Route
+              key={page.header.slug}
+              path={`/${page.header.slug}`}
+              element={page.content}
+            />
+          ))}
+
+        {/* Playground Pages */}
+        {Object.values(PlaygroundPages)
           .map((page) => (
             <Route
               key={page.header.slug}

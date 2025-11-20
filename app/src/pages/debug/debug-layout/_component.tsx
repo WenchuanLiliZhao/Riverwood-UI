@@ -1,4 +1,4 @@
-import { fontVariants } from "../../../components";
+import { Button, fontVariants } from "../../../components";
 import { BasicLayout } from "../../../components/layouts";
 
 const PageContent = () => {
@@ -9,7 +9,7 @@ const PageContent = () => {
         appBar: {
           first: [<div>1</div>, <div>2</div>],
           center: [<div>4</div>, <div>5</div>, <div>6</div>],
-          last: [<div>7</div>, <div>8</div>, <div>9</div>],
+          last: [<div>9</div>],
         },
         footer: (
           <div>
@@ -19,7 +19,10 @@ const PageContent = () => {
         navBar: {
           first: [<div>1</div>, <div>2</div>],
           center: [<div>4</div>, <div>5</div>, <div>6</div>],
-          last: [<div>7</div>, <div>8</div>, <div>9</div>],
+          last: [
+            <Button content={{ icon: "map", text: "Region & City", decoIcon: "arrow_drop_down" }} design={{ variant: "fill-inverse", size: "medium", semantic: "primary" }} />,
+            <Button content={{ icon: "date_range", text: "2025", decoIcon: "arrow_drop_down" }} design={{ variant: "fill", size: "medium", semantic: "primary" }} />,
+          ],
         },
         leftSidebar: (
           <div>
