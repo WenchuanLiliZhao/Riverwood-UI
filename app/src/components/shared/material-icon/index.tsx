@@ -20,8 +20,8 @@ export const MaterialIcon = ({
       style={{
         ...style,
         fontSize: `${size}px`,
-        width: `${size}px`,
-        height: `${size}px`,
+        // width: `${size}px`,
+        // height: `${size}px`,
       }}
     >
       {icon}

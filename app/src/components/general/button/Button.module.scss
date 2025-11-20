@@ -1,0 +1,66 @@
+.base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* Variants */
+.fill-inverse {
+  
+}
+
+.ghost {
+  // Add your styles here
+}
+
+.fill {
+  // Add your styles here
+}
+
+.outlined {
+  // Add your styles here
+}
+
+.printish {
+  // Add your styles here
+}
+
+/* Sizes */
+.small {
+  // Add your styles here
+}
+
+.medium {
+  // Add your styles here
+}
+
+/* Content layout */
+.content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  // Add your styles here
+}
+
+.decoIcon {
+  display: flex;
+  align-items: center;
+}

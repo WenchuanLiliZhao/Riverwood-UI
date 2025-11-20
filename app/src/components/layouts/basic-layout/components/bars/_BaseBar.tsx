@@ -26,31 +26,26 @@ export const BaseBar = React.forwardRef<HTMLElement, BaseBarProps>(
     },
     ref
   ) => {
-    const itemGroupStyle = {
-      flexDirection: direction,
-    } as React.CSSProperties;
+    const directionClass = sharedStyles[direction];
 
     return (
       <Component ref={ref as React.RefObject<HTMLElement>} className={className} {...props}>
         <div
-          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["first"]} ${itemGroupClassName || ""}`}
-          style={itemGroupStyle}
+          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["first"]} ${directionClass} ${itemGroupClassName || ""}`}
         >
           {elements.first.map((element, index) => (
             <div key={index}>{element}</div>
           ))}
         </div>
         <div
-          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["center"]} ${itemGroupClassName || ""}`}
-          style={itemGroupStyle}
+          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["center"]} ${directionClass} ${itemGroupClassName || ""}`}
         >
           {elements.center.map((element, index) => (
             <div key={index}>{element}</div>
           ))}
         </div>
         <div
-          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["last"]} ${itemGroupClassName || ""}`}
-          style={itemGroupStyle}
+          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["last"]} ${directionClass} ${itemGroupClassName || ""}`}
         >
           {elements.last.map((element, index) => (
             <div key={index}>{element}</div>

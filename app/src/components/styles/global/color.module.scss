@@ -1,0 +1,51 @@
+// Background colors
+.bgPrimary {
+  background-color: var(--color-bg-primary);
+}
+
+.bgPrimaryHover {
+  background-color: var(--color-bg-primary-hover);
+}
+
+.bgPrimaryInverse {
+  background-color: var(--color-bg-primary-inverse);
+}
+
+.bgPrimaryInverseHover {
+  background-color: var(--color-bg-primary-inverse-hover);
+}
+
+.bgHover {
+  background-color: var(--color-bg-hover);
+}
+
+.bgHoverInverse {
+  background-color: var(--color-bg-hover-inverse);
+}
+
+// Text colors
+.textPrimary {
+  color: var(--color-text-primary);
+}
+
+.textSecondary {
+  color: var(--color-text-secondary);
+}
+
+.textNegative {
+  color: var(--color-text-negative);
+}
+
+.textDisabled {
+  color: var(--color-text-disabled);
+}
+
+.textInverse {
+  color: var(--color-text-primary-inverse);
+}
+
+// Border colors
+.borderPrimary {
+  border-color: var(--color-border-primary);
+}
+
