@@ -33,10 +33,17 @@
 }
 
 /* Semantics */
+.brand {
+  --main-color: var(--color-brand);
+  --main-color-inverse: var(--color-text-primary-inverse);
+  --em-color: var(--color-brand);
+  --sec-color: var(--color-bg-secondary-trans);
+}
+
 .primary {
   --main-color: var(--color-text-primary-trans);
   --main-color-inverse: var(--color-text-primary-inverse);
-  --em-color: var(--color-text-primary-em);
+  --em-color: var(--color-text-primary);
   --sec-color: var(--color-bg-secondary-trans);
 }
 

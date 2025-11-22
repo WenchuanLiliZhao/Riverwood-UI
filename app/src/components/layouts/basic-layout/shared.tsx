@@ -3,9 +3,9 @@ import type { ResponsiveConfig } from "../../utils/useResponsive";
 import styles from "./styles.module.scss";
 
 export interface BarElements {
-  first: React.ReactNode[];
-  center: React.ReactNode[];
-  last: React.ReactNode[];
+  first?: React.ReactNode[];
+  center?: React.ReactNode[];
+  last?: React.ReactNode[];
 }
 
 export interface ContentDesignProps {

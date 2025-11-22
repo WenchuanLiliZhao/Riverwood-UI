@@ -7,9 +7,12 @@ import styles from './color.module.scss';
  */
 export const colorVariants = cva('', {
   variants: {
+    brand: {
+      primary: styles.brandPrimary,
+    },
     bg: {
       primary: styles.bgPrimary,
-      primaryHover: styles.bgPrimaryHover,
+      primaryInverse: styles.bgPrimaryInverse,
       secondary: styles.bgSecondary,
       hover: styles.bgHover,
       hoverInverse: styles.bgHoverInverse,

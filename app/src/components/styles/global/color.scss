@@ -1,16 +1,16 @@
 // Don't use specific colors in the code, use the variables defined here.
 
 :root {
+  --color-brand: black;
+
   // background colors
   & {
     --color-bg-primary: #ffffff;
-    --color-bg-primary-hover: #F5F5F5;
 
     --color-bg-secondary: #F5F5F5;
     --color-bg-secondary-trans: rgba(0, 0, 0, 0.04);
     
     --color-bg-primary-inverse: #000000;
-    --color-bg-primary-inverse-hover: #333333;
 
     --color-bg-hover: rgba(0, 0, 0, 0.04);
     --color-bg-hover-inverse: rgba(255, 255, 255, 0.16);

@@ -10,4 +10,3 @@ export const COMPONENT_VARIANTS = {
 } as const;
 
 export type ComponentVariant = typeof COMPONENT_VARIANTS[keyof typeof COMPONENT_VARIANTS];
-

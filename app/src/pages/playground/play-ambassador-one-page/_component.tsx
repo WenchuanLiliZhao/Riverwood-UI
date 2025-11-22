@@ -1,4 +1,4 @@
-import { Button } from "../../../components";
+import { Avatar, Button } from "../../../components";
 import { BasicLayout } from "../../../components/layouts";
 
 export const PageContent = () => {
@@ -7,11 +7,35 @@ export const PageContent = () => {
       contentDesign={{ widthMode: "large" }}
       elements={{
         navBar: {
-          first: [<div>1</div>, <div>2</div>],
-          center: [<div>4</div>, <div>5</div>, <div>6</div>],
+          first: [
+            <Avatar
+              src="https://play-lh.googleusercontent.com/jvFsHfua7RtMM_x0z9fci13k7DcHH9s5y6EJ424-ZWH4gaaO96FqxAD2JL6GkNvVUg=w240-h480-rw"
+              alt="Avatar"
+              size="medium"
+            />,
+            <div>2</div>,
+          ],
           last: [
-            <Button content={{ icon: "map", text: "Region & City", decoIcon: "arrow_drop_down" }} design={{ variant: "fill-inverse", size: "medium", semantic: "primary" }} />,
-            <Button content={{ icon: "date_range", text: "2025", decoIcon: "arrow_drop_down" }} design={{ variant: "fill", size: "medium", semantic: "primary" }} />,
+            <Button
+              content={{
+                icon: "map",
+                text: "Region & City",
+                decoIcon: "arrow_drop_down",
+              }}
+              design={{
+                variant: "fill-inverse",
+                size: "medium",
+                semantic: "brand",
+              }}
+            />,
+            <Button
+              content={{
+                icon: "date_range",
+                text: "2025",
+                decoIcon: "arrow_drop_down",
+              }}
+              design={{ variant: "outlined", size: "medium", semantic: "primary" }}
+            />,
           ],
         },
         footer: <div>Footer</div>,

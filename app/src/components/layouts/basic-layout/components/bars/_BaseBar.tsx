@@ -30,27 +30,34 @@ export const BaseBar = React.forwardRef<HTMLElement, BaseBarProps>(
 
     return (
       <Component ref={ref as React.RefObject<HTMLElement>} className={className} {...props}>
-        <div
-          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["first"]} ${directionClass} ${itemGroupClassName || ""}`}
-        >
-          {elements.first.map((element, index) => (
-            <div key={index}>{element}</div>
-          ))}
-        </div>
-        <div
-          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["center"]} ${directionClass} ${itemGroupClassName || ""}`}
-        >
-          {elements.center.map((element, index) => (
-            <div key={index}>{element}</div>
-          ))}
-        </div>
-        <div
-          className={`${sharedStyles["bar-item-group"]} ${sharedStyles["last"]} ${directionClass} ${itemGroupClassName || ""}`}
-        >
-          {elements.last.map((element, index) => (
-            <div key={index}>{element}</div>
-          ))}
-        </div>
+        {elements.first && elements.first.length > 0 && (
+          // here
+          <div
+            className={`${sharedStyles["bar-item-group"]} ${sharedStyles["first"]} ${directionClass} ${itemGroupClassName || ""}`}
+          >
+            {elements.first.map((element, index) => (
+              <div key={index}>{element}</div>
+            ))}
+          </div>
+        )}
+        {elements.center && elements.center.length > 0 ? (
+          <div
+            className={`${sharedStyles["bar-item-group"]} ${sharedStyles["center"]} ${directionClass} ${itemGroupClassName || ""}`}
+          >
+            {elements.center.map((element, index) => (
+              <div key={index}>{element}</div>
+            ))}
+          </div>
+        ) : (<div></div>)}
+        {elements.last && elements.last.length > 0 && (
+          <div
+            className={`${sharedStyles["bar-item-group"]} ${sharedStyles["last"]} ${directionClass} ${itemGroupClassName || ""}`}
+          >
+            {elements.last.map((element, index) => (
+              <div key={index}>{element}</div>
+            ))}
+          </div>
+        )}
       </Component>
     );
   }
