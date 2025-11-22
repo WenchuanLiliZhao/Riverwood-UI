@@ -1,5 +1,5 @@
-import type { BasicLayoutProps } from "../..";
-import type { ContentDesignProps } from "../../shared";
+import type { BasicLayoutProps } from "../../basic-layout";
+import type { ContentDesignProps } from "../../basic-layout/shared";
 import { BaseContentContainer } from "./_BaseContentContainer";
 import styles from "./content.module.scss";
 

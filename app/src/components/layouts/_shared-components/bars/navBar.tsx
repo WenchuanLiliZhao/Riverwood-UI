@@ -1,4 +1,4 @@
-import type { BasicLayoutProps } from "../..";
+import type { BasicLayoutProps } from "../../basic-layout";
 import { BaseBar } from "./_BaseBar";
 import styles from "./navBar.module.scss";
 

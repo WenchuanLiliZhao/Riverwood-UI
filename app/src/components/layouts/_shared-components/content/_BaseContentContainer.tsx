@@ -3,8 +3,8 @@ import {
   getContentPaddingConfig,
   getMaxWidthClassName,
   type ContentDesignProps,
-} from "../../shared";
-import { responsive } from "../../../../utils";
+} from "../../basic-layout/shared";
+import { responsive } from "../../../utils";
 
 export interface BaseContentContainerProps {
   children: React.ReactNode;

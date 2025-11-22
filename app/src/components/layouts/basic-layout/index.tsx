@@ -6,12 +6,12 @@
 import styles from "./styles.module.scss";
 import { closeBodyScroll } from "../../utils";
 import { useEffect } from "react";
-import { AppBar } from "./components/bars/appBar";
-import { NavBar } from "./components/bars/navBar";
-import { Footer } from "./components/content/footer";
-import { LeftSidebar } from "./components/sidebars/leftSidebar";
-import { RightSidebar } from "./components/sidebars/rightSidebar";
-import { Content } from "./components/content/content";
+import { AppBar } from "../_shared-components/bars/appBar";
+import { NavBar } from "../_shared-components/bars/navBar";
+import { Footer } from "../_shared-components/content/footer";
+import { LeftSidebar } from "../_shared-components/sidebars/leftSidebar";
+import { RightSidebar } from "../_shared-components/sidebars/rightSidebar";
+import { Content } from "../_shared-components/content/content";
 import type { BarElements, ContentDesignProps } from "./shared";
 
 export interface BasicLayoutProps {

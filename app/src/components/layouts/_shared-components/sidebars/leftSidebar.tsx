@@ -1,4 +1,4 @@
-import type { BasicLayoutProps } from "../..";
+import type { BasicLayoutProps } from "../../basic-layout";
 import styles from "./leftSidebar.module.scss";
 
 export const LeftSidebar = ({
