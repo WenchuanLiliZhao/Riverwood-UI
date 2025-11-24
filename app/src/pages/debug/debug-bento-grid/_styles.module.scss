@@ -1,0 +1,229 @@
+/**
+ * Styles for Bento Grid Debug Page
+ * 便当盒网格调试页面样式
+ */
+
+/* =============================================================================
+ * Page Layout / 页面布局
+ * ========================================================================== */
+
+.debugPage {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #fafafa;
+  min-height: 100vh;
+}
+
+.pageHeader {
+  margin-bottom: 3rem;
+  text-align: center;
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    font-size: 1.125rem;
+    color: #666;
+  }
+}
+
+/* =============================================================================
+ * Section Layout / 区块布局
+ * ========================================================================== */
+
+.section {
+  margin-bottom: 4rem;
+  background: white;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.sectionHeader {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.sectionDescription {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* =============================================================================
+ * Grid Item Content / 网格项内容
+ * ========================================================================== */
+
+.itemContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 120px;
+  
+  // Visual styling / 视觉样式
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  
+  // Optional: Add subtle pattern / 可选：添加细微纹理
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.03) 10px,
+      rgba(255, 255, 255, 0.03) 20px
+    );
+    pointer-events: none;
+  }
+}
+
+.label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.info {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  font-family: monospace;
+  position: relative;
+  z-index: 1;
+}
+
+/* =============================================================================
+ * Gap Variants Demo / 间距变体演示
+ * ========================================================================== */
+
+.gapVariants {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  
+  > div {
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+/* =============================================================================
+ * Row Height Examples / 行高示例
+ * ========================================================================== */
+
+.rowHeightExamples {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  
+  > div {
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+/* =============================================================================
+ * Responsive Test Container / 响应式测试容器
+ * ========================================================================== */
+
+.responsiveContainer {
+  // Add a width constraint to make responsive behavior visible
+  // 添加宽度约束以使响应式行为可见
+  max-width: 100%;
+  
+  // Optional: Add border to show container boundary
+  // 可选：添加边框以显示容器边界
+  // border: 2px dashed #ccc;
+  // padding: 1rem;
+  // background: #f9f9f9;
+}
+
+/* =============================================================================
+ * Item Variants (Different Colors) / 项目变体（不同颜色）
+ * ========================================================================== */
+
+// Add variety to item backgrounds for better visualization
+// 为项目添加不同背景色以便更好地可视化
+.itemContent {
+  // Different gradient based on nth-child
+  // 基于 nth-child 使用不同渐变
+  &:nth-child(4n+1) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  &:nth-child(4n+2) {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+  
+  &:nth-child(4n+3) {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  }
+  
+  &:nth-child(4n+4) {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  }
+}
+
+/* =============================================================================
+ * Responsive Adjustments / 响应式调整
+ * ========================================================================== */
+
+@media (max-width: 768px) {
+  .debugPage {
+    padding: 1rem;
+  }
+  
+  .pageHeader {
+    h1 {
+      font-size: 1.75rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+  
+  .section {
+    padding: 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+}
+

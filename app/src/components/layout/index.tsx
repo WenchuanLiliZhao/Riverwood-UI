@@ -7,6 +7,10 @@ import { RightSidebar } from "./sidebars/rightSidebar";
 import type { LayoutElements } from "./shared";
 import styles from "./styles.module.scss";
 
+// Export Bento Grid components
+export { BentoGrid, BentoItem } from "./bento-grid";
+export type { BentoGridProps, BentoItemProps } from "./bento-grid";
+
 export interface ContentDesignProps {
   widthMode: "small" | "medium" | "large" | "full";
 }
