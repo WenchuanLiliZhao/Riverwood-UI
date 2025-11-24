@@ -1,9 +1,9 @@
 import { Avatar, Button } from "../../../components";
-import { BasicLayout } from "../../../components/layouts";
+import { Layout } from "../../../components/layouts/layout";
 
 export const PageContent = () => {
   return (
-    <BasicLayout
+    <Layout
       contentDesign={{ widthMode: "large" }}
       elements={{
         navBar: {
