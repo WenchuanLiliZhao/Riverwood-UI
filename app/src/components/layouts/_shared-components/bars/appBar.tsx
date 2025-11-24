@@ -10,12 +10,14 @@ export interface AppBarProps {
 export const AppBar = ({ elements, className }: AppBarProps) => {
   if (elements.appBar !== undefined) {
     return (
-      <BaseBar
+      <div className={`${styles["app-bar-container"]} ${className || ""}`}>
+        <BaseBar
         elements={elements.appBar}
-        className={`${styles["app-bar"]} ${className || ""}`}
+        className={styles["app-bar"]}
         direction="column"
         as="nav"
-      />
+        />
+      </div>
     );
   } else {
     return <></>;

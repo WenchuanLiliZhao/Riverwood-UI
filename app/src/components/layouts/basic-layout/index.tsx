@@ -12,17 +12,10 @@ import { Footer } from "../_shared-components/content/footer";
 import { LeftSidebar } from "../_shared-components/sidebars/leftSidebar";
 import { RightSidebar } from "../_shared-components/sidebars/rightSidebar";
 import { Content } from "../_shared-components/content/content";
-import type { BarElements, ContentDesignProps } from "./shared";
+import type { ContentDesignProps, LayoutElements } from "./shared";
 
 export interface BasicLayoutProps {
-  elements: {
-    content: React.ReactNode; // The content of the layout, will be the main content of the page
-    appBar?: BarElements;
-    navBar?: BarElements;
-    footer?: React.ReactNode;
-    leftSidebar?: React.ReactNode;
-    rightSidebar?: React.ReactNode;
-  };
+  elements: LayoutElements;
   contentDesign: ContentDesignProps;
 }
 

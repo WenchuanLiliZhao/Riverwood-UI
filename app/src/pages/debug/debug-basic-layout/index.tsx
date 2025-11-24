@@ -1,10 +1,10 @@
 import type { Page } from "../../types";
 import PageContent from "./_component";
 
-const Page_Debug_Layout: Page = {
+const Page_Debug_BasicLayout: Page = {
   header: {
-    title: "Layout",
-    slug: "debug-layout",
+    title: "Debug Basic Layout",
+    slug: "debug-basic-layout",
     description: "Debug Layout",
     type: "channel",
     icon: "debug-layout",
@@ -15,4 +15,4 @@ const Page_Debug_Layout: Page = {
   content: <PageContent />
 }
 
-export default Page_Debug_Layout;
+export default Page_Debug_BasicLayout;

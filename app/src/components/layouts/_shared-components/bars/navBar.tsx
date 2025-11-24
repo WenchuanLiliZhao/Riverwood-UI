@@ -11,15 +11,16 @@ export const NavBar = ({
 }) => {
   if (elements.navBar !== undefined) {
     return (
-      <BaseBar
-        elements={elements.navBar}
-        className={`${styles["nav-bar"]} ${className || ""}`}
-        direction="row"
-        as="nav"
-      />
+      <div className={`${styles["nav-bar-container"]} ${className || ""}`}>
+        <BaseBar
+          elements={elements.navBar}
+          className={styles["nav-bar"]}
+          direction="row"
+          as="nav"
+        />
+      </div>
     );
   } else {
     return <></>;
   }
 };
-

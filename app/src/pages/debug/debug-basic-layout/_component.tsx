@@ -1,9 +1,9 @@
 import { Button, fontVariants } from "../../../components";
-import { Layout } from "../../../components/layouts/layout";
+import { BasicLayout } from "../../../components/layouts";
 
 const PageContent = () => {
   return (
-    <Layout
+    <BasicLayout
       contentDesign={{ widthMode: "medium" }}
       elements={{
         appBar: {

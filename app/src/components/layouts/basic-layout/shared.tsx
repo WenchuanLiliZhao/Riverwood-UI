@@ -8,6 +8,15 @@ export interface BarElements {
   last?: React.ReactNode[];
 }
 
+export interface LayoutElements {
+  appBar?: BarElements;
+  navBar?: BarElements;
+  footer?: React.ReactNode;
+  leftSidebar?: React.ReactNode;
+  rightSidebar?: React.ReactNode;
+  content?: React.ReactNode;
+}
+
 export interface ContentDesignProps {
   widthMode: "small" | "medium" | "large" | "full";
 }
