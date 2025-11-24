@@ -1,11 +1,11 @@
-import type { BasicLayoutProps } from "../../basic-layout";
+import type { LayoutProps } from "../shared";
 import styles from "./rightSidebar.module.scss";
 
 export const RightSidebar = ({
   elements,
   className,
 }: {
-  elements: BasicLayoutProps["elements"];
+  elements: LayoutProps["elements"];
   className?: string;
 }) => {
   if (elements.rightSidebar !== undefined) {

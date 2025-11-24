@@ -1,12 +1,13 @@
-import type { BasicLayoutProps } from "../../basic-layout";
+
 import { BaseBar } from "./_BaseBar";
 import styles from "./navBar.module.scss";
+import type { LayoutProps } from "../shared";
 
 export const NavBar = ({
   elements,
   className,
 }: {
-  elements: BasicLayoutProps["elements"];
+  elements: LayoutProps["elements"];
   className?: string;
 }) => {
   if (elements.navBar !== undefined) {

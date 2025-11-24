@@ -1,10 +1,10 @@
-import { AppBar } from "../_shared-components/bars/appBar";
-import { NavBar } from "../_shared-components/bars/navBar";
-import { Content } from "../_shared-components/content/content";
-import { Footer } from "../_shared-components/content/footer";
-import { LeftSidebar } from "../_shared-components/sidebars/leftSidebar";
-import { RightSidebar } from "../_shared-components/sidebars/rightSidebar";
-import type { LayoutElements } from "../basic-layout/shared";
+import { AppBar } from "./bars/appBar";
+import { NavBar } from "./bars/navBar";
+import { Content } from "./content/content";
+import { Footer } from "./content/footer";
+import { LeftSidebar } from "./sidebars/leftSidebar";
+import { RightSidebar } from "./sidebars/rightSidebar";
+import type { LayoutElements } from "./shared";
 import styles from "./styles.module.scss";
 
 export interface ContentDesignProps {

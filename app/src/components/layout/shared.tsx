@@ -1,6 +1,12 @@
 import React from "react";
-import type { ResponsiveConfig } from "../../utils/useResponsive";
+import type { ResponsiveConfig } from "../utils/useResponsive";
 import styles from "./styles.module.scss";
+
+export interface LayoutProps {
+  elements: LayoutElements;
+  contentDesign: ContentDesignProps;
+}
+
 
 export interface BarElements {
   first?: React.ReactNode[];

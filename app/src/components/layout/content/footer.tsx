@@ -1,10 +1,9 @@
-import type { BasicLayoutProps } from "../../basic-layout";
-import type { ContentDesignProps } from "../../basic-layout/shared";
+import type { ContentDesignProps, LayoutProps } from "../shared";
 import { BaseContentContainer } from "./_BaseContentContainer";
 import styles from "./footer.module.scss";
 
 export interface FooterProps {
-  elements: BasicLayoutProps["elements"];
+  elements: LayoutProps["elements"];
   className?: string;
   contentDesign: ContentDesignProps;
 }

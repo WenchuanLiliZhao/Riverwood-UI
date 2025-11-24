@@ -1,5 +1,5 @@
 import { Avatar, Button } from "../../../components";
-import { Layout } from "../../../components/layouts/layout";
+import { Layout } from "../../../components/layout";
 
 export const PageContent = () => {
   return (

@@ -1,5 +1,5 @@
 import { Button, fontVariants } from "../../../components";
-import { Layout } from "../../../components/layouts/layout";
+import { Layout } from "../../../components/layout";
 
 const PageContent = () => {
   return (

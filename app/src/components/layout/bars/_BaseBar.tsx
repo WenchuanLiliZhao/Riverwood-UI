@@ -1,5 +1,5 @@
 import React, { type ElementType } from "react";
-import type { BarElements } from "../../basic-layout/shared";
+import type { BarElements } from "../shared";
 import sharedStyles from "./_barItemGroup.module.scss";
 
 export interface BaseBarProps {

@@ -1,11 +1,12 @@
-import type { BasicLayoutProps } from "../../basic-layout";
+
+import type { LayoutProps } from "../shared";
 import styles from "./leftSidebar.module.scss";
 
 export const LeftSidebar = ({
   elements,
   className,
 }: {
-  elements: BasicLayoutProps["elements"];
+  elements: LayoutProps["elements"];
   className?: string;
 }) => {
   if (elements.leftSidebar !== undefined) {

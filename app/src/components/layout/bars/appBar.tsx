@@ -1,9 +1,9 @@
-import type { BasicLayoutProps } from "../../basic-layout";
 import { BaseBar } from "./_BaseBar";
 import styles from "./appBar.module.scss";
+import type { LayoutProps } from "../shared";
 
 export interface AppBarProps {
-  elements: BasicLayoutProps["elements"];
+  elements: LayoutProps["elements"];
   className?: string;
 }
 

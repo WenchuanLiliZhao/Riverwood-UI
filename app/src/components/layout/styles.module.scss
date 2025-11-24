@@ -84,3 +84,34 @@ main.page-body-content {
     height: var(--nav-bar-height);
   }
 }
+
+
+// spacing classes
+.padding {
+  &.small-padding {
+    padding: 16px;
+  }
+  &.medium-padding {
+    padding: 24px;
+  }
+  &.large-padding {
+    padding: 32px;
+  }
+  &.full-padding {
+    padding: 48px;
+  }
+}
+
+// max-width classes
+.small {
+  max-width: 640px;
+}
+.medium {
+  max-width: 1024px;
+}
+.large {
+  max-width: 1408px;
+}
+.full {
+  max-width: 100%;
+}
