@@ -21,27 +21,70 @@ const BentoGridContext = React.createContext<number | null>(null);
  * ========================================================================== */
 
 /**
+ * Responsive row height configuration: [breakpoint, height]
+ */
+export type ResponsiveRowHeight = [number, number][];
+
+/**
  * Props for BentoGrid container
  */
 export interface BentoGridProps
   extends React.HTMLAttributes<HTMLDivElement>,
     BentoGridVariantsProps {
   /**
-   * Minimum row height for grid items
+   * Responsive row height configuration
    * 
-   * Can be a number (in pixels) or a CSS value string.
-   * If not provided, defaults to 180px.
+   * Array of [breakpoint, height] tuples.
+   * When container width is 0 ~ breakpoint, use that height.
+   * Default: [[Infinity, 180]]
    * 
    * @example
    * ```tsx
-   * // Using number (pixels)
-   * <BentoGrid rowHeight={200}>
-   * 
-   * // Using CSS value string
-   * <BentoGrid rowHeight="minmax(150px, auto)">
+   * <BentoGrid rowHeight={[
+   *   [560, 40],
+   *   [800, 60],
+   *   [1200, 70],
+   *   [Infinity, 80]
+   * ]}>
    * ```
    */
-  rowHeight?: number | string;
+  rowHeight?: ResponsiveRowHeight;
+}
+
+/**
+ * Helper function to get row height based on container width
+ */
+function getResponsiveRowHeight(
+  containerWidth: number | null,
+  rowHeight?: ResponsiveRowHeight
+): number {
+  // Default height
+  const defaultHeight = 180;
+  
+  if (!rowHeight || rowHeight.length === 0) {
+    return defaultHeight;
+  }
+
+  // Sort by breakpoint ascending
+  const sorted = [...rowHeight].sort((a, b) => {
+    const aVal = a[0] === Infinity ? Number.MAX_SAFE_INTEGER : a[0];
+    const bVal = b[0] === Infinity ? Number.MAX_SAFE_INTEGER : b[0];
+    return aVal - bVal;
+  });
+
+  // Find matching breakpoint
+  for (const [breakpoint, height] of sorted) {
+    if (containerWidth === null) {
+      return sorted[0][1];
+    }
+    const breakpointVal = breakpoint === Infinity ? Number.MAX_SAFE_INTEGER : breakpoint;
+    if (containerWidth <= breakpointVal) {
+      return height;
+    }
+  }
+
+  // Fallback to last config
+  return sorted[sorted.length - 1][1];
 }
 
 /**
@@ -51,10 +94,14 @@ export interface BentoGridProps
  * - Creates a 12-column grid system
  * - Monitors its own width and provides it to child items via context
  * - Provides gap variants (sm, md, lg)
+ * - Supports responsive row height
  * 
  * @example
  * ```tsx
- * <BentoGrid gap="md">
+ * <BentoGrid 
+ *   gap="md"
+ *   rowHeight={[[560, 40], [800, 60], [1200, 70], [Infinity, 80]]}
+ * >
  *   <BentoItem res={[[640, 4, 2], [1024, 6, 2], [Infinity, 8, 2]]}>
  *     Item 1
  *   </BentoItem>
@@ -108,9 +155,12 @@ export const BentoGrid = React.forwardRef<HTMLDivElement, BentoGridProps>(
       className
     );
 
-    // Build inline styles including row height if provided
+    // Get responsive row height
+    const currentRowHeight = getResponsiveRowHeight(containerWidth, rowHeight);
+
+    // Build inline styles including row height
     const inlineStyle: React.CSSProperties = {
-      ...(rowHeight && { gridAutoRows: getRowHeightStyle(rowHeight) }),
+      gridAutoRows: getRowHeightStyle(currentRowHeight),
       ...style,
     };
 

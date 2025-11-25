@@ -63,6 +63,7 @@ export const bentoGridVariants = cva(
     variants: {
       // Gap size variants
       gap: {
+        none: styles["gap-none"],
         sm: styles["gap-sm"],
         md: styles["gap-md"],
         lg: styles["gap-lg"],
