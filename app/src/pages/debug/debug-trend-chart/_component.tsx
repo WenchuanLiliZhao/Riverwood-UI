@@ -69,22 +69,22 @@ export const TrendChartDebug = () => {
       
       <section style={{ marginBottom: 40 }}>
         <h2>Case 1: Resource Planning (Columns)</h2>
-        <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8 }}>
+        <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8, height: 300 }}>
           <TrendChart 
             data={chartData} 
             series={seriesConfig} 
-            height={350}
+            // height={350}
+            xAxisPadding={{ left: 40, right: 40 }}
           />
         </div>
       </section>
 
       <section>
         <h2>Case 2: Mixed (Column + Curve)</h2>
-        <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8 }}>
+        <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8, height: 300 }}>
           <TrendChart 
             data={mixedData} 
             series={mixedConfig} 
-            height={350}
           />
         </div>
       </section>
