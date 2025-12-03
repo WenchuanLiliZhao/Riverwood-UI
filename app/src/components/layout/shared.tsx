@@ -25,6 +25,7 @@ export interface LayoutElements {
 
 export interface ContentDesignProps {
   widthMode: "small" | "medium" | "large" | "full";
+  enablePadding?: boolean;
 }
 
 /**

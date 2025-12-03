@@ -88,6 +88,9 @@ main.page-body-content {
 
 // spacing classes
 .padding {
+  &.no-padding {
+    padding: 0;
+  }
   &.small-padding {
     padding: 16px;
   }
@@ -114,4 +117,14 @@ main.page-body-content {
 }
 .full {
   max-width: 100%;
+}
+
+// nav-title classes
+.nav-title {
+  .text {
+    font-size: 14px;
+    line-height: 32px;
+    font-weight: bold;
+    color: var(--color-text-primary);
+  }
 }

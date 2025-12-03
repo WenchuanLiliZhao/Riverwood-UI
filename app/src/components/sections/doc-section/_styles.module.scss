@@ -1,0 +1,35 @@
+.doc-section {
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    max-width: 800px;
+
+    .title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+}
+
+.label {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-text-primary-trans);
+}
+
+.title {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: bold;
+  color: var(--color-text-primary-trans);
+}
+
+.description {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 300;
+  color: var(--color-text-primary-trans);
+}

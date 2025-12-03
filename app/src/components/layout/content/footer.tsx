@@ -20,6 +20,7 @@ export const Footer = ({
         contentDesign={contentDesign}
         outerClassName={`${styles["footer"]} ${className || ""}`}
         innerClassName={styles["footer-content"]}
+        enablePadding={contentDesign.enablePadding ?? true}
       >
         {elements.footer}
       </BaseContentContainer>

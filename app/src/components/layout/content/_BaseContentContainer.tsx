@@ -1,4 +1,4 @@
-import React, { type ElementType } from "react";
+import React, { type ElementType, useRef } from "react";
 import {
   getContentPaddingConfig,
   getMaxWidthClassName,
@@ -12,6 +12,7 @@ export interface BaseContentContainerProps {
   outerClassName?: string;
   innerClassName?: string;
   as?: ElementType;
+  enablePadding?: boolean;
 }
 
 /**
@@ -29,14 +30,16 @@ export const BaseContentContainer = React.forwardRef<
       outerClassName,
       innerClassName,
       as: Component = "div",
+      enablePadding = true,
       ...props
     },
     ref
   ) => {
     // Use responsive utility for automatic width-based padding class selection
-    const [containerRef, responsiveClassName] = responsive(
-      getContentPaddingConfig()
-    );
+    const defaultRef = useRef<HTMLDivElement>(null);
+    const [containerRef, responsiveClassName] = enablePadding
+      ? responsive(getContentPaddingConfig())
+      : [defaultRef, ""];
 
     // Get max-width class based on spacing.widthMode
     const maxWidthClassName = getMaxWidthClassName(contentDesign);

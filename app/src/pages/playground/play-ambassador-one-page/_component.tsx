@@ -1,5 +1,10 @@
-import { Avatar, Button } from "../../../components";
-import { Layout } from "../../../components/layout";
+import {
+  Avatar,
+  Button,
+  DocSection,
+  Layout,
+  NavTitle,
+} from "../../../components";
 
 export const PageContent = () => {
   return (
@@ -13,7 +18,7 @@ export const PageContent = () => {
               alt="Avatar"
               size="medium"
             />,
-            <div>2</div>,
+            <NavTitle title="Ambassador One Page" />,
           ],
           last: [
             <Button
@@ -34,12 +39,33 @@ export const PageContent = () => {
                 text: "2025",
                 decoIcon: "arrow_drop_down",
               }}
-              design={{ variant: "outlined", size: "medium", semantic: "primary" }}
+              design={{
+                variant: "outlined",
+                size: "medium",
+                semantic: "primary",
+              }}
             />,
           ],
         },
         footer: <div>Footer</div>,
-        content: <div>Ambassador One Page</div>,
+        content: (
+          <>
+            <DocSection
+              label="Apr 1, 2025 – Mar 31, 2026"
+              title="Roster Overview"
+              description="This section reflects the Ambassador roster for the current term by athletic discipline, city tier and tenure. Please note that Ambassador term (Apr 1–Mar 31) differs from the fiscal calendar (Feb 1–Jan 30). To view previous years' rosters, please adjust the filter in the top-right corner."
+            >
+              <div>Content...</div>
+            </DocSection>
+            <DocSection
+              label="Apr 1, 2025 – Mar 31, 2026"
+              title="Roster Overview"
+              description="This section reflects the Ambassador roster for the current term by athletic discipline, city tier and tenure. Please note that Ambassador term (Apr 1–Mar 31) differs from the fiscal calendar (Feb 1–Jan 30). To view previous years' rosters, please adjust the filter in the top-right corner."
+            >
+              <div>Content...</div>
+            </DocSection>
+          </>
+        ),
       }}
     />
   );

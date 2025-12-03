@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { BentoGrid, BentoItem } from "../../../components/layout/bento-grid";
+import { BentoGrid, BentoItem } from "../../../components/sections/bento-grid";
 import styles from "./_styles.module.scss";
 
 /**

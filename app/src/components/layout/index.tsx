@@ -4,16 +4,15 @@ import { Content } from "./content/content";
 import { Footer } from "./content/footer";
 import { LeftSidebar } from "./sidebars/leftSidebar";
 import { RightSidebar } from "./sidebars/rightSidebar";
-import type { LayoutElements } from "./shared";
+import type { ContentDesignProps, LayoutElements } from "./shared";
 import styles from "./styles.module.scss";
 
 // Export Bento Grid components
-export { BentoGrid, BentoItem } from "./bento-grid";
-export type { BentoGridProps, BentoItemProps } from "./bento-grid";
+export { BentoGrid, BentoItem } from "../sections/bento-grid";
+export type { BentoGridProps, BentoItemProps } from "../sections/bento-grid";
 
-export interface ContentDesignProps {
-  widthMode: "small" | "medium" | "large" | "full";
-}
+// Re-export ContentDesignProps for convenience
+export type { ContentDesignProps } from "./shared";
 
 export interface LayoutProps {
   elements: LayoutElements;
@@ -61,3 +60,15 @@ export const Layout: React.FC<LayoutProps> = ({
     </div>
   );
 };
+
+export interface NavTitleProps {
+  title: string;
+}
+
+export const NavTitle = ({ title }: NavTitleProps) => {
+  return (
+    <div className={styles["nav-title"]}>
+      <div className={styles["text"]}>{title}</div>
+    </div>
+  )
+}

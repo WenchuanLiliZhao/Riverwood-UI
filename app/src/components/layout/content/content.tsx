@@ -19,6 +19,7 @@ export const Content = ({
       contentDesign={contentDesign}
       outerClassName={`${styles["content"]} ${className || ""}`}
       innerClassName={styles["content-container"]}
+      enablePadding={contentDesign.enablePadding ?? true}
     >
       {elements.content}
     </BaseContentContainer>
