@@ -4,6 +4,7 @@ import {
   BentoItem,
   Button,
   DocSection,
+  KpiRingChart,
   Layout,
   NavTitle,
   PieChart,
@@ -12,7 +13,7 @@ import {
 } from "../../../components";
 import { WidetFrame } from "../../../components/widgets/widet-frame";
 import styles from "./_styles.module.scss";
-import { pieChartData } from "./data/data-just-for-1-time-test";
+import { pieChartData, kpiRingChartData } from "./data/data-just-for-1-time-test";
 import { TextMetric } from "./play-components";
 
 export const PageContent = () => {
@@ -206,22 +207,70 @@ export const PageContent = () => {
               <TextHr>Engagement by Athletic Discipline</TextHr>
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
                 <BentoItem res={[[Infinity, 4, 1]]}>
-                  <TestBlock>1</TestBlock>
+                  <WidetFrame
+                    nav={{
+                      icon: kpiRingChartData[0].icon,
+                      title: `${kpiRingChartData[0].title} KPI Metrics`,
+                      controls: [],
+                    }}
+                  >
+                    <KpiRingChart data={kpiRingChartData[0]} />
+                  </WidetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 4, 1]]}>
-                  <TestBlock>2</TestBlock>
+                  <WidetFrame
+                    nav={{
+                      icon: kpiRingChartData[1].icon,
+                      title: `${kpiRingChartData[1].title} KPI Metrics`,
+                      controls: [],
+                    }}
+                  >
+                    <KpiRingChart data={kpiRingChartData[1]} />
+                  </WidetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 4, 1]]}>
-                  <TestBlock>3</TestBlock>
+                  <WidetFrame
+                    nav={{
+                      icon: kpiRingChartData[2].icon,
+                      title: `${kpiRingChartData[2].title} KPI Metrics`,
+                      controls: [],
+                    }}
+                  >
+                    <KpiRingChart data={kpiRingChartData[2]} />
+                  </WidetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 4, 1]]}>
-                  <TestBlock>4</TestBlock>
+                  <WidetFrame
+                    nav={{
+                      icon: kpiRingChartData[3].icon,
+                      title: `${kpiRingChartData[3].title} KPI Metrics`,
+                      controls: [],
+                    }}
+                  >
+                    <KpiRingChart data={kpiRingChartData[3]} />
+                  </WidetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 4, 1]]}>
-                  <TestBlock>5</TestBlock>
+                  <WidetFrame
+                    nav={{
+                      icon: kpiRingChartData[4].icon,
+                      title: `${kpiRingChartData[4].title} KPI Metrics`,
+                      controls: [],
+                    }}
+                  >
+                    <KpiRingChart data={kpiRingChartData[4]} />
+                  </WidetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 4, 1]]}>
-                  <TestBlock>6</TestBlock>
+                  <WidetFrame
+                    nav={{
+                      icon: kpiRingChartData[5].icon,
+                      title: `${kpiRingChartData[5].title} KPI Metrics`,
+                      controls: [],
+                    }}
+                  >
+                    <KpiRingChart data={kpiRingChartData[5]} />
+                  </WidetFrame>
                 </BentoItem>
               </BentoGrid>
             </DocSection>
