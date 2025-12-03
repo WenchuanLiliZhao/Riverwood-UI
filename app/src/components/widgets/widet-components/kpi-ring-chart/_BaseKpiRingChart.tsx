@@ -71,6 +71,17 @@ export const BaseKpiRingChart = React.forwardRef<
   // Determine strokeLinecap based on cornerRadius
   const strokeLinecap = design.cornerRadius > 0 ? "round" : "butt";
 
+  // Animation state: track whether animation should play
+  const [isAnimated, setIsAnimated] = React.useState(false);
+
+  // Trigger animation on mount
+  React.useEffect(() => {
+    // Use requestAnimationFrame to ensure the initial state is rendered first
+    requestAnimationFrame(() => {
+      setIsAnimated(true);
+    });
+  }, []);
+
   return (
     <div ref={ref} className={clsx(styles.container, className)}>
       {/* Chart Section */}
@@ -101,7 +112,10 @@ export const BaseKpiRingChart = React.forwardRef<
 
             // Calculate stroke dash offset for progress
             const progress = metric.percentage / 100;
-            const strokeDashoffset = circumference * (1 - progress);
+            // When not animated, start at 0%; when animated, show actual progress
+            const strokeDashoffset = isAnimated 
+              ? circumference * (1 - progress)
+              : circumference; // Start from 0% progress
 
             return (
               <React.Fragment key={metric.id}>
@@ -127,7 +141,7 @@ export const BaseKpiRingChart = React.forwardRef<
                   strokeDasharray={circumference}
                   strokeDashoffset={strokeDashoffset}
                   style={{
-                    transition: "stroke-dashoffset 0.3s ease",
+                    transition: "stroke-dashoffset 1s ease-out",
                   }}
                 />
               </React.Fragment>
