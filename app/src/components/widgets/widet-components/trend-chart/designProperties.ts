@@ -2,7 +2,7 @@
  * Centralized design constants for the Trend Chart component.
  * These values define the default visual appearance and spacing of the chart.
  */
-export const DefaultDesignProperties = {
+export const TrendChartDefaultDesignProperties = {
   xAxisLabel: {
     fontSize: 10,
     lineHeight: 20,
@@ -29,7 +29,7 @@ export const DefaultDesignProperties = {
   },
 };
 
-export type DesignProperties = {
+export type TrendChartDesignProperties = {
   xAxisLabel?: {
     fontSize?: number;
     lineHeight?: number;

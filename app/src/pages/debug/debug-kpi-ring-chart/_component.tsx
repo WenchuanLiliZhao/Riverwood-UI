@@ -2,8 +2,8 @@ import * as React from "react";
 import {
   KpiRingChart,
   type KpiData,
-  type DesignProperties,
-  DefaultDesignProperties,
+  type KpiRingChartDesignProperties,
+  KpiRingChartDefaultDesignProperties,
   WidetFrame,
 } from "../../../components";
 
@@ -187,13 +187,13 @@ export const KpiRingChartDebug = () => {
 
 const CustomizeDesignPropertiesExample = ({ data }: { data: KpiData }) => {
   const [designProperties, setDesignProperties] =
-    React.useState<DesignProperties>({
-      outerRadius: DefaultDesignProperties.outerRadius,
-      ringWidth: DefaultDesignProperties.ringWidth,
-      ringGap: DefaultDesignProperties.ringGap,
+    React.useState<KpiRingChartDesignProperties>({
+      outerRadius: KpiRingChartDefaultDesignProperties.outerRadius,
+      ringWidth: KpiRingChartDefaultDesignProperties.ringWidth,
+      ringGap: KpiRingChartDefaultDesignProperties.ringGap,
     });
 
-  const handleChange = (key: keyof DesignProperties, value: number) => {
+  const handleChange = (key: keyof KpiRingChartDesignProperties, value: number) => {
     setDesignProperties((prev) => ({
       ...prev,
       [key]: value,
@@ -202,14 +202,14 @@ const CustomizeDesignPropertiesExample = ({ data }: { data: KpiData }) => {
 
   const resetToDefaults = () => {
     setDesignProperties({
-      outerRadius: DefaultDesignProperties.outerRadius,
-      ringWidth: DefaultDesignProperties.ringWidth,
-      ringGap: DefaultDesignProperties.ringGap,
+      outerRadius: KpiRingChartDefaultDesignProperties.outerRadius,
+      ringWidth: KpiRingChartDefaultDesignProperties.ringWidth,
+      ringGap: KpiRingChartDefaultDesignProperties.ringGap,
     });
   };
 
   // Calculate chart size from outerRadius (chart size = outerRadius * 2)
-  const chartSize = (designProperties.outerRadius ?? DefaultDesignProperties.outerRadius) * 2;
+  const chartSize = (designProperties.outerRadius ?? KpiRingChartDefaultDesignProperties.outerRadius) * 2;
 
   return (
     <div
@@ -275,7 +275,7 @@ const CustomizeDesignPropertiesExample = ({ data }: { data: KpiData }) => {
             min="50"
             max="150"
             step="5"
-            value={designProperties.outerRadius ?? DefaultDesignProperties.outerRadius}
+            value={designProperties.outerRadius ?? KpiRingChartDefaultDesignProperties.outerRadius}
             onChange={(e) =>
               handleChange("outerRadius", parseInt(e.target.value))
             }
@@ -300,7 +300,7 @@ const CustomizeDesignPropertiesExample = ({ data }: { data: KpiData }) => {
             min="8"
             max="32"
             step="2"
-            value={designProperties.ringWidth ?? DefaultDesignProperties.ringWidth}
+            value={designProperties.ringWidth ?? KpiRingChartDefaultDesignProperties.ringWidth}
             onChange={(e) =>
               handleChange("ringWidth", parseInt(e.target.value))
             }
@@ -325,7 +325,7 @@ const CustomizeDesignPropertiesExample = ({ data }: { data: KpiData }) => {
             min="4"
             max="20"
             step="2"
-            value={designProperties.ringGap ?? DefaultDesignProperties.ringGap}
+            value={designProperties.ringGap ?? KpiRingChartDefaultDesignProperties.ringGap}
             onChange={(e) =>
               handleChange("ringGap", parseInt(e.target.value))
             }

@@ -6,8 +6,8 @@ import {
 
 export type KpiRingChartProps = BaseKpiRingChartProps;
 export type { KpiData, Metric } from "./_BaseKpiRingChart";
-export type { DesignProperties } from "./designProperties";
-export { DefaultDesignProperties } from "./designProperties";
+export type { KpiRingChartDesignProperties as DesignProperties } from "./designProperties";
+export { KpiRingChartDefaultDesignProperties as DefaultDesignProperties } from "./designProperties";
 
 export const KpiRingChart = React.forwardRef<
   HTMLDivElement,

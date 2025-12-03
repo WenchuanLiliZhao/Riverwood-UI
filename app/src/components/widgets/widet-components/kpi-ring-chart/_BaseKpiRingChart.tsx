@@ -2,7 +2,7 @@ import * as React from "react";
 import { MaterialIcon } from "../../../shared/material-icon";
 import styles from "./kpiRingChart.module.scss";
 import { clsx } from "clsx";
-import { DefaultDesignProperties, type DesignProperties } from "./designProperties";
+import { KpiRingChartDefaultDesignProperties, type KpiRingChartDesignProperties } from "./designProperties";
 
 /* -------------------------------------------------------------------------- */
 /*                             Type Definitions                               */
@@ -47,7 +47,7 @@ export interface BaseKpiRingChartProps {
   /**
    * Custom design properties to override defaults
    */
-  designProperties?: DesignProperties;
+  designProperties?: KpiRingChartDesignProperties;
 }
 
 export const BaseKpiRingChart = React.forwardRef<
@@ -58,10 +58,10 @@ export const BaseKpiRingChart = React.forwardRef<
 
   // Merge custom design properties with defaults
   const design = {
-    outerRadius: designProperties?.outerRadius ?? DefaultDesignProperties.outerRadius,
-    ringWidth: designProperties?.ringWidth ?? DefaultDesignProperties.ringWidth,
-    ringGap: designProperties?.ringGap ?? DefaultDesignProperties.ringGap,
-    cornerRadius: designProperties?.cornerRadius ?? DefaultDesignProperties.cornerRadius,
+    outerRadius: designProperties?.outerRadius ?? KpiRingChartDefaultDesignProperties.outerRadius,
+    ringWidth: designProperties?.ringWidth ?? KpiRingChartDefaultDesignProperties.ringWidth,
+    ringGap: designProperties?.ringGap ?? KpiRingChartDefaultDesignProperties.ringGap,
+    cornerRadius: designProperties?.cornerRadius ?? KpiRingChartDefaultDesignProperties.cornerRadius,
   };
 
   // Calculate chart size from outerRadius (chart size is outerRadius * 2)

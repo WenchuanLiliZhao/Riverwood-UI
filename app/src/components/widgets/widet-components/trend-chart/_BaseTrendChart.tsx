@@ -15,7 +15,7 @@ import { MaterialIcon } from "../../../shared/material-icon";
 import styles from "./trendChart.module.scss";
 import { clsx } from "clsx";
 import { useNodeSelection } from "./useNodeSelection";
-import { DefaultDesignProperties } from "./designProperties";
+import { TrendChartDefaultDesignProperties } from "./designProperties";
 
 // --- Types (Plan B Structure) ---
 
@@ -111,7 +111,7 @@ export const BaseTrendChart = ({
   series,
   className,
   showLegend = true,
-  legendPosition = DefaultDesignProperties.legend.defaultPosition,
+  legendPosition = TrendChartDefaultDesignProperties.legend.defaultPosition,
   showGrid = true,
   chartMargin,
   xAxisPadding,
@@ -152,10 +152,10 @@ export const BaseTrendChart = ({
 
   // Spacing values from design properties
   const spacing = {
-    top: chartMargin?.top ?? DefaultDesignProperties.spacing.top,
-    right: chartMargin?.right ?? DefaultDesignProperties.spacing.right,
-    bottom: chartMargin?.bottom ?? DefaultDesignProperties.spacing.bottom,
-    left: chartMargin?.left ?? DefaultDesignProperties.spacing.left,
+    top: chartMargin?.top ?? TrendChartDefaultDesignProperties.spacing.top,
+    right: chartMargin?.right ?? TrendChartDefaultDesignProperties.spacing.right,
+    bottom: chartMargin?.bottom ?? TrendChartDefaultDesignProperties.spacing.bottom,
+    left: chartMargin?.left ?? TrendChartDefaultDesignProperties.spacing.left,
   };
 
   // Chart margin for Recharts
@@ -187,7 +187,7 @@ export const BaseTrendChart = ({
         {series.map((config, index) => {
           const color =
             config.color || defaultColors[index % defaultColors.length];
-          const iconName = config.icon || DefaultDesignProperties.legend.defaultIcon;
+          const iconName = config.icon || TrendChartDefaultDesignProperties.legend.defaultIcon;
 
           return (
             <div key={`item-${index}`} className={styles.legendItem}>
@@ -239,11 +239,11 @@ export const BaseTrendChart = ({
               scale="point"
               padding={xAxisPaddingValue}
               tick={{
-                fill: DefaultDesignProperties.xAxisLabel.color,
-                fontSize: DefaultDesignProperties.xAxisLabel.fontSize,
+                fill: TrendChartDefaultDesignProperties.xAxisLabel.color,
+                fontSize: TrendChartDefaultDesignProperties.xAxisLabel.fontSize,
                 style: {
-                  fontSize: DefaultDesignProperties.xAxisLabel.fontSize,
-                  fill: DefaultDesignProperties.xAxisLabel.color,
+                  fontSize: TrendChartDefaultDesignProperties.xAxisLabel.fontSize,
+                  fill: TrendChartDefaultDesignProperties.xAxisLabel.color,
                 },
               }}
               axisLine={false}
@@ -251,15 +251,15 @@ export const BaseTrendChart = ({
               dy={10}
             />
             <YAxis
-                width={DefaultDesignProperties.yAxisLabel.width}
+                width={TrendChartDefaultDesignProperties.yAxisLabel.width}
               axisLine={false}
               tickLine={false}
               tick={{
-                fill: DefaultDesignProperties.yAxisLabel.color,
-                fontSize: DefaultDesignProperties.yAxisLabel.fontSize,
+                fill: TrendChartDefaultDesignProperties.yAxisLabel.color,
+                fontSize: TrendChartDefaultDesignProperties.yAxisLabel.fontSize,
                 style: {
-                  fontSize: DefaultDesignProperties.yAxisLabel.fontSize,
-                  fill: DefaultDesignProperties.yAxisLabel.color,
+                  fontSize: TrendChartDefaultDesignProperties.yAxisLabel.fontSize,
+                  fill: TrendChartDefaultDesignProperties.yAxisLabel.color,
                 },
               }}
             />
@@ -279,7 +279,7 @@ export const BaseTrendChart = ({
                     dataKey={s.key}
                     stackId="a"
                     name={s.title}
-                    barSize={DefaultDesignProperties.column.width}
+                    barSize={TrendChartDefaultDesignProperties.column.width}
                     fill={color}
                     radius={[4, 4, 0, 0]}
                   >

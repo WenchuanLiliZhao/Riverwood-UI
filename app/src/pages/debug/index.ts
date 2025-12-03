@@ -5,6 +5,7 @@ import Page_Debug_BentoGrid from "./debug-bento-grid";
 import Page_Debug_TrendChart from "./debug-trend-chart";
 import Page_Debug_PieChart from "./debug-pie-chart";
 import Page_Debug_KpiRingChart from "./debug-kpi-ring-chart";
+import Page_Debug_ProgressBar from "./debug-progress-bar";
 
 export const DebugPages = {
   Page_Debug_Tooltip,
@@ -14,4 +15,5 @@ export const DebugPages = {
   Page_Debug_TrendChart,
   Page_Debug_PieChart,
   Page_Debug_KpiRingChart,
+  Page_Debug_ProgressBar,
 }
