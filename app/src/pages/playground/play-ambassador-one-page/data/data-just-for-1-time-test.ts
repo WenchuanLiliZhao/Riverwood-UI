@@ -1,4 +1,4 @@
-import type { PieChartDataItem, ChartDataPoint, SeriesConfig } from "../../../../components";
+import type { PieChartDataItem, ChartDataPoint, SeriesConfig, ProgressBarData } from "../../../../components";
 import type { KpiData } from "../../../../components/widgets/widet-components/kpi-ring-chart";
 
 export const pieChartData: PieChartDataItem[] = [
@@ -216,7 +216,7 @@ export const trendChartSeriesConfig: SeriesConfig[] = [
   {
     key: 'used',
     title: 'Used',
-    icon: 'circle',
+    icon: 'crop_square',
     displayAs: 'column',
     color: '#ef4444',
     unit: 'hrs',
@@ -225,10 +225,18 @@ export const trendChartSeriesConfig: SeriesConfig[] = [
   {
     key: 'planned',
     title: 'Planned',
-    icon: 'circle',
+    icon: 'crop_square',
     displayAs: 'column',
     color: '#e5e7eb',
     unit: 'hrs',
     selectable: false,
   },
 ];
+
+export const progressBarData: ProgressBarData = {
+  label: "SSC Requests",
+  value: 110,
+  total: 650,
+  unit: "days",
+  color: "#ef4444", // Red
+};

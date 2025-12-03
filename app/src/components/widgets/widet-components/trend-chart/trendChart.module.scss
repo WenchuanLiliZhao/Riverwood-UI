@@ -62,6 +62,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
 }
 
 .legendTitle {
@@ -74,8 +77,8 @@
 }
 
 .tooltip {
-  background: white;
-  border: 1px solid #eee;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
   border-radius: 4px;
   padding: 8px 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);

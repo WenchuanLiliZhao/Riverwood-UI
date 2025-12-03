@@ -21,6 +21,7 @@ import {
   trendChartSeriesConfig,
 } from "./data/data-just-for-1-time-test";
 import { TextMetric } from "./play-components";
+import { EngagementOverviewMetric } from "./play-components/engagement-overview-metric";
 
 export const PageContent = () => {
   return (
@@ -87,33 +88,27 @@ export const PageContent = () => {
                   ]}
                 >
                   <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
-                    <BentoItem res={[[Infinity, 6, 1]]}>
+                    <BentoItem res={[
+                      [480, 12, 1],
+                      [Infinity, 6, 1]
+                    ]}>
                       <WidetFrame
                         nav={{
                           icon: "accessibility_new",
                           title: "Ambassador Total",
-                          controls: [
-                            <Button
-                              content={{ icon: "more_vert" }}
-                              design={{ variant: "ghost" }}
-                            />,
-                          ],
                         }}
                       >
                         <TextMetric value={165} unit="pax" />
                       </WidetFrame>
                     </BentoItem>
-                    <BentoItem res={[[Infinity, 6, 1]]}>
+                    <BentoItem res={[
+                      [480, 12, 1],
+                      [Infinity, 6, 1]
+                    ]}>
                       <WidetFrame
                         nav={{
                           icon: "pie_chart",
                           title: "Activity Distribution",
-                          controls: [
-                            <Button
-                              content={{ icon: "more_vert" }}
-                              design={{ variant: "ghost" }}
-                            />,
-                          ],
                         }}
                       >
                         <PieChart
@@ -125,17 +120,14 @@ export const PageContent = () => {
                         />
                       </WidetFrame>
                     </BentoItem>
-                    <BentoItem res={[[Infinity, 6, 1]]}>
+                    <BentoItem res={[
+                      [480, 12, 1],
+                      [Infinity, 6, 1]
+                    ]}>
                       <WidetFrame
                         nav={{
                           icon: "pie_chart",
                           title: "Activity Distribution",
-                          controls: [
-                            <Button
-                              content={{ icon: "more_vert" }}
-                              design={{ variant: "ghost" }}
-                            />,
-                          ],
                         }}
                       >
                         <PieChart
@@ -147,17 +139,14 @@ export const PageContent = () => {
                         />
                       </WidetFrame>
                     </BentoItem>
-                    <BentoItem res={[[Infinity, 6, 1]]}>
+                    <BentoItem res={[
+                      [480, 12, 1],
+                      [Infinity, 6, 1]
+                    ]}>
                       <WidetFrame
                         nav={{
                           icon: "pie_chart",
                           title: "Activity Distribution",
-                          controls: [
-                            <Button
-                              content={{ icon: "more_vert" }}
-                              design={{ variant: "ghost" }}
-                            />,
-                          ],
                         }}
                       >
                         <PieChart
@@ -200,58 +189,104 @@ export const PageContent = () => {
               }
             >
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 328]]}>
-                <BentoItem res={[[Infinity, 6, 1]]}>
+                <BentoItem res={[
+                  [1080, 12, 1],
+                  [Infinity, 6, 1]
+                ]}>
                   <WidetFrame
                     nav={{
                       icon: "bar_chart",
                       title: "Resource Planning",
-                      controls: [],
                     }}
                   >
-                    <TrendChart 
-                      data={trendChartData} 
-                      series={trendChartSeriesConfig} 
+                    <TrendChart
+                      data={trendChartData}
+                      series={trendChartSeriesConfig}
                       xAxisPadding={{ left: 40, right: 40 }}
                       enableSelection={true}
-                      defaultSelectedNode={{ label: 'APR', seriesKey: 'used' }}
+                      defaultSelectedNode={{ label: "APR", seriesKey: "used" }}
                     />
                   </WidetFrame>
                 </BentoItem>
-                <BentoItem res={[[Infinity, 3, 1]]}>
-                  <TestBlock>2</TestBlock>
+                <BentoItem res={[
+                  [1080, 6, 1],
+                  [Infinity, 3, 1]
+                ]}>
+                  <WidetFrame
+                    nav={{
+                      icon: "bar_chart",
+                      title: "Total Service Days Used",
+                    }}
+                  >
+                    <EngagementOverviewMetric />
+                  </WidetFrame>
                 </BentoItem>
-                <BentoItem res={[[Infinity, 3, 1]]}>
-                  <TestBlock>3</TestBlock>
+                <BentoItem res={[
+                  [1080, 6, 1],
+                  [Infinity, 3, 1]
+                ]}>
+                  <WidetFrame
+                    nav={{
+                      icon: "bar_chart",
+                      title: "% of Ambassadors Engaged",
+                    }}
+                  >
+                    <EngagementOverviewMetric />
+                  </WidetFrame>
                 </BentoItem>
               </BentoGrid>
               <TextHr>Engagement by Athletic Discipline</TextHr>
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 250]]}>
-                <BentoItem res={[[Infinity, 4, 1]]}>
+                <BentoItem res={[
+                  [760, 12, 1],
+                  [1000, 6, 1],
+                  [Infinity, 4, 1]
+                ]}>
                   <WidetFrame>
                     <KpiRingChart data={kpiRingChartData[0]} />
                   </WidetFrame>
                 </BentoItem>
-                <BentoItem res={[[Infinity, 4, 1]]}>
+                <BentoItem res={[
+                  [760, 12, 1],
+                  [1000, 6, 1],
+                  [Infinity, 4, 1]
+                ]}>
                   <WidetFrame>
                     <KpiRingChart data={kpiRingChartData[1]} />
                   </WidetFrame>
                 </BentoItem>
-                <BentoItem res={[[Infinity, 4, 1]]}>
+                <BentoItem res={[
+                  [760, 12, 1],
+                  [1000, 6, 1],
+                  [Infinity, 4, 1]
+                ]}>
                   <WidetFrame>
                     <KpiRingChart data={kpiRingChartData[2]} />
                   </WidetFrame>
                 </BentoItem>
-                <BentoItem res={[[Infinity, 4, 1]]}>
+                <BentoItem res={[
+                  [760, 12, 1],
+                  [1000, 6, 1],
+                  [Infinity, 4, 1]
+                ]}>
                   <WidetFrame>
                     <KpiRingChart data={kpiRingChartData[3]} />
                   </WidetFrame>
                 </BentoItem>
-                <BentoItem res={[[Infinity, 4, 1]]}>
+                <BentoItem res={[
+                  [760, 12, 1],
+                  [1000, 6, 1],
+                  [Infinity, 4, 1]
+                ]}>
                   <WidetFrame>
                     <KpiRingChart data={kpiRingChartData[4]} />
                   </WidetFrame>
                 </BentoItem>
-                <BentoItem res={[[Infinity, 4, 1]]}>
+                <BentoItem res={[
+                  [760, 12, 1],
+                  [1000, 6, 1],
+                  [Infinity, 4, 1]
+                ]}>
                   <WidetFrame>
                     <KpiRingChart data={kpiRingChartData[5]} />
                   </WidetFrame>
@@ -274,7 +309,12 @@ export const PageContent = () => {
             >
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
                 <BentoItem res={[[Infinity, 6, 2]]}>
-                  <TestBlock>1</TestBlock>
+                  <WidetFrame nav={{
+                    icon: "tornado",
+                    title: "Service Day by Month"
+                  }}>
+                    s
+                  </WidetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
                   <TestBlock>2</TestBlock>

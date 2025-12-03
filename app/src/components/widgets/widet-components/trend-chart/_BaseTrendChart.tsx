@@ -53,7 +53,7 @@ export interface DefaultSelectedNode {
   seriesKey: string;
 }
 
-export type LegendPosition = 'top' | 'bottom';
+export type LegendPosition = "top" | "bottom";
 
 export interface BaseTrendChartProps {
   data: ChartDataPoint[];
@@ -153,8 +153,10 @@ export const BaseTrendChart = ({
   // Spacing values from design properties
   const spacing = {
     top: chartMargin?.top ?? TrendChartDefaultDesignProperties.spacing.top,
-    right: chartMargin?.right ?? TrendChartDefaultDesignProperties.spacing.right,
-    bottom: chartMargin?.bottom ?? TrendChartDefaultDesignProperties.spacing.bottom,
+    right:
+      chartMargin?.right ?? TrendChartDefaultDesignProperties.spacing.right,
+    bottom:
+      chartMargin?.bottom ?? TrendChartDefaultDesignProperties.spacing.bottom,
     left: chartMargin?.left ?? TrendChartDefaultDesignProperties.spacing.left,
   };
 
@@ -187,12 +189,13 @@ export const BaseTrendChart = ({
         {series.map((config, index) => {
           const color =
             config.color || defaultColors[index % defaultColors.length];
-          const iconName = config.icon || TrendChartDefaultDesignProperties.legend.defaultIcon;
+          const iconName =
+            config.icon || TrendChartDefaultDesignProperties.legend.defaultIcon;
 
           return (
             <div key={`item-${index}`} className={styles.legendItem}>
               <div className={styles.legendIcon} style={{ color }}>
-                <MaterialIcon icon={iconName} size={20} />
+                <MaterialIcon icon={iconName} />
               </div>
               <span className={styles.legendTitle}>{config.title}</span>
             </div>
@@ -215,12 +218,10 @@ export const BaseTrendChart = ({
   return (
     <div className={clsx(styles.chartContainer, className)}>
       {/* Top spacing div */}
-      {topSpacing > 0 && (
-        <div style={{ height: topSpacing, flexShrink: 0 }} />
-      )}
+      {topSpacing > 0 && <div style={{ height: topSpacing, flexShrink: 0 }} />}
 
       {/* Legend Area - Top */}
-      {legendPosition === 'top' && LegendComponent}
+      {legendPosition === "top" && LegendComponent}
 
       {/* Chart Surface Area - Takes remaining space */}
       <div className={styles.chartSurface}>
@@ -231,135 +232,146 @@ export const BaseTrendChart = ({
 
         {/* Chart Content - Takes remaining width */}
         <div className={styles.chartContent}>
-        <ResponsiveContainer width="100%" height="100%">
-          <ComposedChart data={data} margin={margin} barCategoryGap="20%">
-            {showGrid && <CartesianGrid stroke="#f5f5f5" vertical={false} />}
-            <XAxis
-              dataKey="label"
-              scale="point"
-              padding={xAxisPaddingValue}
-              tick={{
-                fill: TrendChartDefaultDesignProperties.xAxisLabel.color,
-                fontSize: TrendChartDefaultDesignProperties.xAxisLabel.fontSize,
-                style: {
-                  fontSize: TrendChartDefaultDesignProperties.xAxisLabel.fontSize,
+          <ResponsiveContainer width="100%" height="100%">
+            <ComposedChart data={data} margin={margin} barCategoryGap="20%">
+              {showGrid && <CartesianGrid stroke="#f5f5f5" vertical={false} />}
+              <XAxis
+                dataKey="label"
+                scale="point"
+                padding={xAxisPaddingValue}
+                tick={{
                   fill: TrendChartDefaultDesignProperties.xAxisLabel.color,
-                },
-              }}
-              axisLine={false}
-              tickLine={false}
-              dy={10}
-            />
-            <YAxis
+                  fontSize:
+                    TrendChartDefaultDesignProperties.xAxisLabel.fontSize,
+                  style: {
+                    fontSize:
+                      TrendChartDefaultDesignProperties.xAxisLabel.fontSize,
+                    fill: TrendChartDefaultDesignProperties.xAxisLabel.color,
+                  },
+                }}
+                axisLine={false}
+                tickLine={false}
+                dy={10}
+              />
+              <YAxis
                 width={TrendChartDefaultDesignProperties.yAxisLabel.width}
-              axisLine={false}
-              tickLine={false}
-              tick={{
-                fill: TrendChartDefaultDesignProperties.yAxisLabel.color,
-                fontSize: TrendChartDefaultDesignProperties.yAxisLabel.fontSize,
-                style: {
-                  fontSize: TrendChartDefaultDesignProperties.yAxisLabel.fontSize,
+                axisLine={false}
+                tickLine={false}
+                tick={{
                   fill: TrendChartDefaultDesignProperties.yAxisLabel.color,
-                },
-              }}
-            />
-            <Tooltip
-              content={<CustomTooltip seriesConfig={series} />}
-              cursor={{ fill: "transparent" }}
-            />
+                  fontSize:
+                    TrendChartDefaultDesignProperties.yAxisLabel.fontSize,
+                  style: {
+                    fontSize:
+                      TrendChartDefaultDesignProperties.yAxisLabel.fontSize,
+                    fill: TrendChartDefaultDesignProperties.yAxisLabel.color,
+                  },
+                }}
+              />
+              <Tooltip
+                content={<CustomTooltip seriesConfig={series} />}
+                cursor={{
+                  stroke: "var(--color-border-primary-trans)",
+                  strokeWidth: 1,
+                }}
+              />
 
-            {series.map((s, index) => {
-              const color =
-                s.color || defaultColors[index % defaultColors.length];
+              {series.map((s, index) => {
+                const color =
+                  s.color || defaultColors[index % defaultColors.length];
 
-              if (s.displayAs === "column") {
-                return (
-                  <Bar
-                    key={s.key}
-                    dataKey={s.key}
-                    stackId="a"
-                    name={s.title}
-                    barSize={TrendChartDefaultDesignProperties.column.width}
-                    fill={color}
-                    radius={[4, 4, 0, 0]}
-                  >
-                    {data.map((entry, idx) => {
-                      const opacity = getNodeOpacity(entry.label, s.key);
-                      const isSelectable = isSeriesSelectable(s.key);
-                      return (
-                        <Cell
-                          key={`cell-${idx}`}
-                          fill={color}
-                          opacity={opacity}
-                          style={{
-                            cursor:
-                              enableSelection && isSelectable
-                                ? "pointer"
-                                : "default",
-                          }}
-                          onClick={() => {
-                            if (enableSelection && isSelectable) {
-                              toggleNodeSelection(entry.label, s.key);
-                            }
-                          }}
-                        />
-                      );
-                    })}
-                  </Bar>
-                );
-              } else {
-                // Custom dot component for Line chart with selection support
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const CustomDot = (props: any) => {
-                  const { cx, cy, payload } = props;
-                  if (!cx || !cy) return null;
+                if (s.displayAs === "column") {
+                  return (
+                    <Bar
+                      key={s.key}
+                      dataKey={s.key}
+                      stackId="a"
+                      name={s.title}
+                      barSize={TrendChartDefaultDesignProperties.column.width}
+                      fill={color}
+                      radius={[4, 4, 0, 0]}
+                    >
+                      {data.map((entry, idx) => {
+                        const opacity = getNodeOpacity(entry.label, s.key);
+                        const isSelectable = isSeriesSelectable(s.key);
+                        return (
+                          <Cell
+                            key={`cell-${idx}`}
+                            fill={color}
+                            opacity={opacity}
+                            style={{
+                              cursor:
+                                enableSelection && isSelectable
+                                  ? "pointer"
+                                  : "default",
+                            }}
+                            onClick={() => {
+                              if (enableSelection && isSelectable) {
+                                toggleNodeSelection(entry.label, s.key);
+                              }
+                            }}
+                          />
+                        );
+                      })}
+                    </Bar>
+                  );
+                } else {
+                  // Custom dot component for Line chart with selection support
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  const CustomDot = (props: any) => {
+                    const { cx, cy, payload } = props;
+                    if (!cx || !cy) return null;
 
-                  const isSelectable = isSeriesSelectable(s.key);
-                  const opacity = enableSelection
-                    ? getNodeOpacity(payload.label, s.key)
-                    : 1;
+                    const isSelectable = isSeriesSelectable(s.key);
+                    const opacity = enableSelection
+                      ? getNodeOpacity(payload.label, s.key)
+                      : 1;
+
+                    return (
+                      <circle
+                        cx={cx}
+                        cy={cy}
+                        r={4}
+                        fill="white"
+                        stroke={color}
+                        strokeWidth={2}
+                        opacity={opacity}
+                        style={{
+                          cursor:
+                            enableSelection && isSelectable
+                              ? "pointer"
+                              : "default",
+                        }}
+                        onClick={() => {
+                          if (
+                            enableSelection &&
+                            isSelectable &&
+                            payload?.label
+                          ) {
+                            toggleNodeSelection(payload.label, s.key);
+                          }
+                        }}
+                      />
+                    );
+                  };
 
                   return (
-                    <circle
-                      cx={cx}
-                      cy={cy}
-                      r={4}
-                      fill="white"
+                    <Line
+                      key={s.key}
+                      type="monotone"
+                      dataKey={s.key}
+                      name={s.title}
                       stroke={color}
-                      strokeWidth={2}
-                      opacity={opacity}
-                      style={{
-                        cursor:
-                          enableSelection && isSelectable
-                            ? "pointer"
-                            : "default",
-                      }}
-                      onClick={() => {
-                        if (enableSelection && isSelectable && payload?.label) {
-                          toggleNodeSelection(payload.label, s.key);
-                        }
-                      }}
+                      strokeWidth={3}
+                      strokeOpacity={getLineOpacity(s.key)}
+                      dot={<CustomDot />}
+                      activeDot={{ r: 6 }}
                     />
                   );
-                };
-
-                return (
-                  <Line
-                    key={s.key}
-                    type="monotone"
-                    dataKey={s.key}
-                    name={s.title}
-                    stroke={color}
-                    strokeWidth={3}
-                    strokeOpacity={getLineOpacity(s.key)}
-                    dot={<CustomDot />}
-                    activeDot={{ r: 6 }}
-                  />
-                );
-              }
-            })}
-          </ComposedChart>
-        </ResponsiveContainer>
+                }
+              })}
+            </ComposedChart>
+          </ResponsiveContainer>
         </div>
 
         {/* Right spacing div */}
@@ -369,7 +381,7 @@ export const BaseTrendChart = ({
       </div>
 
       {/* Legend Area - Bottom */}
-      {legendPosition === 'bottom' && LegendComponent}
+      {legendPosition === "bottom" && LegendComponent}
 
       {/* Bottom spacing div */}
       {bottomSpacing > 0 && (
