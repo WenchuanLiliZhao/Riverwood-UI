@@ -1,4 +1,5 @@
 import { TrendChart, type ChartDataPoint, type SeriesConfig } from "../../../components";
+import { WidetFrame } from "../../../components/widgets/widet-frame";
 
 
 export const TrendChartDebug = () => {
@@ -22,18 +23,18 @@ export const TrendChartDebug = () => {
     {
       key: 'used',
       title: 'Used',
-      icon: 'circle', // Material icon name for a filled circle
       displayAs: 'column',
       color: '#ef4444', // Red
-      unit: 'hrs'
+      unit: 'hrs',
+      selectable: true, // Only 'used' series is selectable
     },
     {
       key: 'planned',
       title: 'Planned',
-      icon: 'circle', 
       displayAs: 'column', // Or curve? Screenshot looked like columns for both, but maybe mixed.
       color: '#e5e7eb', // Light Gray
-      unit: 'hrs'
+      unit: 'hrs',
+      selectable: false, // 'planned' series is not selectable
     }
   ];
   
@@ -69,24 +70,65 @@ export const TrendChartDebug = () => {
       
       <section style={{ marginBottom: 40 }}>
         <h2>Case 1: Resource Planning (Columns)</h2>
-        <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8, height: 300 }}>
-          <TrendChart 
-            data={chartData} 
-            series={seriesConfig} 
-            // height={350}
-            xAxisPadding={{ left: 40, right: 40 }}
-          />
+        <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8, height: 400 }}>
+          <WidetFrame
+            nav={{
+              icon: "bar_chart",
+              title: "Resource Planning",
+              controls: [],
+            }}
+          >
+            <TrendChart 
+              data={chartData} 
+              series={seriesConfig} 
+              // height={350}
+              xAxisPadding={{ left: 40, right: 40 }}
+              enableSelection={true}
+              defaultSelectedNode={{ label: 'APR', seriesKey: 'used' }}
+            />
+          </WidetFrame>
+        </div>
+      </section>
+
+      <section style={{ marginBottom: 40 }}>
+        <h2>Case 2: Mixed (Column + Curve)</h2>
+        <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8, height: 400 }}>
+          <WidetFrame
+            nav={{
+              icon: "show_chart",
+              title: "Sales Trend",
+              controls: [],
+            }}
+          >
+            <TrendChart 
+              data={mixedData} 
+              series={mixedConfig} 
+            />
+          </WidetFrame>
         </div>
       </section>
 
       <section>
-        <h2>Case 2: Mixed (Column + Curve)</h2>
-        <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8, height: 300 }}>
-          <TrendChart 
-            data={mixedData} 
-            series={mixedConfig} 
-          />
+        <h2>Case 3: With Node Selection (Click nodes to select/deselect)</h2>
+        <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8, height: 400 }}>
+          <WidetFrame
+            nav={{
+              icon: "show_chart",
+              title: "Sales Trend with Selection",
+              controls: [],
+            }}
+          >
+            <TrendChart 
+              data={mixedData} 
+              series={mixedConfig}
+              enableSelection={true}
+              defaultSelectedNode={{ label: 'Mon', seriesKey: 'value' }}
+            />
+          </WidetFrame>
         </div>
+        <p style={{ marginTop: 10, color: '#666', fontSize: 14 }}>
+          Click on any column or curve node to select it. Only one node can be selected at a time. Selected node has opacity 1, unselected nodes have opacity 0.475.
+        </p>
       </section>
     </div>
   );

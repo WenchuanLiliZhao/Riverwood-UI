@@ -1,5 +1,4 @@
 import * as React from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { MaterialIcon } from "../../../shared/material-icon";
 import styles from "./kpiRingChart.module.scss";
 import { clsx } from "clsx";
@@ -62,10 +61,15 @@ export const BaseKpiRingChart = React.forwardRef<
     outerRadius: designProperties?.outerRadius ?? DefaultDesignProperties.outerRadius,
     ringWidth: designProperties?.ringWidth ?? DefaultDesignProperties.ringWidth,
     ringGap: designProperties?.ringGap ?? DefaultDesignProperties.ringGap,
+    cornerRadius: designProperties?.cornerRadius ?? DefaultDesignProperties.cornerRadius,
   };
 
   // Calculate chart size from outerRadius (chart size is outerRadius * 2)
   const chartSize = design.outerRadius * 2;
+  const center = design.outerRadius;
+
+  // Determine strokeLinecap based on cornerRadius
+  const strokeLinecap = design.cornerRadius > 0 ? "round" : "butt";
 
   return (
     <div ref={ref} className={clsx(styles.container, className)}>
@@ -77,60 +81,59 @@ export const BaseKpiRingChart = React.forwardRef<
           height: chartSize,
         }}
       >
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            {metrics.map((metric, index) => {
-              // Calculate radii for concentric rings
-              // Outer ring is index 0, Inner ring is index 1, etc.
-              const outerRadius =
-                design.outerRadius -
-                index * (design.ringWidth + design.ringGap);
+        <svg
+          width={chartSize}
+          height={chartSize}
+          style={{ transform: "rotate(-90deg)" }}
+        >
+          {metrics.map((metric, index) => {
+            // Calculate radii for concentric rings
+            // Outer ring is index 0, Inner ring is index 1, etc.
+            const outerRadius =
+              design.outerRadius -
+              index * (design.ringWidth + design.ringGap);
 
-              const innerRadius = outerRadius - design.ringWidth;
+            // Radius is at the middle of the stroke
+            const radius = outerRadius - design.ringWidth / 2;
 
-              // Data for the progress ring
-              const ringData = [
-                { value: metric.percentage },
-                { value: 100 - metric.percentage },
-              ];
+            // Calculate circumference
+            const circumference = 2 * Math.PI * radius;
 
-              return (
-                <React.Fragment key={metric.id}>
-                  {/* Background Track */}
-                  <Pie
-                    data={[{ value: 100 }]}
-                    dataKey="value"
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={innerRadius}
-                    outerRadius={outerRadius}
-                    startAngle={90}
-                    endAngle={-270}
-                    fill="#f3f4f6" // gray-100/200
-                    stroke="none"
-                    isAnimationActive={false}
-                  />
-                  {/* Progress Ring */}
-                  <Pie
-                    data={ringData}
-                    dataKey="value"
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={innerRadius}
-                    outerRadius={outerRadius}
-                    startAngle={90}
-                    endAngle={-270} // Full circle range
-                    stroke="none"
-                    cornerRadius={10} // Rounded ends
-                  >
-                    <Cell fill={metric.color} />
-                    <Cell fill="transparent" />
-                  </Pie>
-                </React.Fragment>
-              );
-            })}
-          </PieChart>
-        </ResponsiveContainer>
+            // Calculate stroke dash offset for progress
+            const progress = metric.percentage / 100;
+            const strokeDashoffset = circumference * (1 - progress);
+
+            return (
+              <React.Fragment key={metric.id}>
+                {/* Background Track */}
+                <circle
+                  cx={center}
+                  cy={center}
+                  r={radius}
+                  fill="none"
+                  stroke="#f3f4f6" // gray-100/200
+                  strokeWidth={design.ringWidth}
+                  strokeLinecap={strokeLinecap}
+                />
+                {/* Progress Ring */}
+                <circle
+                  cx={center}
+                  cy={center}
+                  r={radius}
+                  fill="none"
+                  stroke={metric.color}
+                  strokeWidth={design.ringWidth}
+                  strokeLinecap={strokeLinecap}
+                  strokeDasharray={circumference}
+                  strokeDashoffset={strokeDashoffset}
+                  style={{
+                    transition: "stroke-dashoffset 0.3s ease",
+                  }}
+                />
+              </React.Fragment>
+            );
+          })}
+        </svg>
         {/* Center Content */}
         <div className={styles["chart-center"]}>
           <MaterialIcon

@@ -18,6 +18,14 @@
   flex: 1;
   min-height: 0; // Important for flexbox to properly shrink
   width: 100%;
+  display: flex; // Enable horizontal layout for left/right spacing
+  flex-direction: row;
+}
+
+.chartContent {
+  flex: 1;
+  min-width: 0; // Important for flexbox to properly shrink
+  height: 100%;
 }
 
 .legendArea {

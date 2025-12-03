@@ -7,7 +7,9 @@ export type {
   ChartDataPoint, 
   SeriesDisplayType,
   ChartPadding,
-  ChartMargin
+  ChartMargin,
+  DefaultSelectedNode,
+  LegendPosition
 } from './_BaseTrendChart';
 
 export const TrendChart = React.forwardRef<HTMLDivElement, TrendChartProps>((props, ref) => {

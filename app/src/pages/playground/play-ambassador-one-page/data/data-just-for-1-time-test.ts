@@ -1,4 +1,4 @@
-import type { PieChartDataItem } from "../../../../components";
+import type { PieChartDataItem, ChartDataPoint, SeriesConfig } from "../../../../components";
 import type { KpiData } from "../../../../components/widgets/widet-components/kpi-ring-chart";
 
 export const pieChartData: PieChartDataItem[] = [
@@ -194,5 +194,41 @@ export const kpiRingChartData: KpiData[] = [
         color: "#F48FB1", // Pink
       },
     ],
+  },
+];
+
+export const trendChartData: ChartDataPoint[] = [
+  { label: 'APR', used: 32, planned: 0 },
+  { label: 'MAY', used: 21, planned: 0 },
+  { label: 'JUN', used: 33, planned: 0 },
+  { label: 'JUL', used: 46, planned: 0 },
+  { label: 'AUG', used: 55, planned: 0 },
+  { label: 'SEP', used: 18, planned: 0 },
+  { label: 'OCT', used: 44, planned: 0 },
+  { label: 'NOV', used: 15, planned: 0 },
+  { label: 'DEC', used: 0, planned: 6 },
+  { label: 'JAN', used: 0, planned: 0 },
+  { label: 'FEB', used: 0, planned: 0 },
+  { label: 'MAR', used: 0, planned: 0 },
+];
+
+export const trendChartSeriesConfig: SeriesConfig[] = [
+  {
+    key: 'used',
+    title: 'Used',
+    icon: 'circle',
+    displayAs: 'column',
+    color: '#ef4444',
+    unit: 'hrs',
+    selectable: true,
+  },
+  {
+    key: 'planned',
+    title: 'Planned',
+    icon: 'circle',
+    displayAs: 'column',
+    color: '#e5e7eb',
+    unit: 'hrs',
+    selectable: false,
   },
 ];
