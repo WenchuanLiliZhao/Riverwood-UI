@@ -1,0 +1,29 @@
+.text-metric {
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  .value-container {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    padding-bottom: 20px;
+
+    .value {
+      font-size: 64px;
+      line-height: 72px;
+      font-weight: bold;
+      color: var(--color-text-primary);
+    }
+
+    .unit {
+      font-size: 32px;
+      line-height: 40px;
+      color: var(--color-text-secondary-trans);
+    }
+  }
+}

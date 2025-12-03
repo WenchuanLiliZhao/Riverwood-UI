@@ -6,10 +6,14 @@ import {
   DocSection,
   Layout,
   NavTitle,
+  PieChart,
   TestBlock,
   TextHr,
 } from "../../../components";
+import { WidetFrame } from "../../../components/widgets/widet-frame";
 import styles from "./_styles.module.scss";
+import { pieChartData } from "./data/data-just-for-1-time-test";
+import { TextMetric } from "./play-components";
 
 export const PageContent = () => {
   return (
@@ -69,20 +73,108 @@ export const PageContent = () => {
               }
             >
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
-                <BentoItem res={[[Infinity, 3, 1]]}>
-                  <TestBlock>1</TestBlock>
+                <BentoItem
+                  res={[
+                    [1000, 12, 2],
+                    [Infinity, 6, 2],
+                  ]}
+                >
+                  <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
+                    <BentoItem res={[[Infinity, 6, 1]]}>
+                      <WidetFrame
+                        nav={{
+                          icon: "accessibility_new",
+                          title: "Ambassador Total",
+                          controls: [
+                            <Button
+                              content={{ icon: "more_vert" }}
+                              design={{ variant: "ghost" }}
+                            />,
+                          ],
+                        }}
+                      >
+                        <TextMetric value={165} unit="pax" />
+                      </WidetFrame>
+                    </BentoItem>
+                    <BentoItem res={[[Infinity, 6, 1]]}>
+                      <WidetFrame
+                        nav={{
+                          icon: "pie_chart",
+                          title: "Activity Distribution",
+                          controls: [
+                            <Button
+                              content={{ icon: "more_vert" }}
+                              design={{ variant: "ghost" }}
+                            />,
+                          ],
+                        }}
+                      >
+                        <PieChart
+                          data={pieChartData}
+                          alwaysShowLabels={true}
+                          showLegendValue={true}
+                          showLegendUnit={false}
+                          showLabelUnit={true}
+                        />
+                      </WidetFrame>
+                    </BentoItem>
+                    <BentoItem res={[[Infinity, 6, 1]]}>
+                    <WidetFrame
+                        nav={{
+                          icon: "pie_chart",
+                          title: "Activity Distribution",
+                          controls: [
+                            <Button
+                              content={{ icon: "more_vert" }}
+                              design={{ variant: "ghost" }}
+                            />,
+                          ],
+                        }}
+                      >
+                        <PieChart
+                          data={pieChartData}
+                          alwaysShowLabels={true}
+                          showLegendValue={true}
+                          showLegendUnit={false}
+                          showLabelUnit={true}
+                        />
+                      </WidetFrame>
+                    </BentoItem>
+                    <BentoItem res={[[Infinity, 6, 1]]}>
+                    <WidetFrame
+                        nav={{
+                          icon: "pie_chart",
+                          title: "Activity Distribution",
+                          controls: [
+                            <Button
+                              content={{ icon: "more_vert" }}
+                              design={{ variant: "ghost" }}
+                            />,
+                          ],
+                        }}
+                      >
+                        <PieChart
+                          data={pieChartData}
+                          alwaysShowLabels={true}
+                          showLegendValue={true}
+                          showLegendUnit={false}
+                          showLabelUnit={true}
+                        />
+                      </WidetFrame>
+                    </BentoItem>
+                  </BentoGrid>
                 </BentoItem>
-                <BentoItem res={[[Infinity, 3, 1]]}>
-                  <TestBlock>2</TestBlock>
-                </BentoItem>
-                <BentoItem res={[[Infinity, 6, 2]]}>
-                  <TestBlock>3</TestBlock>
-                </BentoItem>
-                <BentoItem res={[[Infinity, 3, 1]]}>
-                  <TestBlock>4</TestBlock>
-                </BentoItem>
-                <BentoItem res={[[Infinity, 3, 1]]}>
-                  <TestBlock>5</TestBlock>
+                <BentoItem
+                  res={[
+                    [1000, 12, 2],
+                    [Infinity, 6, 2],
+                  ]}
+                >
+                  <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
+                    <BentoItem res={[[Infinity, 12, 2]]}>
+                      <TestBlock>3</TestBlock>
+                    </BentoItem>
+                  </BentoGrid>
                 </BentoItem>
               </BentoGrid>
             </DocSection>

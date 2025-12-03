@@ -1,1 +1,2 @@
-export * from "./trend-chart"
+export * from "./widet-components";
+export * from "./widet-frame";

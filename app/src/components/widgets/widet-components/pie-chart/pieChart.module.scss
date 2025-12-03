@@ -1,0 +1,98 @@
+/* -------------------------------------------------------------------------- */
+/*                             Container Styles                               */
+/* -------------------------------------------------------------------------- */
+
+/* Main container for the Pie Chart component.
+   Uses Flexbox to center the chart and legend vertically.
+   Ensures the component fits its parent width. */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  font-family: var(--font-family-sans, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif);
+
+  /* Remove focus outline for cleaner interaction */
+  &:focus {
+    outline: none;
+  }
+
+  /* Ensure SVG elements (like the chart) don't get clipped unnecessarily */
+  & svg {
+    overflow: visible;
+    flex-shrink: 0;
+  }
+
+  /* Chart wrapper to center the chart */
+  > svg {
+    margin: 0 auto;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Legend Styles                                */
+/* -------------------------------------------------------------------------- */
+
+/* Wrapper for the legend area.
+   Provides horizontal padding to align with the design grid. */
+.legend-container {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Grid layout for legend items.
+   Uses flex-wrap to allow items to flow naturally on smaller screens. */
+.legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* Individual legend item styling.
+   Aligns icon and text horizontally with a small gap. */
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-secondary-trans);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Typography                                  */
+/* -------------------------------------------------------------------------- */
+
+/* Legend label text styling.
+   Uses fixed height and size to match design specs. */
+.legend-text {
+  font-size: 12px;
+  line-height: 20px;
+  white-space: nowrap; /* Prevent text wrapping within the item */
+}
+
+/* Styling for the count/value within the legend.
+   Uses a lighter gray to differentiate from the label name. */
+.legend-count {
+  color: var(--color-text-secondary-trans);
+}
+
+/* Icon dimensions.
+   Explicitly sized to ensure consistency across different icon shapes. */
+.legend-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Chart label styling (text surrounding the pie).
+   Small, medium-weight text for readability without clutter. */
+.label {
+  font-size: 0.75rem; /* text-xs */
+  line-height: 1rem;
+}
+

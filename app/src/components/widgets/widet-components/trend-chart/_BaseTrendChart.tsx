@@ -10,7 +10,7 @@ import {
 } from 'recharts';
 // import type { TooltipProps, LegendProps } from 'recharts';
 // import { Payload } from 'recharts/types/component/DefaultLegendContent';
-import { MaterialIcon } from '../../shared/material-icon';
+import { MaterialIcon } from '../../../shared/material-icon';
 import styles from './trendChart.module.scss';
 import { clsx } from 'clsx';
 
