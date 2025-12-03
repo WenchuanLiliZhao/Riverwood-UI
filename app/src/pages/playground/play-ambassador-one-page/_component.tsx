@@ -1,10 +1,15 @@
 import {
   Avatar,
+  BentoGrid,
+  BentoItem,
   Button,
   DocSection,
   Layout,
   NavTitle,
+  TestBlock,
+  TextHr,
 } from "../../../components";
+import styles from "./_styles.module.scss";
 
 export const PageContent = () => {
   return (
@@ -49,22 +54,124 @@ export const PageContent = () => {
         },
         footer: <div>Footer</div>,
         content: (
-          <>
+          <div className={styles["content-container"]}>
             <DocSection
               label="Apr 1, 2025 – Mar 31, 2026"
               title="Roster Overview"
-              description="This section reflects the Ambassador roster for the current term by athletic discipline, city tier and tenure. Please note that Ambassador term (Apr 1–Mar 31) differs from the fiscal calendar (Feb 1–Jan 30). To view previous years' rosters, please adjust the filter in the top-right corner."
+              description={
+                <p>
+                  This section reflects the Ambassador roster for the current
+                  term by athletic discipline, city tier and tenure. Please note
+                  that Ambassador term (Apr 1–Mar 31) differs from the fiscal
+                  calendar (Feb 1–Jan 30). To view previous years' rosters,
+                  please adjust the filter in the top-right corner.
+                </p>
+              }
             >
-              <div>Content...</div>
+              <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
+                <BentoItem res={[[Infinity, 3, 1]]}>
+                  <TestBlock>1</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 3, 1]]}>
+                  <TestBlock>2</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 6, 2]]}>
+                  <TestBlock>3</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 3, 1]]}>
+                  <TestBlock>4</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 3, 1]]}>
+                  <TestBlock>5</TestBlock>
+                </BentoItem>
+              </BentoGrid>
             </DocSection>
+
             <DocSection
               label="Apr 1, 2025 – Mar 31, 2026"
-              title="Roster Overview"
-              description="This section reflects the Ambassador roster for the current term by athletic discipline, city tier and tenure. Please note that Ambassador term (Apr 1–Mar 31) differs from the fiscal calendar (Feb 1–Jan 30). To view previous years' rosters, please adjust the filter in the top-right corner."
+              title="Engagement Overview"
+              description={
+                <p>
+                  Each Ambassador shall serve a minimum of 4 service days per
+                  year, hence the total service days equals 4 × total Ambassador
+                  count. For tracking consistency, engagements under 4 hours
+                  count as a 0.5 day, while those 4 hours or more count as 1
+                  day.
+                </p>
+              }
             >
-              <div>Content...</div>
+              <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
+                <BentoItem res={[[Infinity, 4, 1]]}>
+                  <TestBlock>1</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 4, 1]]}>
+                  <TestBlock>2</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 4, 1]]}>
+                  <TestBlock>3</TestBlock>
+                </BentoItem>
+              </BentoGrid>
+              <TextHr>Engagement by Athletic Discipline</TextHr>
+              <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
+                <BentoItem res={[[Infinity, 4, 1]]}>
+                  <TestBlock>1</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 4, 1]]}>
+                  <TestBlock>2</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 4, 1]]}>
+                  <TestBlock>3</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 4, 1]]}>
+                  <TestBlock>4</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 4, 1]]}>
+                  <TestBlock>5</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 4, 1]]}>
+                  <TestBlock>6</TestBlock>
+                </BentoItem>
+              </BentoGrid>
             </DocSection>
-          </>
+
+            <DocSection
+              label="Apr 1, 2025 – Mar 31, 2026"
+              title="Pipeline Overview"
+              description={
+                <p>
+                  In order to secure a healthy talent pipeline, we are tracking
+                  potential candidates referred, individuals we actively
+                  connecting with, and identified strong pipeline candidates. It
+                  enables us to strategically build our roster, and maintain a
+                  consistent bench of talent aligned to brand priorities.
+                </p>
+              }
+            >
+              <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
+                <BentoItem res={[[Infinity, 6, 2]]}>
+                  <TestBlock>1</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 2, 1]]}>
+                  <TestBlock>2</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 2, 1]]}>
+                  <TestBlock>3</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 2, 1]]}>
+                  <TestBlock>4</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 2, 1]]}>
+                  <TestBlock>5</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 2, 1]]}>
+                  <TestBlock>6</TestBlock>
+                </BentoItem>
+                <BentoItem res={[[Infinity, 2, 1]]}>
+                  <TestBlock>7</TestBlock>
+                </BentoItem>
+              </BentoGrid>
+            </DocSection>
+          </div>
         ),
       }}
     />
