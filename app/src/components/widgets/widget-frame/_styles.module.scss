@@ -1,12 +1,13 @@
-.widet-frame {
+.widget-frame {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--color-border-primary-trans);
   border-radius: 8px;
   height: 100%;
+  background-color: var(--color-bg-primary);
 }
 
-.widet-frame-nav {
+.widget-frame-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,7 +15,6 @@
   padding-left: 12px;
   padding-right: 7px;
   border-bottom: 1px dashed var(--color-border-primary-trans);
-  // background-color: var(--color-bg-pale);
 
   .controls-container {
     display: flex;
@@ -43,9 +43,10 @@
   }
 }
 
-.widet-frame-content {
+.widget-frame-content {
   flex: 1;
   display: flex;
   min-height: 0;
   overflow: hidden;
+  background-color: var(--color-bg-primary);
 }

@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from "./_styles.module.scss";
 import {
   ChinaHeatMap,
-  WidetFrame,
+  WidgetFrame,
   type CategoryData,
 } from "../../../components";
 import { BentoGrid, BentoItem } from "../../../components/sections/bento-grid";
@@ -243,7 +243,7 @@ export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
           <BentoItem res={[
             [Infinity, 12, 1],
           ]}>
-            <WidetFrame nav={{ title: "Heat-map of Ambassadors" }}>
+            <WidgetFrame nav={{ title: "Heat-map of Ambassadors" }}>
               <ChinaHeatMap
                 categories={sampleCategories}
                 defaultCategoryIndex={1}
@@ -252,7 +252,7 @@ export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
                 onCategoryChange={handleCategoryChange}
                 onViewChange={handleViewChange}
               />
-            </WidetFrame>
+            </WidgetFrame>
           </BentoItem>
         </BentoGrid>
       </div>

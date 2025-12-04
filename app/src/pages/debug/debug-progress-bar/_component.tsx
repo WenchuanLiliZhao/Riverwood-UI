@@ -5,7 +5,7 @@ import {
   type DistributionBarData,
   type ProgressBarDesignProperties,
   ProgressBarDefaultDesignProperties,
-  WidetFrame,
+  WidgetFrame,
 } from "../../../components";
 
 export const ProgressBarDebug = () => {
@@ -101,7 +101,7 @@ export const ProgressBarDebug = () => {
             height: 120,
           }}
         >
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "trending_up",
               title: "SSC Requests Progress",
@@ -109,7 +109,7 @@ export const ProgressBarDebug = () => {
             }}
           >
             <ProgressBar progressData={progressBarData} />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 
@@ -123,7 +123,7 @@ export const ProgressBarDebug = () => {
             height: 120,
           }}
         >
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "check_circle",
               title: "Project Status",
@@ -131,7 +131,7 @@ export const ProgressBarDebug = () => {
             }}
           >
             <ProgressBar progressData={progressBarData2} />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 
@@ -145,7 +145,7 @@ export const ProgressBarDebug = () => {
             height: 120,
           }}
         >
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "pie_chart",
               title: "Task Distribution",
@@ -153,7 +153,7 @@ export const ProgressBarDebug = () => {
             }}
           >
             <ProgressBar distributionData={distributionBarData} />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 
@@ -167,7 +167,7 @@ export const ProgressBarDebug = () => {
             height: 120,
           }}
         >
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "public",
               title: "Sales by Region",
@@ -175,7 +175,7 @@ export const ProgressBarDebug = () => {
             }}
           >
             <ProgressBar distributionData={distributionBarData2} />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 

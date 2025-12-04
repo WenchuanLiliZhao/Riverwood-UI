@@ -1,7 +1,7 @@
 import { MaterialIcon } from "../..";
 import styles from "./_styles.module.scss";
 
-export interface WidetFrameProps {
+export interface WidgetFrameProps {
   nav?: {
     icon?: string;
     title?: string;
@@ -11,10 +11,10 @@ export interface WidetFrameProps {
   children: React.ReactNode;
 }
 
-export const WidetFrame: React.FC<WidetFrameProps> = ({ nav, children }) => {
+export const WidgetFrame: React.FC<WidgetFrameProps> = ({ nav, children }) => {
   return (
-    <div className={styles["widet-frame"]}>
-      {nav && <div className={styles["widet-frame-nav"]}>
+    <div className={styles["widget-frame"]}>
+      {nav && <div className={styles["widget-frame-nav"]}>
         <div className={styles["title-container"]}>
           {nav.icon && (
             <div className={styles["icon-container"]}>
@@ -34,7 +34,7 @@ export const WidetFrame: React.FC<WidetFrameProps> = ({ nav, children }) => {
         </div>
       </div>}
 
-      <div className={styles["widet-frame-content"]}>{children}</div>
+      <div className={styles["widget-frame-content"]}>{children}</div>
     </div>
   );
 };

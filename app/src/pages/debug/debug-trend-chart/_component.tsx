@@ -1,5 +1,5 @@
 import { TrendChart, type ChartDataPoint, type SeriesConfig } from "../../../components";
-import { WidetFrame } from "../../../components/widgets/widet-frame";
+import { WidgetFrame } from "../../../components/widgets/widget-frame";
 
 
 export const TrendChartDebug = () => {
@@ -71,7 +71,7 @@ export const TrendChartDebug = () => {
       <section style={{ marginBottom: 40 }}>
         <h2>Case 1: Resource Planning (Columns)</h2>
         <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8, height: 400 }}>
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "bar_chart",
               title: "Resource Planning",
@@ -86,14 +86,14 @@ export const TrendChartDebug = () => {
               enableSelection={true}
               defaultSelectedNode={{ label: 'APR', seriesKey: 'used' }}
             />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 
       <section style={{ marginBottom: 40 }}>
         <h2>Case 2: Mixed (Column + Curve)</h2>
         <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8, height: 400 }}>
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "show_chart",
               title: "Sales Trend",
@@ -104,14 +104,14 @@ export const TrendChartDebug = () => {
               data={mixedData} 
               series={mixedConfig} 
             />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 
       <section>
         <h2>Case 3: With Node Selection (Click nodes to select/deselect)</h2>
         <div style={{ border: '1px solid #eee', padding: 20, borderRadius: 8, height: 400 }}>
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "show_chart",
               title: "Sales Trend with Selection",
@@ -124,7 +124,7 @@ export const TrendChartDebug = () => {
               enableSelection={true}
               defaultSelectedNode={{ label: 'Mon', seriesKey: 'value' }}
             />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
         <p style={{ marginTop: 10, color: '#666', fontSize: 14 }}>
           Click on any column or curve node to select it. Only one node can be selected at a time. Selected node has opacity 1, unselected nodes have opacity 0.475.

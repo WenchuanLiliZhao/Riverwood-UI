@@ -1,7 +1,7 @@
 import {
   PieChart,
   type PieChartDataItem,
-  WidetFrame,
+  WidgetFrame,
 } from "../../../components";
 
 export const PieChartDebug = () => {
@@ -108,7 +108,7 @@ export const PieChartDebug = () => {
             height: 400,
           }}
         >
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "pie_chart",
               title: "Activity Distribution",
@@ -122,7 +122,7 @@ export const PieChartDebug = () => {
               showLegendUnit={true}
               showLabelUnit={true}
             />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 
@@ -136,7 +136,7 @@ export const PieChartDebug = () => {
             height: 400,
           }}
         >
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "donut_small",
               title: "Distribution Overview",
@@ -150,7 +150,7 @@ export const PieChartDebug = () => {
               showLegendUnit={false}
               showLabelUnit={true}
             />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 
@@ -164,7 +164,7 @@ export const PieChartDebug = () => {
             height: 400,
           }}
         >
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "pie_chart",
               title: "Simple Distribution",
@@ -178,7 +178,7 @@ export const PieChartDebug = () => {
               showLegendUnit={false}
               showLabelUnit={false}
             />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 

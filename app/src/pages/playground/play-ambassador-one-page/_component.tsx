@@ -12,7 +12,7 @@ import {
   TextHr,
   TrendChart,
 } from "../../../components";
-import { WidetFrame } from "../../../components/widgets/widet-frame";
+import { WidgetFrame } from "../../../components/widgets/widget-frame";
 import styles from "./_styles.module.scss";
 import {
   pieChartData,
@@ -92,20 +92,20 @@ export const PageContent = () => {
                       [480, 12, 1],
                       [Infinity, 6, 1]
                     ]}>
-                      <WidetFrame
+                      <WidgetFrame
                         nav={{
                           icon: "accessibility_new",
                           title: "Ambassador Total",
                         }}
                       >
                         <TextMetric value={165} unit="pax" />
-                      </WidetFrame>
+                      </WidgetFrame>
                     </BentoItem>
                     <BentoItem res={[
                       [480, 12, 1],
                       [Infinity, 6, 1]
                     ]}>
-                      <WidetFrame
+                      <WidgetFrame
                         nav={{
                           icon: "pie_chart",
                           title: "Activity Distribution",
@@ -118,13 +118,13 @@ export const PageContent = () => {
                           showLegendUnit={false}
                           showLabelUnit={true}
                         />
-                      </WidetFrame>
+                      </WidgetFrame>
                     </BentoItem>
                     <BentoItem res={[
                       [480, 12, 1],
                       [Infinity, 6, 1]
                     ]}>
-                      <WidetFrame
+                      <WidgetFrame
                         nav={{
                           icon: "pie_chart",
                           title: "Activity Distribution",
@@ -137,13 +137,13 @@ export const PageContent = () => {
                           showLegendUnit={false}
                           showLabelUnit={true}
                         />
-                      </WidetFrame>
+                      </WidgetFrame>
                     </BentoItem>
                     <BentoItem res={[
                       [480, 12, 1],
                       [Infinity, 6, 1]
                     ]}>
-                      <WidetFrame
+                      <WidgetFrame
                         nav={{
                           icon: "pie_chart",
                           title: "Activity Distribution",
@@ -156,7 +156,7 @@ export const PageContent = () => {
                           showLegendUnit={false}
                           showLabelUnit={true}
                         />
-                      </WidetFrame>
+                      </WidgetFrame>
                     </BentoItem>
                   </BentoGrid>
                 </BentoItem>
@@ -193,7 +193,7 @@ export const PageContent = () => {
                   [1080, 12, 1],
                   [Infinity, 6, 1]
                 ]}>
-                  <WidetFrame
+                  <WidgetFrame
                     nav={{
                       icon: "bar_chart",
                       title: "Resource Planning",
@@ -206,35 +206,35 @@ export const PageContent = () => {
                       enableSelection={true}
                       defaultSelectedNode={{ label: "APR", seriesKey: "used" }}
                     />
-                  </WidetFrame>
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[
                   [760, 12, 1],
                   [1080, 6, 1],
                   [Infinity, 3, 1]
                 ]}>
-                  <WidetFrame
+                  <WidgetFrame
                     nav={{
                       icon: "bar_chart",
                       title: "Total Service Days Used",
                     }}
                   >
                     <EngagementOverviewMetric />
-                  </WidetFrame>
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[
                   [760, 12, 1],
                   [1080, 6, 1],
                   [Infinity, 3, 1]
                 ]}>
-                  <WidetFrame
+                  <WidgetFrame
                     nav={{
                       icon: "bar_chart",
                       title: "% of Ambassadors Engaged",
                     }}
                   >
                     <EngagementOverviewMetric />
-                  </WidetFrame>
+                  </WidgetFrame>
                 </BentoItem>
               </BentoGrid>
               <TextHr>Engagement by Athletic Discipline</TextHr>
@@ -244,54 +244,54 @@ export const PageContent = () => {
                   [1000, 6, 1],
                   [Infinity, 4, 1]
                 ]}>
-                  <WidetFrame>
+                  <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[0]} />
-                  </WidetFrame>
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[
                   [760, 12, 1],
                   [1000, 6, 1],
                   [Infinity, 4, 1]
                 ]}>
-                  <WidetFrame>
+                  <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[1]} />
-                  </WidetFrame>
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[
                   [760, 12, 1],
                   [1000, 6, 1],
                   [Infinity, 4, 1]
                 ]}>
-                  <WidetFrame>
+                  <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[2]} />
-                  </WidetFrame>
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[
                   [760, 12, 1],
                   [1000, 6, 1],
                   [Infinity, 4, 1]
                 ]}>
-                  <WidetFrame>
+                  <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[3]} />
-                  </WidetFrame>
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[
                   [760, 12, 1],
                   [1000, 6, 1],
                   [Infinity, 4, 1]
                 ]}>
-                  <WidetFrame>
+                  <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[4]} />
-                  </WidetFrame>
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[
                   [760, 12, 1],
                   [1000, 6, 1],
                   [Infinity, 4, 1]
                 ]}>
-                  <WidetFrame>
+                  <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[5]} />
-                  </WidetFrame>
+                  </WidgetFrame>
                 </BentoItem>
               </BentoGrid>
             </DocSection>
@@ -311,12 +311,12 @@ export const PageContent = () => {
             >
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
                 <BentoItem res={[[Infinity, 6, 2]]}>
-                  <WidetFrame nav={{
+                  <WidgetFrame nav={{
                     icon: "tornado",
                     title: "Service Day by Month"
                   }}>
                     s
-                  </WidetFrame>
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
                   <TestBlock>2</TestBlock>

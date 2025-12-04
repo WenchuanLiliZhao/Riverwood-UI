@@ -1,2 +1,2 @@
 export * from "./widet-components";
-export * from "./widet-frame";
+export * from "./widget-frame";

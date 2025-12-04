@@ -4,7 +4,7 @@ import {
   type KpiData,
   type KpiRingChartDesignProperties,
   KpiRingChartDefaultDesignProperties,
-  WidetFrame,
+  WidgetFrame,
 } from "../../../components";
 
 export const KpiRingChartDebug = () => {
@@ -100,7 +100,7 @@ export const KpiRingChartDebug = () => {
             height: 400,
           }}
         >
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "donut_small",
               title: "Train KPI Metrics",
@@ -108,7 +108,7 @@ export const KpiRingChartDebug = () => {
             }}
           >
             <KpiRingChart data={trainKpiData} />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 
@@ -122,7 +122,7 @@ export const KpiRingChartDebug = () => {
             height: 400,
           }}
         >
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "sports_tennis",
               title: "Tennis Participation",
@@ -130,7 +130,7 @@ export const KpiRingChartDebug = () => {
             }}
           >
             <KpiRingChart data={singleMetricKpiData} />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 
@@ -144,7 +144,7 @@ export const KpiRingChartDebug = () => {
             height: 400,
           }}
         >
-          <WidetFrame
+          <WidgetFrame
             nav={{
               icon: "self_improvement",
               title: "Yoga Performance",
@@ -152,7 +152,7 @@ export const KpiRingChartDebug = () => {
             }}
           >
             <KpiRingChart data={threeMetricsKpiData} />
-          </WidetFrame>
+          </WidgetFrame>
         </div>
       </section>
 
@@ -364,7 +364,7 @@ const CustomizeDesignPropertiesExample = ({ data }: { data: KpiData }) => {
           backgroundColor: "#fafafa",
         }}
       >
-        <WidetFrame
+        <WidgetFrame
           nav={{
             icon: "tune",
             title: "Customized Design",
@@ -372,7 +372,7 @@ const CustomizeDesignPropertiesExample = ({ data }: { data: KpiData }) => {
           }}
         >
           <KpiRingChart data={data} designProperties={designProperties} />
-        </WidetFrame>
+        </WidgetFrame>
       </div>
 
       {/* Code Preview */}
