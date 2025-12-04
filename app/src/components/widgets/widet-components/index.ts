@@ -25,3 +25,16 @@ export type {
   DistributionSegment,
   DesignProperties as ProgressBarDesignProperties,
 } from "./progress-bar";
+
+// Explicit exports from china-heat-map to avoid DesignProperties conflict
+export {
+  ChinaHeatMap,
+  DefaultDesignProperties as ChinaHeatMapDefaultDesignProperties,
+} from "./china-heat-map";
+export type {
+  ChinaHeatMapProps,
+  LocationPoint,
+  CategoryData,
+  RegionMapping,
+  DesignProperties as ChinaHeatMapDesignProperties,
+} from "./china-heat-map";
