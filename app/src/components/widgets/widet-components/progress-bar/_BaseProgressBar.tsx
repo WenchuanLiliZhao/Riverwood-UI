@@ -26,6 +26,11 @@ export type ProgressBarData = {
   total: number;
   unit: string;
   color: string;
+  /**
+   * Optional caption to display on the right side of the header.
+   * If not provided, will automatically display the percentage (e.g., "75%")
+   */
+  caption?: string;
 };
 
 /**
@@ -36,6 +41,11 @@ export type DistributionBarData = {
   segments: DistributionSegment[];
   total: number;
   unit: string;
+  /**
+   * Optional caption to display on the right side of the header.
+   * If not provided, will automatically display the percentage (e.g., "75%")
+   */
+  caption?: string;
 };
 
 /* -------------------------------------------------------------------------- */
@@ -84,8 +94,9 @@ export const BaseProgressBar = React.forwardRef<
 
   // Progress bar mode
   if (progressData) {
-    const { label, value, total, unit, color } = progressData;
+    const { label, value, total, unit, color, caption } = progressData;
     const percentage = total > 0 ? Math.round((value / total) * 100) : 0;
+    const displayCaption = caption ?? `${percentage}%`;
 
     return (
       <div
@@ -105,7 +116,7 @@ export const BaseProgressBar = React.forwardRef<
             <span className={styles.value}>
               {value} {unit}
             </span>
-            <span className={styles.percentage}>{percentage}%</span>
+            <span className={styles.caption}>{displayCaption}</span>
           </div>
         </div>
 
@@ -127,7 +138,7 @@ export const BaseProgressBar = React.forwardRef<
 
   // Distribution bar mode
   if (distributionData) {
-    const { label, segments, total, unit } = distributionData;
+    const { label, segments, total, unit, caption } = distributionData;
 
     // Calculate percentages for each segment
     const segmentsWithPercentages = segments.map((segment) => ({
@@ -138,6 +149,7 @@ export const BaseProgressBar = React.forwardRef<
     // Calculate total value for display
     const totalValue = segments.reduce((sum, seg) => sum + seg.value, 0);
     const totalPercentage = total > 0 ? Math.round((totalValue / total) * 100) : 0;
+    const displayCaption = caption ?? `${totalPercentage}%`;
 
     return (
       <div
@@ -157,7 +169,7 @@ export const BaseProgressBar = React.forwardRef<
             <span className={styles.value}>
               {totalValue} {unit}
             </span>
-            <span className={styles.percentage}>{totalPercentage}%</span>
+            <span className={styles.caption}>{displayCaption}</span>
           </div>
         </div>
 

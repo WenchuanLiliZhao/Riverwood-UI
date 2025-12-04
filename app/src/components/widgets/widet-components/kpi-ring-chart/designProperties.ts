@@ -2,9 +2,9 @@
  * Centralized design constants for the KPI ring chart layout.
  */
 export const KpiRingChartDefaultDesignProperties = {
-  outerRadius: 70,
-  ringWidth: 12,
-  ringGap: 8,
+  outerRadius: 64,
+  ringWidth: 8,
+  ringGap: 6,
   cornerRadius: 100, // 0 for flat ends (butt), >0 for rounded ends (round strokeLinecap)
 };
 

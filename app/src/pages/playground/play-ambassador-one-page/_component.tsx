@@ -209,6 +209,7 @@ export const PageContent = () => {
                   </WidetFrame>
                 </BentoItem>
                 <BentoItem res={[
+                  [760, 12, 1],
                   [1080, 6, 1],
                   [Infinity, 3, 1]
                 ]}>
@@ -222,6 +223,7 @@ export const PageContent = () => {
                   </WidetFrame>
                 </BentoItem>
                 <BentoItem res={[
+                  [760, 12, 1],
                   [1080, 6, 1],
                   [Infinity, 3, 1]
                 ]}>
