@@ -239,16 +239,42 @@ export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
       </div>
 
       <div className={styles.mapWrapper}>
-        <BentoGrid gap="md" rowHeight={[[Infinity, 640]]}>
-          <BentoItem res={[
-            [Infinity, 12, 1],
-          ]}>
-            <WidgetFrame nav={{ title: "Heat-map of Ambassadors" }}>
+        <BentoGrid
+          gap="md"
+          rowHeight={[
+            [Infinity, 640],
+            [Infinity, 640],
+          ]}
+        >
+          {/* Default Data Example (Minecraft) */}
+          <BentoItem res={[[Infinity, 12, 1]]}>
+            <WidgetFrame nav={{ title: "Default Data (Minecraft Players)" }}>
               <ChinaHeatMap
+                title="Minecraft Players in China"
+                defaultCategoryIndex={0}
+                center={mapCenter}
+                zoom={mapZoom}
+                designProperties={{
+                  radiusFactor: 2,
+                }}
+                onCategoryChange={handleCategoryChange}
+                onViewChange={handleViewChange}
+              />
+            </WidgetFrame>
+          </BentoItem>
+
+          {/* Custom Data Example (Sports) */}
+          <BentoItem res={[[Infinity, 12, 1]]}>
+            <WidgetFrame nav={{ title: "Custom Data (Sports Activities)" }}>
+              <ChinaHeatMap
+                title="Sports Activities Distribution"
                 categories={sampleCategories}
                 defaultCategoryIndex={1}
                 center={mapCenter}
                 zoom={mapZoom}
+                designProperties={{
+                  radiusFactor: 25000,
+                }}
                 onCategoryChange={handleCategoryChange}
                 onViewChange={handleViewChange}
               />
@@ -266,9 +292,30 @@ export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
           <li>Controllable map view (center and zoom)</li>
           <li>Smooth animated transitions between regions</li>
           <li>Responsive design with customizable properties</li>
+          <li>
+            Default Minecraft player data when categories prop is not provided
+          </li>
         </ul>
 
-        <h2>Basic Usage</h2>
+        <h2>Default Data Usage</h2>
+        <p>
+          When you don't provide the <code>categories</code> prop, the component
+          will use default Minecraft player count data:
+        </p>
+        <pre>
+          {`<ChinaHeatMap
+  title="Minecraft Players in China"
+  defaultCategoryIndex={0}
+  onCategoryChange={(index, category) => {
+    console.log('Category changed:', category.term);
+  }}
+/>`}
+        </pre>
+
+        <h2>Custom Data Usage</h2>
+        <p>
+          Provide your own data via the <code>categories</code> prop:
+        </p>
         <pre>
           {`<ChinaHeatMap
   title="Heat-map of Ambassadors"

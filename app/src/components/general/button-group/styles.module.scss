@@ -1,0 +1,58 @@
+.base {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  background-color: var(--color-bg-primary);
+  border-radius: 4px;
+}
+
+.subgroup {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+
+.subgroupSeparator {
+  width: 1px;
+  height: 24px;
+  background-color: var(--color-border-primary-trans);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+.buttonWrapper {
+  position: relative;
+  
+  // Remove spacing between buttons in a subgroup
+  &:not(:first-child) {
+    margin-left: -1px;
+  }
+}
+
+// Button grouping classes (applied via className prop to buttons)
+// These classes override border-radius for grouped appearance
+.buttonFirst {
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.buttonLast {
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.buttonMiddle {
+  border-radius: 0 !important;
+}
+
+.buttonNotFirst {
+  // This class can be used for additional styling if needed
+  // Border removal for outlined buttons is handled by negative margin on wrapper
+}
+

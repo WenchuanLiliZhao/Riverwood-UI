@@ -7,17 +7,14 @@
 export const ChinaHeatMapDefaultDesignProperties = {
   // width and height are undefined by default for responsive behavior
   // Set them explicitly if you need fixed dimensions
-  backgroundColor: "var(--color-bg-secondary)",
-  landColor: "var(--color-bg-primary)",
-  borderColor: "var(--color-border-darken-trans)",
+  backgroundColor: "var(--color-bg-primary)",
+  landColor: "var(--color-bg-darken)",
+  borderColor: "var(--color-bg-primary)",
   borderWidth: 1,
   radiusFactor: 30000,
   circleColor: "#FF4646",
-  circleOpacity: 0.2,
-  circleBorderOpacity: 0.5,
-  dotRadius: 1,
-  hoverLineColor: "#FF4646",
-  hoverLineOpacity: 0.56,
+  circleOpacity: 0.16,
+  dotRadius: 1.5,
 };
 
 export type ChinaHeatMapDesignProperties = {
@@ -30,9 +27,6 @@ export type ChinaHeatMapDesignProperties = {
   radiusFactor?: number;
   circleColor?: string;
   circleOpacity?: number;
-  circleBorderOpacity?: number;
   dotRadius?: number;
-  hoverLineColor?: string;
-  hoverLineOpacity?: number;
 };
 

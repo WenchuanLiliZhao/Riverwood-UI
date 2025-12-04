@@ -3,6 +3,7 @@ import {
   BentoGrid,
   BentoItem,
   Button,
+  ChinaHeatMap,
   DocSection,
   KpiRingChart,
   Layout,
@@ -19,6 +20,7 @@ import {
   kpiRingChartData,
   trendChartData,
   trendChartSeriesConfig,
+  chinaHeatMapCategories,
 } from "./data/data-just-for-1-time-test";
 import { TextMetric } from "./play-components";
 import { EngagementOverviewMetric } from "./play-components/engagement-overview-metric";
@@ -166,9 +168,20 @@ export const PageContent = () => {
                     [Infinity, 6, 2],
                   ]}
                 >
-                  <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
-                    <BentoItem res={[[Infinity, 12, 2]]}>
-                      <TestBlock>3</TestBlock>
+                  <BentoGrid gap={"md"} rowHeight={[[Infinity, 640]]}>
+                    <BentoItem res={[[Infinity, 12, 1]]}>
+                      <WidgetFrame nav={{ title: "Sports Activities Distribution" }}>
+                        <ChinaHeatMap
+                          // title="Sports Activities Distribution"
+                          categories={chinaHeatMapCategories}
+                          defaultCategoryIndex={1}
+                          center={[33.8, 114.1]}
+                          zoom={4.2}
+                          designProperties={{
+                            radiusFactor: 25000,
+                          }}
+                        />
+                      </WidgetFrame>
                     </BentoItem>
                   </BentoGrid>
                 </BentoItem>
