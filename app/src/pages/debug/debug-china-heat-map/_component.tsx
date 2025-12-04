@@ -6,6 +6,7 @@ import {
   WidetFrame,
   type CategoryData,
 } from "../../../components";
+import { BentoGrid, BentoItem } from "../../../components/sections/bento-grid";
 
 /**
  * Sample category data for testing
@@ -238,16 +239,22 @@ export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
       </div>
 
       <div className={styles.mapWrapper}>
-        <WidetFrame nav={{ title: "Heat-map of Ambassadors" }}>
-          <ChinaHeatMap
-            categories={sampleCategories}
-            defaultCategoryIndex={1}
-            center={mapCenter}
-            zoom={mapZoom}
-            onCategoryChange={handleCategoryChange}
-            onViewChange={handleViewChange}
-          />
-        </WidetFrame>
+        <BentoGrid gap="md" rowHeight={[[Infinity, 640]]}>
+          <BentoItem res={[
+            [Infinity, 12, 1],
+          ]}>
+            <WidetFrame nav={{ title: "Heat-map of Ambassadors" }}>
+              <ChinaHeatMap
+                categories={sampleCategories}
+                defaultCategoryIndex={1}
+                center={mapCenter}
+                zoom={mapZoom}
+                onCategoryChange={handleCategoryChange}
+                onViewChange={handleViewChange}
+              />
+            </WidetFrame>
+          </BentoItem>
+        </BentoGrid>
       </div>
 
       <div className={styles.info}>

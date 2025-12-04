@@ -6,6 +6,7 @@ This guide demonstrates how to implement custom region zoom controls for the `Ch
 
 - [Overview](#overview)
 - [Basic Concepts](#basic-concepts)
+- [Responsive vs Fixed Size](#responsive-vs-fixed-size)
 - [Implementation Methods](#implementation-methods)
   - [1. Button Controls (Current Implementation)](#1-button-controls-current-implementation)
   - [2. Dropdown Selector](#2-dropdown-selector)
@@ -30,8 +31,63 @@ The `ChinaHeatMap` component is a **controlled component** that accepts `center`
   center={[latitude, longitude]}  // Map center coordinates
   zoom={zoomLevel}                 // Zoom level (4-10)
   onViewChange={(center, zoom) => {}} // Callback when view changes
+  designProperties={{
+    width: 959,         // Optional: Fixed width in pixels
+    height: 672,        // Optional: Fixed height in pixels
+    backgroundColor: "#FAFAFA"  // Background color
+  }}
 />
 ```
+
+---
+
+## Responsive vs Fixed Size
+
+The `ChinaHeatMap` component is **responsive by default** (100% width/height). You can control sizing behavior through the `designProperties` prop.
+
+### Responsive Layout (Default)
+
+**When to use:** Most cases, flexible layouts, responsive designs
+
+```tsx
+// No width/height specified - fills parent container
+<div style={{ width: "100%", height: "600px" }}>
+  <ChinaHeatMap categories={categoryData} />
+</div>
+```
+
+**Behavior:**
+- Component takes 100% width and height of parent
+- Adapts to parent container size changes
+- Perfect for responsive layouts
+
+### Fixed Size Layout
+
+**When to use:** Exact dimensions required, embedded in fixed layouts
+
+```tsx
+<ChinaHeatMap
+  categories={categoryData}
+  designProperties={{
+    width: 959,   // Fixed width in pixels
+    height: 672,  // Fixed height in pixels
+  }}
+/>
+```
+
+**Behavior:**
+- Component has fixed dimensions
+- Does not adapt to parent size
+- Useful for precise layouts or screenshots
+
+### Comparison
+
+| Aspect | Responsive (Default) | Fixed Size |
+|--------|---------------------|------------|
+| Width/Height | 100% of parent | Exact pixels |
+| Flexibility | ✅ Adapts to container | ❌ Fixed dimensions |
+| Mobile Support | ✅ Excellent | ⚠️ May overflow |
+| Use Case | Most web apps | Precise layouts |
 
 ### Region Definition
 

@@ -1,9 +1,12 @@
 /**
  * Centralized design constants for the China Heat Map component.
+ * 
+ * Note: width and height are optional. If not provided, the component
+ * will use 100% width/height for responsive sizing.
  */
 export const ChinaHeatMapDefaultDesignProperties = {
-  width: 959,
-  height: 672,
+  // width and height are undefined by default for responsive behavior
+  // Set them explicitly if you need fixed dimensions
   backgroundColor: "var(--color-bg-secondary)",
   landColor: "var(--color-bg-primary)",
   borderColor: "var(--color-border-darken-trans)",

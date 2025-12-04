@@ -149,7 +149,21 @@ const MapController: React.FC<{
 const AnimatedCircle: React.FC<{
   location: LocationPoint;
   index: number;
-  design: Required<ChinaHeatMapDesignProperties>;
+  design: {
+    width?: number;
+    height?: number;
+    backgroundColor: string;
+    landColor: string;
+    borderColor: string;
+    borderWidth: number;
+    radiusFactor: number;
+    circleColor: string;
+    circleOpacity: number;
+    circleBorderOpacity: number;
+    dotRadius: number;
+    hoverLineColor: string;
+    hoverLineOpacity: number;
+  };
 }> = ({ location, index, design }) => {
   const [radius, setRadius] = React.useState(1);
   const [opacity, setOpacity] = React.useState(0);
@@ -260,10 +274,8 @@ export const BaseChinaHeatMap = React.forwardRef<
 
     // Merge custom design properties with defaults
     const design = {
-      width:
-        designProperties?.width ?? ChinaHeatMapDefaultDesignProperties.width,
-      height:
-        designProperties?.height ?? ChinaHeatMapDefaultDesignProperties.height,
+      width: designProperties?.width,
+      height: designProperties?.height,
       backgroundColor:
         designProperties?.backgroundColor ??
         ChinaHeatMapDefaultDesignProperties.backgroundColor,
@@ -374,8 +386,8 @@ export const BaseChinaHeatMap = React.forwardRef<
         style={
           {
             "--background-color": design.backgroundColor,
-            "width": `${design.width}px`,
-            "height": `${design.height}px`,
+            ...(design.width && { width: `${design.width}px` }),
+            ...(design.height && { height: `${design.height}px` }),
           } as React.CSSProperties
         }
       >
