@@ -4,9 +4,9 @@
 export const ChinaHeatMapDefaultDesignProperties = {
   width: 959,
   height: 672,
-  backgroundColor: "#FAFAFA",
-  landColor: "#FFFFFF",
-  borderColor: "#CCCCCC",
+  backgroundColor: "var(--color-bg-secondary)",
+  landColor: "var(--color-bg-primary)",
+  borderColor: "var(--color-border-darken-trans)",
   borderWidth: 1,
   radiusFactor: 30000,
   circleColor: "#FF4646",

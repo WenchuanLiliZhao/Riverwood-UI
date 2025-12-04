@@ -1,5 +1,11 @@
 import * as React from "react";
-import { MapContainer, GeoJSON, Circle, CircleMarker, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  GeoJSON,
+  Circle,
+  CircleMarker,
+  useMap,
+} from "react-leaflet";
 import type { LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import styles from "./chinaHeatMap.module.scss";
@@ -61,6 +67,20 @@ export interface BaseChinaHeatMapProps {
    */
   defaultCategoryIndex?: number;
   /**
+   * Map center coordinates [latitude, longitude]
+   * @default [37.8, 111.1]
+   */
+  center?: [number, number];
+  /**
+   * Map zoom level
+   * @default 4.1
+   */
+  zoom?: number;
+  /**
+   * Callback when map view changes
+   */
+  onViewChange?: (center: [number, number], zoom: number) => void;
+  /**
    * Custom className for the container
    */
   className?: string;
@@ -85,13 +105,40 @@ const CHINA_GEOJSON_URL =
  */
 const MapController: React.FC<{
   locations: LocationPoint[];
-}> = ({ locations }) => {
+  center: [number, number];
+  zoom: number;
+  onViewChange?: (center: [number, number], zoom: number) => void;
+}> = ({ locations, center, zoom, onViewChange }) => {
   const map = useMap();
 
   React.useEffect(() => {
     // Invalidate size when locations change to ensure proper rendering
     map.invalidateSize();
   }, [locations, map]);
+
+  // Update map view when center or zoom changes
+  React.useEffect(() => {
+    map.setView(center, zoom, {
+      animate: true,
+      duration: 0.5,
+    });
+  }, [center, zoom, map]);
+
+  // Listen to map view changes and notify parent
+  React.useEffect(() => {
+    if (!onViewChange) return;
+
+    const handleMoveEnd = () => {
+      const mapCenter = map.getCenter();
+      const mapZoom = map.getZoom();
+      onViewChange([mapCenter.lat, mapCenter.lng], mapZoom);
+    };
+
+    map.on("moveend", handleMoveEnd);
+    return () => {
+      map.off("moveend", handleMoveEnd);
+    };
+  }, [map, onViewChange]);
 
   return null;
 };
@@ -192,20 +239,24 @@ export const BaseChinaHeatMap = React.forwardRef<
 >(
   (
     {
-      title = "Heat-map of Ambassadors",
+      title,
       categories,
       regionMapping,
       defaultCategoryIndex = 0,
+      center = [37.8, 111.1],
+      zoom = 4.1,
+      onViewChange,
       className,
       designProperties,
       onCategoryChange,
     },
     ref
   ) => {
-    const [currentCategoryIndex, setCurrentCategoryIndex] = React.useState(
-      defaultCategoryIndex
+    const [currentCategoryIndex, setCurrentCategoryIndex] =
+      React.useState(defaultCategoryIndex);
+    const [chinaGeoJson, setChinaGeoJson] = React.useState<unknown | null>(
+      null
     );
-    const [chinaGeoJson, setChinaGeoJson] = React.useState<unknown | null>(null);
 
     // Merge custom design properties with defaults
     const design = {
@@ -256,15 +307,15 @@ export const BaseChinaHeatMap = React.forwardRef<
 
     // Default region mapping
     const defaultRegionMapping: RegionMapping = {
-      Shanghai: "East",
-      Beijing: "East",
-      Shenzhen: "East",
-      Zhejiang: "East",
-      Jiangsu: "East",
+      "Shanghai": "East",
+      "Beijing": "East",
+      "Shenzhen": "East",
+      "Zhejiang": "East",
+      "Jiangsu": "East",
       "South China": "Central",
       "Northwest China": "Central",
       "Southwest China": "Central",
-      Central: "Central",
+      "Central": "Central",
       "North China": "North East",
       "Northeast China": "North East",
     };
@@ -323,16 +374,16 @@ export const BaseChinaHeatMap = React.forwardRef<
         style={
           {
             "--background-color": design.backgroundColor,
-            width: `${design.width}px`,
-            height: `${design.height}px`,
+            "width": `${design.width}px`,
+            "height": `${design.height}px`,
           } as React.CSSProperties
         }
       >
         {/* Map Container */}
         <div className={styles.map}>
           <MapContainer
-            center={[37.8, 111.1]}
-            zoom={4.1}
+            center={center}
+            zoom={zoom}
             minZoom={4}
             maxZoom={10}
             zoomControl={false}
@@ -345,7 +396,12 @@ export const BaseChinaHeatMap = React.forwardRef<
             keyboard={false}
             style={{ width: "100%", height: "100%" }}
           >
-            <MapController locations={currentLocations} />
+            <MapController
+              locations={currentLocations}
+              center={center}
+              zoom={zoom}
+              onViewChange={onViewChange}
+            />
 
             {/* China GeoJSON Layer */}
             {chinaGeoJson && (
@@ -373,9 +429,11 @@ export const BaseChinaHeatMap = React.forwardRef<
           </MapContainer>
 
           {/* Header */}
-          <div className={styles.header}>
-            <div className={styles.title}>{title}</div>
-          </div>
+          {title && (
+            <div className={styles.header}>
+              <div className={styles.title}>{title}</div>
+            </div>
+          )}
         </div>
 
         {/* Category Selector */}

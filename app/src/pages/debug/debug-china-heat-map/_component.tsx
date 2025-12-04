@@ -1,7 +1,11 @@
 import * as React from "react";
 
 import styles from "./_styles.module.scss";
-import { ChinaHeatMap, type CategoryData } from "../../../components";
+import {
+  ChinaHeatMap,
+  WidetFrame,
+  type CategoryData,
+} from "../../../components";
 
 /**
  * Sample category data for testing
@@ -163,9 +167,49 @@ const sampleCategories: CategoryData[] = [
   },
 ];
 
+/**
+ * Region definitions for zooming
+ */
+type MapRegion = {
+  name: string;
+  center: [number, number];
+  zoom: number;
+};
+
+const CHINA_REGIONS: Record<string, MapRegion> = {
+  all: { name: "All China", center: [37.8, 111.1], zoom: 4.1 },
+  east: { name: "East", center: [31.5, 120.5], zoom: 6.5 },
+  central: { name: "Central", center: [30.5, 111.5], zoom: 6 },
+  northEast: { name: "North East", center: [43, 125], zoom: 6 },
+  south: { name: "South", center: [23.5, 113.5], zoom: 6.5 },
+  north: { name: "North", center: [40, 116], zoom: 6 },
+  northwest: { name: "Northwest", center: [36.5, 103], zoom: 5.5 },
+  southwest: { name: "Southwest", center: [28.5, 103.5], zoom: 5.5 },
+};
+
 export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
+  const [selectedRegion, setSelectedRegion] = React.useState<string>("all");
+  const [mapCenter, setMapCenter] = React.useState<[number, number]>(
+    CHINA_REGIONS.all.center
+  );
+  const [mapZoom, setMapZoom] = React.useState<number>(CHINA_REGIONS.all.zoom);
+
   const handleCategoryChange = (index: number, category: CategoryData) => {
     console.log(`Category changed to: ${category.term} (index: ${index})`);
+  };
+
+  const handleRegionChange = (regionKey: string) => {
+    const region = CHINA_REGIONS[regionKey];
+    if (region) {
+      setSelectedRegion(regionKey);
+      setMapCenter(region.center);
+      setMapZoom(region.zoom);
+      console.log(`Region changed to: ${region.name}`);
+    }
+  };
+
+  const handleViewChange = (center: [number, number], zoom: number) => {
+    console.log(`Map view changed - Center: ${center}, Zoom: ${zoom}`);
   };
 
   return (
@@ -175,13 +219,35 @@ export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
         <p>Interactive map showing ambassador distribution across China</p>
       </div>
 
+      {/* Region Selector */}
+      <div className={styles.controls}>
+        <h3>Region Selector</h3>
+        <div className={styles.regionButtons}>
+          {Object.entries(CHINA_REGIONS).map(([key, region]) => (
+            <button
+              key={key}
+              className={`${styles.regionBtn} ${
+                selectedRegion === key ? styles.active : ""
+              }`}
+              onClick={() => handleRegionChange(key)}
+            >
+              {region.name}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className={styles.mapWrapper}>
-        <ChinaHeatMap
-          title="Heat-map of Ambassadors"
-          categories={sampleCategories}
-          defaultCategoryIndex={1}
-          onCategoryChange={handleCategoryChange}
-        />
+        <WidetFrame nav={{ title: "Heat-map of Ambassadors" }}>
+          <ChinaHeatMap
+            categories={sampleCategories}
+            defaultCategoryIndex={1}
+            center={mapCenter}
+            zoom={mapZoom}
+            onCategoryChange={handleCategoryChange}
+            onViewChange={handleViewChange}
+          />
+        </WidetFrame>
       </div>
 
       <div className={styles.info}>
@@ -190,11 +256,12 @@ export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
           <li>Interactive map with smooth animations</li>
           <li>Multiple category filters (Run, Train, Yoga, etc.)</li>
           <li>Regional aggregation (East, Central, North East)</li>
-          <li>Hover effects for both map circles and table rows</li>
+          <li>Controllable map view (center and zoom)</li>
+          <li>Smooth animated transitions between regions</li>
           <li>Responsive design with customizable properties</li>
         </ul>
 
-        <h2>Usage Example</h2>
+        <h2>Basic Usage</h2>
         <pre>
           {`<ChinaHeatMap
   title="Heat-map of Ambassadors"
@@ -205,8 +272,35 @@ export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
   }}
 />`}
         </pre>
+
+        <h2>Advanced Usage with Region Control</h2>
+        <pre>
+          {`const [mapCenter, setMapCenter] = useState<[number, number]>([37.8, 111.1]);
+const [mapZoom, setMapZoom] = useState<number>(4.1);
+
+// Define regions
+const regions = {
+  all: { center: [37.8, 111.1], zoom: 4.1 },
+  east: { center: [31.5, 120.5], zoom: 6.5 },
+  central: { center: [30.5, 111.5], zoom: 6 },
+};
+
+// Switch to a region
+const handleRegionChange = (region) => {
+  setMapCenter(region.center);
+  setMapZoom(region.zoom);
+};
+
+<ChinaHeatMap
+  categories={categoryData}
+  center={mapCenter}
+  zoom={mapZoom}
+  onViewChange={(center, zoom) => {
+    console.log('View changed:', center, zoom);
+  }}
+/>`}
+        </pre>
       </div>
     </div>
   );
 };
-

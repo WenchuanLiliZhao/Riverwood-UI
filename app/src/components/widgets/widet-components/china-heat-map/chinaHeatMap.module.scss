@@ -3,9 +3,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
-  background-color: var(--background-color, #fafafa);
+  background-color: var(--background-color, var(--color-bg-pale));
   overflow: hidden;
 }
 
@@ -13,6 +11,11 @@
 .map {
   width: 100%;
   height: 100%;
+}
+
+/* Remove Leaflet container background */
+.map :global(.leaflet-container) {
+  background: transparent !important;
 }
 
 /* Remove focus effect from map circles */

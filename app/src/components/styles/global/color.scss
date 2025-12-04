@@ -12,6 +12,9 @@
 
     --color-bg-secondary: #F5F5F5;
     --color-bg-secondary-trans: rgba(0, 0, 0, 0.04);
+
+    --color-bg-darken: #EBEBEB;
+    --color-bg-darken-trans: rgba(0, 0, 0, 0.08);
     
     --color-bg-primary-inverse: #000000;
 
@@ -42,6 +45,9 @@
   & {
     --color-border-primary: #ebebeb;
     --color-border-primary-trans: rgba(0, 0, 0, 0.08);
+
+    --color-border-darken: #E0E0E0;
+    --color-border-darken-trans: rgba(0, 0, 0, 0.12);
   }
 }
 
