@@ -1,0 +1,6 @@
+.math-display, .math-inline {  
+  // Ensure KaTeX internal elements also inherit font-size
+  :global(.katex), :global(.katex *) {
+    font-size: inherit;
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "riverwood-ui",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "A modern React UI component library built with TypeScript and SCSS Modules",
   "type": "module",
   "main": "./dist/riverwood-ui.umd.js",
@@ -38,7 +38,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:lib": "tsc -p tsconfig.lib.json && vite build --mode library && cp src/styles.d.ts dist/styles.d.ts",
+    "build:lib": "vite build --mode library && tsc -p tsconfig.lib.json && cp src/styles.d.ts dist/styles.d.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "prepublishOnly": "npm run build:lib"
@@ -51,8 +51,9 @@
     "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "katex": "^0.16.27",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
     "react-router": "^7.9.6",
     "recharts": "^3.5.0",
     "sass": "^1.94.0"
