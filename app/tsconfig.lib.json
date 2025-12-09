@@ -9,6 +9,6 @@
     "noEmit": false,
     "skipLibCheck": true
   },
-  "include": ["src/components/**/*"],
+  "include": ["src/components/**/*", "src/styles.d.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
 }

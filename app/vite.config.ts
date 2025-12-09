@@ -24,6 +24,7 @@ export default defineConfig(({ mode }) => {
               'react-dom': 'ReactDOM',
               'react/jsx-runtime': 'react/jsx-runtime',
             },
+            assetFileNames: 'styles.css',
           },
         },
         cssCodeSplit: false,
