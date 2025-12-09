@@ -1,0 +1,48 @@
+# Source files
+src/
+*.ts
+*.tsx
+!dist/**/*.d.ts
+
+# Development files
+.vscode/
+.idea/
+*.log
+*.local
+
+# Build artifacts (except dist)
+node_modules/
+.vite/
+dist-dev/
+
+# Config files
+tsconfig*.json
+vite.config.ts
+eslint.config.js
+.hintrc
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation (keep README.md)
+*.md
+!README.md
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+
+# Development scripts
+index.html
+public/
+
+# Lock files (optional - you may want to include package-lock.json)
+# package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db

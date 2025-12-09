@@ -1,13 +1,47 @@
 {
-  "name": "app",
-  "private": true,
-  "version": "0.0.0",
+  "name": "riverwood-ui",
+  "version": "1.0.2",
+  "description": "A modern React UI component library built with TypeScript and SCSS Modules",
   "type": "module",
+  "main": "./dist/riverwood-ui.umd.js",
+  "module": "./dist/riverwood-ui.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/riverwood-ui.js",
+      "require": "./dist/riverwood-ui.umd.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "typescript",
+    "scss",
+    "component-library"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build",
+    "build:lib": "tsc -p tsconfig.lib.json && vite build --mode library",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build:lib"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
