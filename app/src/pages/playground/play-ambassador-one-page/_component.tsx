@@ -25,13 +25,14 @@ import {
   TextMetric,
   ActivityDistributionPieChart,
   ActivityProgressCard,
+  SummaryActivityProgressCard,
 } from "./play-components";
 import { EngagementOverviewMetric } from "./play-components/engagement-overview-metric";
 import {
   LocationSelector,
   YearSelector,
 } from "./play-components/universal-selectors";
-import { activityProgressCardData } from "./data-just-for-1-time-test/activity-progress-card";
+import { activityProgressCardDataObject, summaryActivityProgressCardData, activityProgressCardDataSourceObject } from "./data-just-for-1-time-test/service-day";
 
 export const PageContent = () => {
   return (
@@ -341,29 +342,71 @@ export const PageContent = () => {
                   <WidgetFrame
                     nav={{
                       icon: "tornado",
-                      title: "Service Day by Month",
+                      title: "Summary",
                     }}
                   >
-                    s
+                    <SummaryActivityProgressCard data={summaryActivityProgressCardData} />
                   </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <ActivityProgressCard data={activityProgressCardData} />
+                  <WidgetFrame
+                    nav={{
+                      icon: activityProgressCardDataSourceObject.activityProgressCardData.icon as string,
+                      title: activityProgressCardDataSourceObject.activityProgressCardData.title,
+                    }}
+                  >
+                    <ActivityProgressCard data={activityProgressCardDataObject.activityProgressCardData} />
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <ActivityProgressCard data={activityProgressCardData} />
+                  <WidgetFrame
+                    nav={{
+                      icon: activityProgressCardDataSourceObject.swimmingActivityData.icon as string,
+                      title: activityProgressCardDataSourceObject.swimmingActivityData.title,
+                    }}
+                  >
+                    <ActivityProgressCard data={activityProgressCardDataObject.swimmingActivityData} />
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <ActivityProgressCard data={activityProgressCardData} />
+                  <WidgetFrame
+                    nav={{
+                      icon: activityProgressCardDataSourceObject.runningActivityData.icon as string,
+                      title: activityProgressCardDataSourceObject.runningActivityData.title,
+                    }}
+                  >
+                    <ActivityProgressCard data={activityProgressCardDataObject.runningActivityData} />
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <ActivityProgressCard data={activityProgressCardData} />
+                  <WidgetFrame
+                    nav={{
+                      icon: activityProgressCardDataSourceObject.cyclingActivityData.icon as string,
+                      title: activityProgressCardDataSourceObject.cyclingActivityData.title,
+                    }}
+                  >
+                    <ActivityProgressCard data={activityProgressCardDataObject.cyclingActivityData} />
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <ActivityProgressCard data={activityProgressCardData} />
+                  <WidgetFrame
+                    nav={{
+                      icon: activityProgressCardDataSourceObject.hikingActivityData.icon as string,
+                      title: activityProgressCardDataSourceObject.hikingActivityData.title,
+                    }}
+                  >
+                    <ActivityProgressCard data={activityProgressCardDataObject.hikingActivityData} />
+                  </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <ActivityProgressCard data={activityProgressCardData} />
+                  <WidgetFrame
+                    nav={{
+                      icon: activityProgressCardDataSourceObject.gymActivityData.icon as string,
+                      title: activityProgressCardDataSourceObject.gymActivityData.title,
+                    }}
+                  >
+                    <ActivityProgressCard data={activityProgressCardDataObject.gymActivityData} />
+                  </WidgetFrame>
                 </BentoItem>
               </BentoGrid>
             </DocSection>

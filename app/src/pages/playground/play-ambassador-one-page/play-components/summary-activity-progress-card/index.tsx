@@ -4,14 +4,13 @@ import type { ActivityProgressCardData } from "../../data-just-for-1-time-test/a
 import type { DistributionBarData } from "../../../../../components";
 import styles from "./_styles.module.scss";
 
-export interface ActivityProgressCardProps {
+export interface SummaryActivityProgressCardProps {
   data: ActivityProgressCardData;
 }
 
-export const ActivityProgressCard: React.FC<ActivityProgressCardProps> = ({ data }) => {
+export const SummaryActivityProgressCard: React.FC<SummaryActivityProgressCardProps> = ({ data }) => {
   return (
-    <div className={styles["activity-progress-card-content"]}>
-
+    <div className={styles["summary-activity-progress-card-content"]}>
         {/* Progress Items List */}
         <div className={styles["items-list"]}>
           {data.items.map((item, index) => {
@@ -39,12 +38,12 @@ export const ActivityProgressCard: React.FC<ActivityProgressCardProps> = ({ data
                     <span className={styles["percentage"]}>({roundedPercentage}%)</span>
                   </div>
                 </div>
-              <div className={styles["progress-bar-wrapper"]}>
-                <ProgressBar
-                  distributionData={distributionData}
-                  designProperties={{ height: 6, showHeader: false }}
-                />
-              </div>
+                <div className={styles["progress-bar-wrapper"]}>
+                  <ProgressBar
+                    distributionData={distributionData}
+                    designProperties={{ height: 8, showHeader: false }}
+                  />
+                </div>
               </div>
             );
           })}
@@ -53,4 +52,4 @@ export const ActivityProgressCard: React.FC<ActivityProgressCardProps> = ({ data
   );
 };
 
-ActivityProgressCard.displayName = "ActivityProgressCard";
+SummaryActivityProgressCard.displayName = "SummaryActivityProgressCard";
