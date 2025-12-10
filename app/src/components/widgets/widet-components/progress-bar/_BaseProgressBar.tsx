@@ -90,6 +90,8 @@ export const BaseProgressBar = React.forwardRef<
       designProperties?.cornerRadius ?? ProgressBarDefaultDesignProperties.cornerRadius,
     distributionGap:
       designProperties?.distributionGap ?? ProgressBarDefaultDesignProperties.distributionGap,
+    showHeader:
+      designProperties?.showHeader ?? ProgressBarDefaultDesignProperties.showHeader,
   };
 
   // Progress bar mode
@@ -110,15 +112,17 @@ export const BaseProgressBar = React.forwardRef<
         }
       >
         {/* Header */}
-        <div className={styles.header}>
-          <span className={styles.label}>{label}</span>
-          <div className={styles["header-right"]}>
-            <span className={styles.value}>
-              {value} {unit}
-            </span>
-            <span className={styles.caption}>{displayCaption}</span>
+        {design.showHeader && (
+          <div className={styles.header}>
+            <span className={styles.label}>{label}</span>
+            <div className={styles["header-right"]}>
+              <span className={styles.value}>
+                {value} {unit}
+              </span>
+              <span className={styles.caption}>{displayCaption}</span>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Progress Bar */}
         <div
@@ -163,15 +167,17 @@ export const BaseProgressBar = React.forwardRef<
         }
       >
         {/* Header */}
-        <div className={styles.header}>
-          <span className={styles.label}>{label}</span>
-          <div className={styles["header-right"]}>
-            <span className={styles.value}>
-              {totalValue} {unit}
-            </span>
-            <span className={styles.caption}>{displayCaption}</span>
+        {design.showHeader && (
+          <div className={styles.header}>
+            <span className={styles.label}>{label}</span>
+            <div className={styles["header-right"]}>
+              <span className={styles.value}>
+                {totalValue} {unit}
+              </span>
+              <span className={styles.caption}>{displayCaption}</span>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Distribution Bar */}
         <div

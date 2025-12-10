@@ -7,7 +7,6 @@ import {
   KpiRingChart,
   Layout,
   NavTitle,
-  TestBlock,
   TextHr,
   TrendChart,
 } from "../../../components";
@@ -22,9 +21,17 @@ import {
 } from "./data-just-for-1-time-test/some";
 import { location } from "./data-just-for-1-time-test/location";
 import { allYears } from "./data-just-for-1-time-test/year";
-import { TextMetric, ActivityDistributionPieChart } from "./play-components";
+import {
+  TextMetric,
+  ActivityDistributionPieChart,
+  ActivityProgressCard,
+} from "./play-components";
 import { EngagementOverviewMetric } from "./play-components/engagement-overview-metric";
-import { LocationSelector, YearSelector } from "./play-components/universal-selectors";
+import {
+  LocationSelector,
+  YearSelector,
+} from "./play-components/universal-selectors";
+import { activityProgressCardData } from "./data-just-for-1-time-test/activity-progress-card";
 
 export const PageContent = () => {
   return (
@@ -69,10 +76,12 @@ export const PageContent = () => {
                   ]}
                 >
                   <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
-                    <BentoItem res={[
-                      [480, 12, 1],
-                      [Infinity, 6, 1]
-                    ]}>
+                    <BentoItem
+                      res={[
+                        [480, 12, 1],
+                        [Infinity, 6, 1],
+                      ]}
+                    >
                       <WidgetFrame
                         nav={{
                           icon: "accessibility_new",
@@ -82,10 +91,12 @@ export const PageContent = () => {
                         <TextMetric value={165} unit="pax" />
                       </WidgetFrame>
                     </BentoItem>
-                    <BentoItem res={[
-                      [480, 12, 1],
-                      [Infinity, 6, 1]
-                    ]}>
+                    <BentoItem
+                      res={[
+                        [480, 12, 1],
+                        [Infinity, 6, 1],
+                      ]}
+                    >
                       <WidgetFrame
                         nav={{
                           icon: "pie_chart",
@@ -101,10 +112,12 @@ export const PageContent = () => {
                         />
                       </WidgetFrame>
                     </BentoItem>
-                    <BentoItem res={[
-                      [480, 12, 1],
-                      [Infinity, 6, 1]
-                    ]}>
+                    <BentoItem
+                      res={[
+                        [480, 12, 1],
+                        [Infinity, 6, 1],
+                      ]}
+                    >
                       <WidgetFrame
                         nav={{
                           icon: "pie_chart",
@@ -120,10 +133,12 @@ export const PageContent = () => {
                         />
                       </WidgetFrame>
                     </BentoItem>
-                    <BentoItem res={[
-                      [480, 12, 1],
-                      [Infinity, 6, 1]
-                    ]}>
+                    <BentoItem
+                      res={[
+                        [480, 12, 1],
+                        [Infinity, 6, 1],
+                      ]}
+                    >
                       <WidgetFrame
                         nav={{
                           icon: "pie_chart",
@@ -149,7 +164,9 @@ export const PageContent = () => {
                 >
                   <BentoGrid gap={"md"} rowHeight={[[Infinity, 640]]}>
                     <BentoItem res={[[Infinity, 12, 1]]}>
-                      <WidgetFrame nav={{ title: "Sports Activities Distribution" }}>
+                      <WidgetFrame
+                        nav={{ title: "Sports Activities Distribution" }}
+                      >
                         <ChinaHeatMap
                           // title="Sports Activities Distribution"
                           categories={chinaHeatMapCategories}
@@ -181,10 +198,12 @@ export const PageContent = () => {
               }
             >
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 328]]}>
-                <BentoItem res={[
-                  [1080, 12, 1],
-                  [Infinity, 6, 1]
-                ]}>
+                <BentoItem
+                  res={[
+                    [1080, 12, 1],
+                    [Infinity, 6, 1],
+                  ]}
+                >
                   <WidgetFrame
                     nav={{
                       icon: "bar_chart",
@@ -200,11 +219,13 @@ export const PageContent = () => {
                     />
                   </WidgetFrame>
                 </BentoItem>
-                <BentoItem res={[
-                  [760, 12, 1],
-                  [1080, 6, 1],
-                  [Infinity, 3, 1]
-                ]}>
+                <BentoItem
+                  res={[
+                    [760, 12, 1],
+                    [1080, 6, 1],
+                    [Infinity, 3, 1],
+                  ]}
+                >
                   <WidgetFrame
                     nav={{
                       icon: "bar_chart",
@@ -214,11 +235,13 @@ export const PageContent = () => {
                     <EngagementOverviewMetric />
                   </WidgetFrame>
                 </BentoItem>
-                <BentoItem res={[
-                  [760, 12, 1],
-                  [1080, 6, 1],
-                  [Infinity, 3, 1]
-                ]}>
+                <BentoItem
+                  res={[
+                    [760, 12, 1],
+                    [1080, 6, 1],
+                    [Infinity, 3, 1],
+                  ]}
+                >
                   <WidgetFrame
                     nav={{
                       icon: "bar_chart",
@@ -231,56 +254,68 @@ export const PageContent = () => {
               </BentoGrid>
               <TextHr>Engagement by Athletic Discipline</TextHr>
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 250]]}>
-                <BentoItem res={[
-                  [760, 12, 1],
-                  [1000, 6, 1],
-                  [Infinity, 4, 1]
-                ]}>
+                <BentoItem
+                  res={[
+                    [760, 12, 1],
+                    [1000, 6, 1],
+                    [Infinity, 4, 1],
+                  ]}
+                >
                   <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[0]} />
                   </WidgetFrame>
                 </BentoItem>
-                <BentoItem res={[
-                  [760, 12, 1],
-                  [1000, 6, 1],
-                  [Infinity, 4, 1]
-                ]}>
+                <BentoItem
+                  res={[
+                    [760, 12, 1],
+                    [1000, 6, 1],
+                    [Infinity, 4, 1],
+                  ]}
+                >
                   <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[1]} />
                   </WidgetFrame>
                 </BentoItem>
-                <BentoItem res={[
-                  [760, 12, 1],
-                  [1000, 6, 1],
-                  [Infinity, 4, 1]
-                ]}>
+                <BentoItem
+                  res={[
+                    [760, 12, 1],
+                    [1000, 6, 1],
+                    [Infinity, 4, 1],
+                  ]}
+                >
                   <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[2]} />
                   </WidgetFrame>
                 </BentoItem>
-                <BentoItem res={[
-                  [760, 12, 1],
-                  [1000, 6, 1],
-                  [Infinity, 4, 1]
-                ]}>
+                <BentoItem
+                  res={[
+                    [760, 12, 1],
+                    [1000, 6, 1],
+                    [Infinity, 4, 1],
+                  ]}
+                >
                   <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[3]} />
                   </WidgetFrame>
                 </BentoItem>
-                <BentoItem res={[
-                  [760, 12, 1],
-                  [1000, 6, 1],
-                  [Infinity, 4, 1]
-                ]}>
+                <BentoItem
+                  res={[
+                    [760, 12, 1],
+                    [1000, 6, 1],
+                    [Infinity, 4, 1],
+                  ]}
+                >
                   <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[4]} />
                   </WidgetFrame>
                 </BentoItem>
-                <BentoItem res={[
-                  [760, 12, 1],
-                  [1000, 6, 1],
-                  [Infinity, 4, 1]
-                ]}>
+                <BentoItem
+                  res={[
+                    [760, 12, 1],
+                    [1000, 6, 1],
+                    [Infinity, 4, 1],
+                  ]}
+                >
                   <WidgetFrame>
                     <KpiRingChart data={kpiRingChartData[5]} />
                   </WidgetFrame>
@@ -303,30 +338,32 @@ export const PageContent = () => {
             >
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
                 <BentoItem res={[[Infinity, 6, 2]]}>
-                  <WidgetFrame nav={{
-                    icon: "tornado",
-                    title: "Service Day by Month"
-                  }}>
+                  <WidgetFrame
+                    nav={{
+                      icon: "tornado",
+                      title: "Service Day by Month",
+                    }}
+                  >
                     s
                   </WidgetFrame>
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <TestBlock>2</TestBlock>
+                  <ActivityProgressCard data={activityProgressCardData} />
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <TestBlock>3</TestBlock>
+                  <ActivityProgressCard data={activityProgressCardData} />
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <TestBlock>4</TestBlock>
+                  <ActivityProgressCard data={activityProgressCardData} />
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <TestBlock>5</TestBlock>
+                  <ActivityProgressCard data={activityProgressCardData} />
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <TestBlock>6</TestBlock>
+                  <ActivityProgressCard data={activityProgressCardData} />
                 </BentoItem>
                 <BentoItem res={[[Infinity, 2, 1]]}>
-                  <TestBlock>7</TestBlock>
+                  <ActivityProgressCard data={activityProgressCardData} />
                 </BentoItem>
               </BentoGrid>
             </DocSection>
