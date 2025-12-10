@@ -1,51 +1,47 @@
-import type { PieChartDataItem, ChartDataPoint, SeriesConfig, ProgressBarData, CategoryData } from "../../../../components";
+import type { ChartDataPoint, SeriesConfig, ProgressBarData, CategoryData } from "../../../../components";
 import type { KpiData } from "../../../../components/widgets/widet-components/kpi-ring-chart";
+import type { ActivityDistributionItem } from "../play-components/activity-distribution-pie-chart";
 
-export const pieChartData: PieChartDataItem[] = [
+export const pieChartData: ActivityDistributionItem[] = [
   {
     id: "1",
     name: "Train",
     icon: "fitness_center",
-    valueArray: [
-      [{ value: 50, unit: "%", color: "#FF5252" }],
-      [{ value: 78, unit: "pax", color: "#FF5252" }],
-    ],
+    count: 78,
+    unit: "pax",
+    color: "#FF5252",
   },
   {
     id: "2",
     name: "Tennis",
     icon: "sports_tennis",
-    valueArray: [
-      [{ value: 12, unit: "%", color: "#FF8A80" }],
-      [{ value: 78, unit: "pax", color: "#FF8A80" }],
-    ],
+    count: 78,
+    unit: "pax",
+    color: "#FF8A80",
   },
   {
     id: "3",
     name: "Yoga",
     icon: "self_improvement",
-    valueArray: [
-      [{ value: 13, unit: "%", color: "#FFCDD2" }],
-      [{ value: 26, unit: "pax", color: "#FFCDD2" }],
-    ],
+    count: 26,
+    unit: "pax",
+    color: "#FFCDD2",
   },
   {
     id: "4",
     name: "Ski",
     icon: "downhill_skiing",
-    valueArray: [
-      [{ value: 11, unit: "%", color: "#90CAF9" }],
-      [{ value: 13, unit: "pax", color: "#90CAF9" }],
-    ],
+    count: 13,
+    unit: "pax",
+    color: "#90CAF9",
   },
   {
     id: "5",
     name: "Other",
     icon: "search",
-    valueArray: [
-      [{ value: 14, unit: "%", color: "#E0E0E0" }],
-      [{ value: 21, unit: "pax", color: "#E0E0E0" }],
-    ],
+    count: 21,
+    unit: "pax",
+    color: "#E0E0E0",
   },
 ];
 

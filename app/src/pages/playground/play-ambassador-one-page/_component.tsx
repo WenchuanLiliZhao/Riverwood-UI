@@ -7,7 +7,6 @@ import {
   KpiRingChart,
   Layout,
   NavTitle,
-  PieChart,
   TestBlock,
   TextHr,
   TrendChart,
@@ -23,7 +22,7 @@ import {
 } from "./data-just-for-1-time-test/some";
 import { location } from "./data-just-for-1-time-test/location";
 import { allYears } from "./data-just-for-1-time-test/year";
-import { TextMetric } from "./play-components";
+import { TextMetric, ActivityDistributionPieChart } from "./play-components";
 import { EngagementOverviewMetric } from "./play-components/engagement-overview-metric";
 import { LocationSelector, YearSelector } from "./play-components/universal-selectors";
 
@@ -93,7 +92,7 @@ export const PageContent = () => {
                           title: "Activity Distribution",
                         }}
                       >
-                        <PieChart
+                        <ActivityDistributionPieChart
                           data={pieChartData}
                           alwaysShowLabels={true}
                           showLegendValue={true}
@@ -112,7 +111,7 @@ export const PageContent = () => {
                           title: "Activity Distribution",
                         }}
                       >
-                        <PieChart
+                        <ActivityDistributionPieChart
                           data={pieChartData}
                           alwaysShowLabels={true}
                           showLegendValue={true}
@@ -131,7 +130,7 @@ export const PageContent = () => {
                           title: "Activity Distribution",
                         }}
                       >
-                        <PieChart
+                        <ActivityDistributionPieChart
                           data={pieChartData}
                           alwaysShowLabels={true}
                           showLegendValue={true}
