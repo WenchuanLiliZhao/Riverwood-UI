@@ -66,6 +66,7 @@ export interface BaseTrendChartProps {
   xAxisPadding?: ChartPadding;
   enableSelection?: boolean; // Enable node selection feature
   defaultSelectedNode?: DefaultSelectedNode; // Required when enableSelection is true
+  onNodeSelect?: (label: string, seriesKey: string) => void; // Callback when a node is selected
 }
 
 // --- Components ---
@@ -117,6 +118,7 @@ export const BaseTrendChart = ({
   xAxisPadding,
   enableSelection = false,
   defaultSelectedNode,
+  onNodeSelect,
 }: BaseTrendChartProps) => {
   // Validate that defaultSelectedNode is provided when enableSelection is true
   if (enableSelection && !defaultSelectedNode) {
@@ -145,7 +147,7 @@ export const BaseTrendChart = ({
     getNodeOpacity,
     getLineOpacity,
     isSeriesSelectable,
-  } = useNodeSelection(data, enableSelection, series, defaultSelectedNode);
+  } = useNodeSelection(data, enableSelection, series, defaultSelectedNode, onNodeSelect);
 
   // Default colors if not provided
   const defaultColors = ["#2563eb", "#9333ea", "#059669", "#d97706", "#dc2626"];

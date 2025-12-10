@@ -9,7 +9,8 @@ export const useNodeSelection = (
   data: ChartDataPoint[],
   enableSelection: boolean,
   series: SeriesConfig[],
-  defaultSelectedNode?: DefaultSelectedNode
+  defaultSelectedNode?: DefaultSelectedNode,
+  onNodeSelect?: (label: string, seriesKey: string) => void
 ) => {
   // Initialize selected node from defaultSelectedNode if provided
   const initialSelectedNode = enableSelection && defaultSelectedNode
@@ -51,6 +52,10 @@ export const useNodeSelection = (
       if (prev === nodeId) {
         return prev;
       }
+      
+      // Call the callback before updating state
+      onNodeSelect?.(label, seriesKey);
+      
       // Otherwise, select the new node (replacing any previous selection)
       return nodeId;
     });

@@ -1,22 +1,40 @@
 import { ProgressBar } from "../../../../../components";
-import { progressBarData } from "../../data-just-for-1-time-test/some";
+import type { MetricData } from "../../types/metrics";
 import styles from "./_styles.module.scss"
 
-export const EngagementOverviewMetric = () => {
+export interface EngagementOverviewMetricProps {
+  data: MetricData;
+}
+
+export const EngagementOverviewMetric = ({ data }: EngagementOverviewMetricProps) => {
+  const { percentage, current, total, unit, trendData, description } = data;
+
   return (
     <div className={styles["engagement-overview-metric"]}>
       <div className={styles["header"]}>
-        <div className={styles["title"]}>44%</div>
-        <div className={styles["value"]}>288/660 days</div>
+        <div className={styles["title"]}>{percentage}%</div>
+        <div className={styles["value"]}>
+          {current}/{total} {unit}
+        </div>
       </div>
 
       <div className={styles["progress-bar-container"]}>
         <div className={styles["content"]}>
-          <ProgressBar progressData={progressBarData} designProperties={{ height: 4 }} />
+          {trendData.map((segmentData, index) => (
+            <ProgressBar 
+              key={index}
+              progressData={{
+                label: segmentData.label,
+                value: segmentData.value,
+                total: segmentData.total,
+                unit: segmentData.unit,
+                color: segmentData.color,
+              }}
+              designProperties={{ height: 4 }}
+            />
+          ))}
 
-          <ProgressBar progressData={progressBarData} designProperties={{ height: 4 }} />
-
-          <p className={styles["description"]}>A measure showing how much of the expected service commitment has been fulfilled so far</p>
+          <p className={styles["description"]}>{description}</p>
         </div>
       </div>
     </div>

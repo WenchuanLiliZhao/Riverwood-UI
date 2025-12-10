@@ -23,7 +23,7 @@ export const activityProgressCardDataSourceObject: Record<string, ActivityProgre
     items: [
       {
         label: "R&D",
-        segments: [64]
+        segments: [164]
       },
       {
         label: "Referred",

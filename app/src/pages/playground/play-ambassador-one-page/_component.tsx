@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Avatar,
   BentoGrid,
@@ -33,8 +34,22 @@ import {
   YearSelector,
 } from "./play-components/universal-selectors";
 import { activityProgressCardDataObject, summaryActivityProgressCardData, activityProgressCardDataSourceObject } from "./data-just-for-1-time-test/service-day";
+import { metricsDataByMonth } from "./data-just-for-1-time-test/metrics";
 
 export const PageContent = () => {
+  // State management for selected month
+  const [selectedMonth, setSelectedMonth] = useState<string>("APR");
+
+  // Handler for TrendChart node selection
+  const handleNodeSelect = (label: string, seriesKey: string) => {
+    // Only update if selecting from the "used" series
+    if (seriesKey === 'used') {
+      setSelectedMonth(label);
+    }
+  };
+
+  // Get metrics for currently selected month (with fallback to APR)
+  const currentMetrics = metricsDataByMonth[selectedMonth] || metricsDataByMonth["APR"];
   return (
     <Layout
       contentDesign={{ widthMode: "large" }}
@@ -49,13 +64,14 @@ export const PageContent = () => {
             <NavTitle title="Ambassador One Page" />,
           ],
           last: [
-            <LocationSelector locationData={location} />,
+            <LocationSelector locationData={location} />,            
             <YearSelector yearData={allYears} />,
           ],
         },
-        footer: <div>Footer</div>,
+        footer: <div style={{ height: "100px" }}></div>,
         content: (
           <div className={styles["content-container"]}>
+            <div style={{ height: "8px" }}></div>
             <DocSection
               label="Apr 1, 2025 – Mar 31, 2026"
               title="Roster Overview"
@@ -217,6 +233,7 @@ export const PageContent = () => {
                       xAxisPadding={{ left: 40, right: 40 }}
                       enableSelection={true}
                       defaultSelectedNode={{ label: "APR", seriesKey: "used" }}
+                      onNodeSelect={handleNodeSelect}
                     />
                   </WidgetFrame>
                 </BentoItem>
@@ -233,7 +250,7 @@ export const PageContent = () => {
                       title: "Total Service Days Used",
                     }}
                   >
-                    <EngagementOverviewMetric />
+                    <EngagementOverviewMetric data={currentMetrics.serviceDays} />
                   </WidgetFrame>
                 </BentoItem>
                 <BentoItem
@@ -249,7 +266,7 @@ export const PageContent = () => {
                       title: "% of Ambassadors Engaged",
                     }}
                   >
-                    <EngagementOverviewMetric />
+                    <EngagementOverviewMetric data={currentMetrics.ambassadorsEngaged} />
                   </WidgetFrame>
                 </BentoItem>
               </BentoGrid>

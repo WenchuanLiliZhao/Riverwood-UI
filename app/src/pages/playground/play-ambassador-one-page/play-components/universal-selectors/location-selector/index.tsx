@@ -75,7 +75,7 @@ export const LocationSelector: React.FC<LocationSelectorProps> = ({
           <Button
             key="region"
             content={{
-              icon: "public",
+              icon: "map",
               text: selection.region ? selectedRegion?.name : locationSelectorWording.region,
               decoIcon: "arrow_drop_down",
             }}
@@ -103,7 +103,7 @@ export const LocationSelector: React.FC<LocationSelectorProps> = ({
           <Button
             key="area"
             content={{
-              icon: "map",
+              icon: "forest",
               text: selection.area ? selectedArea?.name : locationSelectorWording.area,
               decoIcon: !selection.region || areas.length === 0 ? undefined : "arrow_drop_down",
             }}
