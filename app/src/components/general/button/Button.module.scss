@@ -23,6 +23,10 @@
 
   &:disabled {
     cursor: not-allowed;
+    
+    .content {
+      opacity: 0.4;
+    }
   }
 
   .content {

@@ -1,5 +1,5 @@
 import { ProgressBar } from "../../../../../components";
-import { progressBarData } from "../../data/data-just-for-1-time-test";
+import { progressBarData } from "../../data-just-for-1-time-test/some";
 import styles from "./_styles.module.scss"
 
 export const EngagementOverviewMetric = () => {

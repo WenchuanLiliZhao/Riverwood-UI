@@ -2,7 +2,6 @@ import {
   Avatar,
   BentoGrid,
   BentoItem,
-  Button,
   ChinaHeatMap,
   DocSection,
   KpiRingChart,
@@ -21,9 +20,12 @@ import {
   trendChartData,
   trendChartSeriesConfig,
   chinaHeatMapCategories,
-} from "./data/data-just-for-1-time-test";
+} from "./data-just-for-1-time-test/some";
+import { location } from "./data-just-for-1-time-test/location";
+import { allYears } from "./data-just-for-1-time-test/year";
 import { TextMetric } from "./play-components";
 import { EngagementOverviewMetric } from "./play-components/engagement-overview-metric";
+import { LocationSelector, YearSelector } from "./play-components/universal-selectors";
 
 export const PageContent = () => {
   return (
@@ -40,30 +42,8 @@ export const PageContent = () => {
             <NavTitle title="Ambassador One Page" />,
           ],
           last: [
-            <Button
-              content={{
-                icon: "map",
-                text: "Region & City",
-                decoIcon: "arrow_drop_down",
-              }}
-              design={{
-                variant: "fill-inverse",
-                size: "medium",
-                semantic: "brand",
-              }}
-            />,
-            <Button
-              content={{
-                icon: "date_range",
-                text: "2025",
-                decoIcon: "arrow_drop_down",
-              }}
-              design={{
-                variant: "outlined",
-                size: "medium",
-                semantic: "primary",
-              }}
-            />,
+            <LocationSelector locationData={location} />,
+            <YearSelector yearData={allYears} />,
           ],
         },
         footer: <div>Footer</div>,
