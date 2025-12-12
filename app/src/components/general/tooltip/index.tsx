@@ -123,7 +123,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
     | "bottom-center"
     | "bottom-right"
   >("top-center");
-  const triggerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLSpanElement>(null);
 
   const shouldShowTooltip = testing || isHovered;
 
@@ -153,29 +153,29 @@ export const Tooltip: React.FC<TooltipProps> = ({
   const finalPosition = position || autoPosition;
 
   return (
-    <div className={styles["tooltip-container"]}>
-      <div
+    <span className={styles["tooltip-container"]}>
+      <span
         ref={triggerRef}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {children}
-      </div>
+      </span>
       {shouldShowTooltip && (
-        <div
+        <span
           className={`${styles["tooltip"]} ${
             styles[`position-${finalPosition}`]
           }`}
         >
-          <div className={styles["arrow-container"]}>
+          <span className={styles["arrow-container"]}>
             <TooltipArrow />
-          </div>
-          <div className={styles["tooltip-content"]}>
-            {header && <div className={styles["tooltip-header"]}>{header}</div>}
-            {typeof content === "string" ? <p className={styles["tooltip-content-text"]}>{content}</p> : content}
-          </div>
-        </div>
+          </span>
+          <span className={styles["tooltip-content"]}>
+            {header && <span className={styles["tooltip-header"]}>{header}</span>}
+            {typeof content === "string" ? <span className={styles["tooltip-content-text"]}>{content}</span> : content}
+          </span>
+        </span>
       )}
-    </div>
+    </span>
   );
 };

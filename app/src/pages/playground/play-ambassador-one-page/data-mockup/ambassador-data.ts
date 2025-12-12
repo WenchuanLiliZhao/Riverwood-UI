@@ -5,7 +5,7 @@ import type { MetricsDataByMonth } from '../types/metrics';
 import type { 
   ActivityProgressCardData, 
   ProgressItem 
-} from "../data-just-for-1-time-test/activity-progress-card";
+} from "../types/activity-progress";
 
 /**
  * Main Ambassador Mockup Data Structure

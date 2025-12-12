@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ProgressBar } from "../../../../../components";
-import type { ActivityProgressCardData } from "../../data-just-for-1-time-test/activity-progress-card";
+import type { ActivityProgressCardData } from "../../types/activity-progress";
 import type { DistributionBarData } from "../../../../../components";
 import styles from "./_styles.module.scss";
 

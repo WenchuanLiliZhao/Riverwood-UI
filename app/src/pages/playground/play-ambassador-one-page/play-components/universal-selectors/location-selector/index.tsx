@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ButtonGroup, Button } from "../../../../../../components";
 import { COMPONENT_VARIANTS, COMPONENT_SIZES, COMPONENT_SEMANTICS } from "../../../../../../components/shared/tokens";
-import type { LocationData } from "../../../data-just-for-1-time-test/location";
+import type { LocationData } from "../../../types/location";
 import styles from "./_styles.module.scss";
 import { locationSelectorWording } from "../wording";
 

@@ -33,7 +33,7 @@ import {
 } from "../play-components/universal-selectors";
 import { AmbassadorMockupData, formatTimeInterval, location, allYears } from "./index";
 import type { KpiData } from "../../../../components/widgets/widet-components/kpi-ring-chart";
-import type { ActivityProgressCardData } from "../data-just-for-1-time-test/activity-progress-card";
+import type { ActivityProgressCardData } from "../types/activity-progress";
 import type { ActivityDistributionItem } from "../play-components/activity-distribution-pie-chart";
 import type { CategoryData } from "../../../../components";
 import type { MetricsDataByMonth } from "../types/metrics";
