@@ -165,7 +165,10 @@ const CHINA_GEOJSON_URL =
 const iconMapping: Record<string, string> = {
   "🏃": "directions_run",
   "💪": "fitness_center",
-  "⛳": "sports_golf",
+  "🧘": "self_improvement",
+  "🎾": "sports_tennis",
+  "⛳": "golf_course",
+  "🤸": "search",
   "Σ": "calculate",
   "♀": "female",
   "♂": "male",

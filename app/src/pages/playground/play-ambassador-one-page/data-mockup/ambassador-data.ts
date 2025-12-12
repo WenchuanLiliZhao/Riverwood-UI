@@ -15,6 +15,7 @@ export const AmbassadorMockupData = {
   "roster-overview": {
     timeInterval: ["2025-4-1", "2026-3-31"] as [string, string],
     widgets: [
+      // Ambassador Total
       {
         title: "Ambassador Total",
         icon: "accessibility_new",
@@ -23,6 +24,8 @@ export const AmbassadorMockupData = {
           unit: "pax"
         }
       },
+
+      // By Athletic Discipline
       {
         title: "By Athletic Discipline",
         icon: "pie_chart",
@@ -77,6 +80,8 @@ export const AmbassadorMockupData = {
           },
         ] as ActivityDistributionItem[]
       },
+
+      // Geographic Breakdown
       {
         title: "Geographic Breakdown",
         icon: "pie_chart",
@@ -107,6 +112,8 @@ export const AmbassadorMockupData = {
           },
         ] as ActivityDistributionItem[]
       },
+
+      // By Tenure
       {
         title: "By Tenure",
         icon: "pie_chart",
@@ -129,6 +136,8 @@ export const AmbassadorMockupData = {
           },
         ] as ActivityDistributionItem[]
       },
+
+      // Sports Activities Distribution
       {
         title: "Sports Activities Distribution",
         icon: "map",
@@ -138,81 +147,180 @@ export const AmbassadorMockupData = {
               icon: "Σ",
               term: "Sum",
               locations: [
-                { name: "East", coordinates: [31.2304, 121.4737] as [number, number], radius: 92 },
-                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 48 },
-                { name: "North East", coordinates: [41.8057, 123.4328] as [number, number], radius: 25 },
+                // East Region
+                { name: "Shanghai", coordinates: [31.2304, 121.4737] as [number, number], radius: 35 },
+                { name: "Zhejiang", coordinates: [30.2741, 120.1551] as [number, number], radius: 20 },
+                { name: "Jiangsu", coordinates: [32.0603, 118.7969] as [number, number], radius: 18 },
+                { name: "Shenzhen", coordinates: [22.5431, 114.0579] as [number, number], radius: 19 },
+                // North East Region
+                { name: "Beijing", coordinates: [39.9042, 116.4074] as [number, number], radius: 15 },
+                { name: "North China", coordinates: [36.0671, 120.3826] as [number, number], radius: 5 },
+                { name: "Northeast China", coordinates: [41.8057, 123.4328] as [number, number], radius: 5 },
+                // Central Region
+                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 16 },
+                { name: "South China", coordinates: [23.1291, 113.2644] as [number, number], radius: 14 },
+                { name: "Southwest China", coordinates: [29.4316, 106.9123] as [number, number], radius: 10 },
+                { name: "Northwest China", coordinates: [30.5728, 104.0668] as [number, number], radius: 8 },
               ],
             },
             {
               icon: "🏃",
               term: "Run",
               locations: [
-                { name: "East", coordinates: [31.2304, 121.4737] as [number, number], radius: 12 },
-                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 7 },
-                { name: "North East", coordinates: [41.8057, 123.4328] as [number, number], radius: 2 },
+                // East Region
+                { name: "Shanghai", coordinates: [31.2304, 121.4737] as [number, number], radius: 5 },
+                { name: "Zhejiang", coordinates: [30.2741, 120.1551] as [number, number], radius: 3 },
+                { name: "Jiangsu", coordinates: [32.0603, 118.7969] as [number, number], radius: 2 },
+                { name: "Shenzhen", coordinates: [22.5431, 114.0579] as [number, number], radius: 2 },
+                // North East Region
+                { name: "Beijing", coordinates: [39.9042, 116.4074] as [number, number], radius: 1 },
+                { name: "North China", coordinates: [36.0671, 120.3826] as [number, number], radius: 1 },
+                { name: "Northeast China", coordinates: [41.8057, 123.4328] as [number, number], radius: 0 },
+                // Central Region
+                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 3 },
+                { name: "South China", coordinates: [23.1291, 113.2644] as [number, number], radius: 2 },
+                { name: "Southwest China", coordinates: [29.4316, 106.9123] as [number, number], radius: 1 },
+                { name: "Northwest China", coordinates: [30.5728, 104.0668] as [number, number], radius: 1 },
               ],
             },
             {
               icon: "💪",
               term: "Train",
               locations: [
-                { name: "East", coordinates: [31.2304, 121.4737] as [number, number], radius: 45 },
-                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 23 },
-                { name: "North East", coordinates: [41.8057, 123.4328] as [number, number], radius: 10 },
+                // East Region
+                { name: "Shanghai", coordinates: [31.2304, 121.4737] as [number, number], radius: 18 },
+                { name: "Zhejiang", coordinates: [30.2741, 120.1551] as [number, number], radius: 10 },
+                { name: "Jiangsu", coordinates: [32.0603, 118.7969] as [number, number], radius: 9 },
+                { name: "Shenzhen", coordinates: [22.5431, 114.0579] as [number, number], radius: 8 },
+                // North East Region
+                { name: "Beijing", coordinates: [39.9042, 116.4074] as [number, number], radius: 6 },
+                { name: "North China", coordinates: [36.0671, 120.3826] as [number, number], radius: 2 },
+                { name: "Northeast China", coordinates: [41.8057, 123.4328] as [number, number], radius: 2 },
+                // Central Region
+                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 8 },
+                { name: "South China", coordinates: [23.1291, 113.2644] as [number, number], radius: 7 },
+                { name: "Southwest China", coordinates: [29.4316, 106.9123] as [number, number], radius: 5 },
+                { name: "Northwest China", coordinates: [30.5728, 104.0668] as [number, number], radius: 3 },
               ],
             },
             {
               icon: "🧘",
               term: "Yoga",
               locations: [
-                { name: "East", coordinates: [31.2304, 121.4737] as [number, number], radius: 30 },
-                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 21 },
-                { name: "North East", coordinates: [41.8057, 123.4328] as [number, number], radius: 10 },
+                // East Region
+                { name: "Shanghai", coordinates: [31.2304, 121.4737] as [number, number], radius: 12 },
+                { name: "Zhejiang", coordinates: [30.2741, 120.1551] as [number, number], radius: 8 },
+                { name: "Jiangsu", coordinates: [32.0603, 118.7969] as [number, number], radius: 6 },
+                { name: "Shenzhen", coordinates: [22.5431, 114.0579] as [number, number], radius: 4 },
+                // North East Region
+                { name: "Beijing", coordinates: [39.9042, 116.4074] as [number, number], radius: 5 },
+                { name: "North China", coordinates: [36.0671, 120.3826] as [number, number], radius: 3 },
+                { name: "Northeast China", coordinates: [41.8057, 123.4328] as [number, number], radius: 2 },
+                // Central Region
+                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 7 },
+                { name: "South China", coordinates: [23.1291, 113.2644] as [number, number], radius: 6 },
+                { name: "Southwest China", coordinates: [29.4316, 106.9123] as [number, number], radius: 5 },
+                { name: "Northwest China", coordinates: [30.5728, 104.0668] as [number, number], radius: 3 },
               ],
             },
             {
               icon: "🎾",
               term: "Tennis",
               locations: [
-                { name: "East", coordinates: [31.2304, 121.4737] as [number, number], radius: 1 },
+                // East Region
+                { name: "Shanghai", coordinates: [31.2304, 121.4737] as [number, number], radius: 1 },
+                { name: "Zhejiang", coordinates: [30.2741, 120.1551] as [number, number], radius: 0 },
+                { name: "Jiangsu", coordinates: [32.0603, 118.7969] as [number, number], radius: 0 },
+                { name: "Shenzhen", coordinates: [22.5431, 114.0579] as [number, number], radius: 0 },
+                // North East Region
+                { name: "Beijing", coordinates: [39.9042, 116.4074] as [number, number], radius: 0 },
+                { name: "North China", coordinates: [36.0671, 120.3826] as [number, number], radius: 0 },
+                { name: "Northeast China", coordinates: [41.8057, 123.4328] as [number, number], radius: 0 },
+                // Central Region
                 { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 1 },
-                { name: "North East", coordinates: [41.8057, 123.4328] as [number, number], radius: 0 },
+                { name: "South China", coordinates: [23.1291, 113.2644] as [number, number], radius: 0 },
+                { name: "Southwest China", coordinates: [29.4316, 106.9123] as [number, number], radius: 0 },
+                { name: "Northwest China", coordinates: [30.5728, 104.0668] as [number, number], radius: 0 },
               ],
             },
             {
               icon: "⛳",
               term: "Golf",
               locations: [
-                { name: "East", coordinates: [31.2304, 121.4737] as [number, number], radius: 0 },
+                // East Region
+                { name: "Shanghai", coordinates: [31.2304, 121.4737] as [number, number], radius: 0 },
+                { name: "Zhejiang", coordinates: [30.2741, 120.1551] as [number, number], radius: 0 },
+                { name: "Jiangsu", coordinates: [32.0603, 118.7969] as [number, number], radius: 0 },
+                { name: "Shenzhen", coordinates: [22.5431, 114.0579] as [number, number], radius: 0 },
+                // North East Region
+                { name: "Beijing", coordinates: [39.9042, 116.4074] as [number, number], radius: 0 },
+                { name: "North China", coordinates: [36.0671, 120.3826] as [number, number], radius: 0 },
+                { name: "Northeast China", coordinates: [41.8057, 123.4328] as [number, number], radius: 0 },
+                // Central Region
                 { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 0 },
-                { name: "North East", coordinates: [41.8057, 123.4328] as [number, number], radius: 0 },
+                { name: "South China", coordinates: [23.1291, 113.2644] as [number, number], radius: 0 },
+                { name: "Southwest China", coordinates: [29.4316, 106.9123] as [number, number], radius: 0 },
+                { name: "Northwest China", coordinates: [30.5728, 104.0668] as [number, number], radius: 0 },
               ],
             },
             {
               icon: "🤸",
               term: "Other",
               locations: [
-                { name: "East", coordinates: [31.2304, 121.4737] as [number, number], radius: 2 },
+                // East Region
+                { name: "Shanghai", coordinates: [31.2304, 121.4737] as [number, number], radius: 1 },
+                { name: "Zhejiang", coordinates: [30.2741, 120.1551] as [number, number], radius: 0 },
+                { name: "Jiangsu", coordinates: [32.0603, 118.7969] as [number, number], radius: 0 },
+                { name: "Shenzhen", coordinates: [22.5431, 114.0579] as [number, number], radius: 1 },
+                // North East Region
+                { name: "Beijing", coordinates: [39.9042, 116.4074] as [number, number], radius: 0 },
+                { name: "North China", coordinates: [36.0671, 120.3826] as [number, number], radius: 0 },
+                { name: "Northeast China", coordinates: [41.8057, 123.4328] as [number, number], radius: 0 },
+                // Central Region
                 { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 1 },
-                { name: "North East", coordinates: [41.8057, 123.4328] as [number, number], radius: 0 },
+                { name: "South China", coordinates: [23.1291, 113.2644] as [number, number], radius: 0 },
+                { name: "Southwest China", coordinates: [29.4316, 106.9123] as [number, number], radius: 0 },
+                { name: "Northwest China", coordinates: [30.5728, 104.0668] as [number, number], radius: 0 },
               ],
             },
             {
               icon: "♀",
               term: "Female",
               locations: [
-                { name: "East", coordinates: [31.2304, 121.4737] as [number, number], radius: 52 },
-                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 27 },
-                { name: "North East", coordinates: [41.8057, 123.4328] as [number, number], radius: 14 },
+                // East Region
+                { name: "Shanghai", coordinates: [31.2304, 121.4737] as [number, number], radius: 20 },
+                { name: "Zhejiang", coordinates: [30.2741, 120.1551] as [number, number], radius: 12 },
+                { name: "Jiangsu", coordinates: [32.0603, 118.7969] as [number, number], radius: 10 },
+                { name: "Shenzhen", coordinates: [22.5431, 114.0579] as [number, number], radius: 10 },
+                // North East Region
+                { name: "Beijing", coordinates: [39.9042, 116.4074] as [number, number], radius: 8 },
+                { name: "North China", coordinates: [36.0671, 120.3826] as [number, number], radius: 3 },
+                { name: "Northeast China", coordinates: [41.8057, 123.4328] as [number, number], radius: 3 },
+                // Central Region
+                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 9 },
+                { name: "South China", coordinates: [23.1291, 113.2644] as [number, number], radius: 8 },
+                { name: "Southwest China", coordinates: [29.4316, 106.9123] as [number, number], radius: 6 },
+                { name: "Northwest China", coordinates: [30.5728, 104.0668] as [number, number], radius: 4 },
               ],
             },
             {
               icon: "♂",
               term: "Male",
               locations: [
-                { name: "East", coordinates: [31.2304, 121.4737] as [number, number], radius: 40 },
-                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 21 },
-                { name: "North East", coordinates: [41.8057, 123.4328] as [number, number], radius: 11 },
+                // East Region
+                { name: "Shanghai", coordinates: [31.2304, 121.4737] as [number, number], radius: 15 },
+                { name: "Zhejiang", coordinates: [30.2741, 120.1551] as [number, number], radius: 8 },
+                { name: "Jiangsu", coordinates: [32.0603, 118.7969] as [number, number], radius: 8 },
+                { name: "Shenzhen", coordinates: [22.5431, 114.0579] as [number, number], radius: 9 },
+                // North East Region
+                { name: "Beijing", coordinates: [39.9042, 116.4074] as [number, number], radius: 7 },
+                { name: "North China", coordinates: [36.0671, 120.3826] as [number, number], radius: 2 },
+                { name: "Northeast China", coordinates: [41.8057, 123.4328] as [number, number], radius: 2 },
+                // Central Region
+                { name: "Central", coordinates: [30.5928, 114.3055] as [number, number], radius: 7 },
+                { name: "South China", coordinates: [23.1291, 113.2644] as [number, number], radius: 6 },
+                { name: "Southwest China", coordinates: [29.4316, 106.9123] as [number, number], radius: 4 },
+                { name: "Northwest China", coordinates: [30.5728, 104.0668] as [number, number], radius: 4 },
               ],
             },
           ] as CategoryData[],
@@ -229,6 +337,7 @@ export const AmbassadorMockupData = {
   "engagement-overview": {
     timeInterval: ["2025-4-1", "2026-3-31"] as [string, string],
     widgets: [
+      // Resource Planning
       {
         title: "Resource Planning",
         icon: "bar_chart",
@@ -269,6 +378,8 @@ export const AmbassadorMockupData = {
           ] as SeriesConfig[]
         }
       },
+
+      // Total Service Days Used
       {
         title: "Total Service Days Used",
         icon: "bar_chart",
@@ -577,6 +688,8 @@ export const AmbassadorMockupData = {
           } as MetricsDataByMonth
         }
       },
+
+      // Engagement by Athletic Discipline
       {
         title: "Engagement by Athletic Discipline",
         icon: "sports",
@@ -588,6 +701,7 @@ export const AmbassadorMockupData = {
               {
                 id: "service-days",
                 label: "Service Days Used",
+                percentage: 41,
                 current: 101,
                 total: 244,
                 unit: "days",
@@ -596,6 +710,7 @@ export const AmbassadorMockupData = {
               {
                 id: "ambassadors",
                 label: "Ambassadors Engaged",
+                percentage: 75,
                 current: 46,
                 total: 61,
                 unit: "pax",
@@ -610,6 +725,7 @@ export const AmbassadorMockupData = {
               {
                 id: "service-days",
                 label: "Service Days Used",
+                percentage: 35,
                 current: 131,
                 total: 372,
                 unit: "days",
@@ -618,6 +734,7 @@ export const AmbassadorMockupData = {
               {
                 id: "ambassadors",
                 label: "Ambassadors Engaged",
+                percentage: 74,
                 current: 58,
                 total: 78,
                 unit: "pax",
@@ -632,6 +749,7 @@ export const AmbassadorMockupData = {
               {
                 id: "service-days",
                 label: "Service Days Used",
+                percentage: 52,
                 current: 44,
                 total: 84,
                 unit: "days",
@@ -640,6 +758,7 @@ export const AmbassadorMockupData = {
               {
                 id: "ambassadors",
                 label: "Ambassadors Engaged",
+                percentage: 76,
                 current: 16,
                 total: 21,
                 unit: "pax",
@@ -654,6 +773,7 @@ export const AmbassadorMockupData = {
               {
                 id: "service-days",
                 label: "Service Days Used",
+                percentage: 50,
                 current: 4,
                 total: 8,
                 unit: "days",
@@ -662,6 +782,7 @@ export const AmbassadorMockupData = {
               {
                 id: "ambassadors",
                 label: "Ambassadors Engaged",
+                percentage: 100,
                 current: 2,
                 total: 2,
                 unit: "pax",
@@ -676,6 +797,7 @@ export const AmbassadorMockupData = {
               {
                 id: "service-days",
                 label: "Service Days Used",
+                percentage: 0,
                 current: 0,
                 total: 0,
                 unit: "days",
@@ -684,6 +806,7 @@ export const AmbassadorMockupData = {
               {
                 id: "ambassadors",
                 label: "Ambassadors Engaged",
+                percentage: 0,
                 current: 0,
                 total: 0,
                 unit: "pax",
@@ -698,6 +821,7 @@ export const AmbassadorMockupData = {
               {
                 id: "service-days",
                 label: "Service Days Used",
+                percentage: 8,
                 current: 1,
                 total: 12,
                 unit: "days",
@@ -706,6 +830,7 @@ export const AmbassadorMockupData = {
               {
                 id: "ambassadors",
                 label: "Ambassadors Engaged",
+                percentage: 33,
                 current: 1,
                 total: 3,
                 unit: "pax",
@@ -721,6 +846,7 @@ export const AmbassadorMockupData = {
   "pipeline-overview": {
     timeInterval: ["2025-4-1", "2026-3-31"] as [string, string],
     widgets: [
+      // Summary
       {
         title: "Summary",
         icon: "tornado",
@@ -762,6 +888,8 @@ export const AmbassadorMockupData = {
           ] as ProgressItem[]
         } as ActivityProgressCardData
       },
+
+      // Yoga
       {
         title: "Yoga",
         icon: "self_improvement",
@@ -803,6 +931,8 @@ export const AmbassadorMockupData = {
           ] as ProgressItem[]
         } as ActivityProgressCardData
       },
+
+      // Swimming
       {
         title: "Swimming",
         icon: "pool",
@@ -843,6 +973,8 @@ export const AmbassadorMockupData = {
           ] as ProgressItem[]
         } as ActivityProgressCardData
       },
+
+      // Running
       {
         title: "Running",
         icon: "directions_run",
@@ -883,6 +1015,8 @@ export const AmbassadorMockupData = {
           ] as ProgressItem[]
         } as ActivityProgressCardData
       },
+
+      // Cycling
       {
         title: "Cycling",
         icon: "directions_bike",
@@ -923,6 +1057,8 @@ export const AmbassadorMockupData = {
           ] as ProgressItem[]
         } as ActivityProgressCardData
       },
+
+      // Hiking
       {
         title: "Hiking",
         icon: "hiking",
@@ -963,6 +1099,8 @@ export const AmbassadorMockupData = {
           ] as ProgressItem[]
         } as ActivityProgressCardData
       },
+
+      // Gym Training
       {
         title: "Gym Training",
         icon: "fitness_center",

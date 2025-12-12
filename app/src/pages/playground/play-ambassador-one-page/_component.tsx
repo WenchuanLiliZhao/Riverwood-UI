@@ -9,19 +9,12 @@ import {
   Layout,
   NavTitle,
   TextHr,
+  Tooltip,
   TrendChart,
 } from "../../../components";
+import type { ChartDataPoint, SeriesConfig, CategoryData } from "../../../components";
 import { WidgetFrame } from "../../../components/widgets/widget-frame";
 import styles from "./_styles.module.scss";
-import {
-  pieChartData,
-  kpiRingChartData,
-  trendChartData,
-  trendChartSeriesConfig,
-  chinaHeatMapCategories,
-} from "./data-just-for-1-time-test/some";
-import { location } from "./data-just-for-1-time-test/location";
-import { allYears } from "./data-just-for-1-time-test/year";
 import {
   TextMetric,
   ActivityDistributionPieChart,
@@ -33,23 +26,72 @@ import {
   LocationSelector,
   YearSelector,
 } from "./play-components/universal-selectors";
-import { activityProgressCardDataObject, summaryActivityProgressCardData, activityProgressCardDataSourceObject } from "./data-just-for-1-time-test/service-day";
-import { metricsDataByMonth } from "./data-just-for-1-time-test/metrics";
+import { AmbassadorMockupData, formatTimeInterval, location, allYears } from "./data-mockup";
+import type { KpiData } from "../../../components/widgets/widet-components/kpi-ring-chart";
+import type { ActivityProgressCardData } from "./data-just-for-1-time-test/activity-progress-card";
+import type { ActivityDistributionItem } from "./play-components/activity-distribution-pie-chart";
+import type { MetricsDataByMonth } from "./types/metrics";
 
 export const PageContent = () => {
   // State management for selected month
   const [selectedMonth, setSelectedMonth] = useState<string>("APR");
 
+  // Extract data from mockup
+  const rosterOverview = AmbassadorMockupData["roster-overview"];
+  const engagementOverview = AmbassadorMockupData["engagement-overview"];
+  const pipelineOverview = AmbassadorMockupData["pipeline-overview"];
+
+  // Roster widgets with type assertions
+  const ambassadorTotalWidget = rosterOverview.widgets[0];
+  const ambassadorTotalData = ambassadorTotalWidget.data as { value: number; unit: string };
+  
+  const byAthleticDisciplineWidget = rosterOverview.widgets[1];
+  const byAthleticDisciplineData = byAthleticDisciplineWidget.data as ActivityDistributionItem[];
+  
+  const geographicBreakdownWidget = rosterOverview.widgets[2];
+  const geographicBreakdownData = geographicBreakdownWidget.data as ActivityDistributionItem[];
+  
+  const byTenureWidget = rosterOverview.widgets[3];
+  const byTenureData = byTenureWidget.data as ActivityDistributionItem[];
+  
+  const mapWidget = rosterOverview.widgets[4];
+  const mapData = mapWidget.data as {
+    categories: CategoryData[];
+    center: [number, number];
+    zoom: number;
+    designProperties: { radiusFactor: number };
+  };
+
+  // Engagement widgets with type assertions
+  const resourcePlanningWidget = engagementOverview.widgets[0];
+  const resourcePlanningData = resourcePlanningWidget.data as {
+    chartData: ChartDataPoint[];
+    series: SeriesConfig[];
+  };
+  
+  const serviceDaysWidget = engagementOverview.widgets[1];
+  const serviceDaysData = serviceDaysWidget.data as { byMonth: MetricsDataByMonth };
+  
+  const kpiRingChartsWidget = engagementOverview.widgets[2];
+  const kpiRingChartsData = kpiRingChartsWidget.data as KpiData[];
+
+  // Pipeline widgets
+  const summaryWidget = pipelineOverview.widgets[0];
+  const summaryData = summaryWidget.data as ActivityProgressCardData;
+  
+  const activityWidgets = pipelineOverview.widgets.slice(1);
+
   // Handler for TrendChart node selection
   const handleNodeSelect = (label: string, seriesKey: string) => {
-    // Only update if selecting from the "used" series
     if (seriesKey === 'used') {
       setSelectedMonth(label);
     }
   };
 
   // Get metrics for currently selected month (with fallback to APR)
-  const currentMetrics = metricsDataByMonth[selectedMonth] || metricsDataByMonth["APR"];
+  const metricsData = serviceDaysData.byMonth;
+  const currentMetrics = metricsData[selectedMonth] || metricsData["APR"];
+
   return (
     <Layout
       contentDesign={{ widthMode: "large" }}
@@ -73,7 +115,7 @@ export const PageContent = () => {
           <div className={styles["content-container"]}>
             <div style={{ height: "8px" }}></div>
             <DocSection
-              label="Apr 1, 2025 – Mar 31, 2026"
+              label={formatTimeInterval(rosterOverview.timeInterval)}
               title="Roster Overview"
               description={
                 <p>
@@ -101,11 +143,14 @@ export const PageContent = () => {
                     >
                       <WidgetFrame
                         nav={{
-                          icon: "accessibility_new",
-                          title: "Ambassador Total",
+                          icon: ambassadorTotalWidget.icon,
+                          title: ambassadorTotalWidget.title,
                         }}
                       >
-                        <TextMetric value={165} unit="pax" />
+                        <TextMetric 
+                          value={ambassadorTotalData.value} 
+                          unit={ambassadorTotalData.unit} 
+                        />
                       </WidgetFrame>
                     </BentoItem>
                     <BentoItem
@@ -116,12 +161,12 @@ export const PageContent = () => {
                     >
                       <WidgetFrame
                         nav={{
-                          icon: "pie_chart",
-                          title: "Activity Distribution",
+                          icon: byAthleticDisciplineWidget.icon,
+                          title: byAthleticDisciplineWidget.title,
                         }}
                       >
                         <ActivityDistributionPieChart
-                          data={pieChartData}
+                          data={byAthleticDisciplineData}
                           alwaysShowLabels={true}
                           showLegendValue={true}
                           showLegendUnit={false}
@@ -137,12 +182,12 @@ export const PageContent = () => {
                     >
                       <WidgetFrame
                         nav={{
-                          icon: "pie_chart",
-                          title: "Activity Distribution",
+                          icon: geographicBreakdownWidget.icon,
+                          title: geographicBreakdownWidget.title,
                         }}
                       >
                         <ActivityDistributionPieChart
-                          data={pieChartData}
+                          data={geographicBreakdownData}
                           alwaysShowLabels={true}
                           showLegendValue={true}
                           showLegendUnit={false}
@@ -158,12 +203,12 @@ export const PageContent = () => {
                     >
                       <WidgetFrame
                         nav={{
-                          icon: "pie_chart",
-                          title: "Activity Distribution",
+                          icon: byTenureWidget.icon,
+                          title: byTenureWidget.title,
                         }}
                       >
                         <ActivityDistributionPieChart
-                          data={pieChartData}
+                          data={byTenureData}
                           alwaysShowLabels={true}
                           showLegendValue={true}
                           showLegendUnit={false}
@@ -181,18 +226,13 @@ export const PageContent = () => {
                 >
                   <BentoGrid gap={"md"} rowHeight={[[Infinity, 640]]}>
                     <BentoItem res={[[Infinity, 12, 1]]}>
-                      <WidgetFrame
-                        nav={{ title: "Sports Activities Distribution" }}
-                      >
+                      <WidgetFrame nav={{ title: mapWidget.title }}>
                         <ChinaHeatMap
-                          // title="Sports Activities Distribution"
-                          categories={chinaHeatMapCategories}
-                          defaultCategoryIndex={1}
-                          center={[33.8, 114.1]}
-                          zoom={4.2}
-                          designProperties={{
-                            radiusFactor: 25000,
-                          }}
+                          categories={mapData.categories}
+                          defaultCategoryIndex={0}
+                          center={mapData.center}
+                          zoom={mapData.zoom}
+                          designProperties={mapData.designProperties}
                         />
                       </WidgetFrame>
                     </BentoItem>
@@ -202,11 +242,11 @@ export const PageContent = () => {
             </DocSection>
 
             <DocSection
-              label="Apr 1, 2025 – Mar 31, 2026"
+              label={formatTimeInterval(engagementOverview.timeInterval)}
               title="Engagement Overview"
               description={
                 <p>
-                  Each Ambassador shall serve a minimum of 4 service days per
+                  Each Ambassador shall serve a minimum of 4 <Tooltip content="Service Day is a super series shit that can tell you everything in the universe such as how quantum mechanics and the theory of relativity can be encompassed as a single consistent big ass theory."><span style={{color: "#FF4646", fontWeight: "bold"}}>service days</span></Tooltip> per
                   year, hence the total service days equals 4 × total Ambassador
                   count. For tracking consistency, engagements under 4 hours
                   count as a 0.5 day, while those 4 hours or more count as 1
@@ -223,13 +263,13 @@ export const PageContent = () => {
                 >
                   <WidgetFrame
                     nav={{
-                      icon: "bar_chart",
-                      title: "Resource Planning",
+                      icon: resourcePlanningWidget.icon,
+                      title: resourcePlanningWidget.title,
                     }}
                   >
                     <TrendChart
-                      data={trendChartData}
-                      series={trendChartSeriesConfig}
+                      data={resourcePlanningData.chartData}
+                      series={resourcePlanningData.series}
                       xAxisPadding={{ left: 40, right: 40 }}
                       enableSelection={true}
                       defaultSelectedNode={{ label: "APR", seriesKey: "used" }}
@@ -272,77 +312,21 @@ export const PageContent = () => {
               </BentoGrid>
               <TextHr>Engagement by Athletic Discipline</TextHr>
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 250]]}>
-                <BentoItem
-                  res={[
-                    [760, 12, 1],
-                    [1000, 6, 1],
-                    [Infinity, 4, 1],
-                  ]}
-                >
-                  <WidgetFrame>
-                    <KpiRingChart data={kpiRingChartData[0]} />
-                  </WidgetFrame>
-                </BentoItem>
-                <BentoItem
-                  res={[
-                    [760, 12, 1],
-                    [1000, 6, 1],
-                    [Infinity, 4, 1],
-                  ]}
-                >
-                  <WidgetFrame>
-                    <KpiRingChart data={kpiRingChartData[1]} />
-                  </WidgetFrame>
-                </BentoItem>
-                <BentoItem
-                  res={[
-                    [760, 12, 1],
-                    [1000, 6, 1],
-                    [Infinity, 4, 1],
-                  ]}
-                >
-                  <WidgetFrame>
-                    <KpiRingChart data={kpiRingChartData[2]} />
-                  </WidgetFrame>
-                </BentoItem>
-                <BentoItem
-                  res={[
-                    [760, 12, 1],
-                    [1000, 6, 1],
-                    [Infinity, 4, 1],
-                  ]}
-                >
-                  <WidgetFrame>
-                    <KpiRingChart data={kpiRingChartData[3]} />
-                  </WidgetFrame>
-                </BentoItem>
-                <BentoItem
-                  res={[
-                    [760, 12, 1],
-                    [1000, 6, 1],
-                    [Infinity, 4, 1],
-                  ]}
-                >
-                  <WidgetFrame>
-                    <KpiRingChart data={kpiRingChartData[4]} />
-                  </WidgetFrame>
-                </BentoItem>
-                <BentoItem
-                  res={[
-                    [760, 12, 1],
-                    [1000, 6, 1],
-                    [Infinity, 4, 1],
-                  ]}
-                >
-                  <WidgetFrame>
-                    <KpiRingChart data={kpiRingChartData[5]} />
-                  </WidgetFrame>
-                </BentoItem>
+                {kpiRingChartsData.map((kpiData: KpiData, index: number) => (
+                  <BentoItem
+                    key={index}
+                    res={[[760, 12, 1], [1000, 6, 1], [Infinity, 4, 1]]}
+                  >
+                    <WidgetFrame>
+                      <KpiRingChart data={kpiData} />
+                    </WidgetFrame>
+                  </BentoItem>
+                ))}
               </BentoGrid>
             </DocSection>
 
             <DocSection
-              label="Apr 1, 2025 – Mar 31, 2026"
+              label={formatTimeInterval(pipelineOverview.timeInterval)}
               title="Pipeline Overview"
               description={
                 <p>
@@ -355,76 +339,31 @@ export const PageContent = () => {
               }
             >
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 312]]}>
+                {/* Summary */}
                 <BentoItem res={[[Infinity, 6, 2]]}>
                   <WidgetFrame
                     nav={{
-                      icon: "tornado",
-                      title: "Summary",
+                      icon: summaryWidget.icon,
+                      title: summaryWidget.title,
                     }}
                   >
-                    <SummaryActivityProgressCard data={summaryActivityProgressCardData} />
+                    <SummaryActivityProgressCard data={summaryData} />
                   </WidgetFrame>
                 </BentoItem>
-                <BentoItem res={[[Infinity, 2, 1]]}>
-                  <WidgetFrame
-                    nav={{
-                      icon: activityProgressCardDataSourceObject.activityProgressCardData.icon as string,
-                      title: activityProgressCardDataSourceObject.activityProgressCardData.title,
-                    }}
-                  >
-                    <ActivityProgressCard data={activityProgressCardDataObject.activityProgressCardData} />
-                  </WidgetFrame>
-                </BentoItem>
-                <BentoItem res={[[Infinity, 2, 1]]}>
-                  <WidgetFrame
-                    nav={{
-                      icon: activityProgressCardDataSourceObject.swimmingActivityData.icon as string,
-                      title: activityProgressCardDataSourceObject.swimmingActivityData.title,
-                    }}
-                  >
-                    <ActivityProgressCard data={activityProgressCardDataObject.swimmingActivityData} />
-                  </WidgetFrame>
-                </BentoItem>
-                <BentoItem res={[[Infinity, 2, 1]]}>
-                  <WidgetFrame
-                    nav={{
-                      icon: activityProgressCardDataSourceObject.runningActivityData.icon as string,
-                      title: activityProgressCardDataSourceObject.runningActivityData.title,
-                    }}
-                  >
-                    <ActivityProgressCard data={activityProgressCardDataObject.runningActivityData} />
-                  </WidgetFrame>
-                </BentoItem>
-                <BentoItem res={[[Infinity, 2, 1]]}>
-                  <WidgetFrame
-                    nav={{
-                      icon: activityProgressCardDataSourceObject.cyclingActivityData.icon as string,
-                      title: activityProgressCardDataSourceObject.cyclingActivityData.title,
-                    }}
-                  >
-                    <ActivityProgressCard data={activityProgressCardDataObject.cyclingActivityData} />
-                  </WidgetFrame>
-                </BentoItem>
-                <BentoItem res={[[Infinity, 2, 1]]}>
-                  <WidgetFrame
-                    nav={{
-                      icon: activityProgressCardDataSourceObject.hikingActivityData.icon as string,
-                      title: activityProgressCardDataSourceObject.hikingActivityData.title,
-                    }}
-                  >
-                    <ActivityProgressCard data={activityProgressCardDataObject.hikingActivityData} />
-                  </WidgetFrame>
-                </BentoItem>
-                <BentoItem res={[[Infinity, 2, 1]]}>
-                  <WidgetFrame
-                    nav={{
-                      icon: activityProgressCardDataSourceObject.gymActivityData.icon as string,
-                      title: activityProgressCardDataSourceObject.gymActivityData.title,
-                    }}
-                  >
-                    <ActivityProgressCard data={activityProgressCardDataObject.gymActivityData} />
-                  </WidgetFrame>
-                </BentoItem>
+
+                {/* Individual Activity Cards */}
+                {activityWidgets.map((widget: { title: string; icon: string; data: ActivityProgressCardData }, index: number) => (
+                  <BentoItem key={index} res={[[Infinity, 2, 1]]}>
+                    <WidgetFrame
+                      nav={{
+                        icon: widget.icon as string,
+                        title: widget.title,
+                      }}
+                    >
+                      <ActivityProgressCard data={widget.data} />
+                    </WidgetFrame>
+                  </BentoItem>
+                ))}
               </BentoGrid>
             </DocSection>
           </div>
