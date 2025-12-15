@@ -10,6 +10,7 @@ import {
   COMPONENT_VARIANTS,
   COMPONENT_SIZES,
   COMPONENT_SEMANTICS,
+  ScaledViewport,
 } from "../../../components";
 import { design } from "./design";
 import { TodaysOutlook } from "./play-widgets/TodaysOutlook";
@@ -41,18 +42,7 @@ export const PageContent = () => {
     return new Date().toLocaleDateString("en-US", { weekday: "long" });
   };
 
-  const calculateGridDimensions = () => {
-    const viewportHeight = window.innerHeight;
-    const viewportWidth = window.innerWidth;
 
-    // Calculate available height: viewport - navBar height
-    const availableHeight = viewportHeight - design.navBar.height;
-
-    // Width is full viewport
-    const width = viewportWidth;
-
-    return { height: availableHeight, width };
-  };
 
   // the function disables the scroll on the body
   const disableBodyScroll = () => {
@@ -63,17 +53,22 @@ export const PageContent = () => {
     };
   };
 
-  // Calculate the grid dimensions once
-  const { height, width } = calculateGridDimensions();
+  const width = 1560;
+  const height = 1159;
+  
 
   return (
-    <div
-      style={{ backgroundColor: "var(--color-bg-secondary)" }}
-      onLoad={disableBodyScroll}
+    <ScaledViewport
+      viewportMode={["scaled-from", width, height]}
+      enableFrame={true}
     >
-      <Layout
-        contentDesign={{ widthMode: "full", enablePadding: false }}
-        elements={{
+      <div
+        style={{ backgroundColor: "var(--color-bg-secondary)" }}
+        onLoad={disableBodyScroll}
+      >
+        <Layout
+          contentDesign={{ widthMode: "full", enablePadding: false }}
+          elements={{
           navBar: {
             first: [
               <Avatar
@@ -214,7 +209,7 @@ export const PageContent = () => {
 
           content: (
             <FigmaBentoGrid
-              height={height}
+              height={height - design.navBar.height}
               width={width}
               rowCount={24}
               colCount={12}
@@ -239,6 +234,7 @@ export const PageContent = () => {
           ),
         }}
       />
-    </div>
+      </div>
+    </ScaledViewport>
   );
 };

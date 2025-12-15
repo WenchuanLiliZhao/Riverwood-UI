@@ -11,6 +11,11 @@ import styles from "./styles.module.scss";
 export { BentoGrid, BentoItem } from "../sections/bento-grid";
 export type { BentoGridProps, BentoItemProps } from "../sections/bento-grid";
 
+// Export ScaledViewport components
+export { ScaledViewport } from "./ScaledViewport";
+export type { ScaledViewportProps } from "./ScaledViewport";
+export type { ViewportMode, WindowSize, ViewportScalingState } from "./ScaledViewport/exports";
+
 // Re-export ContentDesignProps for convenience
 export type { ContentDesignProps } from "./shared";
 
