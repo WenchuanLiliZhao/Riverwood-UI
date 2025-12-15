@@ -1,0 +1,49 @@
+.y-scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+
+  .product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 12px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .header-title {
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: bold;
+      color: var(--color-text-primary);
+      font-family: var(--font-family-sans);
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.product-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0;
+}

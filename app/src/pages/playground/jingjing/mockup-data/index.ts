@@ -9,4 +9,10 @@ export {
 export type { OutlookCardData, OutlookCardType, OutlookBreakdownItem } from "./outlookCard";
 export { kpiMetricsData } from "./kpiMetric";
 export type { KPIMetricData, ChangeUnit } from "./kpiMetric";
+export { focusProductCardsData } from "./focusProductCard";
+export type {
+  FocusProductCardData,
+  InventoryMetric,
+  PerformanceMetric,
+} from "./focusProductCard";
 
