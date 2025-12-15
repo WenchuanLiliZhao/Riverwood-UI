@@ -846,49 +846,6 @@ export const AmbassadorMockupData = {
   "pipeline-overview": {
     timeInterval: ["2025-4-1", "2026-3-31"] as [string, string],
     widgets: [
-      // Summary
-      {
-        title: "Summary",
-        icon: "tornado",
-        data: {
-          items: [
-            {
-              label: "R&D",
-              totalValue: 300,
-              maxValue: 300,
-              segments: [
-                { value: 300, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-            {
-              label: "Referred",
-              totalValue: 156,
-              maxValue: 300,
-              segments: [
-                { value: 134, color: "rgba(255, 70, 70, 1)" },
-                { value: 22, color: "rgba(255, 70, 70, 0.5)" }
-              ],
-            },
-            {
-              label: "Connecting",
-              totalValue: 76,
-              maxValue: 300,
-              segments: [
-                { value: 76, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-            {
-              label: "Pipeline",
-              totalValue: 22,
-              maxValue: 300,
-              segments: [
-                { value: 22, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-          ] as ProgressItem[]
-        } as ActivityProgressCardData
-      },
-
       // Yoga
       {
         title: "Yoga",

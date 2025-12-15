@@ -75,11 +75,80 @@ export const PageContent = () => {
   const kpiRingChartsWidget = engagementOverview.widgets[2];
   const kpiRingChartsData = kpiRingChartsWidget.data as KpiData[];
 
-  // Pipeline widgets
-  const summaryWidget = pipelineOverview.widgets[0];
-  const summaryData = summaryWidget.data as ActivityProgressCardData;
+  // Pipeline widgets - Calculate summary dynamically from individual activity cards
+  const activityWidgets = pipelineOverview.widgets;
   
-  const activityWidgets = pipelineOverview.widgets.slice(1);
+  // Calculate summary data from individual activity cards
+  const calculateSummaryData = (): ActivityProgressCardData => {
+    let totalRD = 0;
+    let totalReferred = 0;
+    let totalReferredFromRD = 0; // segments[0] of Referred
+    let totalOutside = 0; // segments[1] of Referred
+    let totalConnecting = 0;
+    let totalPipeline = 0;
+
+    activityWidgets.forEach((widget: { data: ActivityProgressCardData }) => {
+      const items = widget.data.items;
+      
+      // R&D (first item)
+      totalRD += items[0].totalValue;
+      
+      // Referred (second item)
+      totalReferred += items[1].totalValue;
+      totalReferredFromRD += items[1].segments[0]?.value || 0;
+      totalOutside += items[1].segments[1]?.value || 0;
+      
+      // Connecting (third item)
+      totalConnecting += items[2].totalValue;
+      
+      // Pipeline (fourth item)
+      totalPipeline += items[3].totalValue;
+    });
+
+    const firstProgressTotal = totalRD + totalReferred;
+    const secondProgressTotal = totalReferredFromRD + totalOutside;
+
+    return {
+      items: [
+        {
+          label: "R&D",
+          totalValue: firstProgressTotal,
+          maxValue: firstProgressTotal, // 100%
+          segments: [
+            { value: totalRD, color: "rgba(255, 70, 70, 1)" },
+            { value: totalReferred, color: "rgba(255, 70, 70, 0.5)" }
+          ],
+        },
+        {
+          label: "Referred",
+          totalValue: secondProgressTotal,
+          maxValue: firstProgressTotal, // all progress bars use first as denominator
+          segments: [
+            { value: totalReferredFromRD, color: "rgba(255, 70, 70, 1)" },
+            { value: totalOutside, color: "rgba(255, 70, 70, 0.5)" }
+          ],
+        },
+        {
+          label: "Connecting",
+          totalValue: totalConnecting,
+          maxValue: firstProgressTotal, // all progress bars use first as denominator
+          segments: [
+            { value: totalConnecting, color: "rgba(255, 70, 70, 1)" }
+          ],
+        },
+        {
+          label: "Pipeline",
+          totalValue: totalPipeline,
+          maxValue: firstProgressTotal, // all progress bars use first as denominator
+          segments: [
+            { value: totalPipeline, color: "rgba(255, 70, 70, 1)" }
+          ],
+        },
+      ]
+    };
+  };
+
+  const summaryData = calculateSummaryData();
 
   // Handler for TrendChart node selection
   const handleNodeSelect = (label: string, seriesKey: string) => {
@@ -343,8 +412,8 @@ export const PageContent = () => {
                 <BentoItem res={[[Infinity, 6, 2]]}>
                   <WidgetFrame
                     nav={{
-                      icon: summaryWidget.icon,
-                      title: summaryWidget.title,
+                      icon: "tornado",
+                      title: "Summary",
                     }}
                   >
                     <SummaryActivityProgressCard data={summaryData} />
