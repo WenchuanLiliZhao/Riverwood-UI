@@ -11,6 +11,10 @@ import { design, totalSalesDesign } from "./design";
 import { NetSalesOutlook } from "./play-components/NetSalesOutlook";
 import { netSalesOutlookData } from "./mockup-data/netSalesOutlook";
 import { OutLookCard } from "./play-components/OutLookCard";
+import {
+  varianceToOutlookData,
+  percentageToOutlookData,
+} from "./mockup-data/outlookCard";
 
 export const PageContent = () => {
   const calculateGridDimensions = () => {
@@ -86,11 +90,11 @@ export const PageContent = () => {
                     </FigmaBentoItem>
                     <FigmaBentoItem row={[1, 2]} col={[7, 3]}>
                       {/* AI Context: the 1st OutLookCard is placed in the second item of the FigmaBentoGrid */}
-                      <OutLookCard />
+                      <OutLookCard data={varianceToOutlookData} />
                     </FigmaBentoItem>
                     <FigmaBentoItem row={[1, 2]} col={[10, 3]}>
                       {/* AI Context: the 2nd OutLookCard is placed in the second item of the FigmaBentoGrid */}
-                      <OutLookCard />
+                      <OutLookCard data={percentageToOutlookData} />
                     </FigmaBentoItem>
                     <FigmaBentoItem row={[3, 1]} col={[1, 3]}>
                       <TestBlock>3</TestBlock>
