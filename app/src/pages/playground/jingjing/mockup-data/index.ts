@@ -15,4 +15,10 @@ export type {
   InventoryMetric,
   PerformanceMetric,
 } from "./focusProductCard";
+export { heroProductCardsData } from "./heroProductCard";
+export type {
+  HeroProductCardData,
+  InventoryMetrics,
+  ThumbnailItem,
+} from "./heroProductCard";
 

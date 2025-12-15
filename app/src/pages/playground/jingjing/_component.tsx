@@ -15,7 +15,6 @@ import {
 import { design } from "./design";
 import { TodaysOutlook } from "./play-widgets/TodaysOutlook";
 import { ProductFocus } from "./play-widgets/ProductFocus​";
-import { focusProductCardsData } from "./mockup-data/focusProductCard";
 
 export const PageContent = () => {
   // State for filter controls
@@ -227,12 +226,7 @@ export const PageContent = () => {
                 />
               </FigmaBentoItem>
               <FigmaBentoItem row={[1, 24]} col={[8, 5]}>
-                <ProductFocus
-                  data={[
-                    focusProductCardsData.womensSleevelessTankPink,
-                    focusProductCardsData.swiftlyTechLongSleeveBlack,
-                  ]}
-                />
+                <ProductFocus />
               </FigmaBentoItem>
               <FigmaBentoItem row={[14, 11]} col={[1, 7]}>
                 <TestBlock>3</TestBlock>

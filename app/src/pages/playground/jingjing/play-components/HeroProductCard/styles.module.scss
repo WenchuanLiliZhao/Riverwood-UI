@@ -1,0 +1,124 @@
+.hero-product-card {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 4px;
+  padding: 12px;
+
+  .product-image {
+    position: relative;
+    flex: 0 0 128px;
+    height: 128px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .color-tag {
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+      display: flex;
+      align-items: center;
+      gap: 1px;
+      background-color: var(--color-bg-primary);
+      border-radius: 10000px;
+      padding: 0 4px;
+
+      .color-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 10000px;
+      }
+
+      .color-tag-text {
+        font-size: 12px;
+        line-height: 20px;
+        font-weight: 500;
+        color: var(--color-text-primary);
+        font-family: var(--font-family-sans);
+        padding: 0 2px;
+      }
+    }
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+
+    .product-name {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: bold;
+      color: var(--color-text-primary);
+    }
+
+    .inventory-metrics {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      line-height: 18px;
+
+      .inventory-metric {
+        display: flex;
+        gap: 4px;
+
+        .inventory-metric-label {
+          color: var(--color-text-secondary);
+        }
+
+        .inventory-metric-value {
+          font-weight: bold;
+          color: var(--color-text-primary);
+        }
+      }
+    }
+  }
+
+  .thumbnails {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex: 0 0 auto;
+
+    .thumbnail {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 64px;
+
+      img {
+        width: 100%;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+
+      .thumbnail-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        font-size: 11px;
+        line-height: 16px;
+
+        .thumbnail-percentage {
+          font-weight: bold;
+          color: var(--color-text-primary);
+        }
+
+        .thumbnail-on-hand {
+          color: var(--color-text-secondary);
+        }
+      }
+    }
+  }
+}
+
