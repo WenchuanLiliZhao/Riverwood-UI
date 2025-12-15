@@ -15,6 +15,8 @@ import {
   varianceToOutlookData,
   percentageToOutlookData,
 } from "./mockup-data/outlookCard";
+import { KPIMetric } from "./play-components/KPIMetric";
+import { kpiMetricsData } from "./mockup-data/kpiMetric";
 
 export const PageContent = () => {
   const calculateGridDimensions = () => {
@@ -43,7 +45,10 @@ export const PageContent = () => {
   const { height, width } = calculateGridDimensions();
 
   return (
-    <div style={{ backgroundColor: "var(--color-bg-secondary)" }} onLoad={disableBodyScroll}>
+    <div
+      style={{ backgroundColor: "var(--color-bg-secondary)" }}
+      onLoad={disableBodyScroll}
+    >
       <Layout
         contentDesign={{ widthMode: "full", enablePadding: false }}
         elements={{
@@ -75,7 +80,6 @@ export const PageContent = () => {
                     title: "Total Sales",
                   }}
                 >
-                  
                   <FigmaBentoGrid
                     height={"fill"}
                     width={"fill"}
@@ -96,32 +100,32 @@ export const PageContent = () => {
                       {/* AI Context: the 2nd OutLookCard is placed in the second item of the FigmaBentoGrid */}
                       <OutLookCard data={percentageToOutlookData} />
                     </FigmaBentoItem>
+                    {/* AI Context: the following 8 items are KPIMetric components, each KPIMetric component is placed in a single item of the FigmaBentoGrid */}
                     <FigmaBentoItem row={[3, 1]} col={[1, 3]}>
-                      <TestBlock>3</TestBlock>
+                      <KPIMetric data={kpiMetricsData.txn} />
                     </FigmaBentoItem>
                     <FigmaBentoItem row={[3, 1]} col={[4, 3]}>
-                      <TestBlock>4</TestBlock>
+                      <KPIMetric data={kpiMetricsData.aov} />
                     </FigmaBentoItem>
                     <FigmaBentoItem row={[3, 1]} col={[7, 3]}>
-                      <TestBlock>5</TestBlock>
+                      <KPIMetric data={kpiMetricsData.upt} />
                     </FigmaBentoItem>
                     <FigmaBentoItem row={[3, 1]} col={[10, 3]}>
-                      <TestBlock>6</TestBlock>
+                      <KPIMetric data={kpiMetricsData.cr} />
                     </FigmaBentoItem>
                     <FigmaBentoItem row={[4, 1]} col={[1, 3]}>
-                      <TestBlock>7</TestBlock>
+                      <KPIMetric data={kpiMetricsData.traffic} />
                     </FigmaBentoItem>
                     <FigmaBentoItem row={[4, 1]} col={[4, 3]}>
-                      <TestBlock>8</TestBlock>
+                      <KPIMetric data={kpiMetricsData.frUtilization} />
                     </FigmaBentoItem>
                     <FigmaBentoItem row={[4, 1]} col={[7, 3]}>
-                      <TestBlock>9</TestBlock>
+                      <KPIMetric data={kpiMetricsData.tryOn} />
                     </FigmaBentoItem>
                     <FigmaBentoItem row={[4, 1]} col={[10, 3]}>
-                      <TestBlock>10</TestBlock>
+                      <KPIMetric data={kpiMetricsData.tryOnCR} />
                     </FigmaBentoItem>
                   </FigmaBentoGrid>
-                  
                 </WidgetFrame>
               </FigmaBentoItem>
               <FigmaBentoItem row={[1, 24]} col={[8, 5]}>

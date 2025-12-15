@@ -7,4 +7,6 @@ export {
   percentageToOutlookData,
 } from "./outlookCard";
 export type { OutlookCardData, OutlookCardType, OutlookBreakdownItem } from "./outlookCard";
+export { kpiMetricsData } from "./kpiMetric";
+export type { KPIMetricData, ChangeUnit } from "./kpiMetric";
 

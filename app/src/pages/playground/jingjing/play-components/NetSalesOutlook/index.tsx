@@ -1,7 +1,7 @@
 import { ProgressBar } from "../../../../../components";
 import styles from "./styles.module.scss";
 import { type NetSalesOutlookData } from "../../mockup-data/netSalesOutlook";
-import { getChangeColor } from "../../mockup-data/color-semantics";
+import { getChangeColor, type ColorDirection } from "../../mockup-data/color-semantics";
 
 export interface NetSalesOutlookProps {
   data: NetSalesOutlookData;
@@ -12,6 +12,11 @@ export const NetSalesOutlook = ({ data }: NetSalesOutlookProps) => {
 
   // Calculate total for percentage calculation
   const totalValue = segments.reduce((sum, segment) => sum + segment.value, 0);
+
+  // Map "up"/"down" to "success"/"failure" for color semantics
+  const mapDirectionToColorSemantic = (direction: "up" | "down"): ColorDirection => {
+    return direction === "up" ? "success" : "failure";
+  };
 
   // Format number with commas
   const formatNumber = (num: number): string => {
@@ -51,7 +56,7 @@ export const NetSalesOutlook = ({ data }: NetSalesOutlookProps) => {
           <div className={styles["distribution-caption"]}>
             {segments.map((segment) => {
               const percentage = ((segment.value / totalValue) * 100).toFixed(0);
-              const changeColor = getChangeColor(segment.change.direction);
+              const changeColor = getChangeColor(mapDirectionToColorSemantic(segment.change.direction));
               const changeSymbol = segment.change.direction === "up" ? "▲" : "▼";
 
               return (
@@ -81,7 +86,7 @@ export const NetSalesOutlook = ({ data }: NetSalesOutlookProps) => {
       </div>
       <div className={styles["lower"]}>
         {lowerItems.map((item, index) => {
-          const changeColor = getChangeColor(item.change.direction);
+          const changeColor = getChangeColor(mapDirectionToColorSemantic(item.change.direction));
           const changeSymbol = item.change.direction === "up" ? "▲" : "▼";
 
           return (
