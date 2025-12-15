@@ -1,0 +1,12 @@
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background-color: var(--color-bg-secondary);
+  border-radius: 4px;
+}
+
+.active {
+  background-color: var(--color-bg-primary) !important;
+}
+

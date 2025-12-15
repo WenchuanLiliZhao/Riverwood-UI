@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   Layout,
   Avatar,
@@ -17,8 +18,13 @@ import {
 } from "./mockup-data/outlookCard";
 import { KPIMetric } from "./play-components/KPIMetric";
 import { kpiMetricsData } from "./mockup-data/kpiMetric";
+import { Switch } from "../../../components/";
 
 export const PageContent = () => {
+  // State for filter controls
+  const [comparisonMode, setComparisonMode] = React.useState<"LY" | "LW">("LY");
+  const [timeRange, setTimeRange] = React.useState<"today" | "yesterday">("today");
+
   const calculateGridDimensions = () => {
     const viewportHeight = window.innerHeight;
     const viewportWidth = window.innerWidth;
@@ -74,10 +80,37 @@ export const PageContent = () => {
               gap={[design.content.gap, design.content.gap]}
             >
               <FigmaBentoItem row={[1, 13]} col={[1, 7]}>
+                {/* AI Context: the WidgetFrame is a container for the Today's Outlook section */}
                 <WidgetFrame
                   nav={{
                     icon: "dashboard",
-                    title: "Today’s Outlook​",
+                    title: "Today's Outlook​",
+                    controls: [
+                      <Switch
+                        key="comparison-mode"
+                        options={[
+                          { value: "LY", label: "VS LY" },
+                          { value: "LW", label: "VS LW" },
+                        ]}
+                        value={comparisonMode}
+                        onChange={(value) => setComparisonMode(value as "LY" | "LW")}
+                        size="small"
+                        hoverable={false}
+                      />,
+                      <Switch
+                        key="time-range"
+                        options={[
+                          { value: "yesterday", label: "Yesterday" },
+                          { value: "today", label: "Today" },
+                        ]}
+                        value={timeRange}
+                        onChange={(value) =>
+                          setTimeRange(value as "today" | "yesterday")
+                        }
+                        size="small"
+                        hoverable={false}
+                      />,
+                    ],
                   }}
                 >
                   <FigmaBentoGrid

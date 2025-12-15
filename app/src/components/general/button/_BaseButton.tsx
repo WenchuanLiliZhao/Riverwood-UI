@@ -12,7 +12,7 @@ import {
   COMPONENT_SEMANTICS,
 } from "../../shared/tokens";
 
-export interface BaseButtonProps {
+export interface BaseButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'content'> {
   content: {
     icon?: string;
     text?: string;
@@ -27,6 +27,7 @@ export interface BaseButtonProps {
   className?: string;
   disabled?: boolean;
   children?: React.ReactNode;
+  hoverable?: boolean;
 }
 
 export const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>(
@@ -42,6 +43,7 @@ export const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>(
       },
       disabled,
       children,
+      hoverable = true,
       ...props
     },
     ref
@@ -85,7 +87,7 @@ export const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>(
           )}
         </div>
         {children}
-        {disabled ? null : <HoverBox isInverse={variant === "fill-inverse"} />}
+        {disabled ? null : hoverable ? <HoverBox isInverse={variant === "fill-inverse"} /> : null}
       </Component>
     );
   }
