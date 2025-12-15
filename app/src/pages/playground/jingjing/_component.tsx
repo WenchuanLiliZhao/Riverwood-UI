@@ -61,7 +61,7 @@ export const PageContent = () => {
           navBar: {
             first: [
               <Avatar
-                src="../../../../public/vite.svg"
+                src="../../../vite.svg"
                 alt="Avatar"
                 size="medium"
               />,
