@@ -2,24 +2,29 @@ import {
   Layout,
   Avatar,
   NavTitle,
-  BentoGrid,
-  BentoItem,
+  FigmaBentoGrid,
+  FigmaBentoItem,
   TestBlock,
   WidgetFrame,
 } from "../../../components";
 import design from "./design";
 
 export const PageContent = () => {
-  const calculateRowHeight = () => {
-    // Calculate: 100vh - navBar height - gap
-    const viewportHeight = window.innerHeight; // px
+  const calculateGridDimensions = () => {
+    const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
 
-    // Return the available height in pixels
-    return ((viewportHeight - design.navBar.height) - design.content.gap - design.content.padding * 2) / 2;
+    // Calculate available height: viewport - navBar height
+    const availableHeight = viewportHeight - design.navBar.height;
+
+    // Width is full viewport
+    const width = viewportWidth;
+
+    return { height: availableHeight, width };
   };
 
-  // Calculate the row height once
-  const rowHeight = calculateRowHeight();
+  // Calculate the grid dimensions once
+  const { height, width } = calculateGridDimensions();
 
   return (
     <Layout
@@ -38,25 +43,31 @@ export const PageContent = () => {
         },
 
         content: (
-          // bento grid
-          <div style={{ padding: `${design.content.padding}px` }}>
-            <BentoGrid rowHeight={[[Infinity, rowHeight]]}>
-              <BentoItem res={[[Infinity, 7, 1]]}>
-                <WidgetFrame nav={{
+          <FigmaBentoGrid
+            height={height}
+            width={width}
+            rowCount={2}
+            colCount={12}
+            padding={design.content.padding}
+            gap={[design.content.gap, design.content.gap]}
+          >
+            <FigmaBentoItem row={[1, 1]} col={[1, 7]}>
+              <WidgetFrame
+                nav={{
                   icon: "bar_chart",
                   title: "Total Sales",
-                }}>
-                  1
-                </WidgetFrame>
-              </BentoItem>
-              <BentoItem res={[[Infinity, 5, 2]]}>
-                <TestBlock>2</TestBlock>
-              </BentoItem>
-              <BentoItem res={[[Infinity, 7, 1]]}>
-                <TestBlock>3</TestBlock>
-              </BentoItem>
-            </BentoGrid>
-          </div>
+                }}
+              >
+                1
+              </WidgetFrame>
+            </FigmaBentoItem>
+            <FigmaBentoItem row={[1, 2]} col={[8, 5]}>
+              <TestBlock>2</TestBlock>
+            </FigmaBentoItem>
+            <FigmaBentoItem row={[2, 1]} col={[1, 7]}>
+              <TestBlock>3</TestBlock>
+            </FigmaBentoItem>
+          </FigmaBentoGrid>
         ),
       }}
     />

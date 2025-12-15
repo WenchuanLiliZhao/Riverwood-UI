@@ -1,0 +1,12 @@
+.figmaBentoGrid {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.figmaBentoItem {
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
