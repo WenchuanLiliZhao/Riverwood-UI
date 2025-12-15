@@ -416,7 +416,7 @@ export const PageContent = () => {
                       title: "Summary",
                     }}
                   >
-                    <SummaryActivityProgressCard data={summaryData} />
+                    <SummaryActivityProgressCard data={summaryData} showAs={"funnel"} />
                   </WidgetFrame>
                 </BentoItem>
 

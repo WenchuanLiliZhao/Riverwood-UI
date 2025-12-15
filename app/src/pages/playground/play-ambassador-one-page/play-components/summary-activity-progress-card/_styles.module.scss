@@ -56,4 +56,125 @@
       }
     }
   }
+
+  .funnel-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
+    padding: 40px 0;
+
+    .funnel-stage-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: var(--label-gap, 16px);
+
+      .funnel-label {
+        flex-shrink: 0;
+        font-size: var(--label-font-size, 14px);
+        font-weight: var(--label-font-weight, 600);
+        color: var(--color-text-secondary);
+        min-width: var(--label-min-width, 80px);
+        text-align: right;
+      }
+
+      .funnel-stage {
+        display: flex;
+        justify-content: center;
+        flex: 1;
+
+        .funnel-bar {
+          display: flex;
+          height: var(--funnel-bar-height, 56px);
+          border-radius: var(--funnel-bar-border-radius, 2px);
+          overflow: hidden;
+          transition: width 0.3s ease;
+
+          .funnel-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            .segment-label {
+              color: white;
+              font-size: var(--segment-label-font-size, 13px);
+              font-weight: var(--segment-label-font-weight, 600);
+              text-align: center;
+              padding: 0 8px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
+
+    .funnel-connector {
+      position: relative;
+      width: 100%;
+      height: var(--funnel-connector-height, 48px);
+      display: flex;
+      align-items: center;
+      padding-left: calc(var(--label-min-width, 80px) + var(--label-gap, 16px));
+
+      .trapezoid-svg {
+        position: absolute;
+        top: 0;
+        left: calc(var(--label-min-width, 80px) + var(--label-gap, 16px));
+        right: 0;
+        width: calc(100% - var(--label-min-width, 80px) - var(--label-gap, 16px));
+        height: 100%;
+        z-index: 0;
+      }
+
+      .connector-label {
+        position: relative;
+        z-index: 1;
+        font-size: var(--connector-label-font-size, 14px);
+        font-weight: var(--connector-label-font-weight, 600);
+        color: var(--color-text-primary);
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    // Keep old arrow styles for backward compatibility
+    .funnel-arrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 0 20px 60px;
+
+      .arrow-line {
+        width: 2px;
+        height: 40px;
+        background-color: var(--color-text-tertiary);
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -6px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 0;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-top: 8px solid var(--color-text-tertiary);
+        }
+      }
+
+      .arrow-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-text-primary);
+      }
+    }
+  }
 }
