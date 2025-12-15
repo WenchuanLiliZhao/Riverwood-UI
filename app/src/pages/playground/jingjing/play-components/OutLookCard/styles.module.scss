@@ -1,0 +1,52 @@
+.outlook-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  border: 1px solid var(--color-border-primary);
+  height: 100%;
+  border-radius: 4px;
+  padding: 10px 12px;
+
+  justify-content: space-between;
+
+  .upper {
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--color-border-primary);
+
+    .header {
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--color-text-secondary);
+      font-weight: bold;
+    }
+
+    .value {
+      font-size: 28px;
+      line-height: 36px;
+      color: var(--color-text-primary);
+      font-weight: bold;
+    }
+  }
+
+  .lower {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .lower-item {
+      display: flex;
+      justify-content: space-between;
+
+      .title {
+        font-size: 12px;
+        line-height: 18px;
+        color: var(--color-text-secondary);
+      }
+
+      .value {
+        font-weight: bold;
+      }
+    }
+  }
+}

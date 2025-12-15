@@ -107,13 +107,13 @@
     .lower-item {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      // gap: 4px;
 
       .title {
         font-size: 12px;
         line-height: 18px;
         color: var(--color-text-secondary);
-        font-weight: bold;
+        // font-weight: bold;
       }
 
       .value {
