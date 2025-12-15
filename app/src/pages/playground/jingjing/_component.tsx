@@ -6,24 +6,40 @@ import {
   FigmaBentoGrid,
   FigmaBentoItem,
   TestBlock,
-  WidgetFrame,
+  Button,
+  COMPONENT_VARIANTS,
+  COMPONENT_SIZES,
+  COMPONENT_SEMANTICS,
 } from "../../../components";
-import { design, totalSalesDesign } from "./design";
-import { NetSalesOutlook } from "./play-components/NetSalesOutlook";
-import { netSalesOutlookData } from "./mockup-data/netSalesOutlook";
-import { OutLookCard } from "./play-components/OutLookCard";
-import {
-  varianceToOutlookData,
-  percentageToOutlookData,
-} from "./mockup-data/outlookCard";
-import { KPIMetric } from "./play-components/KPIMetric";
-import { kpiMetricsData } from "./mockup-data/kpiMetric";
-import { Switch } from "../../../components/";
+import { design } from "./design";
+import { TodaysOutlook } from "./play-widgets/TodaysOutlook";
 
 export const PageContent = () => {
   // State for filter controls
   const [comparisonMode, setComparisonMode] = React.useState<"LY" | "LW">("LY");
   const [timeRange, setTimeRange] = React.useState<"today" | "yesterday">("today");
+  const [currency, setCurrency] = React.useState<"CNY" | "USD">("CNY");
+
+  // Get current date and time
+  const getCurrentDateTime = () => {
+    const now = new Date();
+    const time = now.toLocaleTimeString("en-US", {
+      hour12: false,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    const date = now.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+    return `${time}, ${date}`;
+  };
+
+  const getCurrentDay = () => {
+    return new Date().toLocaleDateString("en-US", { weekday: "long" });
+  };
 
   const calculateGridDimensions = () => {
     const viewportHeight = window.innerHeight;
@@ -61,12 +77,138 @@ export const PageContent = () => {
           navBar: {
             first: [
               <Avatar
+                key="avatar"
                 src="../../../vite.svg"
                 alt="Avatar"
                 size="medium"
               />,
-              <NavTitle title="Today Sales" />,
-              // divider
+              <NavTitle key="title" title="Today Sales" />,
+              <div
+                key="divider-1"
+                style={{
+                  width: "1px",
+                  height: "24px",
+                  backgroundColor: "var(--color-border-primary)",
+                  margin: "0 8px",
+                }}
+              />,
+              <Button
+                key="location-region"
+                content={{
+                  icon: "location_on",
+                  text: "All Region",
+                }}
+                design={{
+                  variant: COMPONENT_VARIANTS.ghost,
+                  size: COMPONENT_SIZES.small,
+                  semantic: COMPONENT_SEMANTICS.secondary,
+                }}
+                hoverable={false}
+              />,
+              <Button
+                key="location-address"
+                content={{
+                  icon: "business",
+                  text: "45214 Shanghai Xintiandi",
+                }}
+                design={{
+                  variant: COMPONENT_VARIANTS.ghost,
+                  size: COMPONENT_SIZES.small,
+                  semantic: COMPONENT_SEMANTICS.secondary,
+                }}
+                hoverable={false}
+              />,
+            ],
+            center: [
+              <Button
+                key="currency-cny"
+                content={{ text: "¥ CNY" }}
+                design={{
+                  variant: COMPONENT_VARIANTS.fill,
+                  size: COMPONENT_SIZES.small,
+                  semantic: currency === "CNY" ? COMPONENT_SEMANTICS.primary : COMPONENT_SEMANTICS.secondary,
+                }}
+                onClick={() => setCurrency("CNY")}
+                hoverable={false}
+                style={
+                  currency === "CNY"
+                    ? {
+                        backgroundColor: "#ef4444",
+                        color: "#ffffff",
+                        border: "none",
+                      }
+                    : {
+                        backgroundColor: "#ffffff",
+                        color: "var(--color-text-primary)",
+                        border: "1px solid var(--color-border-primary)",
+                      }
+                }
+              />,
+              <Button
+                key="currency-usd"
+                content={{ text: "$ USD" }}
+                design={{
+                  variant: COMPONENT_VARIANTS.fill,
+                  size: COMPONENT_SIZES.small,
+                  semantic: currency === "USD" ? COMPONENT_SEMANTICS.primary : COMPONENT_SEMANTICS.secondary,
+                }}
+                onClick={() => setCurrency("USD")}
+                hoverable={false}
+                style={
+                  currency === "USD"
+                    ? {
+                        backgroundColor: "#ef4444",
+                        color: "#ffffff",
+                        border: "none",
+                      }
+                    : {
+                        backgroundColor: "#ffffff",
+                        color: "var(--color-text-primary)",
+                        border: "1px solid var(--color-border-primary)",
+                      }
+                }
+              />,
+            ],
+            last: [
+              <Button
+                key="weather"
+                content={{
+                  icon: "wb_sunny",
+                  text: "18°C",
+                }}
+                design={{
+                  variant: COMPONENT_VARIANTS.ghost,
+                  size: COMPONENT_SIZES.small,
+                  semantic: COMPONENT_SEMANTICS.secondary,
+                }}
+                hoverable={false}
+              />,
+              <Button
+                key="day"
+                content={{
+                  icon: "calendar_today",
+                  text: getCurrentDay(),
+                }}
+                design={{
+                  variant: COMPONENT_VARIANTS.ghost,
+                  size: COMPONENT_SIZES.small,
+                  semantic: COMPONENT_SEMANTICS.secondary,
+                }}
+                hoverable={false}
+              />,
+              <Button
+                key="refresh"
+                content={{
+                  icon: "refresh",
+                  text: `Latest Refresh: ${getCurrentDateTime()}`,
+                }}
+                design={{
+                  variant: COMPONENT_VARIANTS.ghost,
+                  size: COMPONENT_SIZES.small,
+                  semantic: COMPONENT_SEMANTICS.secondary,
+                }}
+                hoverable={false}
+              />,
             ],
           },
 
@@ -80,86 +222,12 @@ export const PageContent = () => {
               gap={[design.content.gap, design.content.gap]}
             >
               <FigmaBentoItem row={[1, 13]} col={[1, 7]}>
-                {/* AI Context: the WidgetFrame is a container for the Today's Outlook section */}
-                <WidgetFrame
-                  nav={{
-                    icon: "dashboard",
-                    title: "Today's Outlook​",
-                    controls: [
-                      <Switch
-                        key="comparison-mode"
-                        options={[
-                          { value: "LY", label: "VS LY" },
-                          { value: "LW", label: "VS LW" },
-                        ]}
-                        value={comparisonMode}
-                        onChange={(value) => setComparisonMode(value as "LY" | "LW")}
-                        size="small"
-                        hoverable={false}
-                      />,
-                      <Switch
-                        key="time-range"
-                        options={[
-                          { value: "yesterday", label: "Yesterday" },
-                          { value: "today", label: "Today" },
-                        ]}
-                        value={timeRange}
-                        onChange={(value) =>
-                          setTimeRange(value as "today" | "yesterday")
-                        }
-                        size="small"
-                        hoverable={false}
-                      />,
-                    ],
-                  }}
-                >
-                  <FigmaBentoGrid
-                    height={"fill"}
-                    width={"fill"}
-                    rowCount={4}
-                    colCount={12}
-                    padding={totalSalesDesign.padding}
-                    gap={[totalSalesDesign.gap, totalSalesDesign.gap]}
-                  >
-                    {/* AI Context: the NetSalesOutlook component is placed in the first item of the FigmaBentoGrid */}
-                    <FigmaBentoItem row={[1, 2]} col={[1, 6]}>
-                      <NetSalesOutlook data={netSalesOutlookData} />
-                    </FigmaBentoItem>
-                    <FigmaBentoItem row={[1, 2]} col={[7, 3]}>
-                      {/* AI Context: the 1st OutLookCard is placed in the second item of the FigmaBentoGrid */}
-                      <OutLookCard data={varianceToOutlookData} />
-                    </FigmaBentoItem>
-                    <FigmaBentoItem row={[1, 2]} col={[10, 3]}>
-                      {/* AI Context: the 2nd OutLookCard is placed in the second item of the FigmaBentoGrid */}
-                      <OutLookCard data={percentageToOutlookData} />
-                    </FigmaBentoItem>
-                    {/* AI Context: the following 8 items are KPIMetric components, each KPIMetric component is placed in a single item of the FigmaBentoGrid */}
-                    <FigmaBentoItem row={[3, 1]} col={[1, 3]}>
-                      <KPIMetric data={kpiMetricsData.txn} />
-                    </FigmaBentoItem>
-                    <FigmaBentoItem row={[3, 1]} col={[4, 3]}>
-                      <KPIMetric data={kpiMetricsData.aov} />
-                    </FigmaBentoItem>
-                    <FigmaBentoItem row={[3, 1]} col={[7, 3]}>
-                      <KPIMetric data={kpiMetricsData.upt} />
-                    </FigmaBentoItem>
-                    <FigmaBentoItem row={[3, 1]} col={[10, 3]}>
-                      <KPIMetric data={kpiMetricsData.cr} />
-                    </FigmaBentoItem>
-                    <FigmaBentoItem row={[4, 1]} col={[1, 3]}>
-                      <KPIMetric data={kpiMetricsData.traffic} />
-                    </FigmaBentoItem>
-                    <FigmaBentoItem row={[4, 1]} col={[4, 3]}>
-                      <KPIMetric data={kpiMetricsData.frUtilization} />
-                    </FigmaBentoItem>
-                    <FigmaBentoItem row={[4, 1]} col={[7, 3]}>
-                      <KPIMetric data={kpiMetricsData.tryOn} />
-                    </FigmaBentoItem>
-                    <FigmaBentoItem row={[4, 1]} col={[10, 3]}>
-                      <KPIMetric data={kpiMetricsData.tryOnCR} />
-                    </FigmaBentoItem>
-                  </FigmaBentoGrid>
-                </WidgetFrame>
+                <TodaysOutlook
+                  comparisonMode={comparisonMode}
+                  setComparisonMode={setComparisonMode}
+                  timeRange={timeRange}
+                  setTimeRange={setTimeRange}
+                />
               </FigmaBentoItem>
               <FigmaBentoItem row={[1, 24]} col={[8, 5]}>
                 <TestBlock>2!</TestBlock>
