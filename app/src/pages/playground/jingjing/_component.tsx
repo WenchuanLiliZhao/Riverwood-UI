@@ -76,8 +76,8 @@ export const PageContent = () => {
               <FigmaBentoItem row={[1, 13]} col={[1, 7]}>
                 <WidgetFrame
                   nav={{
-                    icon: "bar_chart",
-                    title: "Total Sales",
+                    icon: "dashboard",
+                    title: "Today’s Outlook​",
                   }}
                 >
                   <FigmaBentoGrid
