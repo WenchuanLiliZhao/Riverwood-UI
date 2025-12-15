@@ -15,7 +15,16 @@ export const ActivityProgressCard: React.FC<ActivityProgressCardProps> = ({ data
         {/* Progress Items List */}
         <div className={styles["items-list"]}>
           {data.items.map((item, index) => {
-            const percentage = (item.totalValue / item.maxValue) * 100;
+            // Calculate percentage based on layer index
+            let percentage: number;
+            if (index === 0) {
+              // First layer: use original logic (value / maxValue)
+              percentage = (item.totalValue / item.maxValue) * 100;
+            } else {
+              // From second layer onwards: value / previous layer's value
+              const previousItem = data.items[index - 1];
+              percentage = (item.totalValue / previousItem.totalValue) * 100;
+            }
             const roundedPercentage = Math.round(percentage);
 
             // Convert segments to DistributionSegment format

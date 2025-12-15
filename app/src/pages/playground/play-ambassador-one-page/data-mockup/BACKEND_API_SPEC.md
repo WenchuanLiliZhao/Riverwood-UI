@@ -422,7 +422,7 @@ Golf 项目存在 `0/0` 的情况（分母为 0），此时：
 | label | totalValue | maxValue | segments |
 |-------|------------|----------|----------|
 | R&D | 164 | 300 | [{ value: 164, color: "rgba(255, 70, 70, 1)" }] |
-| Referred | 72 | 300 | [{ value: 50, color: "rgba(255, 70, 70, 1)" }, { value: 22, color: "rgba(255, 70, 70, 0.5)" }] |
+| Referred | 72 | 300 | [{ value: 50, color: "rgba(255, 70, 70, 1)" }, { value: 22, color: "#8BBFFF" }] |
 | Connecting | 32 | 300 | [{ value: 32, color: "rgba(255, 70, 70, 1)" }] |
 | Pipeline | 12 | 300 | [{ value: 12, color: "rgba(255, 70, 70, 1)" }] |
 
@@ -431,7 +431,7 @@ Golf 项目存在 `0/0` 的情况（分母为 0），此时：
 | Segment Index | 颜色 |
 |---------------|------|
 | 0 | rgba(255, 70, 70, 1) |
-| 1 | rgba(255, 70, 70, 0.5) |
+| 1 | #8BBFFF |
 | 2 | rgba(255, 70, 70, 0.25) |
 | 3+ | rgba(255, 70, 70, 0.1) |
 

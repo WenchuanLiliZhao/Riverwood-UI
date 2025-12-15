@@ -116,7 +116,7 @@ export const PageContent = () => {
           maxValue: firstProgressTotal, // 100%
           segments: [
             { value: totalRD, color: "rgba(255, 70, 70, 1)" },
-            { value: totalReferred, color: "rgba(255, 70, 70, 0.5)" }
+            { value: totalReferred, color: "#8BBFFF" }
           ],
         },
         {
@@ -125,7 +125,7 @@ export const PageContent = () => {
           maxValue: firstProgressTotal, // all progress bars use first as denominator
           segments: [
             { value: totalReferredFromRD, color: "rgba(255, 70, 70, 1)" },
-            { value: totalOutside, color: "rgba(255, 70, 70, 0.5)" }
+            { value: totalOutside, color: "#8BBFFF" }
           ],
         },
         {
@@ -168,7 +168,7 @@ export const PageContent = () => {
         navBar: {
           first: [
             <Avatar
-              src="https://play-lh.googleusercontent.com/jvFsHfua7RtMM_x0z9fci13k7DcHH9s5y6EJ424-ZWH4gaaO96FqxAD2JL6GkNvVUg=w240-h480-rw"
+              src="../../../../public/vite.svg"
               alt="Avatar"
               size="medium"
             />,

@@ -866,7 +866,7 @@ export const AmbassadorMockupData = {
               maxValue: 300,
               segments: [
                 { value: 50, color: "rgba(255, 70, 70, 1)" },
-                { value: 22, color: "rgba(255, 70, 70, 0.5)" }
+                { value: 22, color: "#8BBFFF" }
               ],
             },
             {

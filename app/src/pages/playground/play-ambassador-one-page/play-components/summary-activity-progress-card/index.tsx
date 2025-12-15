@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ProgressBar } from "../../../../../components";
+import { ProgressBar, Tooltip } from "../../../../../components";
 import type { ActivityProgressCardData } from "../../types/activity-progress";
 import type { DistributionBarData } from "../../../../../components";
 import styles from "./_styles.module.scss";
@@ -135,6 +135,26 @@ export const SummaryActivityProgressCard: React.FC<SummaryActivityProgressCardPr
                           : (100 - LEVEL_1_INTERNAL_RATIO);
                       }
                       
+                      // Define tooltip content for each segment
+                      let tooltipContent = "";
+                      if (index === 0) {
+                        // First layer (R&D)
+                        tooltipContent = segmentIndex === 0 
+                          ? "Research & Development candidates identified for potential recruitment"
+                          : "Total candidates referred from all sources (R&D and Outside)";
+                      } else if (index === 1) {
+                        // Second layer (Referred)
+                        tooltipContent = segmentIndex === 0 
+                          ? "Candidates referred from the R&D pool"
+                          : "Candidates referred from outside sources";
+                      } else if (index === 2) {
+                        // Third layer (Connecting)
+                        tooltipContent = "Candidates actively being connected with and engaged";
+                      } else if (index === 3) {
+                        // Fourth layer (Pipeline)
+                        tooltipContent = "Strong pipeline candidates identified for potential hiring";
+                      }
+                      
                       return (
                         <div
                           key={segmentIndex}
@@ -144,9 +164,11 @@ export const SummaryActivityProgressCard: React.FC<SummaryActivityProgressCardPr
                             backgroundColor: segment.color,
                           }}
                         >
-                          <span className={styles["segment-label"]}>
-                            {segment.value}
-                          </span>
+                          <Tooltip content={tooltipContent} position={"bottom-center"}>
+                            <span className={styles["segment-label"]}>
+                              {segment.value}
+                            </span>
+                          </Tooltip>
                         </div>
                       );
                     })}

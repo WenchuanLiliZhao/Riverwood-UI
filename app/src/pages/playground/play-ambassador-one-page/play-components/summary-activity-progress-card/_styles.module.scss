@@ -85,31 +85,46 @@
         display: flex;
         justify-content: center;
         flex: 1;
+        position: relative;
+        z-index: 2;
 
         .funnel-bar {
           display: flex;
           height: var(--funnel-bar-height, 56px);
           border-radius: var(--funnel-bar-border-radius, 2px);
-          overflow: hidden;
+          overflow: visible;
           transition: width 0.3s ease;
 
-          .funnel-segment {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+        .funnel-segment {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          z-index: 10;
+          // overflow: hidden;
 
-            .segment-label {
-              color: white;
-              font-size: var(--segment-label-font-size, 13px);
-              font-weight: var(--segment-label-font-weight, 600);
-              text-align: center;
-              padding: 0 8px;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-            }
+          &:first-child {
+            border-top-left-radius: var(--funnel-bar-border-radius, 2px);
+            border-bottom-left-radius: var(--funnel-bar-border-radius, 2px);
           }
+
+          &:last-child {
+            border-top-right-radius: var(--funnel-bar-border-radius, 2px);
+            border-bottom-right-radius: var(--funnel-bar-border-radius, 2px);
+          }
+
+          .segment-label {
+            color: white;
+            font-size: var(--segment-label-font-size, 13px);
+            font-weight: var(--segment-label-font-weight, 600);
+            text-align: center;
+            padding: 0 8px;
+            white-space: nowrap;
+            // overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+          }
+        }
         }
       }
     }
@@ -121,6 +136,7 @@
       display: flex;
       align-items: center;
       padding-left: calc(var(--label-min-width, 80px) + var(--label-gap, 16px));
+      z-index: 0;
 
       .trapezoid-svg {
         position: absolute;

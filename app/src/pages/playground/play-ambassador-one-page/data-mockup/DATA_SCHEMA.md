@@ -325,7 +325,7 @@ interface ProgressItem {
 
 **Color Scheme for Segments**:
 - Index 0: `rgba(255, 70, 70, 1)` (Full opacity)
-- Index 1: `rgba(255, 70, 70, 0.5)` (50% opacity)
+- Index 1: `#8BBFFF` (light blue for Outside)
 - Index 2: `rgba(255, 70, 70, 0.25)` (25% opacity)
 - Index 3+: `rgba(255, 70, 70, 0.1)` (10% opacity)
 
@@ -351,7 +351,7 @@ interface ProgressItem {
 ### Progress Bar Colors (RGBA)
 
 - **Segment 1**: `rgba(255, 70, 70, 1)`
-- **Segment 2**: `rgba(255, 70, 70, 0.5)`
+- **Segment 2**: `#8BBFFF`
 - **Segment 3**: `rgba(255, 70, 70, 0.25)`
 - **Segment 4+**: `rgba(255, 70, 70, 0.1)`
 
