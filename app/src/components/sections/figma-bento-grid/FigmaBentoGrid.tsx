@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./styles.module.scss";
 
 export interface FigmaBentoGridProps {
-  height: number; // Fixed height in px
-  width: number; // Fixed width in px
+  height: number | "fill"; // Fixed height in px, or "fill" to fill container
+  width: number | "fill"; // Fixed width in px, or "fill" to fill container
   rowCount: number; // Number of rows
   colCount: number; // Number of columns
   padding: number; // Padding around the grid in px
@@ -18,8 +18,8 @@ export const FigmaBentoGrid = React.forwardRef<
   const [gapX, gapY] = gap;
 
   const gridStyle: React.CSSProperties = {
-    height: `${height}px`,
-    width: `${width}px`,
+    height: height === "fill" ? "100%" : `${height}px`,
+    width: width === "fill" ? "100%" : `${width}px`,
     padding: `${padding}px`,
     gap: `${gapY}px ${gapX}px`,
     display: "grid",

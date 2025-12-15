@@ -1,4 +1,4 @@
-const design = {
+export const design = {
   navBar: {
     height: 56,
     padding: 16,
@@ -9,4 +9,7 @@ const design = {
   },
 };
 
-export default design;
+export const totalSalesDesign = {
+  padding: 12,
+  gap: 8,
+}

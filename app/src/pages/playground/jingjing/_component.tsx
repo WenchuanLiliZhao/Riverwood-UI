@@ -7,7 +7,8 @@ import {
   TestBlock,
   WidgetFrame,
 } from "../../../components";
-import design from "./design";
+import { design, totalSalesDesign } from "./design";
+import { NetSalesOutlook } from "./play-components/NetSalesOutlook";
 
 export const PageContent = () => {
   const calculateGridDimensions = () => {
@@ -58,7 +59,45 @@ export const PageContent = () => {
                   title: "Total Sales",
                 }}
               >
-                1
+                <FigmaBentoGrid
+                  height={"fill"}
+                  width={"fill"}
+                  rowCount={4}
+                  colCount={12}
+                  padding={totalSalesDesign.padding}
+                  gap={[totalSalesDesign.gap, totalSalesDesign.gap]}
+                >
+                  <FigmaBentoItem row={[1, 2]} col={[1, 6]}>
+                    <NetSalesOutlook />
+                  </FigmaBentoItem>
+                  <FigmaBentoItem row={[1, 2]} col={[7, 6]}>
+                    <TestBlock>2</TestBlock>
+                  </FigmaBentoItem>
+                  <FigmaBentoItem row={[3, 1]} col={[1, 3]}>
+                    <TestBlock>3</TestBlock>
+                  </FigmaBentoItem>
+                  <FigmaBentoItem row={[3, 1]} col={[4, 3]}>
+                    <TestBlock>4</TestBlock>
+                  </FigmaBentoItem>
+                  <FigmaBentoItem row={[3, 1]} col={[7, 3]}>
+                    <TestBlock>5</TestBlock>
+                  </FigmaBentoItem>
+                  <FigmaBentoItem row={[3, 1]} col={[10, 3]}>
+                    <TestBlock>6</TestBlock>
+                  </FigmaBentoItem>
+                  <FigmaBentoItem row={[4, 1]} col={[1, 3]}>
+                    <TestBlock>7</TestBlock>
+                  </FigmaBentoItem>
+                  <FigmaBentoItem row={[4, 1]} col={[4, 3]}>
+                    <TestBlock>8</TestBlock>
+                  </FigmaBentoItem>
+                  <FigmaBentoItem row={[4, 1]} col={[7, 3]}>
+                    <TestBlock>9</TestBlock>
+                  </FigmaBentoItem>
+                  <FigmaBentoItem row={[4, 1]} col={[10, 3]}>
+                    <TestBlock>10</TestBlock>
+                  </FigmaBentoItem>
+                </FigmaBentoGrid>
               </WidgetFrame>
             </FigmaBentoItem>
             <FigmaBentoItem row={[1, 2]} col={[8, 5]}>
