@@ -3,6 +3,7 @@ import { WidgetFrame, Switch } from "../../../../../components";
 import { RefreshView } from "./RefreshView";
 import { TableView } from "./TableView";
 import { ChartView } from "./ChartView";
+import styles from "./styles.module.scss";
 
 export type HourlyViewType = "refresh" | "table" | "chart";
 
@@ -30,10 +31,11 @@ export const HourlyRetailPulse: React.FC = () => {
         ],
       }}
     >
-      {view === "refresh" && <RefreshView />}
-      {view === "table" && <TableView />}
-      {view === "chart" && <ChartView />}
+      <div className={styles.container}>
+        {view === "refresh" && <RefreshView />}
+        {view === "table" && <TableView />}
+        {view === "chart" && <ChartView />}
+      </div>
     </WidgetFrame>
   );
 };
-

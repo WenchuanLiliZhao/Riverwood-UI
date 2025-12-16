@@ -217,7 +217,7 @@ export const PageContent = () => {
               padding={design.content.padding}
               gap={[design.content.gap, design.content.gap]}
             >
-              <FigmaBentoItem row={[1, 13]} col={[1, 7]}>
+              <FigmaBentoItem row={[1, 12]} col={[1, 7]}>
                 <TodaysOutlook
                   comparisonMode={comparisonMode}
                   setComparisonMode={setComparisonMode}
@@ -228,7 +228,7 @@ export const PageContent = () => {
               <FigmaBentoItem row={[1, 24]} col={[8, 5]}>
                 <ProductFocus />
               </FigmaBentoItem>
-              <FigmaBentoItem row={[14, 11]} col={[1, 7]}>
+              <FigmaBentoItem row={[13, 12]} col={[1, 7]}>
                 <HourlyRetailPulse />
               </FigmaBentoItem>
             </FigmaBentoGrid>
