@@ -1,0 +1,80 @@
+.size-tooltip {
+  position: absolute;
+  /* Position options - uncomment the one you want: */
+  
+  /* Bottom-right (current) */
+  bottom: 8px;
+  right: 8px;
+  transform: translate(0, 100%);
+  bottom: 8px;
+  right: 0;
+  
+  /* Bottom-left */
+  /* bottom: 8px; */
+  /* left: 8px; */
+  
+  /* Top-right */
+  /* top: 8px; */
+  /* right: 8px; */
+  
+  /* Top-left */
+  /* top: 8px; */
+  /* left: 8px; */
+  
+  /* Bottom-center */
+  /* bottom: 8px; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  
+  /* Top-center */
+  /* top: 8px; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  
+  background-color: var(--color-bg-primary);
+  border-radius: 4px;
+  padding: 8px;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  min-width: 200px;
+}
+
+.size-row,
+.quantity-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.size-cell,
+.quantity-cell {
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+
+  &.available {
+    color: var(--color-text-primary);
+    font-weight: 700;
+  }
+
+  &.unavailable {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+  }
+}
+
+.size-cell {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.quantity-cell {
+  font-size: 12px;
+  line-height: 18px;
+}
+

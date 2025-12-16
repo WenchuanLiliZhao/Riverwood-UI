@@ -5,11 +5,13 @@
   border: 1px solid var(--color-border-primary);
   border-radius: 4px;
   padding: 12px;
+  align-items: center;
+  position: relative;
 
   .product-image {
     position: relative;
-    flex: 0 0 128px;
-    height: 128px;
+    flex: 0 0 88px;
+    height: 88px;
 
     img {
       width: 100%;
@@ -48,6 +50,7 @@
   .product-info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 8px;
     flex: 1;
     min-width: 0;
@@ -63,7 +66,8 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      gap: 10px;
+      column-gap: 6px;
+      row-gap: 0;
       font-size: 12px;
       line-height: 18px;
 
@@ -89,15 +93,25 @@
     gap: 8px;
     flex: 0 0 auto;
 
+    .marker {
+      position: absolute;
+      transform: translate(-100%, 0);
+      left: -4px;
+      font-size: 11px;
+      line-height: 16px;
+      bottom: 0;
+      color: var(--color-text-negative);
+    }
+
     .thumbnail {
       display: flex;
       flex-direction: column;
       gap: 4px;
-      width: 64px;
+      width: 40px;
 
       img {
         width: 100%;
-        height: 64px;
+        height: 40px;
         object-fit: cover;
         border-radius: 4px;
       }
@@ -108,6 +122,7 @@
         gap: 2px;
         font-size: 11px;
         line-height: 16px;
+        text-align: center;
 
         .thumbnail-percentage {
           font-weight: bold;

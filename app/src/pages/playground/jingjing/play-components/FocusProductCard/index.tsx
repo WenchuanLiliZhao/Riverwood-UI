@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Button } from "../../../../../components";
 import styles from "./styles.module.scss";
 import type { FocusProductCardData } from "../../mockup-data/focusProductCard";
+import { SizeTooltip } from "../SizeTooltip";
 
 export interface FocusProductCardProps {
   data: FocusProductCardData;
@@ -15,10 +17,22 @@ export const FocusProductCard = ({ data }: FocusProductCardProps) => {
     inventoryMetrics,
     performanceMetrics,
     isFavorite,
+    sizes,
   } = data;
 
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleTouchStart = () => {
+    setIsHovered((prev) => !prev);
+  };
+
   return (
-    <div className={styles["focus-product-card"]}>
+    <div
+      className={styles["focus-product-card"]}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+    >
       <div className={styles["product-image"]}>
         <img src={productImage} alt={productName} />
         <div className={styles["color-tag"]}>
@@ -102,6 +116,9 @@ export const FocusProductCard = ({ data }: FocusProductCardProps) => {
           </div>
         </div>
       </div>
+      {sizes && sizes.length > 0 && (
+        <SizeTooltip sizes={sizes} isVisible={isHovered} />
+      )}
     </div>
   );
 };

@@ -1,5 +1,7 @@
+import { useState } from "react";
 import styles from "./styles.module.scss";
 import type { HeroProductCardData } from "../../mockup-data/heroProductCard";
+import { SizeTooltip } from "../SizeTooltip";
 
 export interface HeroProductCardProps {
   data: HeroProductCardData;
@@ -13,10 +15,22 @@ export const HeroProductCard = ({ data }: HeroProductCardProps) => {
     colorValue,
     inventoryMetrics,
     thumbnails,
+    sizes,
   } = data;
 
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleTouchStart = () => {
+    setIsHovered((prev) => !prev);
+  };
+
   return (
-    <div className={styles["hero-product-card"]}>
+    <div
+      className={styles["hero-product-card"]}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+    >
       <div className={styles["product-image"]}>
         <img src={productImage} alt={productName} />
         <div className={styles["color-tag"]}>
@@ -71,6 +85,7 @@ export const HeroProductCard = ({ data }: HeroProductCardProps) => {
       </div>
 
       <div className={styles["thumbnails"]}>
+        <div className={styles["marker"]}>On Hand</div>
         {thumbnails.map((thumbnail, index) => (
           <div key={index} className={styles["thumbnail"]}>
             <img src={thumbnail.image} alt={`Thumbnail ${index + 1}`} />
@@ -79,12 +94,15 @@ export const HeroProductCard = ({ data }: HeroProductCardProps) => {
                 {thumbnail.percentage}%
               </div>
               <div className={styles["thumbnail-on-hand"]}>
-                On Hand {thumbnail.onHand}
+                {thumbnail.onHand}
               </div>
             </div>
           </div>
         ))}
       </div>
+      {sizes && sizes.length > 0 && (
+        <SizeTooltip sizes={sizes} isVisible={isHovered} />
+      )}
     </div>
   );
 };

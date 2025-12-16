@@ -9,6 +9,11 @@ export interface PerformanceMetric {
   regionAvg: number;
 }
 
+export interface SizeQuantity {
+  size: string;
+  quantity: number;
+}
+
 export interface FocusProductCardData {
   productImage: string;
   productName: string;
@@ -21,6 +26,7 @@ export interface FocusProductCardData {
     stPercent: PerformanceMetric; // Percentage value (0-100)
   };
   isFavorite: boolean;
+  sizes: SizeQuantity[]; // Array of size and quantity pairs
 }
 
 /**
@@ -54,6 +60,13 @@ export const focusProductCardsData: Record<string, FocusProductCardData> = {
       },
     },
     isFavorite: true,
+    sizes: [
+      { size: "XS", quantity: 14 },
+      { size: "S", quantity: 0 },
+      { size: "M", quantity: 4 },
+      { size: "XL", quantity: 0 },
+      { size: "XXL", quantity: 8 },
+    ],
   },
   swiftlyTechLongSleeveBlack: {
     productImage:
@@ -81,6 +94,13 @@ export const focusProductCardsData: Record<string, FocusProductCardData> = {
       },
     },
     isFavorite: true,
+    sizes: [
+      { size: "XS", quantity: 11 },
+      { size: "S", quantity: 7 },
+      { size: "M", quantity: 9 },
+      { size: "XL", quantity: 5 },
+      { size: "XXL", quantity: 3 },
+    ],
   },
 };
 
