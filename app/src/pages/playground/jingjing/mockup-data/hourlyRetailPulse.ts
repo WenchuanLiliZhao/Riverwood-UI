@@ -66,6 +66,85 @@ export interface HourlyRetailPulseData {
   rows: HourlyRetailPulseRowData[];
 }
 
+export type ChartMetric = "netSales" | "trafficCR" | "txn" | "aov" | "upt";
+
+export interface ChartDataPoint {
+  label: string;
+  current: number;
+  lastWeek: number;
+  outlook: number;
+}
+
+export interface ChartMetricData {
+  metric: ChartMetric;
+  label: string;
+  data: ChartDataPoint[];
+  unit: string;
+}
+
+export const hourlyRetailPulseChartData: Record<ChartMetric, ChartMetricData> = {
+  netSales: {
+    metric: "netSales",
+    label: "Net Sales",
+    unit: "¥",
+    data: [
+      { label: "10:00 ~ 12:00", current: 18000, lastWeek: 15000, outlook: 30000 },
+      { label: "12:00 ~ 14:00", current: 38000, lastWeek: 29000, outlook: 48000 },
+      { label: "14:00 ~ 16:00", current: 25000, lastWeek: 20000, outlook: 29000 },
+      { label: "16:00 ~ 18:00", current: 44000, lastWeek: 33000, outlook: 45000 },
+      { label: "18:00 ~ 20:00", current: 33000, lastWeek: 28000, outlook: 38000 },
+    ],
+  },
+  trafficCR: {
+    metric: "trafficCR",
+    label: "Traffic-CR",
+    unit: "%",
+    data: [
+      { label: "10:00 ~ 12:00", current: 8.5, lastWeek: 7.8, outlook: 9.0 },
+      { label: "12:00 ~ 14:00", current: 9.1, lastWeek: 8.2, outlook: 9.5 },
+      { label: "14:00 ~ 16:00", current: 8.8, lastWeek: 7.5, outlook: 9.2 },
+      { label: "16:00 ~ 18:00", current: 9.3, lastWeek: 8.8, outlook: 9.6 },
+      { label: "18:00 ~ 20:00", current: 9.6, lastWeek: 8.5, outlook: 10.0 },
+    ],
+  },
+  txn: {
+    metric: "txn",
+    label: "TXN",
+    unit: "",
+    data: [
+      { label: "10:00 ~ 12:00", current: 16, lastWeek: 14, outlook: 17 },
+      { label: "12:00 ~ 14:00", current: 19, lastWeek: 18, outlook: 21 },
+      { label: "14:00 ~ 16:00", current: 17, lastWeek: 13, outlook: 18 },
+      { label: "16:00 ~ 18:00", current: 18, lastWeek: 20, outlook: 19 },
+      { label: "18:00 ~ 20:00", current: 21, lastWeek: 17, outlook: 22 },
+    ],
+  },
+  aov: {
+    metric: "aov",
+    label: "AOV",
+    unit: "¥",
+    data: [
+      { label: "10:00 ~ 12:00", current: 1605, lastWeek: 1571, outlook: 1559 },
+      { label: "12:00 ~ 14:00", current: 1644, lastWeek: 1611, outlook: 1562 },
+      { label: "14:00 ~ 16:00", current: 1674, lastWeek: 1538, outlook: 1622 },
+      { label: "16:00 ~ 18:00", current: 1673, lastWeek: 1650, outlook: 1642 },
+      { label: "18:00 ~ 20:00", current: 1680, lastWeek: 1647, outlook: 1673 },
+    ],
+  },
+  upt: {
+    metric: "upt",
+    label: "UPT",
+    unit: "",
+    data: [
+      { label: "10:00 ~ 12:00", current: 1.6, lastWeek: 1.5, outlook: 1.6 },
+      { label: "12:00 ~ 14:00", current: 1.7, lastWeek: 1.6, outlook: 1.7 },
+      { label: "14:00 ~ 16:00", current: 1.6, lastWeek: 1.4, outlook: 1.7 },
+      { label: "16:00 ~ 18:00", current: 1.7, lastWeek: 1.7, outlook: 1.7 },
+      { label: "18:00 ~ 20:00", current: 1.8, lastWeek: 1.6, outlook: 1.8 },
+    ],
+  },
+};
+
 export const hourlyRetailPulseData: HourlyRetailPulseData = {
   currency: "¥",
   currentSales: 220976,

@@ -32,6 +32,7 @@ export {
 export type { FilterOption } from "./filterOptions";
 export {
   hourlyRetailPulseData,
+  hourlyRetailPulseChartData,
   FEEDBACK_PRESET_REASONS,
   FEEDBACK_THUMBS_DOWN_CATEGORIES,
 } from "./hourlyRetailPulse";
@@ -41,5 +42,8 @@ export type {
   FeedbackType,
   FeedbackCategory,
   FeedbackCategoryData,
+  ChartMetric,
+  ChartDataPoint,
+  ChartMetricData,
 } from "./hourlyRetailPulse";
 

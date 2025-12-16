@@ -34,6 +34,7 @@ export type SeriesConfig = {
   displayAs: SeriesDisplayType;
   color?: string; // Optional color override
   selectable?: boolean; // Whether nodes in this series can be selected (default: true when enableSelection is true)
+  strokeDasharray?: string; // Optional stroke dash array for line styles (e.g., "5 5" for dashed, "2 2" for dotted)
 };
 
 export interface ChartPadding {
@@ -67,6 +68,8 @@ export interface BaseTrendChartProps {
   enableSelection?: boolean; // Enable node selection feature
   defaultSelectedNode?: DefaultSelectedNode; // Required when enableSelection is true
   onNodeSelect?: (label: string, seriesKey: string) => void; // Callback when a node is selected
+  yAxisDomain?: [number, number] | [string, string]; // Custom Y-axis domain (e.g., [0, 60000])
+  yAxisTicks?: number[]; // Custom Y-axis tick values (e.g., [0, 15000, 30000, 45000, 60000])
 }
 
 // --- Components ---
@@ -119,6 +122,8 @@ export const BaseTrendChart = ({
   enableSelection = false,
   defaultSelectedNode,
   onNodeSelect,
+  yAxisDomain,
+  yAxisTicks,
 }: BaseTrendChartProps) => {
   // Validate that defaultSelectedNode is provided when enableSelection is true
   if (enableSelection && !defaultSelectedNode) {
@@ -259,6 +264,8 @@ export const BaseTrendChart = ({
                 width={TrendChartDefaultDesignProperties.yAxisLabel.width}
                 axisLine={false}
                 tickLine={false}
+                domain={yAxisDomain}
+                ticks={yAxisTicks}
                 tick={{
                   fill: TrendChartDefaultDesignProperties.yAxisLabel.color,
                   fontSize:
@@ -366,6 +373,7 @@ export const BaseTrendChart = ({
                       stroke={color}
                       strokeWidth={3}
                       strokeOpacity={getLineOpacity(s.key)}
+                      strokeDasharray={s.strokeDasharray}
                       dot={<CustomDot />}
                       activeDot={{ r: 6 }}
                     />
