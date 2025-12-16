@@ -43,7 +43,7 @@ export const TodaysOutlook: React.FC<TodaysOutlookProps> = ({
             ]}
             value={comparisonMode}
             onChange={(value) => setComparisonMode(value as "LY" | "LW")}
-            size="small"
+            size="medium"
             hoverable={false}
           />,
           <Switch
@@ -56,7 +56,7 @@ export const TodaysOutlook: React.FC<TodaysOutlookProps> = ({
             onChange={(value) =>
               setTimeRange(value as "today" | "yesterday")
             }
-            size="small"
+            size="medium"
             hoverable={false}
           />,
         ],

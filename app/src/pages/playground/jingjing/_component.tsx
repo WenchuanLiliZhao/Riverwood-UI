@@ -5,7 +5,6 @@ import {
   NavTitle,
   FigmaBentoGrid,
   FigmaBentoItem,
-  TestBlock,
   Button,
   COMPONENT_VARIANTS,
   COMPONENT_SIZES,
@@ -15,6 +14,7 @@ import {
 import { design } from "./design";
 import { TodaysOutlook } from "./play-widgets/TodaysOutlook";
 import { ProductFocus } from "./play-widgets/ProductFocus​";
+import { HourlyRetailPulse } from "./play-widgets/HourlyRetailPulse";
 
 export const PageContent = () => {
   // State for filter controls
@@ -229,14 +229,7 @@ export const PageContent = () => {
                 <ProductFocus />
               </FigmaBentoItem>
               <FigmaBentoItem row={[14, 11]} col={[1, 7]}>
-                {/*
-                # AI Context
-
-                Here, we need to add a Widget. On the inner navigation of the Widget, there is a tri-optional switch for three views.
-                Use 3 TestBlocks to represent the three views.
-                Note, the switch must be actually functional.
-                */}
-                <TestBlock>3</TestBlock>
+                <HourlyRetailPulse />
               </FigmaBentoItem>
             </FigmaBentoGrid>
           ),

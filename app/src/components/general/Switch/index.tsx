@@ -9,7 +9,8 @@ import styles from "./styles.module.scss";
 
 export interface SwitchOption {
   value: string;
-  label: string;
+  label?: string;
+  icon?: string;
   hoverable?: boolean;
 }
 
@@ -44,7 +45,10 @@ export const Switch: React.FC<SwitchProps> = ({
         return (
           <Button
             key={option.value}
-            content={{ text: option.label }}
+            content={{
+              ...(option.icon && { icon: option.icon }),
+              ...(option.label && { text: option.label }),
+            }}
             design={{
               variant: isActive
                 ? COMPONENT_VARIANTS.outlined
