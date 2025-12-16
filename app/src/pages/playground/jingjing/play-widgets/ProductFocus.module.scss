@@ -47,3 +47,14 @@
   gap: 12px;
   padding: 12px 0;
 }
+
+.more-button-container {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  margin-top: 4px;
+
+  .more-button {
+    width: 100%;
+  }
+}

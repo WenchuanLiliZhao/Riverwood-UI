@@ -1,0 +1,25 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 4px;
+  background-color: var(--color-bg-secondary);
+
+  .search-input {
+    flex: 1;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-sans);
+
+    &::placeholder {
+      color: var(--color-text-negative);
+    }
+  }
+}
+

@@ -21,4 +21,6 @@ export type {
   InventoryMetrics,
   ThumbnailItem,
 } from "./heroProductCard";
+export { sortOptions, getSortOptionLabel } from "./sortOptions";
+export type { SortOption } from "./sortOptions";
 
