@@ -224,6 +224,37 @@ mockup-data/
 
 ![Pasted image 20251216134153.png](pic/Pasted%20image%2020251216134153.png)
 
+### 3.4 添加产品（Add Products）
+
+**数据文件**: `allProducts.ts`
+
+**使用位置**: `play-components/AddProductModal/index.tsx` 组件
+
+**界面展示**:
+- 模态框分为两个区域：
+  1. **左侧：Pick Focus Products** - 显示当前已选中的焦点产品列表（最多 10 个）
+  2. **右侧：Products List** - 显示所有可用的产品列表（排除已在焦点列表中的产品）
+- 支持搜索功能：可以按产品名称或颜色名称搜索
+- 支持排序功能：可以按不同方式对产品列表进行排序
+- 每个产品卡片显示与焦点产品卡片相同的信息（图片、名称、颜色、库存指标、表现指标、尺码分布等）
+
+![pic/Pasted image 20251216134106.png](pic/Pasted%20image%2020251216134106.png)
+
+点击 Add Product 后出现 modal：
+
+![pic/Pasted image 20251216134431.png](pic/Pasted%20image%2020251216134431.png)
+
+
+**关键字段说明**:
+- 数据结构与 `FocusProductCardData` 相同（见 3.1 节）
+- `allProductsData`: 所有可用产品的数组，已通过 Fisher-Yates 算法随机打乱顺序
+- 产品数据包含完整的库存指标、表现指标和尺码信息
+
+**功能逻辑**:
+- 右侧产品列表会自动过滤掉已在焦点列表中的产品（通过产品名称和颜色名称匹配）
+- 支持在两个区域分别进行搜索
+- 排序选项通过 `sortOptions` 数据提供（见 3.3 节）
+
 ---
 
 ## 4. 颜色语义工具
