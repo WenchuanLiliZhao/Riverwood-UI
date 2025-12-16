@@ -2,13 +2,18 @@ import * as React from "react";
 import { Button } from "../../../../../../../components";
 import { Modal } from "../../../../play-components/Modal";
 import { MaterialIcon } from "../../../../../../../components/shared/material-icon";
-import { FEEDBACK_PRESET_REASONS } from "../../../../mockup-data";
+import {
+  FEEDBACK_PRESET_REASONS,
+  FEEDBACK_THUMBS_DOWN_CATEGORIES,
+  type FeedbackCategory,
+} from "../../../../mockup-data";
 import styles from "./FeedbackModal.module.scss";
 
 export interface FeedbackModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (reason: string) => void;
+  feedbackType: "thumbsUp" | "thumbsDown";
   timeSlot?: string;
 }
 
@@ -16,45 +21,78 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
   isOpen,
   onClose,
   onSubmit,
+  feedbackType,
 }) => {
   const [selectedReason, setSelectedReason] = React.useState<string>("");
-  const [customReason, setCustomReason] = React.useState<string>("");
+  const [selectedCategory, setSelectedCategory] = React.useState<FeedbackCategory>("traffic");
 
   const handleReasonSelect = (reason: string) => {
     setSelectedReason(reason);
-    setCustomReason("");
   };
 
-  const handleCustomReasonChange = (value: string) => {
-    setCustomReason(value);
+  const handleCategoryChange = (category: FeedbackCategory) => {
+    setSelectedCategory(category);
     setSelectedReason("");
   };
 
   const handleSubmit = () => {
-    const reason = selectedReason || customReason.trim();
-    if (reason) {
-      onSubmit(reason);
+    if (selectedReason) {
+      onSubmit(selectedReason);
       handleClose();
     }
   };
 
   const handleClose = () => {
     setSelectedReason("");
-    setCustomReason("");
+    setSelectedCategory("traffic");
     onClose();
   };
 
-  const canSubmit = selectedReason !== "" || customReason.trim() !== "";
+  const canSubmit = selectedReason !== "";
+
+  const isThumbsUp = feedbackType === "thumbsUp";
+  const currentCategory = FEEDBACK_THUMBS_DOWN_CATEGORIES.find(
+    (cat) => cat.id === selectedCategory
+  );
+  const currentReasons = isThumbsUp
+    ? FEEDBACK_PRESET_REASONS
+    : currentCategory?.reasons ?? [];
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} className={styles["feedback-modal"]}>
       <div className={styles["modal-container"]}>
-        <div className={styles["icon-wrapper"]}>
-          <MaterialIcon icon="thumb_up" className={styles["thumbs-up-icon"]} />
+        <div className={styles["header"]}>
+          <div className={styles["header-content"]}>
+          <MaterialIcon
+            icon={isThumbsUp ? "thumb_up" : "thumb_down"}
+            className={isThumbsUp ? styles["thumbs-up-icon"] : styles["thumbs-down-icon"]}
+          />
+          <h3 className={styles["header-title"]}>
+            {isThumbsUp ? "Why do you like it?" : "Why don't you like it?"}
+          </h3>
+          </div>
+          <p className={styles["header-description"]}>
+            Your feedback will help us improve the product.
+          </p>
         </div>
         <div className={styles["content"]}>
+          {!isThumbsUp && (
+            <div className={styles["category-tabs"]}>
+              {FEEDBACK_THUMBS_DOWN_CATEGORIES.map((category) => (
+                <button
+                  key={category.id}
+                  className={`${styles["category-tab"]} ${
+                    selectedCategory === category.id ? styles["category-tab-active"] : ""
+                  }`}
+                  onClick={() => handleCategoryChange(category.id)}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+          )}
           <div className={styles["reason-list"]}>
-            {FEEDBACK_PRESET_REASONS.map((reason: string, index: number) => (
+            {currentReasons.map((reason: string, index: number) => (
               <div
                 key={index}
                 className={`${styles["reason-item"]} ${
@@ -65,15 +103,6 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
                 {reason}
               </div>
             ))}
-            <div className={styles["custom-reason"]}>
-              <input
-                type="text"
-                placeholder="Other reason..."
-                value={customReason}
-                onChange={(e) => handleCustomReasonChange(e.target.value)}
-                className={styles["custom-reason-input"]}
-              />
-            </div>
           </div>
           <div className={styles["actions"]}>
             <Button

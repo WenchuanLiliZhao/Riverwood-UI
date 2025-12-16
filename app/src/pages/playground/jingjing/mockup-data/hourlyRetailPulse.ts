@@ -7,6 +7,44 @@ export const FEEDBACK_PRESET_REASONS = [
   "The data visualization is clear and helpful.",
 ] as const;
 
+export type FeedbackCategory = "traffic" | "product" | "labor";
+
+export interface FeedbackCategoryData {
+  id: FeedbackCategory;
+  label: string;
+  reasons: readonly string[];
+}
+
+export const FEEDBACK_THUMBS_DOWN_CATEGORIES: readonly FeedbackCategoryData[] = [
+  {
+    id: "traffic",
+    label: "Traffic & Conversion",
+    reasons: [
+      "Lower-than-expected traffic",
+      "Short-term floor overload",
+      "Low Try-on Rate",
+    ],
+  },
+  {
+    id: "product",
+    label: "Product Related",
+    reasons: [
+      "Product availability issues",
+      "Pricing concerns",
+      "Product quality feedback",
+    ],
+  },
+  {
+    id: "labor",
+    label: "Labor Related",
+    reasons: [
+      "Insufficient staff coverage",
+      "Training needs",
+      "Scheduling conflicts",
+    ],
+  },
+] as const;
+
 export interface HourlyRetailPulseRowData {
   timeSlot: string;
   netSales: number | null;

@@ -28,6 +28,7 @@ interface TableRowProps {
   feedback: FeedbackType;
   onFeedbackChange: (feedback: FeedbackType) => void;
   onThumbsUpClick: () => void;
+  onThumbsDownClick: () => void;
 }
 
 const TableRow: React.FC<TableRowProps> = ({
@@ -36,6 +37,7 @@ const TableRow: React.FC<TableRowProps> = ({
   feedback,
   onFeedbackChange,
   onThumbsUpClick,
+  onThumbsDownClick,
 }) => {
   const isSummary = row.isSummary ?? false;
 
@@ -48,7 +50,11 @@ const TableRow: React.FC<TableRowProps> = ({
   };
 
   const handleThumbsDownClick = () => {
-    onFeedbackChange(feedback === "thumbsDown" ? null : "thumbsDown");
+    if (feedback === "thumbsDown") {
+      onFeedbackChange(null);
+    } else {
+      onThumbsDownClick();
+    }
   };
 
   return (
@@ -122,7 +128,8 @@ export const TableView: React.FC = () => {
 
   // Feedback modal state
   const [feedbackModalOpen, setFeedbackModalOpen] = React.useState(false);
-  const [pendingThumbsUpRowIndex, setPendingThumbsUpRowIndex] = React.useState<number | null>(null);
+  const [pendingFeedbackRowIndex, setPendingFeedbackRowIndex] = React.useState<number | null>(null);
+  const [pendingFeedbackType, setPendingFeedbackType] = React.useState<"thumbsUp" | "thumbsDown" | null>(null);
 
   const handleFeedbackChange = (rowIndex: number, feedback: FeedbackType) => {
     setFeedbackState((prev) => ({
@@ -132,22 +139,34 @@ export const TableView: React.FC = () => {
   };
 
   const handleThumbsUpClick = (rowIndex: number) => {
-    setPendingThumbsUpRowIndex(rowIndex);
+    setPendingFeedbackRowIndex(rowIndex);
+    setPendingFeedbackType("thumbsUp");
+    setFeedbackModalOpen(true);
+  };
+
+  const handleThumbsDownClick = (rowIndex: number) => {
+    setPendingFeedbackRowIndex(rowIndex);
+    setPendingFeedbackType("thumbsDown");
     setFeedbackModalOpen(true);
   };
 
   const handleFeedbackSubmit = (reason: string) => {
     // reason is collected but can be stored/used later if needed
     void reason; // Mark as used to satisfy linter
-    if (pendingThumbsUpRowIndex !== null) {
-      handleFeedbackChange(pendingThumbsUpRowIndex, "thumbsUp");
-      setPendingThumbsUpRowIndex(null);
+    if (pendingFeedbackRowIndex !== null && pendingFeedbackType !== null) {
+      handleFeedbackChange(
+        pendingFeedbackRowIndex,
+        pendingFeedbackType === "thumbsUp" ? "thumbsUp" : "thumbsDown"
+      );
+      setPendingFeedbackRowIndex(null);
+      setPendingFeedbackType(null);
     }
   };
 
   const handleFeedbackModalClose = () => {
     setFeedbackModalOpen(false);
-    setPendingThumbsUpRowIndex(null);
+    setPendingFeedbackRowIndex(null);
+    setPendingFeedbackType(null);
   };
 
   return (
@@ -182,17 +201,19 @@ export const TableView: React.FC = () => {
                 feedback={feedbackState[index] ?? null}
                 onFeedbackChange={(feedback) => handleFeedbackChange(index, feedback)}
                 onThumbsUpClick={() => handleThumbsUpClick(index)}
+                onThumbsDownClick={() => handleThumbsDownClick(index)}
               />
             ))}
           </tbody>
         </table>
       </div>
-      {pendingThumbsUpRowIndex !== null && (
+      {pendingFeedbackRowIndex !== null && pendingFeedbackType !== null && (
         <FeedbackModal
           isOpen={feedbackModalOpen}
           onClose={handleFeedbackModalClose}
           onSubmit={handleFeedbackSubmit}
-          timeSlot={rows[pendingThumbsUpRowIndex]?.timeSlot ?? ""}
+          feedbackType={pendingFeedbackType}
+          timeSlot={rows[pendingFeedbackRowIndex]?.timeSlot ?? ""}
         />
       )}
     </div>
