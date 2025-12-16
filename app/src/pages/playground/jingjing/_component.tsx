@@ -229,6 +229,13 @@ export const PageContent = () => {
                 <ProductFocus />
               </FigmaBentoItem>
               <FigmaBentoItem row={[14, 11]} col={[1, 7]}>
+                {/*
+                # AI Context
+
+                Here, we need to add a Widget. On the inner navigation of the Widget, there is a tri-optional switch for three views.
+                Use 3 TestBlocks to represent the three views.
+                Note, the switch must be actually functional.
+                */}
                 <TestBlock>3</TestBlock>
               </FigmaBentoItem>
             </FigmaBentoGrid>
