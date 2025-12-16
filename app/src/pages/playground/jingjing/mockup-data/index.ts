@@ -23,4 +23,11 @@ export type {
 } from "./heroProductCard";
 export { sortOptions, getSortOptionLabel } from "./sortOptions";
 export type { SortOption } from "./sortOptions";
+export {
+  scopeFilterOptions,
+  relationshipFilterOptions,
+  getDefaultScopeFilter,
+  getDefaultRelationshipFilter,
+} from "./filterOptions";
+export type { FilterOption } from "./filterOptions";
 

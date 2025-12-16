@@ -7,22 +7,23 @@ import { HeroProductCard } from "../play-components/HeroProductCard";
 import { heroProductCardsData } from "../mockup-data/heroProductCard";
 import { AddProductModal } from "../play-components/AddProductModal";
 import { allProductsData } from "../mockup-data/allProducts";
+import { DropdownMenu } from "../play-components/DropdownMenu";
+import {
+  scopeFilterOptions,
+  relationshipFilterOptions,
+  getDefaultScopeFilter,
+  getDefaultRelationshipFilter,
+} from "../mockup-data/filterOptions";
 
-const MAX_DISPLAY_PRODUCTS = 3;
+const MAX_DISPLAY_PRODUCTS = 2;
 
 export const ProductFocus = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [focusProducts] = useState([
-    focusProductCardsData.womensSleevelessTankPink,
-    focusProductCardsData.swiftlyTechLongSleeveBlack,
-    focusProductCardsData.ebbToStreetTankPink,
-    focusProductCardsData.alignTankTopPink,
-    focusProductCardsData.alignCroppedCamiPink,
-    focusProductCardsData.loveTankTopPink,
-    focusProductCardsData.jerseyTrainingTankPink,
-    focusProductCardsData.swiftlyTechLongSleeveNavy,
-    focusProductCardsData.swiftlyTechLongSleeveGray,
-  ]);
+  const [focusProducts] = useState(() => Object.values(focusProductCardsData));
+  const [scopeFilter, setScopeFilter] = useState<string>(getDefaultScopeFilter());
+  const [relationshipFilter, setRelationshipFilter] = useState<string>(
+    getDefaultRelationshipFilter()
+  );
 
   const visibleProducts = useMemo(
     () => focusProducts.slice(0, MAX_DISPLAY_PRODUCTS),
@@ -58,7 +59,7 @@ export const ProductFocus = () => {
                 <span className={styles["header-title"]}>Focus Products</span>
               </div>
               <div className={styles["header-actions"]}>
-                <Button   
+                <Button
                   content={{
                     icon: "add",
                     text: "Add Product",
@@ -76,61 +77,63 @@ export const ProductFocus = () => {
               {visibleProducts.map((product, index) => (
                 <FocusProductCard key={`focus-${index}`} data={product} />
               ))}
+              {hasMoreProducts && (
+                <div className={styles["more-button-container"]}>
+                  <Button
+                    content={{
+                      text: "More Focus Products...",
+                    }}
+                    design={{
+                      variant: "fill",
+                      size: "large",
+                      semantic: "secondary",
+                    }}
+                    onClick={handleOpenModal}
+                    className={styles["more-button"]}
+                  />
+                </div>
+              )}
             </div>
-            {hasMoreProducts && (
-              <div className={styles["more-button-container"]}>
-                <Button
-                  content={{
-                    text: "More...",
-                  }}
-                  design={{
-                    variant: "ghost",
-                    size: "medium",
-                    semantic: "secondary",
-                  }}
-                  onClick={handleOpenModal}
-                  className={styles["more-button"]}
-                />
-              </div>
-            )}
           </div>
           <div className={styles["hero-products"]}>
             <div className={styles["header"]}>
               <div className={styles["header-content"]}>
-                <MaterialIcon icon="mystery" size={24} />
+                <MaterialIcon icon="person_celebrate" size={24} />
                 <span className={styles["header-title"]}>Hero Products</span>
               </div>
               <div className={styles["header-actions"]}>
-                <Button
-                  content={{
-                    icon: "bookmark",
-                  }}
-                  design={{
-                    variant: "ghost",
-                    size: "medium",
-                    semantic: "secondary",
-                  }}
-                />
-                <Button
-                  content={{
-                    icon: "place",
-                  }}
-                  design={{
-                    variant: "ghost",
-                    size: "medium",
-                    semantic: "secondary",
-                  }}
-                />
-                <Button
-                  content={{
-                    icon: "more_vert",
-                  }}
-                  design={{
-                    variant: "ghost",
-                    size: "medium",
-                    semantic: "secondary",
-                  }}
-                />
+                <DropdownMenu
+                  options={relationshipFilterOptions}
+                  value={relationshipFilter}
+                  onChange={setRelationshipFilter}
+                >
+                  <Button
+                    content={{
+                      icon: "shoppingmode",
+                    }}
+                    design={{
+                      variant: "outlined",
+                      size: "medium",
+                      semantic: "secondary",
+                    }}
+                  />
+                </DropdownMenu>
+                <DropdownMenu
+                  options={scopeFilterOptions}
+                  value={scopeFilter}
+                  onChange={setScopeFilter}
+                >
+                  <Button
+                    content={{
+                      icon: "map",
+                    }}
+                    design={{
+                      variant: "outlined",
+                      size: "medium",
+                      semantic: "secondary",
+                    }}
+                  />
+                </DropdownMenu>
               </div>
             </div>
             <div className={styles["product-cards"]}>
@@ -151,9 +154,7 @@ export const ProductFocus = () => {
               />
             </div>
           </div>
-          <div style={{ height: "100px" }}>
-
-          </div>
+          <div style={{ height: "100px" }}></div>
         </div>
       </div>
       <AddProductModal
