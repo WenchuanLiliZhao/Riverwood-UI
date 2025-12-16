@@ -30,7 +30,7 @@ export {
   getDefaultRelationshipFilter,
 } from "./filterOptions";
 export type { FilterOption } from "./filterOptions";
-export { hourlyRetailPulseData } from "./hourlyRetailPulse";
+export { hourlyRetailPulseData, FEEDBACK_PRESET_REASONS } from "./hourlyRetailPulse";
 export type {
   HourlyRetailPulseData,
   HourlyRetailPulseRowData,

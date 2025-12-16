@@ -1,5 +1,12 @@
 export type FeedbackType = "thumbsUp" | "thumbsDown" | null;
 
+export const FEEDBACK_PRESET_REASONS = [
+  "I love this design!",
+  "Great layout, but the fonts could be improved.",
+  "Could we explore different color schemes?",
+  "The data visualization is clear and helpful.",
+] as const;
+
 export interface HourlyRetailPulseRowData {
   timeSlot: string;
   netSales: number | null;
