@@ -92,6 +92,12 @@ export const BaseProgressBar = React.forwardRef<
       designProperties?.distributionGap ?? ProgressBarDefaultDesignProperties.distributionGap,
     showHeader:
       designProperties?.showHeader ?? ProgressBarDefaultDesignProperties.showHeader,
+    showLoadingAnimation:
+      designProperties?.showLoadingAnimation ?? ProgressBarDefaultDesignProperties.showLoadingAnimation,
+    showWidthAnimation:
+      designProperties?.showWidthAnimation ?? ProgressBarDefaultDesignProperties.showWidthAnimation,
+    animationDuration:
+      designProperties?.animationDuration ?? ProgressBarDefaultDesignProperties.animationDuration,
   };
 
   // Progress bar mode
@@ -108,6 +114,7 @@ export const BaseProgressBar = React.forwardRef<
           {
             "--corner-radius": `${design.cornerRadius}px`,
             "--progress-color": color,
+            "--animation-duration": `${design.animationDuration}s`,
           } as React.CSSProperties
         }
       >
@@ -130,10 +137,16 @@ export const BaseProgressBar = React.forwardRef<
           style={{ height: `${design.height}px` }}
         >
           <div
-            className={clsx(styles["progress-bar"], styles["progress-bar-single"])}
+            className={clsx(
+              styles["progress-bar"],
+              styles["progress-bar-single"],
+              design.showLoadingAnimation && styles["progress-bar-loading"],
+              design.showWidthAnimation && styles["progress-bar-width-animation"]
+            )}
             style={{
-              width: `${percentage}%`,
-            }}
+              width: design.showWidthAnimation ? undefined : `${percentage}%`,
+              "--target-width": `${percentage}%`,
+            } as React.CSSProperties}
           />
         </div>
       </div>
@@ -163,6 +176,7 @@ export const BaseProgressBar = React.forwardRef<
           {
             "--corner-radius": `${design.cornerRadius}px`,
             "--distribution-gap": `${design.distributionGap}px`,
+            "--animation-duration": `${design.animationDuration}s`,
           } as React.CSSProperties
         }
       >
@@ -189,11 +203,16 @@ export const BaseProgressBar = React.forwardRef<
               return (
                 <div
                   key={segment.id}
-                  className={styles["distribution-segment"]}
+                  className={clsx(
+                    styles["distribution-segment"],
+                    design.showLoadingAnimation && styles["progress-bar-loading"],
+                    design.showWidthAnimation && styles["progress-bar-width-animation"]
+                  )}
                   style={{
-                    width: `${segment.percentage}%`,
+                    width: design.showWidthAnimation ? undefined : `${segment.percentage}%`,
+                    "--target-width": `${segment.percentage}%`,
                     backgroundColor: segment.color,
-                  }}
+                  } as React.CSSProperties}
                   title={segment.label || `${segment.value} ${unit}`}
                 />
               );

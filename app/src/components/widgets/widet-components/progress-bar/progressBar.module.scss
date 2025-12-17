@@ -66,11 +66,59 @@
 .progress-bar {
   height: 100%;
   border-radius: var(--corner-radius, 4px);
+  position: relative;
+  overflow: hidden;
 }
 
 /* Progress bar mode - single segment */
 .progress-bar-single {
   background-color: var(--progress-color, #ef4444);
+}
+
+/* Loading animation - shimmer effect */
+.progress-bar-loading {
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer var(--animation-duration, 1.5s) infinite;
+    border-radius: var(--corner-radius, 4px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Width animation - progress bar fills from 0 to target width */
+.progress-bar-width-animation {
+  width: 0 !important;
+  animation: widthFill var(--animation-duration, 1.5s) ease-out forwards;
+  animation-delay: 0s;
+}
+
+@keyframes widthFill {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--target-width, 100%);
+  }
 }
 
 /* Distribution bar mode - multiple segments */
@@ -83,6 +131,8 @@
 
 .distribution-segment {
   height: 100%;
+  position: relative;
+  overflow: hidden;
   
   &:first-child {
     border-top-left-radius: var(--corner-radius, 4px);

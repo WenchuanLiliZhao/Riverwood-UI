@@ -14,10 +14,8 @@ export type {
 } from "./kpi-ring-chart";
 
 // Explicit exports from progress-bar to avoid DesignProperties conflict
-export {
-  ProgressBar,
-  DefaultDesignProperties as ProgressBarDefaultDesignProperties,
-} from "./progress-bar";
+export { ProgressBar } from "./progress-bar";
+export { ProgressBarDefaultDesignProperties as ProgressBarDefaultDesignProperties } from "./progress-bar/designProperties";
 export type {
   ProgressBarProps,
   ProgressBarData,

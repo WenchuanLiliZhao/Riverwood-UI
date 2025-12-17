@@ -40,7 +40,7 @@ export const NumberRoll = React.forwardRef<HTMLSpanElement, NumberRollProps>(
     {
       value,
       useThousandsSeparator = true,
-      duration = 1000,
+      duration = 1500,
       onComplete,
       className,
       ...props

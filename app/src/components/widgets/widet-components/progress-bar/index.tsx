@@ -11,7 +11,6 @@ export type {
   DistributionSegment,
 } from "./_BaseProgressBar";
 export type { ProgressBarDesignProperties as DesignProperties } from "./designProperties";
-export { ProgressBarDefaultDesignProperties as DefaultDesignProperties } from "./designProperties";
 
 export const ProgressBar = React.forwardRef<
   HTMLDivElement,
