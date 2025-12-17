@@ -4,3 +4,4 @@ export * from "./button-group";
 export * from "./avata";
 export * from "./hr";
 export * from "./Switch";
+export * from "./number-roll";
