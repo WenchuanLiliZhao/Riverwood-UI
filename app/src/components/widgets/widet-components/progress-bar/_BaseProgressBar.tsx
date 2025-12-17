@@ -100,6 +100,21 @@ export const BaseProgressBar = React.forwardRef<
       designProperties?.animationDuration ?? ProgressBarDefaultDesignProperties.animationDuration,
   };
 
+  // State to control width animation - always enable animation for loading effect
+  const [isAnimating, setIsAnimating] = React.useState(false);
+
+  // Trigger animation on mount - always animate width from 0 to target
+  React.useEffect(() => {
+    // Use requestAnimationFrame to ensure the initial render is complete
+    // This ensures the element is rendered with 0% width before animation starts
+    const timer = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setIsAnimating(true);
+      });
+    });
+    return () => cancelAnimationFrame(timer);
+  }, []);
+
   // Progress bar mode
   if (progressData) {
     const { label, value, total, unit, color, caption } = progressData;
@@ -140,11 +155,11 @@ export const BaseProgressBar = React.forwardRef<
             className={clsx(
               styles["progress-bar"],
               styles["progress-bar-single"],
-              design.showLoadingAnimation && styles["progress-bar-loading"],
-              design.showWidthAnimation && styles["progress-bar-width-animation"]
+              design.showLoadingAnimation && styles["progress-bar-loading"]
             )}
             style={{
-              width: `${percentage}%`,
+              width: isAnimating ? `${percentage}%` : "0%",
+              transition: `width ${design.animationDuration}s cubic-bezier(0.4, 0, 0.2, 1)`,
             } as React.CSSProperties}
           />
         </div>
@@ -204,12 +219,12 @@ export const BaseProgressBar = React.forwardRef<
                   key={segment.id}
                   className={clsx(
                     styles["distribution-segment"],
-                    design.showLoadingAnimation && styles["progress-bar-loading"],
-                    design.showWidthAnimation && styles["progress-bar-width-animation"]
+                    design.showLoadingAnimation && styles["progress-bar-loading"]
                   )}
                   style={{
-                    width: `${segment.percentage}%`,
+                    width: isAnimating ? `${segment.percentage}%` : "0%",
                     backgroundColor: segment.color,
+                    transition: `width ${design.animationDuration}s cubic-bezier(0.4, 0, 0.2, 1)`,
                   } as React.CSSProperties}
                   title={segment.label || `${segment.value} ${unit}`}
                 />
