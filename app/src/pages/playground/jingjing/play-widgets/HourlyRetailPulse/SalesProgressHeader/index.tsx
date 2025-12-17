@@ -13,8 +13,6 @@ export const SalesProgressHeader: React.FC<SalesProgressHeaderProps> = ({
   targetSales,
   currency,
 }) => {
-  const percentage = targetSales > 0 ? (currentSales / targetSales) * 100 : 0;
-
   return (
     <div className={styles.container}>
       <div className={styles["text-labels"]}>

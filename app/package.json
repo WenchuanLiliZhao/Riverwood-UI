@@ -1,6 +1,6 @@
 {
   "name": "riverwood-ui",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "A modern React UI component library built with TypeScript and SCSS Modules",
   "type": "module",
   "main": "./dist/riverwood-ui.umd.js",
