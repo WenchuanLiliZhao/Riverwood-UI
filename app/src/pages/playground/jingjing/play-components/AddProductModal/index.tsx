@@ -64,6 +64,7 @@ export const AddProductModal: React.FC<AddProductModalProps> = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose} className={styles["add-product-modal"]}>
       <div className={styles["modal-header"]}>
+        <div className={styles["modal-title"]}>Pick Your Focus</div>
         <button 
           className={styles["close-button"]} 
           onClick={onClose}
@@ -77,7 +78,7 @@ export const AddProductModal: React.FC<AddProductModalProps> = ({
         {/* Left Section: Pick Your Focus */}
         <div className={styles["focus-section"]}>
           <div className={styles["section-header"]}>
-            <h2 className={styles["section-title"]}>Pick Focus Products ({focusProducts.length}/{maxFocusProducts})</h2>
+            <h2 className={styles["section-title"]}>Focus Products ({focusProducts.length}/{maxFocusProducts})</h2>
           </div>
           <div className={styles["search-wrapper"]}>
             <SearchBar
