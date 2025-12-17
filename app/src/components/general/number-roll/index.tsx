@@ -52,6 +52,33 @@ export const NumberRoll = React.forwardRef<HTMLSpanElement, NumberRollProps>(
     const startTimeRef = React.useRef<number | null>(null);
     const isIntegerValue = React.useMemo(() => Number.isInteger(value), [value]);
 
+    // Calculate decimal places of the final value
+    const decimalPlaces = React.useMemo(() => {
+      if (isIntegerValue) {
+        return 0;
+      }
+      // Convert to string to find decimal places
+      const valueStr = value.toString();
+      // Handle standard decimal notation (e.g., 123.45)
+      if (valueStr.includes(".") && !valueStr.includes("e")) {
+        return valueStr.split(".")[1].length;
+      }
+      // Handle scientific notation (e.g., 1e-5, 1.23e-2)
+      if (valueStr.includes("e")) {
+        const parts = valueStr.split("e");
+        const exponent = parseInt(parts[1], 10);
+        if (exponent < 0) {
+          // For scientific notation, calculate total decimal places
+          const basePart = parts[0];
+          const baseDecimalPlaces = basePart.includes(".")
+            ? basePart.split(".")[1].length
+            : 0;
+          return Math.abs(exponent) + baseDecimalPlaces;
+        }
+      }
+      return 0;
+    }, [value, isIntegerValue]);
+
     // Format number with optional thousands separator
     const formatNumber = React.useCallback(
       (num: number): string => {
@@ -60,21 +87,22 @@ export const NumberRoll = React.forwardRef<HTMLSpanElement, NumberRollProps>(
             // For integers, use integer formatting
             return Math.floor(num).toLocaleString("en-US");
           } else {
-            // For decimals, preserve decimal places
+            // For decimals, use the same decimal places as the final value
             return num.toLocaleString("en-US", {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 10,
+              minimumFractionDigits: decimalPlaces,
+              maximumFractionDigits: decimalPlaces,
             });
           }
         } else {
           if (isIntegerValue) {
             return Math.floor(num).toString();
           } else {
-            return num.toString();
+            // For decimals without thousands separator, use toFixed to maintain decimal places
+            return num.toFixed(decimalPlaces);
           }
         }
       },
-      [useThousandsSeparator, isIntegerValue]
+      [useThousandsSeparator, isIntegerValue, decimalPlaces]
     );
 
     React.useEffect(() => {
