@@ -6,8 +6,8 @@ export const ProgressBarDefaultDesignProperties = {
   cornerRadius: 4,
   distributionGap: 1,
   showHeader: true,
-  showLoadingAnimation: true,
-  showWidthAnimation: true,
+  showLoadingAnimation: false,
+  showWidthAnimation: false,
   animationDuration: 1.5, // in seconds
 };
 

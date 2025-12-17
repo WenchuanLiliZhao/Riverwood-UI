@@ -144,8 +144,7 @@ export const BaseProgressBar = React.forwardRef<
               design.showWidthAnimation && styles["progress-bar-width-animation"]
             )}
             style={{
-              width: design.showWidthAnimation ? undefined : `${percentage}%`,
-              "--target-width": `${percentage}%`,
+              width: `${percentage}%`,
             } as React.CSSProperties}
           />
         </div>
@@ -209,8 +208,7 @@ export const BaseProgressBar = React.forwardRef<
                     design.showWidthAnimation && styles["progress-bar-width-animation"]
                   )}
                   style={{
-                    width: design.showWidthAnimation ? undefined : `${segment.percentage}%`,
-                    "--target-width": `${segment.percentage}%`,
+                    width: `${segment.percentage}%`,
                     backgroundColor: segment.color,
                   } as React.CSSProperties}
                   title={segment.label || `${segment.value} ${unit}`}
