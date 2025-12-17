@@ -138,6 +138,7 @@ export const AmbassadorMockupData = {
       },
 
       // Sports Activities Distribution
+      // Coordinates for the Map go here
       {
         title: "Sports Activities Distribution",
         icon: "map",
