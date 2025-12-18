@@ -1,5 +1,6 @@
 export * from "./trend-chart";
 export * from "./pie-chart";
+export * from "./sector-pie-chart";
 
 // Explicit exports from kpi-ring-chart to avoid DesignProperties conflict
 export {
