@@ -1,6 +1,6 @@
 export const locationSelectorWording = {
-  region: "All Regions",
-  area: "All Areas",
+  region: "All Areas",
+  area: "All Regions",
   city: "All Cities",
 };
 

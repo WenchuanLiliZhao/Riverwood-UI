@@ -1,6 +1,6 @@
 import * as React from "react";
 import { WidgetFrame, Switch } from "../../../../../components";
-import { RefreshView } from "./RefreshView";
+import { ClockChartView } from "./ClockChartView";
 import { TableView } from "./TableView";
 import { ChartView } from "./ChartView";
 import styles from "./styles.module.scss";
@@ -32,7 +32,7 @@ export const HourlyRetailPulse: React.FC = () => {
       }}
     >
       <div className={styles.container}>
-        {view === "refresh" && <RefreshView />}
+        {view === "refresh" && <ClockChartView />}
         {view === "table" && <TableView />}
         {view === "chart" && <ChartView />}
       </div>

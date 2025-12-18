@@ -46,4 +46,10 @@ export type {
   ChartDataPoint,
   ChartMetricData,
 } from "./hourlyRetailPulse";
+export { clockViewData } from "./clockViewData";
+export type {
+  ClockViewDataType,
+  ClockViewDataItemType,
+  NumberWithUnitType,
+} from "./clockViewData";
 
