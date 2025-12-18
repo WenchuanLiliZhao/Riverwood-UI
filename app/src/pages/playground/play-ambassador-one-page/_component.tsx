@@ -32,9 +32,16 @@ import type { ActivityProgressCardData } from "./types/activity-progress";
 import type { ActivityDistributionItem } from "./play-components/activity-distribution-pie-chart";
 import type { MetricsDataByMonth } from "./types/metrics";
 
+// Helper function to get current month label
+const getCurrentMonthLabel = (): string => {
+  const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  const currentMonth = new Date().getMonth(); // 0-11
+  return monthNames[currentMonth];
+};
+
 export const PageContent = () => {
-  // State management for selected month
-  const [selectedMonth, setSelectedMonth] = useState<string>("APR");
+  // State management for selected month - default to current month
+  const [selectedMonth, setSelectedMonth] = useState<string>(getCurrentMonthLabel());
 
   // Extract data from mockup
   const rosterOverview = AmbassadorMockupData["roster-overview"];
@@ -175,7 +182,7 @@ export const PageContent = () => {
             <NavTitle title="Ambassador One Page" />,
           ],
           last: [
-            <LocationSelector locationData={location} />,            
+            <LocationSelector locationData={location} />,
             <YearSelector yearData={allYears} />,
           ],
         },
@@ -341,7 +348,7 @@ export const PageContent = () => {
                       series={resourcePlanningData.series}
                       xAxisPadding={{ left: 40, right: 40 }}
                       enableSelection={true}
-                      defaultSelectedNode={{ label: "APR", seriesKey: "used" }}
+                      defaultSelectedNode={{ label: selectedMonth, seriesKey: "used" }}
                       onNodeSelect={handleNodeSelect}
                     />
                   </WidgetFrame>

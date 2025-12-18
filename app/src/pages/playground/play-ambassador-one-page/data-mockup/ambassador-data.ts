@@ -352,9 +352,9 @@ export const AmbassadorMockupData = {
             { label: 'SEP', used: 18, planned: 0 },
             { label: 'OCT', used: 44, planned: 0 },
             { label: 'NOV', used: 15, planned: 0 },
-            { label: 'DEC', used: 0, planned: 6 },
-            { label: 'JAN', used: 0, planned: 0 },
-            { label: 'FEB', used: 0, planned: 0 },
+            { label: 'DEC', used: 28, planned: 0 },
+            { label: 'JAN', used: 0, planned: 12 },
+            { label: 'FEB', used: 0, planned: 8 },
             { label: 'MAR', used: 0, planned: 0 },
           ] as ChartDataPoint[],
           series: [
