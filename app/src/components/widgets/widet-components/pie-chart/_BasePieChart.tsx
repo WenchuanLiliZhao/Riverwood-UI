@@ -151,6 +151,30 @@ export interface BasePieChartProps {
    */
   showLabelUnit?: boolean;
   /**
+   * Position of the legend relative to the chart.
+   * @default "bottom"
+   */
+  legendPosition?: "bottom" | "right";
+  /**
+   * Diameter of the pie chart in pixels.
+   * @default 100
+   */
+  pieDiameter?: number;
+  /**
+   * Width of the legend container in pixels (only applies when legendPosition is "right").
+   * @default 200
+   */
+  legendWidth?: number;
+  /**
+   * Height of the legend container in pixels (optional, defaults to auto).
+   */
+  legendHeight?: number;
+  /**
+   * Spacing between the pie chart and legend in pixels.
+   * @default 24
+   */
+  spacing?: number;
+  /**
    * Custom className for the container
    */
   className?: string;
@@ -164,6 +188,11 @@ export const BasePieChart = React.forwardRef<HTMLDivElement, BasePieChartProps>(
       showLegendValue = false,
       showLegendUnit = false,
       showLabelUnit = true,
+      legendPosition = "bottom",
+      pieDiameter = DefaultDesignProperties.diameter,
+      legendWidth = 200,
+      legendHeight,
+      spacing = DefaultDesignProperties.legendMarginTop,
       className,
     },
     ref
@@ -182,61 +211,88 @@ export const BasePieChart = React.forwardRef<HTMLDivElement, BasePieChartProps>(
     });
 
     return (
-      <div ref={ref} className={clsx(styles.container, className)}>
-        {/* Recharts PieChart Container */}
-        <RechartsPieChart
-          width={DefaultDesignProperties.diameter * 1}
-          height={DefaultDesignProperties.diameter * 1}
+      <div 
+        ref={ref} 
+        className={clsx(
+          styles.container, 
+          legendPosition === "right" && styles["container--right"],
+          className
+        )}
+      >
+        {/* Recharts PieChart Container - wrapped to prevent shrinking */}
+        <div 
+          className={styles["chart-wrapper"]}
+          style={{ 
+            width: pieDiameter, 
+            height: pieDiameter,
+            flexShrink: 0 
+          }}
         >
-          <Pie
-            data={chartData}
-            cx="50%"
-            cy="50%"
-            // Create a ring (donut) effect by setting innerRadius
-            innerRadius={
-              DefaultDesignProperties.diameter / 2 -
-              DefaultDesignProperties.ringWidth
-            }
-            outerRadius={DefaultDesignProperties.diameter / 2}
-            paddingAngle={0}
-            dataKey="value"
-            startAngle={90}
-            endAngle={-270}
-            // Custom label logic: render if alwaysShowLabels is true OR if this slice is active
-            label={((props: PieLabelProps) =>
-              alwaysShowLabels || props.index === activeIndex
-                ? renderCustomizedLabel({
-                    ...props,
-                    showLabelUnit,
-                  })
-                : null) as React.ComponentProps<typeof Pie>["label"]}
-            labelLine={false} // Disable the connecting line for a cleaner look
-            stroke="none" // Remove border stroke around slices
-            isAnimationActive={false} // Disable animation for instant feedback
-            onMouseLeave={() => setActiveIndex(null)}
+          <RechartsPieChart
+            width={pieDiameter}
+            height={pieDiameter}
           >
-            {/* Render each slice with its specific color */}
-            {chartData.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={entry.color}
-                style={{ outline: "none" }}
-                strokeWidth={0}
-                onMouseEnter={() => setActiveIndex(index)}
-              />
-            ))}
-          </Pie>
-        </RechartsPieChart>
+            <Pie
+              data={chartData}
+              cx="50%"
+              cy="50%"
+              // Create a ring (donut) effect by setting innerRadius
+              innerRadius={
+                pieDiameter / 2 - DefaultDesignProperties.ringWidth
+              }
+              outerRadius={pieDiameter / 2}
+              paddingAngle={0}
+              dataKey="value"
+              startAngle={90}
+              endAngle={-270}
+              // Custom label logic: render if alwaysShowLabels is true OR if this slice is active
+              label={((props: PieLabelProps) =>
+                alwaysShowLabels || props.index === activeIndex
+                  ? renderCustomizedLabel({
+                      ...props,
+                      showLabelUnit,
+                    })
+                  : null) as React.ComponentProps<typeof Pie>["label"]}
+              labelLine={false} // Disable the connecting line for a cleaner look
+              stroke="none" // Remove border stroke around slices
+              isAnimationActive={false} // Disable animation for instant feedback
+              onMouseLeave={() => setActiveIndex(null)}
+            >
+              {/* Render each slice with its specific color */}
+              {chartData.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={entry.color}
+                  style={{ outline: "none" }}
+                  strokeWidth={0}
+                  onMouseEnter={() => setActiveIndex(index)}
+                />
+              ))}
+            </Pie>
+          </RechartsPieChart>
+        </div>
 
         {/* Legend Section */}
         <div
-          className={styles["legend-container"]}
+          className={clsx(
+            styles["legend-container"],
+            legendPosition === "right" && styles["legend-container--right"]
+          )}
           style={{
-            marginTop: DefaultDesignProperties.legendMarginTop,
+            ...(legendPosition === "bottom"
+              ? { marginTop: spacing }
+              : { marginLeft: spacing }),
+            ...(legendPosition === "right" && legendWidth
+              ? { width: legendWidth }
+              : {}),
+            ...(legendHeight ? { height: legendHeight } : {}),
           }}
         >
           <div
-            className={styles["legend-items"]}
+            className={clsx(
+              styles["legend-items"],
+              legendPosition === "right" && styles["legend-items--right"]
+            )}
             style={{
               columnGap: DefaultDesignProperties.legendGapX,
               rowGap: DefaultDesignProperties.legendGapY,

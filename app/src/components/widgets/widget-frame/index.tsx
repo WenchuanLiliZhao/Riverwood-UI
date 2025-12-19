@@ -9,30 +9,41 @@ export interface WidgetFrameProps {
     controls?: React.ReactNode[];
   };
   children: React.ReactNode;
+  design?: {
+    navSize?: "small" | "medium" | "large";
+  };
 }
 
-export const WidgetFrame: React.FC<WidgetFrameProps> = ({ nav, children }) => {
+export const WidgetFrame: React.FC<WidgetFrameProps> = ({
+  nav,
+  children,
+  design,
+}) => {
+  const navSize = design?.navSize || "medium";
+  
   return (
     <div className={styles["widget-frame"]}>
-      {nav && <div className={styles["widget-frame-nav"]}>
-        <div className={styles["title-container"]}>
-          {nav.icon && (
-            <div className={styles["icon-container"]}>
-              <MaterialIcon icon={nav.icon} />
-            </div>
-          )}
-          {nav.title && (
-            <div className={styles["title-container"]}>{nav.title}</div>
-          )}
+      {nav && (
+        <div className={`${styles["widget-frame-nav"]} ${styles[navSize]}`}>
+          <div className={styles["title-container"]}>
+            {nav.icon && (
+              <div className={styles["icon-container"]}>
+                <MaterialIcon icon={nav.icon} />
+              </div>
+            )}
+            {nav.title && (
+              <div className={styles["title-container"]}>{nav.title}</div>
+            )}
+          </div>
+          <div className={styles["controls-container"]}>
+            {nav.controls?.map((item, index) => (
+              <div key={index} className={styles["control-container"]}>
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className={styles["controls-container"]}>
-          {nav.controls?.map((item, index) => (
-            <div key={index} className={styles["control-container"]}>
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>}
+      )}
 
       <div className={styles["widget-frame-content"]}>{children}</div>
     </div>

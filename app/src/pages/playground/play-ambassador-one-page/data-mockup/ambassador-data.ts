@@ -847,6 +847,90 @@ export const AmbassadorMockupData = {
   "pipeline-overview": {
     timeInterval: ["2025-4-1", "2026-3-31"] as [string, string],
     widgets: [
+      // Train
+      {
+        title: "Train",
+        icon: "fitness_center",
+        data: {
+          items: [
+            {
+              label: "R&D",
+              totalValue: 20,
+              maxValue: 300,
+              segments: [
+                { value: 20, color: "rgba(255, 70, 70, 1)" }
+              ],
+            },
+            {
+              label: "Referred",
+              totalValue: 10,
+              maxValue: 300,
+              segments: [
+                { value: 10, color: "rgba(255, 70, 70, 1)" }
+              ],
+            },
+            {
+              label: "Connecting",
+              totalValue: 0,
+              maxValue: 300,
+              segments: [
+                { value: 0, color: "rgba(255, 70, 70, 1)" }
+              ],
+            },
+            {
+              label: "Pipeline",
+              totalValue: 0,
+              maxValue: 300,
+              segments: [
+                { value: 0, color: "rgba(255, 70, 70, 1)" }
+              ],
+            },
+          ] as ProgressItem[]
+        } as ActivityProgressCardData
+      },
+
+      // Tennis
+      {
+        title: "Tennis",
+        icon: "sports_tennis",
+        data: {
+          items: [
+            {
+              label: "R&D",
+              totalValue: 48,
+              maxValue: 300,
+              segments: [
+                { value: 48, color: "rgba(255, 70, 70, 1)" }
+              ],
+            },
+            {
+              label: "Referred",
+              totalValue: 24,
+              maxValue: 300,
+              segments: [
+                { value: 24, color: "rgba(255, 70, 70, 1)" }
+              ],
+            },
+            {
+              label: "Connecting",
+              totalValue: 12,
+              maxValue: 300,
+              segments: [
+                { value: 12, color: "rgba(255, 70, 70, 1)" }
+              ],
+            },
+            {
+              label: "Pipeline",
+              totalValue: 2,
+              maxValue: 300,
+              segments: [
+                { value: 2, color: "rgba(255, 70, 70, 1)" }
+              ],
+            },
+          ] as ProgressItem[]
+        } as ActivityProgressCardData
+      },
+
       // Yoga
       {
         title: "Yoga",
@@ -890,26 +974,26 @@ export const AmbassadorMockupData = {
         } as ActivityProgressCardData
       },
 
-      // Swimming
+      // Golf
       {
-        title: "Swimming",
-        icon: "pool",
+        title: "Golf",
+        icon: "golf_course",
         data: {
           items: [
             {
               label: "R&D",
-              totalValue: 48,
+              totalValue: 28,
               maxValue: 300,
               segments: [
-                { value: 48, color: "rgba(255, 70, 70, 1)" }
+                { value: 28, color: "rgba(255, 70, 70, 1)" }
               ],
             },
             {
               label: "Referred",
-              totalValue: 24,
+              totalValue: 18,
               maxValue: 300,
               segments: [
-                { value: 24, color: "rgba(255, 70, 70, 1)" }
+                { value: 18, color: "rgba(255, 70, 70, 1)" }
               ],
             },
             {
@@ -932,9 +1016,9 @@ export const AmbassadorMockupData = {
         } as ActivityProgressCardData
       },
 
-      // Running
+      // Run
       {
-        title: "Running",
+        title: "Run",
         icon: "directions_run",
         data: {
           items: [
@@ -974,52 +1058,10 @@ export const AmbassadorMockupData = {
         } as ActivityProgressCardData
       },
 
-      // Cycling
+      // Other
       {
-        title: "Cycling",
-        icon: "directions_bike",
-        data: {
-          items: [
-            {
-              label: "R&D",
-              totalValue: 28,
-              maxValue: 300,
-              segments: [
-                { value: 28, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-            {
-              label: "Referred",
-              totalValue: 18,
-              maxValue: 300,
-              segments: [
-                { value: 18, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-            {
-              label: "Connecting",
-              totalValue: 12,
-              maxValue: 300,
-              segments: [
-                { value: 12, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-            {
-              label: "Pipeline",
-              totalValue: 2,
-              maxValue: 300,
-              segments: [
-                { value: 2, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-          ] as ProgressItem[]
-        } as ActivityProgressCardData
-      },
-
-      // Hiking
-      {
-        title: "Hiking",
-        icon: "hiking",
+        title: "Other",
+        icon: "search",
         data: {
           items: [
             {
@@ -1052,48 +1094,6 @@ export const AmbassadorMockupData = {
               maxValue: 300,
               segments: [
                 { value: 4, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-          ] as ProgressItem[]
-        } as ActivityProgressCardData
-      },
-
-      // Gym Training
-      {
-        title: "Gym Training",
-        icon: "fitness_center",
-        data: {
-          items: [
-            {
-              label: "R&D",
-              totalValue: 20,
-              maxValue: 300,
-              segments: [
-                { value: 20, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-            {
-              label: "Referred",
-              totalValue: 10,
-              maxValue: 300,
-              segments: [
-                { value: 10, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-            {
-              label: "Connecting",
-              totalValue: 0,
-              maxValue: 300,
-              segments: [
-                { value: 0, color: "rgba(255, 70, 70, 1)" }
-              ],
-            },
-            {
-              label: "Pipeline",
-              totalValue: 0,
-              maxValue: 300,
-              segments: [
-                { value: 0, color: "rgba(255, 70, 70, 1)" }
               ],
             },
           ] as ProgressItem[]

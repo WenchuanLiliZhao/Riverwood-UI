@@ -37,6 +37,25 @@ export interface ActivityDistributionPieChartProps {
    * Toggle to show/hide units in the chart labels.
    */
   showLabelUnit?: boolean;
+  /**
+   * Diameter of the pie chart in pixels.
+   * @default 90
+   */
+  pieDiameter?: number;
+  /**
+   * Width of the legend container in pixels.
+   * @default auto-calculated based on data length
+   */
+  legendWidth?: number;
+  /**
+   * Height of the legend container in pixels.
+   */
+  legendHeight?: number;
+  /**
+   * Spacing between the pie chart and legend in pixels.
+   * @default 72
+   */
+  spacing?: number;
 }
 
 /**
@@ -52,6 +71,10 @@ export const ActivityDistributionPieChart: React.FC<ActivityDistributionPieChart
   showLegendValue = true,
   showLegendUnit = false,
   showLabelUnit = true,
+  pieDiameter = 90,
+  legendWidth: legendWidthProp,
+  legendHeight,
+  spacing = 72,
 }) => {
   // Calculate total count across all items
   const totalCount = React.useMemo(() => {
@@ -93,6 +116,23 @@ export const ActivityDistributionPieChart: React.FC<ActivityDistributionPieChart
     });
   }, [data, totalCount]);
 
+  // Auto-calculate legend width based on data length if not provided
+  const legendWidth = React.useMemo(() => {
+    if (legendWidthProp !== undefined) {
+      return legendWidthProp;
+    }
+    
+    switch (data.length) {
+      case 2:
+        return 80;
+      case 3:
+        return 120;
+      case 4:
+        return 240;
+    }
+    return 200;
+  }, [data.length, legendWidthProp]);
+
   return (
     <PieChart
       data={pieChartData}
@@ -100,6 +140,12 @@ export const ActivityDistributionPieChart: React.FC<ActivityDistributionPieChart
       showLegendValue={showLegendValue}
       showLegendUnit={showLegendUnit}
       showLabelUnit={showLabelUnit}
+      legendPosition="right"
+      pieDiameter={pieDiameter}
+      legendWidth={legendWidth}
+      legendHeight={legendHeight}
+      spacing={spacing}
+      className="activity-distribution-pie-chart"
     />
   );
 };

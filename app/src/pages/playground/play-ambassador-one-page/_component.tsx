@@ -12,7 +12,11 @@ import {
   Tooltip,
   TrendChart,
 } from "../../../components";
-import type { ChartDataPoint, SeriesConfig, CategoryData } from "../../../components";
+import type {
+  ChartDataPoint,
+  SeriesConfig,
+  CategoryData,
+} from "../../../components";
 import { WidgetFrame } from "../../../components/widgets/widget-frame";
 import styles from "./_styles.module.scss";
 import {
@@ -26,7 +30,12 @@ import {
   LocationSelector,
   YearSelector,
 } from "./play-components/universal-selectors";
-import { AmbassadorMockupData, formatTimeInterval, location, allYears } from "./data-mockup";
+import {
+  AmbassadorMockupData,
+  formatTimeInterval,
+  location,
+  allYears,
+} from "./data-mockup";
 import type { KpiData } from "../../../components/widgets/widet-components/kpi-ring-chart";
 import type { ActivityProgressCardData } from "./types/activity-progress";
 import type { ActivityDistributionItem } from "./play-components/activity-distribution-pie-chart";
@@ -34,14 +43,29 @@ import type { MetricsDataByMonth } from "./types/metrics";
 
 // Helper function to get current month label
 const getCurrentMonthLabel = (): string => {
-  const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  const monthNames = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
   const currentMonth = new Date().getMonth(); // 0-11
   return monthNames[currentMonth];
 };
 
 export const PageContent = () => {
   // State management for selected month - default to current month
-  const [selectedMonth, setSelectedMonth] = useState<string>(getCurrentMonthLabel());
+  const [selectedMonth, setSelectedMonth] = useState<string>(
+    getCurrentMonthLabel()
+  );
 
   // Extract data from mockup
   const rosterOverview = AmbassadorMockupData["roster-overview"];
@@ -50,17 +74,22 @@ export const PageContent = () => {
 
   // Roster widgets with type assertions
   const ambassadorTotalWidget = rosterOverview.widgets[0];
-  const ambassadorTotalData = ambassadorTotalWidget.data as { value: number; unit: string };
-  
+  const ambassadorTotalData = ambassadorTotalWidget.data as {
+    value: number;
+    unit: string;
+  };
+
   const byAthleticDisciplineWidget = rosterOverview.widgets[1];
-  const byAthleticDisciplineData = byAthleticDisciplineWidget.data as ActivityDistributionItem[];
-  
+  const byAthleticDisciplineData =
+    byAthleticDisciplineWidget.data as ActivityDistributionItem[];
+
   const geographicBreakdownWidget = rosterOverview.widgets[2];
-  const geographicBreakdownData = geographicBreakdownWidget.data as ActivityDistributionItem[];
-  
+  const geographicBreakdownData =
+    geographicBreakdownWidget.data as ActivityDistributionItem[];
+
   const byTenureWidget = rosterOverview.widgets[3];
   const byTenureData = byTenureWidget.data as ActivityDistributionItem[];
-  
+
   const mapWidget = rosterOverview.widgets[4];
   const mapData = mapWidget.data as {
     categories: CategoryData[];
@@ -75,16 +104,18 @@ export const PageContent = () => {
     chartData: ChartDataPoint[];
     series: SeriesConfig[];
   };
-  
+
   const serviceDaysWidget = engagementOverview.widgets[1];
-  const serviceDaysData = serviceDaysWidget.data as { byMonth: MetricsDataByMonth };
-  
+  const serviceDaysData = serviceDaysWidget.data as {
+    byMonth: MetricsDataByMonth;
+  };
+
   const kpiRingChartsWidget = engagementOverview.widgets[2];
   const kpiRingChartsData = kpiRingChartsWidget.data as KpiData[];
 
   // Pipeline widgets - Calculate summary dynamically from individual activity cards
   const activityWidgets = pipelineOverview.widgets;
-  
+
   // Calculate summary data from individual activity cards
   const calculateSummaryData = (): ActivityProgressCardData => {
     let totalRD = 0;
@@ -96,18 +127,18 @@ export const PageContent = () => {
 
     activityWidgets.forEach((widget: { data: ActivityProgressCardData }) => {
       const items = widget.data.items;
-      
+
       // R&D (first item)
       totalRD += items[0].totalValue;
-      
+
       // Referred (second item)
       totalReferred += items[1].totalValue;
       totalReferredFromRD += items[1].segments[0]?.value || 0;
       totalOutside += items[1].segments[1]?.value || 0;
-      
+
       // Connecting (third item)
       totalConnecting += items[2].totalValue;
-      
+
       // Pipeline (fourth item)
       totalPipeline += items[3].totalValue;
     });
@@ -123,7 +154,7 @@ export const PageContent = () => {
           maxValue: firstProgressTotal, // 100%
           segments: [
             { value: totalRD, color: "rgba(255, 70, 70, 1)" },
-            { value: totalReferred, color: "#8BBFFF" }
+            { value: totalReferred, color: "#8BBFFF" },
           ],
         },
         {
@@ -132,26 +163,22 @@ export const PageContent = () => {
           maxValue: firstProgressTotal, // all progress bars use first as denominator
           segments: [
             { value: totalReferredFromRD, color: "rgba(255, 70, 70, 1)" },
-            { value: totalOutside, color: "#8BBFFF" }
+            { value: totalOutside, color: "#8BBFFF" },
           ],
         },
         {
           label: "Connecting",
           totalValue: totalConnecting,
           maxValue: firstProgressTotal, // all progress bars use first as denominator
-          segments: [
-            { value: totalConnecting, color: "rgba(255, 70, 70, 1)" }
-          ],
+          segments: [{ value: totalConnecting, color: "rgba(255, 70, 70, 1)" }],
         },
         {
           label: "Pipeline",
           totalValue: totalPipeline,
           maxValue: firstProgressTotal, // all progress bars use first as denominator
-          segments: [
-            { value: totalPipeline, color: "rgba(255, 70, 70, 1)" }
-          ],
+          segments: [{ value: totalPipeline, color: "rgba(255, 70, 70, 1)" }],
         },
-      ]
+      ],
     };
   };
 
@@ -159,7 +186,7 @@ export const PageContent = () => {
 
   // Handler for TrendChart node selection
   const handleNodeSelect = (label: string, seriesKey: string) => {
-    if (seriesKey === 'used') {
+    if (seriesKey === "used") {
       setSelectedMonth(label);
     }
   };
@@ -191,6 +218,113 @@ export const PageContent = () => {
           <div className={styles["content-container"]}>
             <div style={{ height: "8px" }}></div>
             <DocSection
+              label={formatTimeInterval(rosterOverview.timeInterval)}
+              title="Roster Overview"
+              description={
+                <p>
+                  This section reflects the Ambassador roster for the current
+                  term by athletic discipline, city tier and tenure. Please note
+                  that Ambassador term (Apr 1–Mar 31) differs from the fiscal
+                  calendar (Feb 1–Jan 30). To view previous years' rosters,
+                  please adjust the filter in the top-right corner.
+                </p>
+              }
+            >
+              <BentoGrid gap={"md"} rowHeight={[[Infinity, 170]]}>
+                <BentoItem res={[
+                  [1201, 5, 1],
+                  [Infinity, 4, 1]
+                ]}>
+                  <WidgetFrame
+                    nav={{
+                      icon: ambassadorTotalWidget.icon,
+                      title: ambassadorTotalWidget.title,
+                    }}
+                    design={{ navSize: "small" }}
+                  >
+                    <TextMetric
+                      value={ambassadorTotalData.value}
+                      unit={ambassadorTotalData.unit}
+                    />
+                  </WidgetFrame>
+                </BentoItem>
+                <BentoItem res={[
+                  [1201, 7, 4],
+                  [Infinity, 8, 4]
+                ]}>
+                  <WidgetFrame nav={{ icon: mapWidget.icon, title: mapWidget.title }} design={{ navSize: "medium" }}>
+                    <ChinaHeatMap
+                      categories={mapData.categories}
+                      defaultCategoryIndex={0}
+                      center={mapData.center}
+                      zoom={mapData.zoom}
+                      designProperties={mapData.designProperties}
+                    />
+                  </WidgetFrame>
+                </BentoItem>
+                <BentoItem res={[
+                  [1201, 5, 1],
+                  [Infinity, 4, 1]
+                ]}>
+                  <WidgetFrame
+                    nav={{
+                      icon: byAthleticDisciplineWidget.icon,
+                      title: byAthleticDisciplineWidget.title,
+                    }}
+                    design={{ navSize: "small" }}
+                  >
+                    <ActivityDistributionPieChart
+                      data={byAthleticDisciplineData}
+                      alwaysShowLabels={true}
+                      showLegendValue={true}
+                      showLegendUnit={false}
+                      showLabelUnit={true}
+                    />
+                  </WidgetFrame>
+                </BentoItem>
+                <BentoItem res={[
+                  [1201, 5, 1],
+                  [Infinity, 4, 1]
+                ]}>
+                  <WidgetFrame
+                    nav={{
+                      icon: geographicBreakdownWidget.icon,
+                      title: geographicBreakdownWidget.title,
+                    }}
+                    design={{ navSize: "small" }}
+                  >
+                    <ActivityDistributionPieChart
+                      data={geographicBreakdownData}
+                      alwaysShowLabels={true}
+                      showLegendValue={true}
+                      showLegendUnit={false}
+                      showLabelUnit={true}
+                    />
+                  </WidgetFrame>
+                </BentoItem>
+                <BentoItem res={[
+                  [1201, 5, 1],
+                  [Infinity, 4, 1]
+                ]}>
+                  <WidgetFrame
+                    nav={{
+                      icon: byTenureWidget.icon,
+                      title: byTenureWidget.title,
+                    }}
+                    design={{ navSize: "small" }}
+                  >
+                    <ActivityDistributionPieChart
+                      data={byTenureData}
+                      alwaysShowLabels={true}
+                      showLegendValue={true}
+                      showLegendUnit={false}
+                      showLabelUnit={true}
+                    />
+                  </WidgetFrame>
+                </BentoItem>
+              </BentoGrid>
+            </DocSection>
+            {/* <DocSection
               label={formatTimeInterval(rosterOverview.timeInterval)}
               title="Roster Overview"
               description={
@@ -315,18 +449,23 @@ export const PageContent = () => {
                   </BentoGrid>
                 </BentoItem>
               </BentoGrid>
-            </DocSection>
+            </DocSection> */}
 
             <DocSection
               label={formatTimeInterval(engagementOverview.timeInterval)}
               title="Engagement Overview"
               description={
                 <p>
-                  Each Ambassador shall serve a minimum of 4 <Tooltip content="Service Day is a super series shit that can tell you everything in the universe such as how quantum mechanics and the theory of relativity can be encompassed as a single consistent big ass theory."><span style={{color: "#FF4646", fontWeight: "bold"}}>service days</span></Tooltip> per
-                  year, hence the total service days equals 4 × total Ambassador
-                  count. For tracking consistency, engagements under 4 hours
-                  count as a 0.5 day, while those 4 hours or more count as 1
-                  day.
+                  Each Ambassador shall serve a minimum of 4{" "}
+                  <Tooltip content="Service Day is a super series shit that can tell you everything in the universe such as how quantum mechanics and the theory of relativity can be encompassed as a single consistent big ass theory.">
+                    <span style={{ color: "#FF4646", fontWeight: "bold" }}>
+                      service days
+                    </span>
+                  </Tooltip>{" "}
+                  per year, hence the total service days equals 4 × total
+                  Ambassador count. For tracking consistency, engagements under
+                  4 hours count as a 0.5 day, while those 4 hours or more count
+                  as 1 day.
                 </p>
               }
             >
@@ -348,7 +487,10 @@ export const PageContent = () => {
                       series={resourcePlanningData.series}
                       xAxisPadding={{ left: 40, right: 40 }}
                       enableSelection={true}
-                      defaultSelectedNode={{ label: selectedMonth, seriesKey: "used" }}
+                      defaultSelectedNode={{
+                        label: selectedMonth,
+                        seriesKey: "used",
+                      }}
                       onNodeSelect={handleNodeSelect}
                     />
                   </WidgetFrame>
@@ -366,7 +508,9 @@ export const PageContent = () => {
                       title: "Total Service Days Used",
                     }}
                   >
-                    <EngagementOverviewMetric data={currentMetrics.serviceDays} />
+                    <EngagementOverviewMetric
+                      data={currentMetrics.serviceDays}
+                    />
                   </WidgetFrame>
                 </BentoItem>
                 <BentoItem
@@ -382,7 +526,9 @@ export const PageContent = () => {
                       title: "% of Ambassadors Engaged",
                     }}
                   >
-                    <EngagementOverviewMetric data={currentMetrics.ambassadorsEngaged} />
+                    <EngagementOverviewMetric
+                      data={currentMetrics.ambassadorsEngaged}
+                    />
                   </WidgetFrame>
                 </BentoItem>
               </BentoGrid>
@@ -391,7 +537,11 @@ export const PageContent = () => {
                 {kpiRingChartsData.map((kpiData: KpiData, index: number) => (
                   <BentoItem
                     key={index}
-                    res={[[760, 12, 1], [1000, 6, 1], [Infinity, 4, 1]]}
+                    res={[
+                      [760, 12, 1],
+                      [1000, 6, 1],
+                      [Infinity, 4, 1],
+                    ]}
                   >
                     <WidgetFrame>
                       <KpiRingChart data={kpiData} />
@@ -423,23 +573,35 @@ export const PageContent = () => {
                       title: "Summary",
                     }}
                   >
-                    <SummaryActivityProgressCard data={summaryData} showAs={"funnel"} />
+                    <SummaryActivityProgressCard
+                      data={summaryData}
+                      showAs={"funnel"}
+                    />
                   </WidgetFrame>
                 </BentoItem>
 
                 {/* Individual Activity Cards */}
-                {activityWidgets.map((widget: { title: string; icon: string; data: ActivityProgressCardData }, index: number) => (
-                  <BentoItem key={index} res={[[Infinity, 2, 1]]}>
-                    <WidgetFrame
-                      nav={{
-                        icon: widget.icon as string,
-                        title: widget.title,
-                      }}
-                    >
-                      <ActivityProgressCard data={widget.data} />
-                    </WidgetFrame>
-                  </BentoItem>
-                ))}
+                {activityWidgets.map(
+                  (
+                    widget: {
+                      title: string;
+                      icon: string;
+                      data: ActivityProgressCardData;
+                    },
+                    index: number
+                  ) => (
+                    <BentoItem key={index} res={[[Infinity, 2, 1]]}>
+                      <WidgetFrame
+                        nav={{
+                          icon: widget.icon as string,
+                          title: widget.title,
+                        }}
+                      >
+                        <ActivityProgressCard data={widget.data} />
+                      </WidgetFrame>
+                    </BentoItem>
+                  )
+                )}
               </BentoGrid>
             </DocSection>
           </div>

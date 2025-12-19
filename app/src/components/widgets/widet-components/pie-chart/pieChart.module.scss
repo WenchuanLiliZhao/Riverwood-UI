@@ -32,6 +32,27 @@
   > svg {
     margin: 0 auto;
   }
+
+  /* Modifier for right-side legend layout */
+  &--right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 56px;
+    overflow: visible; /* Allow legend to overflow if needed */
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Chart Wrapper                                */
+/* -------------------------------------------------------------------------- */
+
+/* Wrapper for the pie chart to prevent it from being compressed */
+.chart-wrapper {
+  flex-shrink: 0; /* Never shrink the chart */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -44,6 +65,15 @@
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
+
+  /* Modifier for right-side legend layout */
+  &--right {
+    width: auto;
+    padding-left: 0;
+    padding-right: 0;
+    flex-shrink: 1; /* Allow legend to shrink if needed, but won't affect pie */
+    min-width: 0; /* Allow flex item to be smaller than content */
+  }
 }
 
 /* Grid layout for legend items.
@@ -53,6 +83,16 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 0.5rem;
+
+  /* Modifier for right-side legend layout */
+  &--right {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 0;
+    /* Width is controlled by legendWidth prop via inline style */
+  }
 }
 
 /* Individual legend item styling.
@@ -62,6 +102,7 @@
   align-items: center;
   gap: 4px;
   color: var(--color-text-secondary-trans);
+  min-width: 0; /* Allow flex items to shrink */
 }
 
 /* -------------------------------------------------------------------------- */
@@ -74,6 +115,9 @@
   font-size: 12px;
   line-height: 20px;
   white-space: nowrap; /* Prevent text wrapping within the item */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* Styling for the count/value within the legend.
@@ -92,7 +136,7 @@
 /* Chart label styling (text surrounding the pie).
    Small, medium-weight text for readability without clutter. */
 .label {
-  font-size: 0.75rem; /* text-xs */
-  line-height: 1rem;
+  font-size: 10px;
+  line-height: 14px;
 }
 
