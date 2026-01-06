@@ -74,7 +74,7 @@ export const ActivityDistributionPieChart: React.FC<ActivityDistributionPieChart
   pieDiameter = 90,
   legendWidth: legendWidthProp,
   legendHeight,
-  spacing = 72,
+  spacing = 56,
 }) => {
   // Calculate total count across all items
   const totalCount = React.useMemo(() => {
@@ -124,7 +124,7 @@ export const ActivityDistributionPieChart: React.FC<ActivityDistributionPieChart
     
     switch (data.length) {
       case 2:
-        return 80;
+        return 120;
       case 3:
         return 120;
       case 4:

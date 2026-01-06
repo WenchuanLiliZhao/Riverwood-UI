@@ -1,0 +1,23 @@
+.container {
+  .the-clock {
+    width: 434px;
+    height: 434px;
+    background-image: url('./bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chart-wrapper {
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
