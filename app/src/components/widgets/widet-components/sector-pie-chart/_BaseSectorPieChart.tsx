@@ -273,6 +273,12 @@ export interface BaseSectorPieChartProps {
    * Default: 1 (sectors extend to full radius)
    */
   outerRadiusMultiplier?: number;
+  /**
+   * Callback when a sector is clicked
+   * @param seriesIndex - Index of the series (which overlapping layer)
+   * @param valueIndex - Index of the value (which time slot/sector)
+   */
+  onSectorClick?: (seriesIndex: number, valueIndex: number) => void;
 }
 
 export const BaseSectorPieChart = React.forwardRef<
@@ -288,6 +294,7 @@ export const BaseSectorPieChart = React.forwardRef<
       innerRadius = 0,
       outerRadiusMultiplier = 1,
       startTime,
+      onSectorClick,
     },
     ref
   ) => {
@@ -436,6 +443,12 @@ export const BaseSectorPieChart = React.forwardRef<
               fill={sector.color}
               opacity={opacity}
               className={styles.sector}
+              onClick={
+                onSectorClick
+                  ? () => onSectorClick(sector.seriesIndex, sector.valueIndex)
+                  : undefined
+              }
+              style={onSectorClick ? { cursor: "pointer" } : undefined}
             />
           ))}
         </svg>

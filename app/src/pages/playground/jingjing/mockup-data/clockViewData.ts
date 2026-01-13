@@ -51,6 +51,7 @@ export const clockViewData: ClockViewDataType = {
   "10:00 ~ 12:00": [
     {
       value: 15,
+      color: "rgba(255, 70, 70, 1)",
       otherValues: {
         "var to outlook": {
           value: { value: 1250, unit: "¥" },
@@ -80,7 +81,7 @@ export const clockViewData: ClockViewDataType = {
     },
     {
       value: 18,
-      color: "#FF8A80",
+      color: "rgba(255, 70, 70, 0.33)",
       otherValues: {
         "var to outlook": {
           value: { value: 2100, unit: "¥" },
@@ -108,40 +109,11 @@ export const clockViewData: ClockViewDataType = {
         },
       },
     },
-    {
-      value: 12,
-      color: "#FFCDD2",
-      otherValues: {
-        "var to outlook": {
-          value: { value: 980, unit: "¥" },
-          change: -2.3,
-        },
-        traffic: {
-          value: { value: 280, unit: "" },
-          change: 1.5,
-        },
-        txn: {
-          value: { value: 38, unit: "" },
-          change: 0.9,
-        },
-        upt: {
-          value: { value: 1.6, unit: "" },
-          change: -0.8,
-        },
-        "utilization %": {
-          value: { value: 58, unit: "%" },
-          change: -1.2,
-        },
-        "try-on cr %": {
-          value: { value: 10.8, unit: "%" },
-          change: -0.5,
-        },
-      },
-    },
   ],
   "12:00 ~ 14:00": [
     {
       value: 22,
+      color: "rgba(255, 70, 70, 1)",
       otherValues: {
         "var to outlook": {
           value: { value: 3200, unit: "¥" },
@@ -171,7 +143,7 @@ export const clockViewData: ClockViewDataType = {
     },
     {
       value: 28,
-      color: "#81C784",
+      color: "rgba(255, 70, 70, 0.33)",
       otherValues: {
         "var to outlook": {
           value: { value: 4100, unit: "¥" },
@@ -199,40 +171,11 @@ export const clockViewData: ClockViewDataType = {
         },
       },
     },
-    {
-      value: 19,
-      color: "#FFD54F",
-      otherValues: {
-        "var to outlook": {
-          value: { value: 2800, unit: "¥" },
-          change: 9.2,
-        },
-        traffic: {
-          value: { value: 520, unit: "" },
-          change: 6.1,
-        },
-        txn: {
-          value: { value: 75, unit: "" },
-          change: 5.3,
-        },
-        upt: {
-          value: { value: 2.2, unit: "" },
-          change: 0.4,
-        },
-        "utilization %": {
-          value: { value: 78, unit: "%" },
-          change: 7.5,
-        },
-        "try-on cr %": {
-          value: { value: 15.2, unit: "%" },
-          change: 2.8,
-        },
-      },
-    },
   ],
   "14:00 ~ 16:00": [
     {
       value: 25,
+      color: "rgba(255, 70, 70, 1)",
       otherValues: {
         "var to outlook": {
           value: { value: 3800, unit: "¥" },
@@ -262,7 +205,7 @@ export const clockViewData: ClockViewDataType = {
     },
     {
       value: 20,
-      color: "#A1887F",
+      color: "rgba(255, 70, 70, 0.33)",
       otherValues: {
         "var to outlook": {
           value: { value: 2900, unit: "¥" },
@@ -290,40 +233,11 @@ export const clockViewData: ClockViewDataType = {
         },
       },
     },
-    {
-      value: 16,
-      color: "#FF4646",
-      otherValues: {
-        "var to outlook": {
-          value: { value: 2200, unit: "¥" },
-          change: 6.8,
-        },
-        traffic: {
-          value: { value: 450, unit: "" },
-          change: 5.5,
-        },
-        txn: {
-          value: { value: 65, unit: "" },
-          change: 4.2,
-        },
-        upt: {
-          value: { value: 2.0, unit: "" },
-          change: 0.2,
-        },
-        "utilization %": {
-          value: { value: 70, unit: "%" },
-          change: 5.8,
-        },
-        "try-on cr %": {
-          value: { value: 13.8, unit: "%" },
-          change: 2.2,
-        },
-      },
-    },
   ],
   "16:00 ~ 18:00": [
     {
       value: 30,
+      color: "rgba(255, 70, 70, 1)",
       otherValues: {
         "var to outlook": {
           value: { value: 4800, unit: "¥" },
@@ -353,7 +267,7 @@ export const clockViewData: ClockViewDataType = {
     },
     {
       value: 26,
-      color: "#2196F3",
+      color: "rgba(255, 70, 70, 0.33)",
       otherValues: {
         "var to outlook": {
           value: { value: 4200, unit: "¥" },
@@ -381,40 +295,11 @@ export const clockViewData: ClockViewDataType = {
         },
       },
     },
-    {
-      value: 24,
-      color: "#4CAF50",
-      otherValues: {
-        "var to outlook": {
-          value: { value: 3900, unit: "¥" },
-          change: 15.1,
-        },
-        traffic: {
-          value: { value: 750, unit: "" },
-          change: 9.5,
-        },
-        txn: {
-          value: { value: 108, unit: "" },
-          change: 8.9,
-        },
-        upt: {
-          value: { value: 2.7, unit: "" },
-          change: 0.8,
-        },
-        "utilization %": {
-          value: { value: 87, unit: "%" },
-          change: 10.8,
-        },
-        "try-on cr %": {
-          value: { value: 18.8, unit: "%" },
-          change: 4.5,
-        },
-      },
-    },
   ],
   "18:00 ~ 20:00": [
     {
       value: 35,
+      color: "rgba(255, 70, 70, 1)",
       otherValues: {
         "var to outlook": {
           value: { value: 5600, unit: "¥" },
@@ -444,7 +329,7 @@ export const clockViewData: ClockViewDataType = {
     },
     {
       value: 32,
-      color: "#9C27B0",
+      color: "rgba(255, 70, 70, 0.33)",
       otherValues: {
         "var to outlook": {
           value: { value: 5100, unit: "¥" },
@@ -472,40 +357,11 @@ export const clockViewData: ClockViewDataType = {
         },
       },
     },
-    {
-      value: 28,
-      color: "#F44336",
-      otherValues: {
-        "var to outlook": {
-          value: { value: 4500, unit: "¥" },
-          change: 17.8,
-        },
-        traffic: {
-          value: { value: 880, unit: "" },
-          change: 11.5,
-        },
-        txn: {
-          value: { value: 128, unit: "" },
-          change: 10.8,
-        },
-        upt: {
-          value: { value: 2.95, unit: "" },
-          change: 1.0,
-        },
-        "utilization %": {
-          value: { value: 93, unit: "%" },
-          change: 13.2,
-        },
-        "try-on cr %": {
-          value: { value: 20.5, unit: "%" },
-          change: 5.3,
-        },
-      },
-    },
   ],
   "20:00 ~ 22:00": [
     {
       value: 20,
+      color: "rgba(255, 70, 70, 1)",
       otherValues: {
         "var to outlook": {
           value: { value: 3200, unit: "¥" },
@@ -535,7 +391,7 @@ export const clockViewData: ClockViewDataType = {
     },
     {
       value: 18,
-      color: "#795548",
+      color: "rgba(255, 70, 70, 0.33)",
       otherValues: {
         "var to outlook": {
           value: { value: 2900, unit: "¥" },
@@ -560,36 +416,6 @@ export const clockViewData: ClockViewDataType = {
         "try-on cr %": {
           value: { value: 15.5, unit: "%" },
           change: 3.2,
-        },
-      },
-    },
-    {
-      value: 15,
-      color: "#607D8B",
-      otherValues: {
-        "var to outlook": {
-          value: { value: 2400, unit: "¥" },
-          change: 9.5,
-        },
-        traffic: {
-          value: { value: 520, unit: "" },
-          change: 6.8,
-        },
-        txn: {
-          value: { value: 75, unit: "" },
-          change: 6.2,
-        },
-        upt: {
-          value: { value: 2.1, unit: "" },
-          change: 0.4,
-        },
-        "utilization %": {
-          value: { value: 72, unit: "%" },
-          change: 7.5,
-        },
-        "try-on cr %": {
-          value: { value: 14.2, unit: "%" },
-          change: 2.9,
         },
       },
     },
