@@ -351,7 +351,7 @@ export const AmbassadorMockupData = {
             { label: 'AUG', used: 55, planned: 0 },
             { label: 'SEP', used: 18, planned: 0 },
             { label: 'OCT', used: 44, planned: 0 },
-            { label: 'NOV', used: 15, planned: 0 },
+            { label: 'NOV', used: 15, planned: 17 },
             { label: 'DEC', used: 28, planned: 0 },
             { label: 'JAN', used: 0, planned: 12 },
             { label: 'FEB', used: 0, planned: 8 },
@@ -702,7 +702,7 @@ export const AmbassadorMockupData = {
               {
                 id: "service-days",
                 label: "Service Days Used",
-                percentage: 41,
+                percentage: 141,
                 current: 101,
                 total: 244,
                 unit: "days",

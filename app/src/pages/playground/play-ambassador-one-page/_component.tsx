@@ -254,6 +254,7 @@ export const PageContent = () => {
                 ]}>
                   <WidgetFrame nav={{ icon: mapWidget.icon, title: mapWidget.title }} design={{ navSize: "medium" }}>
                     <ChinaHeatMap
+                      geoJsonUrl="/china-geojson.json"
                       categories={mapData.categories}
                       defaultCategoryIndex={0}
                       center={mapData.center}
@@ -438,6 +439,7 @@ export const PageContent = () => {
                     <BentoItem res={[[Infinity, 12, 1]]}>
                       <WidgetFrame nav={{ title: mapWidget.title }}>
                         <ChinaHeatMap
+                          geoJsonUrl="/china-geojson.json"
                           categories={mapData.categories}
                           defaultCategoryIndex={0}
                           center={mapData.center}

@@ -111,7 +111,8 @@ export const BaseKpiRingChart = React.forwardRef<
             const circumference = 2 * Math.PI * radius;
 
             // Calculate stroke dash offset for progress
-            const progress = metric.percentage / 100;
+            // Cap progress at 100% (1.0) to ensure ring never exceeds one full circle
+            const progress = Math.min(metric.percentage / 100, 1);
             // When not animated, start at 0%; when animated, show actual progress
             const strokeDashoffset = isAnimated 
               ? circumference * (1 - progress)

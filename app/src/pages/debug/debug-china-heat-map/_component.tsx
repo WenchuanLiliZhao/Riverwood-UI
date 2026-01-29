@@ -250,6 +250,7 @@ export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
           <BentoItem res={[[Infinity, 12, 1]]}>
             <WidgetFrame nav={{ title: "Default Data (Minecraft Players)" }}>
               <ChinaHeatMap
+                geoJsonUrl="/china-geojson.json"
                 title="Minecraft Players in China"
                 defaultCategoryIndex={0}
                 center={mapCenter}
@@ -267,6 +268,7 @@ export const Page_Debug_ChinaHeatMapComponent: React.FC = () => {
           <BentoItem res={[[Infinity, 12, 1]]}>
             <WidgetFrame nav={{ title: "Custom Data (Sports Activities)" }}>
               <ChinaHeatMap
+                geoJsonUrl="/china-geojson.json"
                 title="Sports Activities Distribution"
                 categories={sampleCategories}
                 defaultCategoryIndex={1}

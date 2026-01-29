@@ -427,6 +427,42 @@ export const BaseSectorPieChart = React.forwardRef<
       calculatedStartAngle,
     ]);
 
+    // Generate full-size transparent sectors for hover areas
+    const hoverSectors = React.useMemo(() => {
+      if (!dataItems.length) return [];
+      
+      const numPoints = dataItems[0].points.length;
+      const anglePerSector = 360 / numPoints;
+      
+      return Array.from({ length: numPoints }, (_, index) => {
+        const startAngle = calculatedStartAngle + index * anglePerSector;
+        const endAngle = startAngle + anglePerSector;
+        
+        // Find the topmost (last) series that has data for this sector
+        let topSeriesIndex = -1;
+        for (let i = dataItems.length - 1; i >= 0; i--) {
+          if (dataItems[i].points[index] && dataItems[i].points[index].value > 0) {
+            topSeriesIndex = i;
+            break;
+          }
+        }
+        
+        return {
+          key: `hover-${index}`,
+          valueIndex: index,
+          seriesIndex: topSeriesIndex,
+          path: generateSectorPath(
+            centerX,
+            centerY,
+            startAngle,
+            endAngle,
+            innerRadius,
+            maxOuterRadius
+          ),
+        };
+      });
+    }, [dataItems, calculatedStartAngle, centerX, centerY, innerRadius, maxOuterRadius]);
+
     return (
       <div ref={ref} className={clsx(styles.container, className)}>
         <svg
@@ -435,7 +471,7 @@ export const BaseSectorPieChart = React.forwardRef<
           viewBox={`0 0 ${chartSize} ${chartSize}`}
           className={styles.chart}
         >
-          {/* Render all sectors */}
+          {/* Render data sectors first */}
           {sectors.flat().map((sector) => (
             <path
               key={sector.key}
@@ -443,13 +479,36 @@ export const BaseSectorPieChart = React.forwardRef<
               fill={sector.color}
               opacity={opacity}
               className={styles.sector}
+              style={{ pointerEvents: "none" }}
+            />
+          ))}
+          
+          {/* Render transparent hover areas on top for interaction */}
+          {hoverSectors.map((hoverSector) => (
+            <path
+              key={hoverSector.key}
+              d={hoverSector.path}
+              fill="transparent"
+              className={styles.hoverArea}
               onClick={
-                onSectorClick
-                  ? () => onSectorClick(sector.seriesIndex, sector.valueIndex)
+                onSectorClick && hoverSector.seriesIndex >= 0
+                  ? () => onSectorClick(hoverSector.seriesIndex, hoverSector.valueIndex)
                   : undefined
               }
-              style={onSectorClick ? { cursor: "pointer" } : undefined}
-            />
+              style={onSectorClick && hoverSector.seriesIndex >= 0 ? { cursor: "pointer" } : undefined}
+            >
+              {/* Add title (tooltip) showing all data series in this sector */}
+              <title>
+                {dataItems
+                  .map((item) => {
+                    const point = item.points[hoverSector.valueIndex];
+                    if (!point || point.value === 0) return null;
+                    return `${item.key}: ${point.value}`;
+                  })
+                  .filter(Boolean)
+                  .join('\n')}
+              </title>
+            </path>
           ))}
         </svg>
       </div>

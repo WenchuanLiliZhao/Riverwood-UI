@@ -28,6 +28,9 @@ export const ChartView: React.FC = () => {
   }));
 
   // Series configuration
+  // For currency units (¥), display as prefix; for percentage (%) and others, display as suffix (default)
+  const unitPosition = metricData.unit === "¥" ? "prefix" : "suffix";
+  
   const seriesConfig: SeriesConfig[] = [
     {
       key: "current",
@@ -35,7 +38,9 @@ export const ChartView: React.FC = () => {
       displayAs: "curve",
       color: "#FF4646", // Red solid line
       unit: metricData.unit,
+      unitPosition: unitPosition,
       strokeDasharray: undefined, // Solid line
+      useShadow: selectedMetric === "trafficCR", // Enable shadow for Traffic-CR
     },
     {
       key: "lastWeek",
@@ -43,6 +48,7 @@ export const ChartView: React.FC = () => {
       displayAs: "curve",
       color: "#A1B5FF", // Light blue dotted line
       unit: metricData.unit,
+      unitPosition: unitPosition,
       strokeDasharray: "2 2", // Dotted line
     },
     {
@@ -51,6 +57,7 @@ export const ChartView: React.FC = () => {
       displayAs: "curve",
       color: "#E092FF", // Purple dashed line
       unit: metricData.unit,
+      unitPosition: unitPosition,
       strokeDasharray: "5 5", // Dashed line
     },
   ];
