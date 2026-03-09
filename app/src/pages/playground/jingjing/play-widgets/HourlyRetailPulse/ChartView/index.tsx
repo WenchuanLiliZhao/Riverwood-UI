@@ -1,14 +1,8 @@
 import * as React from "react";
-import {
-  TrendChart,
-  Switch,
-  type ChartDataPoint,
-  type SeriesConfig,
-} from "../../../../../../components";
+import { Switch } from "../../../../../../components";
 import { SalesProgressHeader } from "../SalesProgressHeader";
 import {
   hourlyRetailPulseData,
-  hourlyRetailPulseChartData,
   type ChartMetric,
 } from "../../../mockup-data";
 import styles from "./ChartView.module.scss";
@@ -17,50 +11,6 @@ export const ChartView: React.FC = () => {
   const [selectedMetric, setSelectedMetric] = React.useState<ChartMetric>("netSales");
 
   const { currentSales, targetSales, currency } = hourlyRetailPulseData;
-  const metricData = hourlyRetailPulseChartData[selectedMetric];
-
-  // Transform data for TrendChart
-  const chartData: ChartDataPoint[] = metricData.data.map((point) => ({
-    label: point.label,
-    current: point.current,
-    lastWeek: point.lastWeek,
-    outlook: point.outlook,
-  }));
-
-  // Series configuration
-  // For currency units (¥), display as prefix; for percentage (%) and others, display as suffix (default)
-  const unitPosition = metricData.unit === "¥" ? "prefix" : "suffix";
-  
-  const seriesConfig: SeriesConfig[] = [
-    {
-      key: "current",
-      title: metricData.label,
-      displayAs: "curve",
-      color: "#FF4646", // Red solid line
-      unit: metricData.unit,
-      unitPosition: unitPosition,
-      strokeDasharray: undefined, // Solid line
-      useShadow: selectedMetric === "trafficCR", // Enable shadow for Traffic-CR
-    },
-    {
-      key: "lastWeek",
-      title: `${metricData.label} Last Week`,
-      displayAs: "curve",
-      color: "#A1B5FF", // Light blue dotted line
-      unit: metricData.unit,
-      unitPosition: unitPosition,
-      strokeDasharray: "2 2", // Dotted line
-    },
-    {
-      key: "outlook",
-      title: `${metricData.label} Outlook`,
-      displayAs: "curve",
-      color: "#E092FF", // Purple dashed line
-      unit: metricData.unit,
-      unitPosition: unitPosition,
-      strokeDasharray: "5 5", // Dashed line
-    },
-  ];
 
   const group1Options = [
     { value: "netSales", label: "Net Sales" },
@@ -97,13 +47,10 @@ export const ChartView: React.FC = () => {
         />
       </div>
       <div className={styles["chart-wrapper"]}>
-        <TrendChart
-          data={chartData}
-          series={seriesConfig}
-          showLegend={true}
-          legendPosition="bottom"
-          showGrid={true}
-        />
+        {/* TrendChart temporarily disabled - component not available */}
+        <div style={{ padding: "20px", textAlign: "center", color: "#666" }}>
+          Chart placeholder - TrendChart component not available
+        </div>
       </div>
     </div>
   );

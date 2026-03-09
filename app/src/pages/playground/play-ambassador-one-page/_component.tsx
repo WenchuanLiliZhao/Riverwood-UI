@@ -3,19 +3,12 @@ import {
   Avatar,
   BentoGrid,
   BentoItem,
-  ChinaHeatMap,
   DocSection,
   KpiRingChart,
   Layout,
   NavTitle,
   TextHr,
   Tooltip,
-  TrendChart,
-} from "../../../components";
-import type {
-  ChartDataPoint,
-  SeriesConfig,
-  CategoryData,
 } from "../../../components";
 import { WidgetFrame } from "../../../components/widgets/widget-frame";
 import styles from "./_styles.module.scss";
@@ -63,7 +56,7 @@ const getCurrentMonthLabel = (): string => {
 
 export const PageContent = () => {
   // State management for selected month - default to current month
-  const [selectedMonth, setSelectedMonth] = useState<string>(
+  const [selectedMonth] = useState<string>(
     getCurrentMonthLabel()
   );
 
@@ -90,20 +83,13 @@ export const PageContent = () => {
   const byTenureWidget = rosterOverview.widgets[3];
   const byTenureData = byTenureWidget.data as ActivityDistributionItem[];
 
-  const mapWidget = rosterOverview.widgets[4];
-  const mapData = mapWidget.data as {
-    categories: CategoryData[];
-    center: [number, number];
-    zoom: number;
-    designProperties: { radiusFactor: number };
-  };
+  // ChinaHeatMap widget temporarily disabled - component not available
+  // const mapWidget = rosterOverview.widgets[4];
+  // const mapData = mapWidget.data as { ... };
 
-  // Engagement widgets with type assertions
-  const resourcePlanningWidget = engagementOverview.widgets[0];
-  const resourcePlanningData = resourcePlanningWidget.data as {
-    chartData: ChartDataPoint[];
-    series: SeriesConfig[];
-  };
+  // TrendChart widget temporarily disabled - component not available
+  // const resourcePlanningWidget = engagementOverview.widgets[0];
+  // const resourcePlanningData = resourcePlanningWidget.data as { ... };
 
   const serviceDaysWidget = engagementOverview.widgets[1];
   const serviceDaysData = serviceDaysWidget.data as {
@@ -184,12 +170,12 @@ export const PageContent = () => {
 
   const summaryData = calculateSummaryData();
 
-  // Handler for TrendChart node selection
-  const handleNodeSelect = (label: string, seriesKey: string) => {
-    if (seriesKey === "used") {
-      setSelectedMonth(label);
-    }
-  };
+  // Handler for TrendChart node selection - temporarily disabled
+  // const handleNodeSelect = (label: string, seriesKey: string) => {
+  //   if (seriesKey === "used") {
+  //     setSelectedMonth(label);
+  //   }
+  // };
 
   // Get metrics for currently selected month (with fallback to APR)
   const metricsData = serviceDaysData.byMonth;
@@ -248,6 +234,7 @@ export const PageContent = () => {
                     />
                   </WidgetFrame>
                 </BentoItem>
+                {/* ChinaHeatMap temporarily disabled - component not available
                 <BentoItem res={[
                   [1201, 7, 4],
                   [Infinity, 8, 4]
@@ -263,6 +250,7 @@ export const PageContent = () => {
                     />
                   </WidgetFrame>
                 </BentoItem>
+                */}
                 <BentoItem res={[
                   [1201, 5, 1],
                   [Infinity, 4, 1]
@@ -472,6 +460,7 @@ export const PageContent = () => {
               }
             >
               <BentoGrid gap={"md"} rowHeight={[[Infinity, 328]]}>
+                {/* TrendChart temporarily disabled - component not available
                 <BentoItem
                   res={[
                     [1080, 12, 1],
@@ -497,6 +486,7 @@ export const PageContent = () => {
                     />
                   </WidgetFrame>
                 </BentoItem>
+                */}
                 <BentoItem
                   res={[
                     [760, 12, 1],
